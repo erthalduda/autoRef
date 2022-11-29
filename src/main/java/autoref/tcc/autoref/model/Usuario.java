@@ -1,9 +1,13 @@
 package autoref.tcc.autoref.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario {
@@ -13,19 +17,27 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    @OneToMany(mappedBy = "usuario", cascade = { CascadeType.PERSIST, CascadeType.DETACH })
+    private List<Colecao> colecoesUsuario;
 
-    public Usuario() {
-    }
-
-    public Usuario(Integer idUsuario, String nome, String email, String senha) {
+    public Usuario(Integer idUsuario, String nome, String email, String senha, List<Colecao> colecoesUsuario) {
         this.idUsuario = idUsuario;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.colecoesUsuario = colecoesUsuario;
+    }
+
+    public Usuario() {
     }
 
     public Integer getIdUsuario() {
         return this.idUsuario;
+    }
+
+    public void adicionaColecao(Colecao colecao){
+        this.colecoesUsuario.add(colecao);
+        colecao.setUsuario(this);
     }
 
     public void setIdUsuario(Integer idUsuario) {
@@ -56,4 +68,11 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public List<Colecao> getColecoesUsuario() {
+        return this.colecoesUsuario;
+    }
+
+    public void setColecoesUsuario(List<Colecao> colecoesUsuario) {
+        this.colecoesUsuario = colecoesUsuario;
+    }
 }
