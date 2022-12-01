@@ -9,10 +9,10 @@ public class ParteColecaoPublicacaoPeriodica extends ColecaoPublicacaoPeriodica 
 	public ParteColecaoPublicacaoPeriodica() {
 	}
 
-	public ParteColecaoPublicacaoPeriodica(Integer id, String titulo, String subtituloPublicacao,
+	public ParteColecaoPublicacaoPeriodica(Integer id, String titulo, Usuario usuario, String subtituloPublicacao,
 			String localPublicacao, String editora, String dataInicio, String dataFim, String issn,
 			String periodoConsultado) {
-		super(id, titulo, subtituloPublicacao, localPublicacao, editora, dataInicio, dataFim, issn);
+		super(id, titulo, usuario, subtituloPublicacao, localPublicacao, editora, dataInicio, dataFim, issn);
 		this.periodoConsultado = periodoConsultado;
 	}
 

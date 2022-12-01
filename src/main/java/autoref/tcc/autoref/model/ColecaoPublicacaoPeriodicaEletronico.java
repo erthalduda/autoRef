@@ -11,10 +11,10 @@ public class ColecaoPublicacaoPeriodicaEletronico extends ColecaoPublicacaoPerio
 	public ColecaoPublicacaoPeriodicaEletronico() {
 	}
 
-	public ColecaoPublicacaoPeriodicaEletronico(Integer id, String titulo, String subtituloPublicacao,
+	public ColecaoPublicacaoPeriodicaEletronico(Integer id, String titulo, Usuario usuario, String subtituloPublicacao,
 			String localPublicacao, String editora, String dataInicio, String dataFim, String issn, String doi,
 			String descricaoDoSuporte) {
-		super(id, titulo, subtituloPublicacao, localPublicacao, editora, dataInicio, dataFim, issn);
+		super(id, titulo, usuario, subtituloPublicacao, localPublicacao, editora, dataInicio, dataFim, issn);
 		this.doi = doi;
 		this.descricaoDoSuporte = descricaoDoSuporte;
 	}

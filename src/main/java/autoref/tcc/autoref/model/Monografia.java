@@ -28,10 +28,10 @@ public class Monografia extends Referencia {
 
 	}
 
-	public Monografia(Integer id, String titulo, String autor, String subtitulo, String anoPublicacao, String cidade,
+	public Monografia(Integer id, String titulo, Usuario usuario, String autor, String subtitulo, String anoPublicacao, String cidade,
 			String instituicao, String curso, String anoEntrega, String quantidadePaginas, String edicao,
 			String editora) {
-		super(id, titulo);
+		super(id, titulo, usuario);
 		this.autor = autor;
 		this.subtitulo = subtitulo;
 		this.anoPublicacao = anoPublicacao;

@@ -27,10 +27,10 @@ public class TrabalhoAcademico extends Referencia {
 
     }
 
-    public TrabalhoAcademico(Integer id, String titulo, String autor, String subtitulo, String anoDeposito,
+    public TrabalhoAcademico(Integer id, String titulo, Usuario usuario, String autor, String subtitulo, String anoDeposito,
             String tipoTrabalho, String grauFormacao, String curso, String vinculacaoAcademica, String anoDefesa,
             String localDefesa) {
-        super(id, titulo);
+        super(id, titulo, usuario);
         this.autor = autor;
         this.subtitulo = subtitulo;
         this.anoDeposito = anoDeposito;

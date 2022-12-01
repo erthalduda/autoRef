@@ -16,10 +16,10 @@ public class Fasciculo extends ColecaoPublicacaoPeriodica {
 		
 	}
 
-	public Fasciculo(Integer id, String titulo, String subtituloPublicacao, String localPublicacao, String editora,
+	public Fasciculo(Integer id, String titulo, Usuario usuario, String subtituloPublicacao, String localPublicacao, String editora,
 			String dataInicio, String dataFim, String issn, String numeracaoAno, String numeracaoVolume,
 			String numeracaoFasciculo, String dataPublicacao) {
-		super(id, titulo, subtituloPublicacao, localPublicacao, editora, dataInicio, dataFim, issn);
+		super(id, titulo, usuario, subtituloPublicacao, localPublicacao, editora, dataInicio, dataFim, issn);
 		this.numeracaoAno = numeracaoAno;
 		this.numeracaoVolume = numeracaoVolume;
 		this.numeracaoFasciculo = numeracaoFasciculo;
