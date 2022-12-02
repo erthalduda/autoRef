@@ -24,13 +24,14 @@ public class Artigo extends ColecaoPublicacaoPeriodica {
 
 	private String dataPublicacao;
 
-
 	public Artigo() {
 	}
-
-	public Artigo(String tituloArtigo, String subtituloArtigo, String numeracaoAno, String numeracaoVolume,
-			String numero, String edicao, String tomo, String paginaInicial, String paginaFinal,
-			String dataPublicacao) {
+	
+	public Artigo(Integer id, String titulo, Usuario usuario, String subtituloPublicacao, String localPublicacao,
+			String editora, String dataInicio, String dataFim, String issn, String tituloArtigo, String subtituloArtigo,
+			String numeracaoAno, String numeracaoVolume, String numero, String edicao, String tomo,
+			String paginaInicial, String paginaFinal, String dataPublicacao) {
+		super(id, titulo, usuario, subtituloPublicacao, localPublicacao, editora, dataInicio, dataFim, issn);
 		this.tituloArtigo = tituloArtigo;
 		this.subtituloArtigo = subtituloArtigo;
 		this.numeracaoAno = numeracaoAno;
