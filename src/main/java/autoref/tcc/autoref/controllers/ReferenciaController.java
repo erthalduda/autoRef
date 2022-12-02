@@ -3,6 +3,7 @@ package autoref.tcc.autoref.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -18,7 +19,8 @@ public class ReferenciaController {
 
     @PostMapping("/cadastrar")
     @ResponseBody
-    public void cadastraReferencia(Referencia referencia){
-        repositorioReferencias.save(referencia);
+    public String cadastraReferencia(@RequestBody Referencia referenciaJSON){
+        repositorioReferencias.save(referenciaJSON);
+        return "Referência cadastrada com sucesso!";
     }
 }
