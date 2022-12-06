@@ -17,6 +17,7 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private int xp;
 
     @OneToMany(mappedBy = "usuario", cascade = { CascadeType.PERSIST, CascadeType.DETACH })
     private List<Colecao> colecoesUsuario;
@@ -24,13 +25,14 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = { CascadeType.PERSIST, CascadeType.DETACH })
     private List<Referencia> referenciasUsuario;
 
-    public Usuario(Integer idUsuario, String nome, String email, String senha, List<Colecao> colecoesUsuario, List<Referencia> referenciasUsuario) {
+    public Usuario(Integer idUsuario, String nome, String email, String senha, List<Colecao> colecoesUsuario, List<Referencia> referenciasUsuario, int xp){
         this.idUsuario = idUsuario;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.colecoesUsuario = colecoesUsuario;
         this.referenciasUsuario = referenciasUsuario;
+        this.xp = xp;
     }
 
     public Usuario() {
@@ -87,6 +89,14 @@ public class Usuario {
 
     public void setReferenciasUsuario(List<Referencia> referenciasUsuario) {
         this.referenciasUsuario = referenciasUsuario;
+    }
+
+     public int getXp() {
+        return xp;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
     }
 
 }
