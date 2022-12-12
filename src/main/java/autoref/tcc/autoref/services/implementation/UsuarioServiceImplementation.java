@@ -22,8 +22,15 @@ public class UsuarioServiceImplementation implements UsuarioService{
 
     @Override
     public Usuario autenticaUsuario(String email, String senha) {
-        // TODO Auto-generated method stub
-        return null;
+        Optional<Usuario> usuario = repository.findByEmail(email);
+        if(!usuario.isPresent()){
+            throw new ExcecoesAutoref("E-mail inválido."); 
+        }
+        if(!usuario.get().getSenha().equals(senha)){
+            throw new ExcecoesAutoref("Senha incorreta."); 
+        }
+
+        return usuario.get();
     }
 
     @Override
