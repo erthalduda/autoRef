@@ -1,4 +1,4 @@
-package autoref.tcc.autoref.controllers;
+package autoref.tcc.autoref.api.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
