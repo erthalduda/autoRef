@@ -21,7 +21,7 @@ public class UsuarioController {
         this.serviceUsuario = serviceUsuario;
     }
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/cadastro")
     public ResponseEntity cadastraUsuario(@RequestBody UsuarioDTO usuarioDTO){
         Usuario usuario = new Usuario();
         usuario.setNome(usuarioDTO.getNome());
@@ -30,8 +30,18 @@ public class UsuarioController {
         try{
             Usuario salvo = serviceUsuario.cadastraUsuario(usuario);
             return new ResponseEntity<>(salvo, HttpStatus.CREATED);
-        }catch(ExcecoesAutoref e){
-            return ResponseEntity.badRequest().body(e);
+        }catch(ExcecoesAutoref excecao){
+            return ResponseEntity.badRequest().body(excecao.getMessage());
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity autenticaUsuario(@RequestBody UsuarioDTO usuarioDTO){
+        try{
+            Usuario autenticado = serviceUsuario.autenticaUsuario(usuarioDTO.getEmail(), usuarioDTO.getSenha());
+            return new ResponseEntity<>(autenticado, HttpStatus.OK);
+        }catch(ExcecoesAutoref excecao){
+            return ResponseEntity.badRequest().body(excecao.getMessage());
         }
     }
 }
