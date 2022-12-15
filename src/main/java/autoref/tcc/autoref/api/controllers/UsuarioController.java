@@ -22,7 +22,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/cadastro")
-    public ResponseEntity cadastraUsuario(@RequestBody UsuarioDTO usuarioDTO){
+    public ResponseEntity<?> cadastraUsuario(@RequestBody UsuarioDTO usuarioDTO){
         Usuario usuario = new Usuario();
         usuario.setNome(usuarioDTO.getNome());
         usuario.setEmail(usuarioDTO.getEmail());
@@ -31,17 +31,17 @@ public class UsuarioController {
             Usuario salvo = serviceUsuario.cadastraUsuario(usuario);
             return new ResponseEntity<>(salvo, HttpStatus.CREATED);
         }catch(ExcecoesAutoref excecao){
-            return ResponseEntity.badRequest().body(excecao.getMessage());
+            return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
     @PostMapping("/login")
-    public ResponseEntity autenticaUsuario(@RequestBody UsuarioDTO usuarioDTO){
+    public ResponseEntity<?> autenticaUsuario(@RequestBody UsuarioDTO usuarioDTO){
         try{
             Usuario autenticado = serviceUsuario.autenticaUsuario(usuarioDTO.getEmail(), usuarioDTO.getSenha());
             return new ResponseEntity<>(autenticado, HttpStatus.OK);
         }catch(ExcecoesAutoref excecao){
-            return ResponseEntity.badRequest().body(excecao.getMessage());
+            return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 }
