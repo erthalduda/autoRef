@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 @Entity
 public class TrabalhoAcademico extends Referencia {
 
-	private String autor;
+    private String autor;
 
     private String subtitulo;
 
@@ -23,11 +23,12 @@ public class TrabalhoAcademico extends Referencia {
 
     private String localDefesa;
 
-    public TrabalhoAcademico(){
+    public TrabalhoAcademico() {
 
     }
 
-    public TrabalhoAcademico(Integer id, String titulo, Usuario usuario, String autor, String subtitulo, String anoDeposito,
+    public TrabalhoAcademico(Integer id, String titulo, Usuario usuario, String autor, String subtitulo,
+            String anoDeposito,
             String tipoTrabalho, String grauFormacao, String curso, String vinculacaoAcademica, String anoDefesa,
             String localDefesa) {
         super(id, titulo, usuario);
@@ -113,7 +114,5 @@ public class TrabalhoAcademico extends Referencia {
     public void setLocalDefesa(String localDefesa) {
         this.localDefesa = localDefesa;
     }
-
-
 
 }

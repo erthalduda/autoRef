@@ -1,4 +1,5 @@
 package autoref.tcc.autoref.model;
+
 import javax.persistence.Entity;
 
 @Entity
@@ -8,14 +9,16 @@ public class MonografiaOnline extends Monografia {
 
 	private String dataAcesso;
 
-	public MonografiaOnline(){
+	public MonografiaOnline() {
 
 	}
 
-	public MonografiaOnline(Integer id, String titulo, Usuario usuario, String autor, String subtitulo, String anoPublicacao,
+	public MonografiaOnline(Integer id, String titulo, Usuario usuario, String autor, String subtitulo,
+			String anoPublicacao,
 			String cidade, String instituicao, String curso, String anoEntrega, String quantidadePaginas, String edicao,
 			String editora, String url, String dataAcesso) {
-		super(id, titulo, usuario, autor, subtitulo, anoPublicacao, cidade, instituicao, curso, anoEntrega, quantidadePaginas,
+		super(id, titulo, usuario, autor, subtitulo, anoPublicacao, cidade, instituicao, curso, anoEntrega,
+				quantidadePaginas,
 				edicao, editora);
 		this.url = url;
 		this.dataAcesso = dataAcesso;

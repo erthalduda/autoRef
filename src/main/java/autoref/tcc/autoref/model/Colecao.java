@@ -16,14 +16,14 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Colecao {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idColecao;
 	private String nome;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_usuario")
 	private Usuario usuario;
-	
+
 	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "colecao_referencia", joinColumns = @JoinColumn(name = "id_colecao"), inverseJoinColumns = @JoinColumn(name = "id_referencia"))
 	private List<Referencia> referencias;
@@ -38,7 +38,7 @@ public class Colecao {
 	public Colecao() {
 	}
 
-	public void adicionaReferencia(Referencia referencia){
+	public void adicionaReferencia(Referencia referencia) {
 		referencias.add(referencia);
 		referencia.adicionaColecao(this);
 	}
@@ -58,7 +58,6 @@ public class Colecao {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	public Usuario getUsuario() {
 		return this.usuario;

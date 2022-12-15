@@ -9,5 +9,5 @@ public interface UsuarioService {
     Usuario cadastraUsuario(Usuario usuario);
 
     void validaEmail(String email);
-    
+
 }

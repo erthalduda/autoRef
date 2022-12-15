@@ -1,4 +1,5 @@
 package autoref.tcc.autoref.model;
+
 import javax.persistence.Entity;
 
 @Entity
@@ -26,7 +27,7 @@ public class Artigo extends ColecaoPublicacaoPeriodica {
 
 	public Artigo() {
 	}
-	
+
 	public Artigo(Integer id, String titulo, Usuario usuario, String subtituloPublicacao, String localPublicacao,
 			String editora, String dataInicio, String dataFim, String issn, String tituloArtigo, String subtituloArtigo,
 			String numeracaoAno, String numeracaoVolume, String numero, String edicao, String tomo,

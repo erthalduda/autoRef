@@ -12,12 +12,12 @@ import autoref.tcc.autoref.repositories.ReferenciaRepository;
 @RestController
 @RequestMapping("/referencias")
 public class ReferenciaController {
-    
+
     @Autowired
     private ReferenciaRepository repositorioReferencias;
 
     @PostMapping("/cadastrar")
-    public String cadastraReferencia(@RequestBody Referencia referenciaJSON){
+    public String cadastraReferencia(@RequestBody Referencia referenciaJSON) {
         repositorioReferencias.save(referenciaJSON);
         return "Referência cadastrada com sucesso!";
     }

@@ -16,16 +16,15 @@ import javax.persistence.ManyToOne;
 public class Referencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Integer id;
+    protected Integer id;
     protected String titulo;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "referencias")
     protected List<Colecao> colecoes;
 
     @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_usuario")
+    @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
-
 
     public Referencia() {
     }
@@ -36,7 +35,7 @@ public class Referencia {
         this.usuario = usuario;
     }
 
-    public void adicionaColecao(Colecao colecao){
+    public void adicionaColecao(Colecao colecao) {
         colecoes.add(colecao);
     }
 

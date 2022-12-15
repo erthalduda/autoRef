@@ -1,4 +1,5 @@
 package autoref.tcc.autoref.model;
+
 import javax.persistence.Entity;
 
 @Entity
