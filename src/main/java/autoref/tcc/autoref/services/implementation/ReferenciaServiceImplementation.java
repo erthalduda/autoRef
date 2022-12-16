@@ -1,6 +1,5 @@
 package autoref.tcc.autoref.services.implementation;
 
-import java.util.List;
 import java.util.Objects;
 
 import org.springframework.stereotype.Service;
