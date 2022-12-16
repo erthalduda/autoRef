@@ -38,13 +38,4 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
         repositorioReferencia.delete(referencia);
     }
 
-    // ver o que implementar nessa busca
-    // @Override
-    // @Transactional
-    // public List<Referencia> buscarReferencia(Referencia referencia) {
-    // String query = "SELECT * FROM referencia WHERE 1 = 1";
-
-    // return null;
-    // }
-
 }

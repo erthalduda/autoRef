@@ -10,5 +10,4 @@ public interface ReferenciaService {
 
     void deletaReferencia(Referencia referencia);
 
-    // List<Referencia> buscarReferencia(Referencia referencia);
 }
