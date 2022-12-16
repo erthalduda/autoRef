@@ -1,5 +1,6 @@
 package autoref.tcc.autoref.services;
 
+
 import autoref.tcc.autoref.model.Usuario;
 
 public interface UsuarioService {
@@ -10,7 +11,7 @@ public interface UsuarioService {
 
     void validaEmail(String email);
 
-    void excluiUsuario(Usuario usuario);
+    void excluiUsuario(Integer id);
 
     void atualizaUsuario(Usuario usuario);
 

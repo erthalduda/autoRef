@@ -50,10 +50,10 @@ public class UsuarioController {
     @DeleteMapping("/exclusao")
     public ResponseEntity<?> excluiUsuario(@RequestBody Usuario usuario){
         try{
-            serviceUsuario.excluiUsuario(usuario);
+            serviceUsuario.excluiUsuario(usuario.getIdUsuario());
             return new ResponseEntity<>("Exclusão realizada com sucesso.", HttpStatus.OK);
         }catch(ExcecoesAutoref excecao){
-            return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Erro ao excluir.", HttpStatus.BAD_REQUEST);
         }
     }
 }

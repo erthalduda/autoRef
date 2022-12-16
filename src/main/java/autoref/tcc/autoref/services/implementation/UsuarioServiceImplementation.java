@@ -3,6 +3,8 @@ package autoref.tcc.autoref.services.implementation;
 import java.util.Objects;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
@@ -56,15 +58,12 @@ public class UsuarioServiceImplementation implements UsuarioService {
 
     @Override
     public void atualizaUsuario(Usuario usuario) {
-       Objects.requireNonNull(usuario.getIdUsuario());
-       repository.save(usuario);
+        Objects.requireNonNull(usuario.getIdUsuario());
+        repository.save(usuario);
     }
 
     @Override
-    public void excluiUsuario(Usuario usuario) {
-        Objects.requireNonNull(usuario.getIdUsuario());
-        repository.delete(usuario);
+    public void excluiUsuario(Integer id) {
+        repository.deleteById(id);
     }
-
-
 }
