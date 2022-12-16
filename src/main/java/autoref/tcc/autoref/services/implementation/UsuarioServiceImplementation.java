@@ -1,5 +1,6 @@
 package autoref.tcc.autoref.services.implementation;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -52,5 +53,18 @@ public class UsuarioServiceImplementation implements UsuarioService {
         // se for um email novo, cadastra o usuário fornecido
         return repository.save(usuario);
     }
+
+    @Override
+    public void atualizaUsuario(Usuario usuario) {
+       Objects.requireNonNull(usuario.getIdUsuario());
+       repository.save(usuario);
+    }
+
+    @Override
+    public void excluiUsuario(Usuario usuario) {
+        Objects.requireNonNull(usuario.getIdUsuario());
+        repository.delete(usuario);
+    }
+
 
 }
