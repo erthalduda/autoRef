@@ -12,30 +12,30 @@ import autoref.tcc.autoref.services.ReferenciaService;
 @Service
 public class ReferenciaServiceImplementation implements ReferenciaService {
 
-    private ReferenciaRepository repositorioReferencia;
+    private ReferenciaRepository repository;
 
-    public ReferenciaServiceImplementation(ReferenciaRepository repositorioReferencia) {
-        this.repositorioReferencia = repositorioReferencia;
+    public ReferenciaServiceImplementation(ReferenciaRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     @Transactional
     public Referencia cadastraReferencia(Referencia referencia) {
-        return repositorioReferencia.save(referencia);
+        return repository.save(referencia);
     }
 
     @Override
     @Transactional
     public Referencia atualizaReferencia(Referencia referencia) {
         Objects.requireNonNull(referencia.getId());
-        return repositorioReferencia.save(referencia);
+        return repository.save(referencia);
     }
 
     @Override
     @Transactional
     public void deletaReferencia(Referencia referencia) {
         Objects.requireNonNull(referencia.getId());
-        repositorioReferencia.delete(referencia);
+        repository.delete(referencia);
     }
 
 }

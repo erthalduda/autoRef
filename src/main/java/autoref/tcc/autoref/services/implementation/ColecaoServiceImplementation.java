@@ -10,10 +10,10 @@ import autoref.tcc.autoref.services.ColecaoService;
 @Service
 public class ColecaoServiceImplementation implements ColecaoService {
 
-    private ColecaoRepository repositorioColecao;
+    private ColecaoRepository repository;
 
-    public ColecaoServiceImplementation(ColecaoRepository repositorioColecao){
-        this.repositorioColecao = repositorioColecao;
+    public ColecaoServiceImplementation(ColecaoRepository repository){
+        this.repository = repository;
     }
 
     @Override
