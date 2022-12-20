@@ -48,7 +48,8 @@ public class UsuarioController {
 
     // ainda não está pronta, temos que testar mais
     @DeleteMapping("/excluir")
-    public ResponseEntity<?> excluiUsuario(@RequestBody Usuario usuario){
+    public ResponseEntity<?> excluiUsuario(@RequestBody UsuarioDTO usuarioDTO){
+        Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
         try{
             serviceUsuario.excluiUsuario(usuario.getIdUsuario());
             return new ResponseEntity<>("Exclusão realizada com sucesso.", HttpStatus.OK);
