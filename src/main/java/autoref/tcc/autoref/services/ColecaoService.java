@@ -1,5 +1,7 @@
 package autoref.tcc.autoref.services;
 
+// import java.util.List;
+
 import autoref.tcc.autoref.model.Colecao;
 import autoref.tcc.autoref.model.Referencia;
 
@@ -7,11 +9,13 @@ public interface ColecaoService {
 
     Colecao cadastraColecao(Colecao colecao);
 
-    Colecao atualizaColecao(Colecao colecao);
+    void atualizaColecao(Colecao colecao);
 
     void deletaColecao(Colecao colecao);
     
-    Referencia adicionaReferencia(Referencia referencia);
+    Colecao adicionaReferencia(Colecao colecao, Referencia referencia);
 
-    void deletaReferencia(Referencia referencia);
+    void deletaReferencia(Colecao colecao, Referencia referencia);
+
+    // List<Colecao> colecoesPorUsuario(Integer idUsuario);
 }

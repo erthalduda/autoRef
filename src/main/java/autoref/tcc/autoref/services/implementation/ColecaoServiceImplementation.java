@@ -1,10 +1,16 @@
 package autoref.tcc.autoref.services.implementation;
 
+import java.util.Objects;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
+import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.Colecao;
 import autoref.tcc.autoref.model.Referencia;
+// import autoref.tcc.autoref.model.Usuario;
 import autoref.tcc.autoref.repositories.ColecaoRepository;
+// import autoref.tcc.autoref.repositories.UsuarioRepository;
 import autoref.tcc.autoref.services.ColecaoService;
 
 @Service
@@ -12,38 +18,50 @@ public class ColecaoServiceImplementation implements ColecaoService {
 
     private ColecaoRepository repository;
 
-    public ColecaoServiceImplementation(ColecaoRepository repository){
+    // private UsuarioRepository repositoryUsuario;
+
+    public ColecaoServiceImplementation(ColecaoRepository repository) {
         this.repository = repository;
     }
 
     @Override
-    public Referencia adicionaReferencia(Referencia referencia) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Colecao atualizaColecao(Colecao colecao) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
     public Colecao cadastraColecao(Colecao colecao) {
-        // TODO Auto-generated method stub
-        return null;
+        return repository.save(colecao);
     }
 
     @Override
     public void deletaColecao(Colecao colecao) {
-        // TODO Auto-generated method stub
-        
+        Objects.requireNonNull(colecao.getIdColecao());
+        repository.delete(colecao);
     }
 
     @Override
-    public void deletaReferencia(Referencia referencia) {
-        // TODO Auto-generated method stub
-        
+    public void atualizaColecao(Colecao colecao) {
+        Objects.requireNonNull(colecao.getIdColecao());
+        repository.save(colecao);
     }
+
+    @Override
+    public Colecao adicionaReferencia(Colecao colecao, Referencia referencia) {
+        Optional<Colecao> c = repository.findById(colecao.getIdColecao());
+        if (c.isEmpty()) {
+            throw new ExcecoesAutoref("Coleção inválida.");
+        }
+        c.get().adicionaReferencia(referencia);
+        return repository.save(c);
+    }
+
+    @Override
+    public void deletaReferencia(Colecao colecao, Referencia referencia) {
+        Optional<Colecao> c = repository.findById(colecao.getIdColecao());
+        c.get().getreferencias().remove(referencia);
+    }
+
+    // @Override
+    // public List<Colecao> colecoesPorUsuario(Integer idUsuario) {
+    //     return repository.findByUsuarioIdUsuario(idUsuario);
+    // }
+
+
     
 }
