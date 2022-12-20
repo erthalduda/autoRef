@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import autoref.tcc.autoref.api.dtos.ReferenciaDTO;
+import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.Referencia;
 import autoref.tcc.autoref.services.ReferenciaService;
 
@@ -25,12 +27,13 @@ public class ReferenciaController {
     }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<?> cadastraReferencia(@RequestBody Referencia referenciaJSON) {
+    public ResponseEntity<?> cadastraReferencia(@RequestBody ReferenciaDTO referenciaDTO) {
+        Referencia referencia = mapper.map(referenciaDTO, Referencia.class);
         try {
-            serviceReferencia.cadastraReferencia(referenciaJSON);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            Referencia salva = serviceReferencia.cadastraReferencia(referencia);
+            return new ResponseEntity<>(salva, HttpStatus.CREATED);
+        } catch (ExcecoesAutoref excecao) {
+            return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
