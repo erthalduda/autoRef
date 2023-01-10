@@ -10,4 +10,6 @@ public interface ReferenciaService {
 
     void deletaReferencia(Referencia referencia);
 
+    Referencia encontrarPorId(Integer id);
+
 }
