@@ -97,7 +97,7 @@ public class Usuario {
     }
 
     public void setXp(int xp) {
-        this.xp = xp;
+        this.xp = this.getXp() + xp;
     }
 
 }
