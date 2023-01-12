@@ -67,11 +67,11 @@ public class Colecao {
 		this.usuario = usuario;
 	}
 
-	public List<Referencia> getreferencias() {
+	public List<Referencia> getReferencias() {
 		return this.referencias;
 	}
 
-	public void setreferencias(List<Referencia> referencias) {
+	public void setReferencias(List<Referencia> referencias) {
 		this.referencias = referencias;
 	}
 
