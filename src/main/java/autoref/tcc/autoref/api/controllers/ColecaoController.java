@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import autoref.tcc.autoref.api.dtos.ColecaoDTO;
 import autoref.tcc.autoref.api.dtos.ReferenciaDTO;
+import autoref.tcc.autoref.api.dtos.UsuarioDTO;
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.Colecao;
 import autoref.tcc.autoref.model.Referencia;
+import autoref.tcc.autoref.model.Usuario;
 import autoref.tcc.autoref.services.ColecaoService;
 
 @RestController
@@ -67,11 +69,12 @@ public class ColecaoController {
     }
 
     @PostMapping("/adicionar")
-    public ResponseEntity<?> adicionaReferencia(@RequestBody ColecaoDTO colecaoDTO, ReferenciaDTO referenciaDTO) {
+    public ResponseEntity<?> adicionaReferencia(@RequestBody ColecaoDTO colecaoDTO, ReferenciaDTO referenciaDTO, UsuarioDTO usuarioDTO) {
         Colecao colecao = mapper.map(colecaoDTO, Colecao.class);
         Referencia referencia = mapper.map(referenciaDTO, Referencia.class);
+        Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
         try {
-            serviceColecao.adicionaReferencia(colecao, referencia);
+            serviceColecao.adicionaReferencia(colecao, referencia, usuario);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
