@@ -4,6 +4,7 @@ package autoref.tcc.autoref.services;
 
 import autoref.tcc.autoref.model.Colecao;
 import autoref.tcc.autoref.model.Referencia;
+import autoref.tcc.autoref.model.Usuario;
 
 public interface ColecaoService {
 
@@ -13,7 +14,7 @@ public interface ColecaoService {
 
     void deletaColecao(Colecao colecao);
     
-    Colecao adicionaReferencia(Colecao colecao, Referencia referencia);
+    Colecao adicionaReferencia(Colecao colecao, Referencia referencia, Usuario usuario);
 
     void deletaReferencia(Colecao colecao, Referencia referencia);
 

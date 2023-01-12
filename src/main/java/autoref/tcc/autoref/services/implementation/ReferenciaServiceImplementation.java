@@ -1,5 +1,6 @@
 package autoref.tcc.autoref.services.implementation;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -58,6 +59,19 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
             throw new ExcecoesAutoref("Referência não encontrada.");
         }
         return referenciaPorId.get();
+    }
+
+    @Override
+    public List<Referencia> buscarNoRepositorioGeral(String pesquisa, Usuario usuario) {
+        List<Referencia> retornoBusca = repositorioReferencia.buscaReferencia(pesquisa);
+        usuario.setXp(100);
+        return retornoBusca;
+    }
+
+    @Override
+    public List<Referencia> buscarNoRepositorioPrivado(String pesquisa) {
+        List<Referencia> retornoBusca = repositorioReferencia.buscaReferencia(pesquisa);
+        return retornoBusca;
     }
 
 }

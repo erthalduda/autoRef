@@ -1,6 +1,9 @@
 package autoref.tcc.autoref.services;
 
+import java.util.List;
+
 import autoref.tcc.autoref.model.Referencia;
+import autoref.tcc.autoref.model.Usuario;
 
 public interface ReferenciaService {
 
@@ -12,4 +15,7 @@ public interface ReferenciaService {
 
     Referencia encontrarPorId(Integer id);
 
+    List<Referencia> buscarNoRepositorioGeral(String pesquisa, Usuario usuario);
+
+    List<Referencia> buscarNoRepositorioPrivado(String pesquisa);
 }

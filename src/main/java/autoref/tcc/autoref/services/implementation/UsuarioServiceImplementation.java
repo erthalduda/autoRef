@@ -13,17 +13,17 @@ import autoref.tcc.autoref.services.UsuarioService;
 @Service
 public class UsuarioServiceImplementation implements UsuarioService {
 
-    private UsuarioRepository repository;
+    private UsuarioRepository repositorioUsuario;
 
-    public UsuarioServiceImplementation(UsuarioRepository repository) {
-        this.repository = repository;
+    public UsuarioServiceImplementation(UsuarioRepository repositorioUsuario) {
+        this.repositorioUsuario = repositorioUsuario;
     }
 
     // autentica um usuário na aplicação
     @Override
     public Usuario autenticaUsuario(String email, String senha) {
         // verifica se existe algum usuário cadastrado com o email fornecido
-        Optional<Usuario> usuario = repository.findByEmail(email);
+        Optional<Usuario> usuario = repositorioUsuario.findByEmail(email);
         if (!usuario.isPresent()) {
             throw new ExcecoesAutoref("E-mail inválido.");
         }
@@ -40,7 +40,7 @@ public class UsuarioServiceImplementation implements UsuarioService {
     // mesmo email
     @Override
     public void validaEmail(String email) {
-        boolean existeUsuarioComEsseEmail = repository.existsByEmail(email);
+        boolean existeUsuarioComEsseEmail = repositorioUsuario.existsByEmail(email);
         if (existeUsuarioComEsseEmail) {
             throw new ExcecoesAutoref("E-mail já cadastrado.");
         }
@@ -51,17 +51,17 @@ public class UsuarioServiceImplementation implements UsuarioService {
         // valida se o email já está cadastrado ou não
         validaEmail(usuario.getEmail());
         // se for um email novo, cadastra o usuário fornecido
-        return repository.save(usuario);
+        return repositorioUsuario.save(usuario);
     }
 
     @Override
     public void atualizaUsuario(Usuario usuario) {
         Objects.requireNonNull(usuario.getIdUsuario());
-        repository.save(usuario);
+        repositorioUsuario.save(usuario);
     }
 
     @Override
     public void excluiUsuario(Integer id) {
-        repository.deleteById(id);
+        repositorioUsuario.deleteById(id);
     }
 }
