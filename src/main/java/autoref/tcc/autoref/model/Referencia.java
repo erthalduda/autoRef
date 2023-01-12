@@ -25,6 +25,8 @@ public class Referencia {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
+    
+    protected String formatoFinal;
 
     public Referencia() {
     }
@@ -61,5 +63,13 @@ public class Referencia {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getFormatoFinal() {
+        return formatoFinal;
+    }
+
+    public void setFormatoFinal(String formatoFinal) {
+        this.formatoFinal = formatoFinal;
     }
 }
