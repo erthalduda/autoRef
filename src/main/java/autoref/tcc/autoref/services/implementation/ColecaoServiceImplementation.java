@@ -55,32 +55,33 @@ public class ColecaoServiceImplementation implements ColecaoService {
     @Transactional
     //talvez não precise passar o usuário como parâmetro, a ser estudado
     public Colecao adicionaReferencia(Colecao colecao, Referencia referencia, Usuario usuario) {
-        Optional<Colecao> c = repositorioColecao.findById(colecao.getIdColecao());
-        if (c.isEmpty()) {
+        Optional<Colecao> colecaoParaAdicionarReferencias = repositorioColecao.findById(colecao.getIdColecao());
+        if (colecaoParaAdicionarReferencias.isEmpty()) {
             throw new ExcecoesAutoref("Coleção inválida.");
         }
     
-            if(colecao.getReferencias().size()==10){
-                usuario.setXp(500);
-            }
-            if(colecao.getReferencias().size()==20){
-                usuario.setXp(1500);
-            }
-                usuario.setXp(50); 
+        if(colecao.getReferencias().size()==10){
+            usuario.setXp(500);
+        }
+        if(colecao.getReferencias().size()==20){
+            usuario.setXp(1500);
+        }
+            usuario.setXp(50); 
 
-                if(referencia.getUsuario().getIdUsuario()!=usuario.getIdUsuario()){
-                    Optional<Usuario> u = repositorioUsuario.findById(usuario.getIdUsuario());
-                    u.get().setXp(200);
-                }
-                    c.get().adicionaReferencia(referencia);
-                    return repositorioColecao.save(c);
-                }
+        if(referencia.getUsuario().getIdUsuario()!=usuario.getIdUsuario()){
+            Optional<Usuario> u = repositorioUsuario.findById(usuario.getIdUsuario());
+            u.get().setXp(200);
+        }
+        
+        colecaoParaAdicionarReferencias.get().adicionaReferencia(referencia);
+        return repositorioColecao.save(colecaoParaAdicionarReferencias);
+        }
 
     @Override
     @Transactional
     public void deletaReferencia(Colecao colecao, Referencia referencia) {
-        Optional<Colecao> c = repositorioColecao.findById(colecao.getIdColecao());
-        c.get().getReferencias().remove(referencia);
+        Optional<Colecao> colecaoParaRemoverReferencia = repositorioColecao.findById(colecao.getIdColecao());
+        colecaoParaRemoverReferencia.get().getReferencias().remove(referencia);
     }
 
     @Override

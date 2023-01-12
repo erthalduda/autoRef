@@ -31,9 +31,11 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
         if(quantidadeReferencias==10){
         usuario.setXp(500);
         }
+
         if(quantidadeReferencias==20){
         usuario.setXp(1500);
         }
+        
         usuario.setXp(100); 
         return repositorioReferencia.save(referencia);
     }
