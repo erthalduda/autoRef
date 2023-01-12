@@ -1,9 +1,11 @@
 package autoref.tcc.autoref.services.implementation;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.Colecao;
@@ -28,6 +30,7 @@ public class ColecaoServiceImplementation implements ColecaoService {
     }
 
     @Override
+    @Transactional
     public Colecao cadastraColecao(Colecao colecao) {
     // passar usuário como parâmetro
     //     usuario.setXp(100); 
@@ -35,50 +38,55 @@ public class ColecaoServiceImplementation implements ColecaoService {
     }
 
     @Override
+    @Transactional
     public void deletaColecao(Colecao colecao) {
         Objects.requireNonNull(colecao.getIdColecao());
         repositorioColecao.delete(colecao);
     }
 
     @Override
+    @Transactional
     public void atualizaColecao(Colecao colecao) {
         Objects.requireNonNull(colecao.getIdColecao());
         repositorioColecao.save(colecao);
     }
 
     @Override
+    @Transactional
+    //talvez não precise passar o usuário como parâmetro, a ser estudado
     public Colecao adicionaReferencia(Colecao colecao, Referencia referencia, Usuario usuario) {
         Optional<Colecao> c = repositorioColecao.findById(colecao.getIdColecao());
         if (c.isEmpty()) {
             throw new ExcecoesAutoref("Coleção inválida.");
         }
-    // passar o usuário como parâmetro também
-    //  if(colecao.getreferencias().size()==10){
-    //     usuario.setXp(500);
-    //  }
-    //  if(colecao.getreferencias().size()==20){
-    //     usuario.setXp(1500);
-    // }
-    //     usuario.setXp(50); 
+    
+            if(colecao.getReferencias().size()==10){
+                usuario.setXp(500);
+            }
+            if(colecao.getReferencias().size()==20){
+                usuario.setXp(1500);
+            }
+                usuario.setXp(50); 
 
-    if(referencia.getUsuario().getIdUsuario()!=usuario.getIdUsuario()){
-        Optional<Usuario> u = repositorioUsuario.findById(usuario.getIdUsuario());
-        u.get().setXp(200);
-    }
-        c.get().adicionaReferencia(referencia);
-        return repositorioColecao.save(c);
+                if(referencia.getUsuario().getIdUsuario()!=usuario.getIdUsuario()){
+                    Optional<Usuario> u = repositorioUsuario.findById(usuario.getIdUsuario());
+                    u.get().setXp(200);
+                }
+                    c.get().adicionaReferencia(referencia);
+                    return repositorioColecao.save(c);
+                }
+
+    @Override
+    @Transactional
+    public void deletaReferencia(Colecao colecao, Referencia referencia) {
+        Optional<Colecao> c = repositorioColecao.findById(colecao.getIdColecao());
+        c.get().getReferencias().remove(referencia);
     }
 
     @Override
-    public void deletaReferencia(Colecao colecao, Referencia referencia) {
-        Optional<Colecao> c = repositorioColecao.findById(colecao.getIdColecao());
-        c.get().getreferencias().remove(referencia);
+    public List<Colecao> colecoesPorUsuario(Integer idUsuario) {
+        return repositorioColecao.findByUsuario(idUsuario);
     }
-
-    // @Override
-    // public List<Colecao> colecoesPorUsuario(Integer idUsuario) {
-    //     return repositorioColecao.findByUsuarioIdUsuario(idUsuario);
-    // }
 
 
     

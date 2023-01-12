@@ -25,16 +25,16 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
 
     @Override
     @Transactional
-    public Referencia cadastraReferencia(Referencia referencia) {
-    // passar o usuário como parâmetro também
-    //     int quantidadeReferencias = repositorioUsuario.referenciasPorUsuario(usuario.getId());
-    //     if(quantidadeReferencias==10){
-    //     usuario.setXp(500);
-    //     }
-    //     if(quantidadeReferencias==20){
-    //     usuario.setXp(1500);
-    //     }
-    //     usuario.setXp(100); 
+    public Referencia cadastraReferencia(Referencia referencia, Usuario usuario) {
+  
+        int quantidadeReferencias = repositorioUsuario.referenciasPorUsuario(usuario.getIdUsuario());
+        if(quantidadeReferencias==10){
+        usuario.setXp(500);
+        }
+        if(quantidadeReferencias==20){
+        usuario.setXp(1500);
+        }
+        usuario.setXp(100); 
         return repositorioReferencia.save(referencia);
     }
 
@@ -62,13 +62,18 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     }
 
     @Override
+    @Transactional
+    //vamos disponibilizar filtros, ou a busca será "geral"?
+    //ex: buscar por autor, por título, ou só retornar tudo que tiver o que foi pesquisado
     public List<Referencia> buscarNoRepositorioGeral(String pesquisa, Usuario usuario) {
         List<Referencia> retornoBusca = repositorioReferencia.buscaReferencia(pesquisa);
         usuario.setXp(100);
+        //ver como implementar a adição de XP pro dono da referência utilizada
         return retornoBusca;
     }
 
     @Override
+    @Transactional
     public List<Referencia> buscarNoRepositorioPrivado(String pesquisa) {
         List<Referencia> retornoBusca = repositorioReferencia.buscaReferencia(pesquisa);
         return retornoBusca;

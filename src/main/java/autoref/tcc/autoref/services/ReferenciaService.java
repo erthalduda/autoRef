@@ -7,7 +7,7 @@ import autoref.tcc.autoref.model.Usuario;
 
 public interface ReferenciaService {
 
-    Referencia cadastraReferencia(Referencia referencia);
+    Referencia cadastraReferencia(Referencia referencia, Usuario usuario);
 
     Referencia atualizaReferencia(Referencia referencia);
 
