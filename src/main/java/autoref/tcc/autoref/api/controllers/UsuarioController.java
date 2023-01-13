@@ -2,8 +2,6 @@ package autoref.tcc.autoref.api.controllers;
 
 import java.util.List;
 
-import javax.net.ssl.HttpsURLConnection;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +40,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
+    //correção de erro no fim do curso, olhar depois
     public ResponseEntity<?> autenticaUsuario(@RequestBody UsuarioDTO usuarioDTO) {
         try {
             Usuario autenticado = serviceUsuario.autenticaUsuario(usuarioDTO.getEmail(), usuarioDTO.getSenha());
