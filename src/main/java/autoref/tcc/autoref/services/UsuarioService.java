@@ -13,7 +13,7 @@ public interface UsuarioService {
 
     void validaEmail(String email);
 
-    void excluiUsuario(Integer id);
+    void excluiUsuario(Integer idUsuario);
 
     void atualizaUsuario(Usuario usuario);
 
