@@ -11,6 +11,6 @@ public interface ReferenciaRepository extends JpaRepository<Referencia, Integer>
 
     List<Referencia> findByUsuario(Usuario usuario);
 
-    @Query("SELECT * FROM referencia WHERE CONTAINS(formato_final, ?1);")
+    @Query(value = "SELECT * FROM referencia WHERE CONTAINS(formato_final, ?1);", nativeQuery = true)
     List<Referencia> buscaReferencia(String pesquisa);
 }
