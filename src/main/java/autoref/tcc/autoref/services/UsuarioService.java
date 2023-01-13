@@ -1,6 +1,8 @@
 package autoref.tcc.autoref.services;
 
 
+import java.util.List;
+
 import autoref.tcc.autoref.model.Usuario;
 
 public interface UsuarioService {
@@ -14,5 +16,7 @@ public interface UsuarioService {
     void excluiUsuario(Integer id);
 
     void atualizaUsuario(Usuario usuario);
+
+    List<Usuario> rankingUsuarios();
 
 }

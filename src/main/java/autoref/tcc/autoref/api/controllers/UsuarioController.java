@@ -1,9 +1,14 @@
 package autoref.tcc.autoref.api.controllers;
 
+import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,13 +53,30 @@ public class UsuarioController {
 
     // ainda não está pronta, temos que testar mais
     @DeleteMapping("/excluir")
-    public ResponseEntity<?> excluiUsuario(@RequestBody UsuarioDTO usuarioDTO){
+    public ResponseEntity<?> excluiUsuario(@RequestBody UsuarioDTO usuarioDTO) {
         Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
-        try{
+        try {
             serviceUsuario.excluiUsuario(usuario.getIdUsuario());
             return new ResponseEntity<>("Exclusão realizada com sucesso.", HttpStatus.OK);
-        }catch(ExcecoesAutoref excecao){
+        } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>("Erro ao excluir.", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/ranking")
+    public ResponseEntity<?> rankingUsuarios() {
+        try {
+            List<Usuario> ranking = serviceUsuario.rankingUsuarios();
+            for (Usuario usuario : ranking) {
+                int posicaoRanking = ranking.indexOf(usuario);
+                posicaoRanking++;
+                String usuarioRanking = "#" + posicaoRanking + " " + usuario.getNome() + " " + usuario.getXp();
+                System.out.println(usuarioRanking);
+            }
+            //verificar como retornar o usuário sem printar
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 }

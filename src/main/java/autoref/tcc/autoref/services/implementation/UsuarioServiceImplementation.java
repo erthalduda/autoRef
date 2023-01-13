@@ -1,5 +1,6 @@
 package autoref.tcc.autoref.services.implementation;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -63,5 +64,10 @@ public class UsuarioServiceImplementation implements UsuarioService {
     @Override
     public void excluiUsuario(Integer id) {
         repositorioUsuario.deleteById(id);
+    }
+
+    @Override
+    public List<Usuario> rankingUsuarios(){
+        return repositorioUsuario.rankingUsuarios();
     }
 }
