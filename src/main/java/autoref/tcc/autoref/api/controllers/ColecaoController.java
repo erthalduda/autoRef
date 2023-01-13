@@ -1,11 +1,15 @@
 package autoref.tcc.autoref.api.controllers;
 
+import java.util.List;
+
 // import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 // import org.springframework.web.bind.annotation.PathVariable;
 // import org.springframework.web.bind.annotation.GetMapping;
 // import org.springframework.web.bind.annotation.PathVariable;
@@ -69,7 +73,8 @@ public class ColecaoController {
     }
 
     @PostMapping("/adicionar")
-    public ResponseEntity<?> adicionaReferencia(@RequestBody ColecaoDTO colecaoDTO, ReferenciaDTO referenciaDTO, UsuarioDTO usuarioDTO) {
+    public ResponseEntity<?> adicionaReferencia(@RequestBody ColecaoDTO colecaoDTO, ReferenciaDTO referenciaDTO,
+            UsuarioDTO usuarioDTO) {
         Colecao colecao = mapper.map(colecaoDTO, Colecao.class);
         Referencia referencia = mapper.map(referenciaDTO, Referencia.class);
         Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
@@ -81,21 +86,28 @@ public class ColecaoController {
         }
     }
 
-    //ver como fazer um post que receba só o id da referência, tem como fazer! só não sei como ainda
+    // ver como fazer um post que receba só o id da referência, tem como fazer! só
+    // não sei como ainda
     // @PostMapping("/adicionar/{idReferencia}")
-    // public ResponseEntity<?> adicionaReferencia2(@PathVariable(name = "idReferencia") Integer idReferencia){
-    //     try {
-    //     } catch (Exception e) {
-    //         // TODO: handle exception
-    //     }
-    //     return null;
+    // public ResponseEntity<?> adicionaReferencia2(@PathVariable(name =
+    // "idReferencia") Integer idReferencia){
+    // try {
+    // } catch (Exception e) {
+    // // TODO: handle exception
+    // }
+    // return null;
     // }
 
-    // @GetMapping("/buscar/{idUsuario}")
-    // public List<Colecao> colecoesPorUsuario(@PathVariable(name = "idUsuario") Integer idUsuario){
-    //     try{
-
-    //     }
-    //     return null;
-    // }
+    @GetMapping("/buscar/{idUsuario}")
+    public ResponseEntity<?> colecoesPorUsuario(@PathVariable(name = "idUsuario") Integer idUsuario) {
+        try {
+            List<Colecao> colecoesUsuario = serviceColecao.colecoesPorUsuario(idUsuario);
+            for (Colecao colecao : colecoesUsuario) {
+                System.out.println(colecao.getNome());
+            }
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 }
