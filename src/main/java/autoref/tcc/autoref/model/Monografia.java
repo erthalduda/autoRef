@@ -1,6 +1,5 @@
 package autoref.tcc.autoref.model;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -131,13 +130,12 @@ public class Monografia extends Referencia {
 		this.editora = editora;
 	}
 
-	@Override
-	public String toString() {
+	public String formataAutores(){
 		String autores = "";
 		Collections.sort(autor);
-		
+
 		if (this.autor.size() > 3) {
-			final String autorPrincipal = autor.stream().findFirst().orElse(autores);
+			final String autorPrincipal = autor.get(0);
 			String[] partes = autorPrincipal.split(" ");
 			String sobrenome = partes[1].toUpperCase();
 			String nome = partes[0];
@@ -164,6 +162,17 @@ public class Monografia extends Referencia {
 		}
 
 		return autores;
+	}
+
+	@Override
+	public String toString() {
+		String autores = this.formataAutores();
+		String titulo = "<b>" + this.getTitulo() + ".</b>";
+		String edicao = this.getEdicao() + ". ed.";
+		String local = this.getCidade() + ": " + this.getEditora() + ", " + this.getAnoPublicacao();
+		String paginas = this.getQuantidadePaginas() + "p.";
+		String finalFormatado = autores + titulo + edicao + local + paginas;
+		return finalFormatado;
 	}
 
 }
