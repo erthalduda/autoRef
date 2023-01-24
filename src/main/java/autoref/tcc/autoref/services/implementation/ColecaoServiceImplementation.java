@@ -31,9 +31,8 @@ public class ColecaoServiceImplementation implements ColecaoService {
 
     @Override
     @Transactional
-    public Colecao cadastraColecao(Colecao colecao) {
-    // passar usuário como parâmetro
-    //  usuario.setXp(100); 
+    public Colecao cadastraColecao(Colecao colecao, Usuario usuario) {
+        usuario.setXp(100);
         return repositorioColecao.save(colecao);
     }
 

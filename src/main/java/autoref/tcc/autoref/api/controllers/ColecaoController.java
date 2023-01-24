@@ -40,10 +40,11 @@ public class ColecaoController {
     }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<?> cadastrarColecao(@RequestBody ColecaoDTO colecaoDTO) {
+    public ResponseEntity<?> cadastrarColecao(@RequestBody ColecaoDTO colecaoDTO, Usuario usuarioDTO) {
         Colecao colecao = mapper.map(colecaoDTO, Colecao.class);
+        Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
         try {
-            Colecao salvo = serviceColecao.cadastraColecao(colecao);
+            Colecao salvo = serviceColecao.cadastraColecao(colecao, usuario);
             return new ResponseEntity<>(salvo, HttpStatus.CREATED);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
