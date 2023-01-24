@@ -28,6 +28,7 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     public Referencia cadastraReferencia(Referencia referencia, Usuario usuario) {
   
         int quantidadeReferencias = repositorioUsuario.referenciasPorUsuario(usuario.getIdUsuario());
+        
         if(quantidadeReferencias==10){
         usuario.setXp(500);
         }
