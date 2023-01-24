@@ -1,5 +1,6 @@
 package autoref.tcc.autoref.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ public class ParteMonografia extends Monografia {
 
 	private int volume;
 
-	public ParteMonografia(Integer id, String titulo, Usuario usuario, List<String> autor, String subtitulo,
+	public ParteMonografia(Integer id, String titulo, Usuario usuario, ArrayList<String> autor, String subtitulo,
 			String anoPublicacao, String cidade, String instituicao, String curso, String anoEntrega,
 			String quantidadePaginas, String edicao, String editora, String autorParte, String tituloParte,
 			String secao, int capitulo, int volume) {
