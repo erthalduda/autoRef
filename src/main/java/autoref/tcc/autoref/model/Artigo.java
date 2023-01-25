@@ -1,9 +1,16 @@
 package autoref.tcc.autoref.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 
 @Entity
 public class Artigo extends ColecaoPublicacaoPeriodica {
+
+	@Basic
+	private ArrayList<String> autor;
 
 	private String tituloArtigo;
 
@@ -25,14 +32,12 @@ public class Artigo extends ColecaoPublicacaoPeriodica {
 
 	private String dataPublicacao;
 
-	public Artigo() {
-	}
-
 	public Artigo(Integer id, String titulo, Usuario usuario, String subtituloPublicacao, String localPublicacao,
-			String editora, String dataInicio, String dataFim, String issn, String tituloArtigo, String subtituloArtigo,
-			String numeracaoAno, String numeracaoVolume, String numero, String edicao, String tomo,
-			String paginaInicial, String paginaFinal, String dataPublicacao) {
+			String editora, String dataInicio, String dataFim, String issn, ArrayList<String> autor,
+			String tituloArtigo, String subtituloArtigo, String numeracaoAno, String numeracaoVolume, String numero,
+			String edicao, String tomo, String paginaInicial, String paginaFinal, String dataPublicacao) {
 		super(id, titulo, usuario, subtituloPublicacao, localPublicacao, editora, dataInicio, dataFim, issn);
+		this.autor = autor;
 		this.tituloArtigo = tituloArtigo;
 		this.subtituloArtigo = subtituloArtigo;
 		this.numeracaoAno = numeracaoAno;
@@ -43,6 +48,17 @@ public class Artigo extends ColecaoPublicacaoPeriodica {
 		this.paginaInicial = paginaInicial;
 		this.paginaFinal = paginaFinal;
 		this.dataPublicacao = dataPublicacao;
+	}
+
+	public Artigo() {
+	}
+
+	public ArrayList<String> getAutor() {
+		return this.autor;
+	}
+
+	public void setAutor(ArrayList<String> autor) {
+		this.autor = autor;
 	}
 
 	public String getTituloArtigo() {
@@ -123,6 +139,38 @@ public class Artigo extends ColecaoPublicacaoPeriodica {
 
 	public void setDataPublicacao(String dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
+	}
+
+	public String formataAutores() {
+		String autores = "";
+		Collections.sort(autor);
+
+		if (this.autor.size() > 3) {
+			final String autorPrincipal = autor.get(0);
+			String sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1).toUpperCase();
+			String nome = autorPrincipal.substring(0, autorPrincipal.lastIndexOf(" "));
+			autores = sobrenome + ", " + nome + " et al.";
+
+		} else {
+			String autor01 = autor.get(0);
+			String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1).toUpperCase();
+			String nomeAutor01 = autor01.substring(0, autor01.lastIndexOf(" "));
+			autor01 = sobrenomeAutor01 + ", " + nomeAutor01;
+
+			String autor02 = autor.get(1);
+			String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
+			String nomeAutor02 = autor02.substring(0, autor02.lastIndexOf(" "));
+			autor02 = sobrenomeAutor02 + ", " + nomeAutor02;
+
+			String autor03 = autor.get(2);
+			String sobrenomeAutor03 = autor03.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
+			String nomeAutor03 = autor03.substring(0, autor03.lastIndexOf(" "));
+			autor03 = sobrenomeAutor03 + ", " + nomeAutor03;
+
+			autores = autor01 + "; " + autor02 + "; " + autor03 + ".";
+		}
+
+		return autores;
 	}
 
 }

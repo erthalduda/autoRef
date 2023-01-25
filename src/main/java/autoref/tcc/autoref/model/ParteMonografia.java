@@ -1,14 +1,16 @@
 package autoref.tcc.autoref.model;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 
 @Entity
 public class ParteMonografia extends Monografia {
 
-	private String autorParte;
+	@Basic
+	private ArrayList<String> autorParte;
 
 	private String tituloParte;
 
@@ -20,7 +22,7 @@ public class ParteMonografia extends Monografia {
 
 	public ParteMonografia(Integer id, String titulo, Usuario usuario, ArrayList<String> autor, String subtitulo,
 			String anoPublicacao, String cidade, String instituicao, String curso, String anoEntrega,
-			String quantidadePaginas, String edicao, String editora, String autorParte, String tituloParte,
+			String quantidadePaginas, String edicao, String editora, ArrayList<String> autorParte, String tituloParte,
 			String secao, int capitulo, int volume) {
 		super(id, titulo, usuario, autor, subtitulo, anoPublicacao, cidade, instituicao, curso, anoEntrega,
 				quantidadePaginas, edicao, editora);
@@ -35,11 +37,11 @@ public class ParteMonografia extends Monografia {
 
 	}
 
-	public String getAutorParte() {
+	public ArrayList<String> getAutorParte() {
 		return this.autorParte;
 	}
 
-	public void setAutorParte(String autorParte) {
+	public void setAutorParte(ArrayList<String> autorParte) {
 		this.autorParte = autorParte;
 	}
 
