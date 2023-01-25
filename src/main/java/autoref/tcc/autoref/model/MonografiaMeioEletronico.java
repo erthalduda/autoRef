@@ -10,9 +10,9 @@ public class MonografiaMeioEletronico extends Monografia {
 	private String descricaoDoSuporte;
 
 	public MonografiaMeioEletronico(Integer id, String titulo, Usuario usuario, ArrayList<String> autor, String subtitulo,
-			String anoPublicacao, String cidade, String instituicao, String curso, String anoEntrega,
+			String anoPublicacao, String cidade, String curso, String anoEntrega,
 			String quantidadePaginas, String edicao, String editora, String descricaoDoSuporte) {
-		super(id, titulo, usuario, autor, subtitulo, anoPublicacao, cidade, instituicao, curso, anoEntrega,
+		super(id, titulo, usuario, autor, subtitulo, anoPublicacao, cidade, curso, anoEntrega,
 				quantidadePaginas, edicao, editora);
 		this.descricaoDoSuporte = descricaoDoSuporte;
 	}

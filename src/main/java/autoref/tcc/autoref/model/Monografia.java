@@ -18,8 +18,6 @@ public class Monografia extends Referencia {
 
 	protected String cidade;
 
-	protected String instituicao;
-
 	protected String curso;
 
 	protected String anoEntrega;
@@ -36,15 +34,13 @@ public class Monografia extends Referencia {
 
 	public Monografia(Integer id, String titulo, Usuario usuario, ArrayList<String> autor, String subtitulo,
 			String anoPublicacao,
-			String cidade,
-			String instituicao, String curso, String anoEntrega, String quantidadePaginas, String edicao,
+			String cidade, String curso, String anoEntrega, String quantidadePaginas, String edicao,
 			String editora) {
 		super(id, titulo, usuario);
 		this.autor = autor;
 		this.subtitulo = subtitulo;
 		this.anoPublicacao = anoPublicacao;
 		this.cidade = cidade;
-		this.instituicao = instituicao;
 		this.curso = curso;
 		this.anoEntrega = anoEntrega;
 		this.quantidadePaginas = quantidadePaginas;
@@ -82,14 +78,6 @@ public class Monografia extends Referencia {
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
-	}
-
-	public String getInstituicao() {
-		return this.instituicao;
-	}
-
-	public void setInstituicao(String instituicao) {
-		this.instituicao = instituicao;
 	}
 
 	public String getCurso() {
@@ -154,25 +142,25 @@ public class Monografia extends Referencia {
 			autor02 = sobrenomeAutor02 + ", " + nomeAutor02;
 
 			String autor03 = autor.get(2);
-			String sobrenomeAutor03 = autor03.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
+			String sobrenomeAutor03 = autor03.substring(autor03.lastIndexOf(" ") + 1).toUpperCase();
 			String nomeAutor03 = autor03.substring(0, autor03.lastIndexOf(" "));
 			autor03 = sobrenomeAutor03 + ", " + nomeAutor03;
 
-			autores = autor01 + "; " + autor02 + "; " + autor03 + ".";
+			autores = autor01 + "; " + autor02 + "; " + autor03 + ". ";
 		}
 
 		return autores;
 	}
 
-	@Override
-	public String toString() {
+	public void formata() {
 		String autores = this.formataAutores();
-		String titulo = "<b>" + this.getTitulo() + ".</b>";
-		String edicao = this.getEdicao() + ". ed.";
-		String local = this.getCidade() + ": " + this.getEditora() + ", " + this.getAnoPublicacao();
+		String titulo = this.getTitulo();
+		String subtitulo = this.getSubtitulo() + ". ";
+		String edicao = this.getEdicao() + ". ed. ";
+		String local = this.getCidade() + ": " + this.getEditora() + ", " + this.getAnoPublicacao() + ". ";
 		String paginas = this.getQuantidadePaginas() + "p.";
-		String finalFormatado = autores + titulo + edicao + local + paginas;
-		return finalFormatado;
+		String formatoFinal = autores + titulo + subtitulo + edicao + local + paginas;
+		this.formatoFinal = formatoFinal;
 	}
 
 }

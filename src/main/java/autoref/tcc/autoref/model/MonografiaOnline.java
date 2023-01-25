@@ -13,9 +13,9 @@ public class MonografiaOnline extends Monografia {
 	private String dataAcesso;
 
 	public MonografiaOnline(Integer id, String titulo, Usuario usuario, ArrayList<String> autor, String subtitulo,
-			String anoPublicacao, String cidade, String instituicao, String curso, String anoEntrega,
+			String anoPublicacao, String cidade, String curso, String anoEntrega,
 			String quantidadePaginas, String edicao, String editora, String url, String dataAcesso) {
-		super(id, titulo, usuario, autor, subtitulo, anoPublicacao, cidade, instituicao, curso, anoEntrega,
+		super(id, titulo, usuario, autor, subtitulo, anoPublicacao, cidade, curso, anoEntrega,
 				quantidadePaginas, edicao, editora);
 		this.url = url;
 		this.dataAcesso = dataAcesso;
@@ -24,7 +24,6 @@ public class MonografiaOnline extends Monografia {
 	public MonografiaOnline() {
 
 	}
-
 
 	public String getUrl() {
 		return this.url;

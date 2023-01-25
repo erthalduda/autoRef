@@ -21,10 +21,10 @@ public class ParteMonografia extends Monografia {
 	private int volume;
 
 	public ParteMonografia(Integer id, String titulo, Usuario usuario, ArrayList<String> autor, String subtitulo,
-			String anoPublicacao, String cidade, String instituicao, String curso, String anoEntrega,
+			String anoPublicacao, String cidade, String curso, String anoEntrega,
 			String quantidadePaginas, String edicao, String editora, ArrayList<String> autorParte, String tituloParte,
 			String secao, int capitulo, int volume) {
-		super(id, titulo, usuario, autor, subtitulo, anoPublicacao, cidade, instituicao, curso, anoEntrega,
+		super(id, titulo, usuario, autor, subtitulo, anoPublicacao, cidade, curso, anoEntrega,
 				quantidadePaginas, edicao, editora);
 		this.autorParte = autorParte;
 		this.tituloParte = tituloParte;
