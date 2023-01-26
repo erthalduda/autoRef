@@ -18,6 +18,9 @@ public class Referencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
     protected String titulo;
+    protected String formatoFinal;
+    protected String citacaoIndireta;
+    protected String citacaoDireta;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "referencias")
     protected List<Colecao> colecoes;
@@ -25,8 +28,6 @@ public class Referencia {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
-    
-    protected String formatoFinal;
 
     public Referencia() {
     }
@@ -72,4 +73,21 @@ public class Referencia {
     public void setFormatoFinal(String formatoFinal) {
         this.formatoFinal = formatoFinal;
     }
+
+    public String getCitacaoIndireta() {
+        return this.citacaoIndireta;
+    }
+
+    public void setCitacaoIndireta(String citacaoIndireta) {
+        this.citacaoIndireta = citacaoIndireta;
+    }
+
+    public String getCitacaoDireta() {
+        return this.citacaoDireta;
+    }
+
+    public void setCitacaoDireta(String citacaoDireta) {
+        this.citacaoDireta = citacaoDireta;
+    }
+
 }
