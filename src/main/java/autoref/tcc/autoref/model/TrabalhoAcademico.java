@@ -122,6 +122,73 @@ public class TrabalhoAcademico extends Referencia {
     }
 
     @Override
+    public String formataCitacoes() {
+        String sobrenome = "";
+        String citacaoDiretaAutorNoTexto = "";
+        String citacaoDireta = "";
+        String citacaoIndiretaAutorNoTexto = "";
+        String citacaoIndireta = "";
+        Collections.sort(autor);
+        if (this.autor.size() > 3) {
+            final String autorPrincipal = autor.get(0);
+            sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1) + " et al";
+        } else {
+            if (this.autor.size() == 3) {
+                String autor01 = autor.get(0);
+                String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1);
+
+                String autor02 = autor.get(1);
+                String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1);
+
+                String autor03 = autor.get(2);
+                String sobrenomeAutor03 = autor03.substring(autor03.lastIndexOf(" ") + 1);
+
+                sobrenome = sobrenomeAutor01 + "; " + sobrenomeAutor02 + "; " + sobrenomeAutor03;
+                citacaoIndireta = "(" + sobrenome.toUpperCase().concat(", ").concat(this.getAnoDefesa()) + ")";
+                citacaoDireta = "("
+                        + sobrenome.toUpperCase().concat(", ").concat(this.getAnoDefesa()).concat(", p. X.)");
+                sobrenome = sobrenomeAutor01 + ", " + sobrenomeAutor02 + " e " + sobrenomeAutor03;
+                citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getAnoDefesa() + ")";
+                citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getAnoDefesa() + ", p. X.)";
+
+            }
+            if (this.autor.size() == 2) {
+                String autor01 = autor.get(0);
+                String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1);
+
+                String autor02 = autor.get(1);
+                String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1);
+
+                sobrenome = sobrenomeAutor01 + "; " + sobrenomeAutor02;
+                citacaoIndireta = "(" + sobrenome.toUpperCase().concat(", ").concat(this.getAnoDefesa()) + ")";
+                citacaoDireta = "("
+                        + sobrenome.toUpperCase().concat(", ").concat(this.getAnoDefesa()).concat(", p. X.)");
+                sobrenome = sobrenomeAutor01 + " e " + sobrenomeAutor02;
+                citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getAnoDefesa() + ")";
+                citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getAnoDefesa() + ", p. X.)";
+            }
+            if (this.autor.size() == 1) {
+                String autor01 = autor.get(0);
+                String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1);
+                sobrenome = sobrenomeAutor01;
+                citacaoIndireta = "(" + sobrenome.toUpperCase().concat(", ").concat(this.getAnoDefesa()) + ")";
+                citacaoDireta = "("
+                        + sobrenome.toUpperCase().concat(", ").concat(this.getAnoDefesa()).concat(", p. X.)");
+                sobrenome = sobrenomeAutor01;
+                citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getAnoDefesa() + ")";
+                citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getAnoDefesa() + ", p. X.)";
+            }
+        }
+
+        String citacoes = citacaoIndireta + "\n" + citacaoIndiretaAutorNoTexto + "\n" + citacaoDireta + "\n"
+                + citacaoDiretaAutorNoTexto;
+
+        this.setCitacaoDireta(citacaoDireta.concat(" ").concat(citacaoDiretaAutorNoTexto));
+        this.setCitacaoIndireta(citacaoIndireta.concat(" ").concat(citacaoIndiretaAutorNoTexto));
+        return citacoes;
+    }
+
+    @Override
     public String formataAutores() {
         String autores = "";
         Collections.sort(autor);
@@ -144,14 +211,29 @@ public class TrabalhoAcademico extends Referencia {
             autor02 = sobrenomeAutor02 + ", " + nomeAutor02;
 
             String autor03 = autor.get(2);
-            String sobrenomeAutor03 = autor03.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
+            String sobrenomeAutor03 = autor03.substring(autor03.lastIndexOf(" ") + 1).toUpperCase();
             String nomeAutor03 = autor03.substring(0, autor03.lastIndexOf(" "));
             autor03 = sobrenomeAutor03 + ", " + nomeAutor03;
 
-            autores = autor01 + "; " + autor02 + "; " + autor03 + ".";
+            autores = autor01 + "; " + autor02 + "; " + autor03 + ". ";
         }
 
         return autores;
+    }
+
+    @Override
+    public void formata() {
+        String autores = this.formataAutores();
+        String titulo = this.getTitulo();
+        String subtitulo = this.getSubtitulo() + ". ";
+        String anoDeposito = this.getAnoDeposito() + ". ";
+        String tipoTrabalho = this.getTipoTrabalho() + " ";
+        String curso = "(" + this.getCurso() + ") - ";
+        String vinculacaoAcademica = this.getVinculacaoAcademica() + ". ";
+        String localDefesa = this.getLocalDefesa() + ", " + this.getAnoDefesa() + ".";
+        String formatoFinal = autores + titulo + subtitulo + anoDeposito + tipoTrabalho + curso + vinculacaoAcademica
+                + localDefesa;
+        this.formatoFinal = formatoFinal;
     }
 
 }
