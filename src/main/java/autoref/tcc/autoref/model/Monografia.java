@@ -2,6 +2,7 @@ package autoref.tcc.autoref.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -18,8 +19,6 @@ public class Monografia extends Referencia {
 
 	protected String cidade;
 
-	protected String curso;
-
 	protected String anoEntrega;
 
 	protected String quantidadePaginas;
@@ -28,15 +27,15 @@ public class Monografia extends Referencia {
 
 	protected String editora;
 
-	public Monografia(Integer id, String titulo, Usuario usuario, ArrayList<String> autor, String subtitulo,
-			String anoPublicacao, String cidade, String curso, String anoEntrega, String quantidadePaginas,
+	public Monografia(Integer id, String titulo, String formatoFinal, String citacaoIndireta, String citacaoDireta,
+			String tipo, List<Colecao> colecoes, Usuario usuario, ArrayList<String> autor, String subtitulo,
+			String anoPublicacao, String cidade, String anoEntrega, String quantidadePaginas,
 			String edicao, String editora) {
-		super(id, titulo, usuario);
+		super(id, titulo, formatoFinal, citacaoIndireta, citacaoDireta, tipo, colecoes, usuario);
 		this.autor = autor;
 		this.subtitulo = subtitulo;
 		this.anoPublicacao = anoPublicacao;
 		this.cidade = cidade;
-		this.curso = curso;
 		this.anoEntrega = anoEntrega;
 		this.quantidadePaginas = quantidadePaginas;
 		this.edicao = edicao;
@@ -79,14 +78,6 @@ public class Monografia extends Referencia {
 		this.cidade = cidade;
 	}
 
-	public String getCurso() {
-		return this.curso;
-	}
-
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
-
 	public String getAnoEntrega() {
 		return this.anoEntrega;
 	}
@@ -119,6 +110,7 @@ public class Monografia extends Referencia {
 		this.editora = editora;
 	}
 
+	@Override
 	public String formataAutores() {
 		String autores = "";
 		Collections.sort(autor);
@@ -151,41 +143,74 @@ public class Monografia extends Referencia {
 		return autores;
 	}
 
+	@Override
 	public String formataCitacoes() {
 		String sobrenome = "";
 		String citacaoDiretaAutorNoTexto = "";
 		String citacaoDireta = "";
 		String citacaoIndiretaAutorNoTexto = "";
-		String citacaoIndireta;
+		String citacaoIndireta = "";
 		Collections.sort(autor);
 		if (this.autor.size() > 3) {
 			final String autorPrincipal = autor.get(0);
 			sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1) + " et al";
 		} else {
-			String autor01 = autor.get(0);
-			String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1);
+			if (this.autor.size() == 3) {
+				String autor01 = autor.get(0);
+				String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1);
 
-			String autor02 = autor.get(1);
-			String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1);
+				String autor02 = autor.get(1);
+				String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1);
 
-			String autor03 = autor.get(2);
-			String sobrenomeAutor03 = autor03.substring(autor03.lastIndexOf(" ") + 1);
+				String autor03 = autor.get(2);
+				String sobrenomeAutor03 = autor03.substring(autor03.lastIndexOf(" ") + 1);
 
-			sobrenome = sobrenomeAutor01 + "; " + sobrenomeAutor02 + "; " + sobrenomeAutor03;
+				sobrenome = sobrenomeAutor01 + "; " + sobrenomeAutor02 + "; " + sobrenomeAutor03;
+				citacaoIndireta = "(" + sobrenome.toUpperCase().concat(", ").concat(this.getAnoPublicacao()) + ")";
+				citacaoDireta = "("
+						+ sobrenome.toUpperCase().concat(", ").concat(this.getAnoPublicacao()).concat(", p. X.)");
+				sobrenome = sobrenomeAutor01 + ", " + sobrenomeAutor02 + " e " + sobrenomeAutor03;
+				citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getAnoPublicacao() + ")";
+				citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getAnoPublicacao() + ", p. X.)";
 
+			}
+			if (this.autor.size() == 2) {
+				String autor01 = autor.get(0);
+				String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1);
+
+				String autor02 = autor.get(1);
+				String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1);
+
+				sobrenome = sobrenomeAutor01 + "; " + sobrenomeAutor02;
+				citacaoIndireta = "(" + sobrenome.toUpperCase().concat(", ").concat(this.getAnoPublicacao()) + ")";
+				citacaoDireta = "("
+						+ sobrenome.toUpperCase().concat(", ").concat(this.getAnoPublicacao()).concat(", p. X.)");
+				sobrenome = sobrenomeAutor01 + " e " + sobrenomeAutor02;
+				citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getAnoPublicacao() + ")";
+				citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getAnoPublicacao() + ", p. X.)";
+			}
+			if (this.autor.size() == 1) {
+				String autor01 = autor.get(0);
+				String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1);
+				sobrenome = sobrenomeAutor01;
+				citacaoIndireta = "(" + sobrenome.toUpperCase().concat(", ").concat(this.getAnoPublicacao()) + ")";
+				citacaoDireta = "("
+						+ sobrenome.toUpperCase().concat(", ").concat(this.getAnoPublicacao()).concat(", p. X.)");
+				sobrenome = sobrenomeAutor01;
+				citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getAnoPublicacao() + ")";
+				citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getAnoPublicacao() + ", p. X.)";
+			}
 		}
-
-		citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getAnoPublicacao() + ")";
-		citacaoIndireta = "(" + sobrenome.toUpperCase().concat(", ").concat(this.getAnoPublicacao()) + ")";
-
-		citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getAnoPublicacao() + ", p. X.)";
-		citacaoDireta = "(" + sobrenome.toUpperCase().concat(", ").concat(this.getAnoPublicacao()).concat(", p. X.)");
 
 		String citacoes = citacaoIndireta + "\n" + citacaoIndiretaAutorNoTexto + "\n" + citacaoDireta + "\n"
 				+ citacaoDiretaAutorNoTexto;
+
+		this.setCitacaoDireta(citacaoDireta.concat(citacaoDiretaAutorNoTexto));
+		this.setCitacaoIndireta(citacaoIndireta.concat(citacaoIndiretaAutorNoTexto));
 		return citacoes;
 	}
 
+	@Override
 	public void formata() {
 		String autores = this.formataAutores();
 		String titulo = this.getTitulo();
@@ -194,7 +219,7 @@ public class Monografia extends Referencia {
 		String local = this.getCidade() + ": " + this.getEditora() + ", " + this.getAnoPublicacao() + ". ";
 		String paginas = this.getQuantidadePaginas() + "p.";
 		String formatoFinal = autores + titulo + subtitulo + edicao + local + paginas;
-		this.formatoFinal = formatoFinal + "\n" + this.formataCitacoes();
+		this.formatoFinal = formatoFinal;
 	}
 
 }
