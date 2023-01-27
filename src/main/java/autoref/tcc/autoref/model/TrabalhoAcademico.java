@@ -2,6 +2,7 @@ package autoref.tcc.autoref.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -28,15 +29,11 @@ public class TrabalhoAcademico extends Referencia {
 
     private String localDefesa;
 
-    public TrabalhoAcademico() {
-
-    }
-
-    public TrabalhoAcademico(Integer id, String titulo, Usuario usuario, ArrayList<String> autor, String subtitulo,
-            String anoDeposito,
-            String tipoTrabalho, String grauFormacao, String curso, String vinculacaoAcademica, String anoDefesa,
-            String localDefesa) {
-        super(id, titulo, usuario);
+    public TrabalhoAcademico(Integer id, String titulo, String formatoFinal, String citacaoIndireta,
+            String citacaoDireta, String tipo, List<Colecao> colecoes, Usuario usuario, ArrayList<String> autor,
+            String subtitulo, String anoDeposito, String tipoTrabalho, String grauFormacao, String curso,
+            String vinculacaoAcademica, String anoDefesa, String localDefesa) {
+        super(id, titulo, formatoFinal, citacaoIndireta, citacaoDireta, tipo, colecoes, usuario);
         this.autor = autor;
         this.subtitulo = subtitulo;
         this.anoDeposito = anoDeposito;
@@ -46,6 +43,10 @@ public class TrabalhoAcademico extends Referencia {
         this.vinculacaoAcademica = vinculacaoAcademica;
         this.anoDefesa = anoDefesa;
         this.localDefesa = localDefesa;
+    }
+
+    public TrabalhoAcademico() {
+
     }
 
     public ArrayList<String> getAutor() {
@@ -120,36 +121,37 @@ public class TrabalhoAcademico extends Referencia {
         this.localDefesa = localDefesa;
     }
 
+    @Override
     public String formataAutores() {
-		String autores = "";
-		Collections.sort(autor);
+        String autores = "";
+        Collections.sort(autor);
 
-		if (this.autor.size() > 3) {
-			final String autorPrincipal = autor.get(0);
-			String sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1).toUpperCase();
-			String nome = autorPrincipal.substring(0, autorPrincipal.lastIndexOf(" "));
-			autores = sobrenome + ", " + nome + " et al.";
+        if (this.autor.size() > 3) {
+            final String autorPrincipal = autor.get(0);
+            String sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1).toUpperCase();
+            String nome = autorPrincipal.substring(0, autorPrincipal.lastIndexOf(" "));
+            autores = sobrenome + ", " + nome + " et al.";
 
-		} else {
-			String autor01 = autor.get(0);
-			String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1).toUpperCase();
-			String nomeAutor01 = autor01.substring(0, autor01.lastIndexOf(" "));
-			autor01 = sobrenomeAutor01 + ", " + nomeAutor01;
+        } else {
+            String autor01 = autor.get(0);
+            String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1).toUpperCase();
+            String nomeAutor01 = autor01.substring(0, autor01.lastIndexOf(" "));
+            autor01 = sobrenomeAutor01 + ", " + nomeAutor01;
 
-			String autor02 = autor.get(1);
-			String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
-			String nomeAutor02 = autor02.substring(0, autor02.lastIndexOf(" "));
-			autor02 = sobrenomeAutor02 + ", " + nomeAutor02;
+            String autor02 = autor.get(1);
+            String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
+            String nomeAutor02 = autor02.substring(0, autor02.lastIndexOf(" "));
+            autor02 = sobrenomeAutor02 + ", " + nomeAutor02;
 
-			String autor03 = autor.get(2);
-			String sobrenomeAutor03 = autor03.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
-			String nomeAutor03 = autor03.substring(0, autor03.lastIndexOf(" "));
-			autor03 = sobrenomeAutor03 + ", " + nomeAutor03;
+            String autor03 = autor.get(2);
+            String sobrenomeAutor03 = autor03.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
+            String nomeAutor03 = autor03.substring(0, autor03.lastIndexOf(" "));
+            autor03 = sobrenomeAutor03 + ", " + nomeAutor03;
 
-			autores = autor01 + "; " + autor02 + "; " + autor03 + ".";
-		}
+            autores = autor01 + "; " + autor02 + "; " + autor03 + ".";
+        }
 
-		return autores;
-	}
+        return autores;
+    }
 
 }

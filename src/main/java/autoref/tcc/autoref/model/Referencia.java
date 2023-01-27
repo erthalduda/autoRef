@@ -21,6 +21,7 @@ public class Referencia {
     protected String formatoFinal;
     protected String citacaoIndireta;
     protected String citacaoDireta;
+    protected String tipo;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "referencias")
     protected List<Colecao> colecoes;
@@ -29,13 +30,19 @@ public class Referencia {
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 
-    public Referencia() {
-    }
-
-    public Referencia(Integer id, String titulo, Usuario usuario) {
+    public Referencia(Integer id, String titulo, String formatoFinal, String citacaoIndireta, String citacaoDireta,
+            String tipo, List<Colecao> colecoes, Usuario usuario) {
         this.id = id;
         this.titulo = titulo;
+        this.formatoFinal = formatoFinal;
+        this.citacaoIndireta = citacaoIndireta;
+        this.citacaoDireta = citacaoDireta;
+        this.tipo = tipo;
+        this.colecoes = colecoes;
         this.usuario = usuario;
+    }
+
+    public Referencia() {
     }
 
     public void adicionaColecao(Colecao colecao) {
@@ -90,4 +97,23 @@ public class Referencia {
         this.citacaoDireta = citacaoDireta;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String formataAutores(){
+        return null;
+    }
+
+    public String formataCitacoes(){
+        return null;
+    }
+
+    public void formata(){
+
+    }
 }

@@ -12,11 +12,12 @@ public class MonografiaOnline extends Monografia {
 
 	private String dataAcesso;
 
-	public MonografiaOnline(Integer id, String titulo, Usuario usuario, ArrayList<String> autor, String subtitulo,
-			String anoPublicacao, String cidade, String curso, String anoEntrega,
+	public MonografiaOnline(Integer id, String titulo, String formatoFinal, String citacaoIndireta,
+			String citacaoDireta, String tipo, List<Colecao> colecoes, Usuario usuario, ArrayList<String> autor,
+			String subtitulo, String anoPublicacao, String cidade, String anoEntrega,
 			String quantidadePaginas, String edicao, String editora, String url, String dataAcesso) {
-		super(id, titulo, usuario, autor, subtitulo, anoPublicacao, cidade, curso, anoEntrega,
-				quantidadePaginas, edicao, editora);
+		super(id, titulo, formatoFinal, citacaoIndireta, citacaoDireta, tipo, colecoes, usuario, autor, subtitulo,
+				anoPublicacao, cidade, anoEntrega, quantidadePaginas, edicao, editora);
 		this.url = url;
 		this.dataAcesso = dataAcesso;
 	}

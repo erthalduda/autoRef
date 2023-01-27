@@ -1,5 +1,7 @@
 package autoref.tcc.autoref.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 
 @Entity
@@ -9,15 +11,17 @@ public class ColecaoPublicacaoPeriodicaEletronico extends ColecaoPublicacaoPerio
 
 	private String descricaoDoSuporte;
 
-	public ColecaoPublicacaoPeriodicaEletronico() {
-	}
-
-	public ColecaoPublicacaoPeriodicaEletronico(Integer id, String titulo, Usuario usuario, String subtituloPublicacao,
+	public ColecaoPublicacaoPeriodicaEletronico(Integer id, String titulo, String formatoFinal, String citacaoIndireta,
+			String citacaoDireta, String tipo, List<Colecao> colecoes, Usuario usuario, String subtituloPublicacao,
 			String localPublicacao, String editora, String dataInicio, String dataFim, String issn, String doi,
 			String descricaoDoSuporte) {
-		super(id, titulo, usuario, subtituloPublicacao, localPublicacao, editora, dataInicio, dataFim, issn);
+		super(id, titulo, formatoFinal, citacaoIndireta, citacaoDireta, tipo, colecoes, usuario, subtituloPublicacao,
+				localPublicacao, editora, dataInicio, dataFim, issn);
 		this.doi = doi;
 		this.descricaoDoSuporte = descricaoDoSuporte;
+	}
+
+	public ColecaoPublicacaoPeriodicaEletronico() {
 	}
 
 	public String getDoi() {

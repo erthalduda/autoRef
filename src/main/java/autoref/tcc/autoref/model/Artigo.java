@@ -2,19 +2,24 @@ package autoref.tcc.autoref.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 
 @Entity
-public class Artigo extends ColecaoPublicacaoPeriodica {
+public class Artigo extends Referencia {
 
 	@Basic
 	private ArrayList<String> autor;
 
-	private String tituloArtigo;
-
 	private String subtituloArtigo;
+
+	private String tituloPeriodico;
+
+	private String subtituloPeriodico;
+
+	private String localPublicacao;
 
 	private String numeracaoAno;
 
@@ -32,14 +37,17 @@ public class Artigo extends ColecaoPublicacaoPeriodica {
 
 	private String dataPublicacao;
 
-	public Artigo(Integer id, String titulo, Usuario usuario, String subtituloPublicacao, String localPublicacao,
-			String editora, String dataInicio, String dataFim, String issn, ArrayList<String> autor,
-			String tituloArtigo, String subtituloArtigo, String numeracaoAno, String numeracaoVolume, String numero,
-			String edicao, String tomo, String paginaInicial, String paginaFinal, String dataPublicacao) {
-		super(id, titulo, usuario, subtituloPublicacao, localPublicacao, editora, dataInicio, dataFim, issn);
+	public Artigo(Integer id, String titulo, String formatoFinal, String citacaoIndireta, String citacaoDireta,
+			String tipo, List<Colecao> colecoes, Usuario usuario, ArrayList<String> autor, String subtituloArtigo,
+			String tituloPeriodico, String subtituloPeriodico, String localPublicacao, String numeracaoAno,
+			String numeracaoVolume, String numero, String edicao, String tomo, String paginaInicial, String paginaFinal,
+			String dataPublicacao) {
+		super(id, titulo, formatoFinal, citacaoIndireta, citacaoDireta, tipo, colecoes, usuario);
 		this.autor = autor;
-		this.tituloArtigo = tituloArtigo;
 		this.subtituloArtigo = subtituloArtigo;
+		this.tituloPeriodico = tituloPeriodico;
+		this.subtituloPeriodico = subtituloPeriodico;
+		this.localPublicacao = localPublicacao;
 		this.numeracaoAno = numeracaoAno;
 		this.numeracaoVolume = numeracaoVolume;
 		this.numero = numero;
@@ -61,20 +69,36 @@ public class Artigo extends ColecaoPublicacaoPeriodica {
 		this.autor = autor;
 	}
 
-	public String getTituloArtigo() {
-		return this.tituloArtigo;
-	}
-
-	public void setTituloArtigo(String tituloArtigo) {
-		this.tituloArtigo = tituloArtigo;
-	}
-
 	public String getSubtituloArtigo() {
 		return this.subtituloArtigo;
 	}
 
 	public void setSubtituloArtigo(String subtituloArtigo) {
 		this.subtituloArtigo = subtituloArtigo;
+	}
+
+	public String getTituloPeriodico() {
+		return this.tituloPeriodico;
+	}
+
+	public void setTituloPeriodico(String tituloPeriodico) {
+		this.tituloPeriodico = tituloPeriodico;
+	}
+
+	public String getSubtituloPeriodico() {
+		return this.subtituloPeriodico;
+	}
+
+	public void setSubtituloPeriodico(String subtituloPeriodico) {
+		this.subtituloPeriodico = subtituloPeriodico;
+	}
+
+	public String getLocalPublicacao() {
+		return this.localPublicacao;
+	}
+
+	public void setLocalPublicacao(String localPublicacao) {
+		this.localPublicacao = localPublicacao;
 	}
 
 	public String getNumeracaoAno() {
@@ -141,6 +165,7 @@ public class Artigo extends ColecaoPublicacaoPeriodica {
 		this.dataPublicacao = dataPublicacao;
 	}
 
+	@Override
 	public String formataAutores() {
 		String autores = "";
 		Collections.sort(autor);
