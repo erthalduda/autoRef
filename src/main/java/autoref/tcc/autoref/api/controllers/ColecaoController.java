@@ -19,13 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import autoref.tcc.autoref.api.dtos.ColecaoDTO;
-import autoref.tcc.autoref.api.dtos.ReferenciaDTO;
-import autoref.tcc.autoref.api.dtos.UsuarioDTO;
+import autoref.tcc.autoref.api.dtos.*;
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
-import autoref.tcc.autoref.model.Colecao;
-import autoref.tcc.autoref.model.Referencia;
-import autoref.tcc.autoref.model.Usuario;
+import autoref.tcc.autoref.model.*;
 import autoref.tcc.autoref.services.ColecaoService;
 
 @RestController
@@ -40,11 +36,11 @@ public class ColecaoController {
     }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<?> cadastrarColecao(@RequestBody ColecaoDTO colecaoDTO, Usuario usuarioDTO) {
+    public ResponseEntity<?> cadastrarColecao(@RequestBody ColecaoDTO colecaoDTO) {
         Colecao colecao = mapper.map(colecaoDTO, Colecao.class);
-        Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
+        // Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
         try {
-            Colecao salvo = serviceColecao.cadastraColecao(colecao, usuario);
+            Colecao salvo = serviceColecao.cadastraColecao(colecao);
             return new ResponseEntity<>(salvo, HttpStatus.CREATED);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
@@ -74,13 +70,12 @@ public class ColecaoController {
     }
 
     @PostMapping("/adicionar")
-    public ResponseEntity<?> adicionaReferencia(@RequestBody ColecaoDTO colecaoDTO, ReferenciaDTO referenciaDTO,
-            UsuarioDTO usuarioDTO) {
+    public ResponseEntity<?> adicionaReferencia(@RequestBody ColecaoDTO colecaoDTO, ReferenciaDTO referenciaDTO) {
         Colecao colecao = mapper.map(colecaoDTO, Colecao.class);
         Referencia referencia = mapper.map(referenciaDTO, Referencia.class);
-        Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
+        // Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
         try {
-            serviceColecao.adicionaReferencia(colecao, referencia, usuario);
+            serviceColecao.adicionaReferencia(colecao, referencia);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
