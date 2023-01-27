@@ -2,15 +2,12 @@ package autoref.tcc.autoref.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 
 @Entity
 public class ParteMonografia extends Monografia {
 
-	@Basic
-	private ArrayList<String> autorParte;
+	private String autorParte;
 
 	private String tituloParte;
 
@@ -23,7 +20,7 @@ public class ParteMonografia extends Monografia {
 	public ParteMonografia(Integer id, String titulo, String formatoFinal, String citacaoIndireta, String citacaoDireta,
 			String tipo, List<Colecao> colecoes, Usuario usuario, ArrayList<String> autor, String subtitulo,
 			String anoPublicacao, String cidade, String anoEntrega, String quantidadePaginas,
-			String edicao, String editora, ArrayList<String> autorParte, String tituloParte, String secao, int capitulo,
+			String edicao, String editora, String autorParte, String tituloParte, String secao, int capitulo,
 			int volume) {
 		super(id, titulo, formatoFinal, citacaoIndireta, citacaoDireta, tipo, colecoes, usuario, autor, subtitulo,
 				anoPublicacao, cidade, anoEntrega, quantidadePaginas, edicao, editora);
@@ -38,11 +35,11 @@ public class ParteMonografia extends Monografia {
 
 	}
 
-	public ArrayList<String> getAutorParte() {
+	public String getAutorParte() {
 		return this.autorParte;
 	}
 
-	public void setAutorParte(ArrayList<String> autorParte) {
+	public void setAutorParte(String autorParte) {
 		this.autorParte = autorParte;
 	}
 
@@ -76,6 +73,25 @@ public class ParteMonografia extends Monografia {
 
 	public void setVolume(int volume) {
 		this.volume = volume;
+	}
+
+	@Override
+	public void formata() {
+
+		String sobrenome = autorParte.substring(autorParte.lastIndexOf(" ") + 1).toUpperCase();
+		String nome = autorParte.substring(0, autorParte.lastIndexOf(" "));
+
+		String autorParte = sobrenome.concat(", ").concat(nome) + ". ";
+		String tituloParte = this.getTituloParte() + " In: ";
+		String autores = this.formataAutores();
+		String titulo = this.getTitulo();
+		String subtitulo = this.getSubtitulo() + ". ";
+		String edicao = this.getEdicao() + ". ed. ";
+		String local = this.getCidade() + ": " + this.getEditora() + ", " + this.getAnoPublicacao() + ". ";
+		String paginas = this.getQuantidadePaginas() + "p.";
+		String formatoFinal = autorParte + tituloParte + autores + titulo + subtitulo + edicao + local + paginas;
+		this.formatoFinal = formatoFinal;
+
 	}
 
 }
