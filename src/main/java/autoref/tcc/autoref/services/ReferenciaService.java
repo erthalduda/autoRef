@@ -7,7 +7,7 @@ import autoref.tcc.autoref.model.Usuario;
 
 public interface ReferenciaService {
 
-    Referencia cadastraReferencia(Referencia referencia, Usuario usuario);
+    Referencia cadastraReferencia(Referencia referencia);
 
     Referencia atualizaReferencia(Referencia referencia);
 
@@ -15,7 +15,7 @@ public interface ReferenciaService {
 
     Referencia encontrarPorId(Integer id);
 
-    List<Referencia> buscarNoRepositorioGeral(String pesquisa, Usuario usuario);
+    List<Referencia> buscarNoRepositorioGeral(String pesquisa);
 
     List<Referencia> buscarNoRepositorioPrivado(String pesquisa);
 }

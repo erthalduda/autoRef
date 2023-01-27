@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.Colecao;
 import autoref.tcc.autoref.model.Referencia;
-import autoref.tcc.autoref.model.Usuario;
+// import autoref.tcc.autoref.model.Usuario;
 // import autoref.tcc.autoref.model.Usuario;
 import autoref.tcc.autoref.repositories.ColecaoRepository;
 import autoref.tcc.autoref.repositories.UsuarioRepository;
@@ -21,7 +21,7 @@ import autoref.tcc.autoref.services.ColecaoService;
 public class ColecaoServiceImplementation implements ColecaoService {
 
     private ColecaoRepository repositorioColecao;
-    private UsuarioRepository repositorioUsuario;
+    // private UsuarioRepository repositorioUsuario;
 
     // private UsuarioRepository repositoryUsuario;
 
@@ -31,8 +31,8 @@ public class ColecaoServiceImplementation implements ColecaoService {
 
     @Override
     @Transactional
-    public Colecao cadastraColecao(Colecao colecao, Usuario usuario) {
-        usuario.setXp(100);
+    public Colecao cadastraColecao(Colecao colecao) {
+        // usuario.setXp(100);
         return repositorioColecao.save(colecao);
     }
 
@@ -53,24 +53,24 @@ public class ColecaoServiceImplementation implements ColecaoService {
     @Override
     @Transactional
     //talvez não precise passar o usuário como parâmetro, a ser estudado
-    public Colecao adicionaReferencia(Colecao colecao, Referencia referencia, Usuario usuario) {
+    public Colecao adicionaReferencia(Colecao colecao, Referencia referencia) {
         Optional<Colecao> colecaoParaAdicionarReferencias = repositorioColecao.findById(colecao.getIdColecao());
         if (colecaoParaAdicionarReferencias.isEmpty()) {
             throw new ExcecoesAutoref("Coleção inválida.");
         }
     
-        if(colecao.getReferencias().size()==10){
-            usuario.setXp(500);
-        }
-        if(colecao.getReferencias().size()==20){
-            usuario.setXp(1500);
-        }
-            usuario.setXp(50); 
+        // if(colecao.getReferencias().size()==10){
+        //     usuario.setXp(500);
+        // }
+        // if(colecao.getReferencias().size()==20){
+        //     usuario.setXp(1500);
+        // }
+        //     usuario.setXp(50); 
 
-        if(referencia.getUsuario().getIdUsuario()!=usuario.getIdUsuario()){
-            Optional<Usuario> u = repositorioUsuario.findById(usuario.getIdUsuario());
-            u.get().setXp(200);
-        }
+        // if(referencia.getUsuario().getIdUsuario()!=usuario.getIdUsuario()){
+        //     Optional<Usuario> u = repositorioUsuario.findById(usuario.getIdUsuario());
+        //     u.get().setXp(200);
+        // }
         
         colecaoParaAdicionarReferencias.get().adicionaReferencia(referencia);
         return repositorioColecao.save(colecaoParaAdicionarReferencias);

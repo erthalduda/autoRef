@@ -8,13 +8,13 @@ import autoref.tcc.autoref.model.Usuario;
 
 public interface ColecaoService {
 
-    Colecao cadastraColecao(Colecao colecao, Usuario usuario);
+    Colecao cadastraColecao(Colecao colecao);
 
     void atualizaColecao(Colecao colecao);
 
     void deletaColecao(Colecao colecao);
     
-    Colecao adicionaReferencia(Colecao colecao, Referencia referencia, Usuario usuario);
+    Colecao adicionaReferencia(Colecao colecao, Referencia referencia);
 
     void deletaReferencia(Colecao colecao, Referencia referencia);
 
