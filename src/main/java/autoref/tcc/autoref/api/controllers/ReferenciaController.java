@@ -51,9 +51,9 @@ public class ReferenciaController {
 
         // Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
         try {
+            referencia.formata();
+            referencia.formataCitacoes();
             Referencia salva = serviceReferencia.cadastraReferencia(referencia);
-            salva.formata();
-            salva.formataCitacoes();
             return new ResponseEntity<>(salva, HttpStatus.CREATED);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
