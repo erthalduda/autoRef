@@ -2,9 +2,7 @@ package autoref.tcc.autoref.services;
 
 import java.util.List;
 
-import autoref.tcc.autoref.model.Colecao;
-import autoref.tcc.autoref.model.Referencia;
-import autoref.tcc.autoref.model.Usuario;
+import autoref.tcc.autoref.model.*;
 
 public interface ColecaoService {
 
