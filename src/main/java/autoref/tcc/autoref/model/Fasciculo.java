@@ -1,5 +1,6 @@
 package autoref.tcc.autoref.model;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -13,12 +14,12 @@ public class Fasciculo extends ColecaoPublicacaoPeriodica {
 
 	private String numeracaoFasciculo;
 
-	private String dataPublicacao;
+	private Date dataPublicacao;
 
 	public Fasciculo(Integer id, String titulo, String formatoFinal, String citacaoIndireta, String citacaoDireta,
 			String tipo, List<Colecao> colecoes, Usuario usuario, String subtituloPublicacao, String localPublicacao,
 			String editora, String dataInicio, String dataFim, String issn, String numeracaoAno, String numeracaoVolume,
-			String numeracaoFasciculo, String dataPublicacao) {
+			String numeracaoFasciculo, Date dataPublicacao) {
 		super(id, titulo, formatoFinal, citacaoIndireta, citacaoDireta, tipo, colecoes, usuario, subtituloPublicacao,
 				localPublicacao, editora, dataInicio, dataFim, issn);
 		this.numeracaoAno = numeracaoAno;
@@ -55,11 +56,11 @@ public class Fasciculo extends ColecaoPublicacaoPeriodica {
 		this.numeracaoFasciculo = numeracaoFasciculo;
 	}
 
-	public String getDataPublicacao() {
+	public Date getDataPublicacao() {
 		return this.dataPublicacao;
 	}
 
-	public void setDataPublicacao(String dataPublicacao) {
+	public void setDataPublicacao(Date dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
 	}
 
