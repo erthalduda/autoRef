@@ -213,8 +213,13 @@ public class Monografia extends Referencia {
 	@Override
 	public void formata() {
 		String autores = this.formataAutores();
-		String titulo = this.getTitulo();
-		String subtitulo = this.getSubtitulo() + ". ";
+		String titulo = this.getTitulo().toUpperCase();
+		String subtitulo = "";
+		if (!this.getSubtitulo().equals(" ")) {
+			subtitulo = ": " + this.getSubtitulo() + ". ";
+		} else {
+			subtitulo = ". ";
+		}
 		String edicao = this.getEdicao() + ". ed. ";
 		String local = this.getCidade() + ": " + this.getEditora() + ", " + this.getAnoPublicacao() + ". ";
 		String paginas = this.getQuantidadePaginas() + "p.";

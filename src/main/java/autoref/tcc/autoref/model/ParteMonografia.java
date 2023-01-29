@@ -84,8 +84,13 @@ public class ParteMonografia extends Monografia {
 		String autorParte = sobrenome.concat(", ").concat(nome) + ". ";
 		String tituloParte = this.getTituloParte() + " In: ";
 		String autores = this.formataAutores();
-		String titulo = this.getTitulo();
-		String subtitulo = this.getSubtitulo() + ". ";
+		String titulo = this.getTitulo().toUpperCase();
+		String subtitulo = "";
+		if (!this.getSubtitulo().equals(" ")) {
+			subtitulo = ": " + this.getSubtitulo() + ". ";
+		} else {
+			subtitulo = ". ";
+		}
 		String edicao = this.getEdicao() + ". ed. ";
 		String local = this.getCidade() + ": " + this.getEditora() + ", " + this.getAnoPublicacao() + ". ";
 		String paginas = this.getQuantidadePaginas() + "p.";
