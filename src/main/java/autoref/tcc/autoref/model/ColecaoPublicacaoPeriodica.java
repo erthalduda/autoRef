@@ -107,7 +107,7 @@ public class ColecaoPublicacaoPeriodica extends Referencia {
 	public void formata() {
 		String titulo = this.getTitulo().toUpperCase();
 		String subtitulo = "";
-		if (!this.getSubtituloPublicacao().equals(" ")) {
+		if (this.getSubtituloPublicacao()!=null) {
 			subtitulo = ": " + this.getSubtituloPublicacao() + ". ";
 		}else{
 			subtitulo = ". ";

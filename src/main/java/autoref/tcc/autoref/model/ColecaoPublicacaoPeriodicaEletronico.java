@@ -1,7 +1,6 @@
 package autoref.tcc.autoref.model;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
 
@@ -66,7 +65,7 @@ public class ColecaoPublicacaoPeriodicaEletronico extends ColecaoPublicacaoPerio
 
 		String titulo = this.getTitulo().toUpperCase();
 		String subtitulo = "";
-		if (!this.getSubtituloPublicacao().equals(" ")) {
+		if (this.getSubtituloPublicacao()!=null) {
 			subtitulo = ": " + this.getSubtituloPublicacao() + ". ";
 		} else {
 			subtitulo = ". ";
