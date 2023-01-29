@@ -89,9 +89,9 @@ public class ColecaoPublicacaoPeriodica extends Referencia {
 		String citacaoDireta = "";
 		String citacaoIndiretaAutorNoTexto = "";
 		String citacaoIndireta = "";
-		citacaoIndireta = "(" + titulo.toUpperCase().concat(", ").concat(this.getDataInicio()) + ")";
+		citacaoIndireta = "(" + titulo.toUpperCase().concat(", ") + this.getDataInicio() + ")";
 		citacaoDireta = "("
-				+ titulo.toUpperCase().concat(", ").concat(this.getDataInicio()).concat(", p. X.)");
+				+ titulo.toUpperCase().concat(", ") + this.getDataInicio() + (", p. X.)");
 		citacaoIndiretaAutorNoTexto = titulo + " (" + this.getDataInicio() + ")";
 		citacaoDiretaAutorNoTexto = titulo + " (" + this.getDataInicio() + ", p. X.)";
 
@@ -106,13 +106,17 @@ public class ColecaoPublicacaoPeriodica extends Referencia {
 	@Override
 	public void formata() {
 		String titulo = this.getTitulo().toUpperCase();
-		String subtitulo = this.getSubtituloPublicacao() + ". ";
+		String subtitulo = "";
+		if (!this.getSubtituloPublicacao().equals(" ")) {
+			subtitulo = ": " + this.getSubtituloPublicacao() + ". ";
+		}else{
+			subtitulo = ". ";
+		}
 		String localPublicacao = this.getLocalPublicacao() + ": ";
 		String editora = this.getEditora() + ", ";
-		String dataFim = this.getDataFim() + ". ";
-		String dataInicio = this.getDataInicio() + "-" + dataFim;
+		String dataInicioEFim = this.getDataInicio() + "-" + this.getDataFim() + ". ";
 		String issn = "ISSN " + this.getIssn();
-		String formatoFinal = titulo + subtitulo + localPublicacao + editora + dataInicio + issn;
+		String formatoFinal = titulo + subtitulo + localPublicacao + editora + dataInicioEFim + issn;
 		this.setFormatoFinal(formatoFinal);
 	}
 }
