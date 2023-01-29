@@ -2,6 +2,7 @@ package autoref.tcc.autoref.api.dtos;
 
 import javax.persistence.Basic;
 import java.util.ArrayList;
+import java.sql.Date;
 
 public class ReferenciaDTO {
 
@@ -23,7 +24,7 @@ public class ReferenciaDTO {
     protected String tomo;
     protected String paginaInicial;
     protected String paginaFinal;
-    protected String dataPublicacao;
+    protected Date dataPublicacao;
     protected String subtituloPublicacao;
     protected String editora;
     protected String dataInicio;
@@ -39,7 +40,7 @@ public class ReferenciaDTO {
     protected String anoEntrega;
     protected String quantidadePaginas;
     protected String url;
-    protected String dataAcesso;
+    protected Date dataAcesso;
     protected String periodoConsultado;
     protected String tituloParte;
     protected String secao;
@@ -55,10 +56,10 @@ public class ReferenciaDTO {
     public ReferenciaDTO(String titulo, String formatoFinal, String citacaoIndireta, String citacaoDireta, String tipo,
             ArrayList<String> autor, String subtituloArtigo, String tituloPeriodico, String subtituloPeriodico,
             String localPublicacao, String numeracaoAno, String numeracaoVolume, String numero, String edicao,
-            String tomo, String paginaInicial, String paginaFinal, String dataPublicacao, String subtituloPublicacao,
+            String tomo, String paginaInicial, String paginaFinal, Date dataPublicacao, String subtituloPublicacao,
             String editora, String dataInicio, String dataFim, String issn, String doi, String descricaoDoSuporte,
             String numeracaoFasciculo, String subtitulo, String anoPublicacao, String cidade, String curso,
-            String anoEntrega, String quantidadePaginas, String url, String dataAcesso, String periodoConsultado,
+            String anoEntrega, String quantidadePaginas, String url, Date dataAcesso, String periodoConsultado,
             String tituloParte, String secao, int capitulo, int volume, String anoDeposito, String tipoTrabalho,
             String grauFormacao, String vinculacaoAcademica, String anoDefesa, String localDefesa) {
         this.titulo = titulo;
@@ -248,11 +249,11 @@ public class ReferenciaDTO {
         this.paginaFinal = paginaFinal;
     }
 
-    public String getDataPublicacao() {
+    public Date getDataPublicacao() {
         return this.dataPublicacao;
     }
 
-    public void setDataPublicacao(String dataPublicacao) {
+    public void setDataPublicacao(Date dataPublicacao) {
         this.dataPublicacao = dataPublicacao;
     }
 
@@ -376,11 +377,11 @@ public class ReferenciaDTO {
         this.url = url;
     }
 
-    public String getDataAcesso() {
+    public Date getDataAcesso() {
         return this.dataAcesso;
     }
 
-    public void setDataAcesso(String dataAcesso) {
+    public void setDataAcesso(Date dataAcesso) {
         this.dataAcesso = dataAcesso;
     }
 
