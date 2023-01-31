@@ -34,7 +34,7 @@ public class MonografiaMeioEletronico extends Monografia {
 	@Override
 	public void formata() {
 		String autores = this.formataAutores();
-		String titulo = this.getTitulo().toUpperCase();
+		String titulo = this.getTitulo();
 		String subtitulo = ". ";
 		if (!this.getSubtitulo().equals(" ")) {
 			subtitulo = ": " + this.getSubtitulo() + ". ";
@@ -44,7 +44,7 @@ public class MonografiaMeioEletronico extends Monografia {
 			edicao = this.getEdicao() + ". ed. ";
 		}
 		String local = this.getCidade() + ": " + this.getEditora() + ", " + this.getAnoPublicacao() + ". ";
-		String paginas = this.getQuantidadePaginas() + "p.";
+		String paginas = this.getQuantidadePaginas() + "p. ";
 		String descricaoSuporte = this.getDescricaoDoSuporte() + ".";
 		String formatoFinal = autores + titulo + subtitulo + edicao + local + paginas + descricaoSuporte;
 		this.formatoFinal = formatoFinal;

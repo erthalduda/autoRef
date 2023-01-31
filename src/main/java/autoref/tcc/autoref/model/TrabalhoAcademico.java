@@ -234,7 +234,7 @@ public class TrabalhoAcademico extends Referencia {
     @Override
     public void formata() {
         String autores = this.formataAutores();
-        String titulo = this.getTitulo().toUpperCase();
+        String titulo = this.getTitulo();
         String subtitulo = "";
         if (this.getSubtitulo() != null) {
             subtitulo = ": " + this.getSubtitulo() + ". ";
