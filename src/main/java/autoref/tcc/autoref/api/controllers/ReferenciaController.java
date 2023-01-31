@@ -53,6 +53,7 @@ public class ReferenciaController {
         try {
             referencia.formata();
             referencia.formataCitacoes();
+            referencia.setTodosOsDados();
             Referencia salva = serviceReferencia.cadastraReferencia(referencia);
             return new ResponseEntity<>(salva, HttpStatus.CREATED);
         } catch (ExcecoesAutoref excecao) {
