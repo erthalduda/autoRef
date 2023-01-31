@@ -221,7 +221,13 @@ public class Artigo extends Referencia {
 		Collections.sort(autor);
 		if (this.autor.size() > 3) {
 			final String autorPrincipal = autor.get(0);
-			sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1) + " et al";
+
+			sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1);
+			citacaoIndireta = "(" + sobrenome.toUpperCase().concat(" et al, ").concat(anoString) + ")";
+			citacaoDireta = "("
+					+ sobrenome.toUpperCase().concat(" et al, ").concat(anoString).concat(", p. X.)");
+			citacaoIndiretaAutorNoTexto = sobrenome + " (" + anoString + " et al)";
+			citacaoDiretaAutorNoTexto = sobrenome + " (" + anoString + " et al, p. X.)";
 		} else {
 			if (this.autor.size() == 3) {
 				String autor01 = autor.get(0);

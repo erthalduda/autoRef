@@ -131,7 +131,12 @@ public class TrabalhoAcademico extends Referencia {
         Collections.sort(autor);
         if (this.autor.size() > 3) {
             final String autorPrincipal = autor.get(0);
-            sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1) + " et al";
+            sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1);
+            citacaoIndireta = "(" + sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoDeposito()) + ")";
+            citacaoDireta = "("
+                    + sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoDeposito()).concat(", p. X.)");
+            citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getAnoDeposito() + " et al)";
+            citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getAnoDeposito() + " et al, p. X.)";
         } else {
             if (this.autor.size() == 3) {
                 String autor01 = autor.get(0);
@@ -189,42 +194,42 @@ public class TrabalhoAcademico extends Referencia {
     }
 
     @Override
-	public String formataAutores() {
-		String autores = "";
-		Collections.sort(autor);
+    public String formataAutores() {
+        String autores = "";
+        Collections.sort(autor);
 
-		if (this.autor.size() > 3) {
-			final String autorPrincipal = autor.get(0);
-			String sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1).toUpperCase();
-			String nome = autorPrincipal.substring(0, autorPrincipal.lastIndexOf(" "));
-			autores = sobrenome + ", " + nome + " et al";
+        if (this.autor.size() > 3) {
+            final String autorPrincipal = autor.get(0);
+            String sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1).toUpperCase();
+            String nome = autorPrincipal.substring(0, autorPrincipal.lastIndexOf(" "));
+            autores = sobrenome + ", " + nome + " et al";
 
-		} else {
-			String autor01 = autor.get(0);
-			String autor02 = "";
-			String autor03 = "";
-			String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1).toUpperCase();
-			String nomeAutor01 = autor01.substring(0, autor01.lastIndexOf(" "));
-			autor01 = sobrenomeAutor01 + ", " + nomeAutor01;
-			autores = autor01;
-			if (autor.size() > 1) {
-				autor02 = autor.get(1);
-				String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
-				String nomeAutor02 = autor02.substring(0, autor02.lastIndexOf(" "));
-				autor02 = sobrenomeAutor02 + ", " + nomeAutor02;
-				autores = autor01 + "; " + autor02;
-			}
-			if (autor.size() > 2) {
-				autor03 = autor.get(2);
-				String sobrenomeAutor03 = autor03.substring(autor03.lastIndexOf(" ") + 1).toUpperCase();
-				String nomeAutor03 = autor03.substring(0, autor03.lastIndexOf(" "));
-				autor03 = sobrenomeAutor03 + ", " + nomeAutor03;
-				autores = autor01 + "; " + autor02 + "; " + autor03;
-			}
-		}
+        } else {
+            String autor01 = autor.get(0);
+            String autor02 = "";
+            String autor03 = "";
+            String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1).toUpperCase();
+            String nomeAutor01 = autor01.substring(0, autor01.lastIndexOf(" "));
+            autor01 = sobrenomeAutor01 + ", " + nomeAutor01;
+            autores = autor01;
+            if (autor.size() > 1) {
+                autor02 = autor.get(1);
+                String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
+                String nomeAutor02 = autor02.substring(0, autor02.lastIndexOf(" "));
+                autor02 = sobrenomeAutor02 + ", " + nomeAutor02;
+                autores = autor01 + "; " + autor02;
+            }
+            if (autor.size() > 2) {
+                autor03 = autor.get(2);
+                String sobrenomeAutor03 = autor03.substring(autor03.lastIndexOf(" ") + 1).toUpperCase();
+                String nomeAutor03 = autor03.substring(0, autor03.lastIndexOf(" "));
+                autor03 = sobrenomeAutor03 + ", " + nomeAutor03;
+                autores = autor01 + "; " + autor02 + "; " + autor03;
+            }
+        }
 
-		return autores.concat(". ");
-	}
+        return autores.concat(". ");
+    }
 
     @Override
     public void formata() {

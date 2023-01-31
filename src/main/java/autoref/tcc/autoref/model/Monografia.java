@@ -158,7 +158,12 @@ public class Monografia extends Referencia {
 		Collections.sort(autor);
 		if (this.autor.size() > 3) {
 			final String autorPrincipal = autor.get(0);
-			sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1) + " et al";
+			sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1);
+			citacaoIndireta = "(" + sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoPublicacao()) + ")";
+			citacaoDireta = "("
+					+ sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoPublicacao()).concat(", p. X.)");
+			citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getAnoPublicacao() + " et al)";
+			citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getAnoPublicacao() + " et al, p. X.)";
 		} else {
 			if (this.autor.size() == 3) {
 				String autor01 = autor.get(0);
@@ -218,7 +223,7 @@ public class Monografia extends Referencia {
 	@Override
 	public void formata() {
 		String autores = this.formataAutores();
-		String titulo = this.getTitulo().toUpperCase();
+		String titulo = this.getTitulo();
 		String subtitulo = ". ";
 		if (this.getSubtitulo() != null) {
 			subtitulo = ": " + this.getSubtitulo() + ". ";
