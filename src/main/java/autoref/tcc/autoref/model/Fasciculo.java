@@ -1,7 +1,6 @@
 package autoref.tcc.autoref.model;
 
 import java.sql.Date;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -67,18 +66,11 @@ public class Fasciculo extends ColecaoPublicacaoPeriodica {
 
 	@Override
 	public void formata() {
-		Calendar calendario = Calendar.getInstance();
-		calendario.setTime(this.getDataPublicacao());
-		int mes = calendario.get(Calendar.MONTH);
-		int dia = calendario.get(Calendar.DAY_OF_MONTH);
-		int ano = calendario.get(Calendar.YEAR);
 
 		String titulo = this.getTitulo().toUpperCase();
-		String subtitulo = "";
+		String subtitulo = ". ";
 		if (this.getSubtituloPublicacao() != null) {
 			subtitulo = ": " + this.getSubtituloPublicacao() + ". ";
-		} else {
-			subtitulo = ". ";
 		}
 		String localPublicacao = this.getLocalPublicacao() + ": ";
 		String editora = this.getEditora();
