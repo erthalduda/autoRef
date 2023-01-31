@@ -174,28 +174,109 @@ public class Artigo extends Referencia {
 			final String autorPrincipal = autor.get(0);
 			String sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1).toUpperCase();
 			String nome = autorPrincipal.substring(0, autorPrincipal.lastIndexOf(" "));
-			autores = sobrenome + ", " + nome + " et al.";
+			autores = sobrenome + ", " + nome + " et al. ";
 
 		} else {
 			String autor01 = autor.get(0);
+			String autor02 = "";
+			String autor03 = "";
 			String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1).toUpperCase();
 			String nomeAutor01 = autor01.substring(0, autor01.lastIndexOf(" "));
 			autor01 = sobrenomeAutor01 + ", " + nomeAutor01;
-
-			String autor02 = autor.get(1);
-			String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
-			String nomeAutor02 = autor02.substring(0, autor02.lastIndexOf(" "));
-			autor02 = sobrenomeAutor02 + ", " + nomeAutor02;
-
-			String autor03 = autor.get(2);
-			String sobrenomeAutor03 = autor03.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
-			String nomeAutor03 = autor03.substring(0, autor03.lastIndexOf(" "));
-			autor03 = sobrenomeAutor03 + ", " + nomeAutor03;
-
-			autores = autor01 + "; " + autor02 + "; " + autor03 + ".";
+			autores = autor01;
+			if (!autor.get(1).isEmpty()) {
+				autor02 = autor.get(1);
+				String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
+				String nomeAutor02 = autor02.substring(0, autor02.lastIndexOf(" "));
+				autor02 = sobrenomeAutor02 + ", " + nomeAutor02;
+				autores = autor01 + "; " + autor02;
+			}
+			if (!autor.get(2).isEmpty()) {
+				autor03 = autor.get(2);
+				String sobrenomeAutor03 = autor03.substring(autor03.lastIndexOf(" ") + 1).toUpperCase();
+				String nomeAutor03 = autor03.substring(0, autor03.lastIndexOf(" "));
+				autor03 = sobrenomeAutor03 + ", " + nomeAutor03;
+				autores = autor01 + "; " + autor02 + "; " + autor03;
+			}
 		}
 
-		return autores;
+		return autores.concat(". ");
 	}
 
+	@Override
+	public String formataCitacoes() {
+		String sobrenome = "";
+		String citacaoDiretaAutorNoTexto = "";
+		String citacaoDireta = "";
+		String citacaoIndiretaAutorNoTexto = "";
+		String citacaoIndireta = "";
+		Collections.sort(autor);
+		if (this.autor.size() > 3) {
+			final String autorPrincipal = autor.get(0);
+			sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1) + " et al";
+		} else {
+			if (this.autor.size() == 3) {
+				String autor01 = autor.get(0);
+				String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1);
+
+				String autor02 = autor.get(1);
+				String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1);
+
+				String autor03 = autor.get(2);
+				String sobrenomeAutor03 = autor03.substring(autor03.lastIndexOf(" ") + 1);
+
+				sobrenome = sobrenomeAutor01 + "; " + sobrenomeAutor02 + "; " + sobrenomeAutor03;
+				citacaoIndireta = "(" + sobrenome.toUpperCase().concat(", ").concat(this.getNumeracaoAno()) + ")";
+				citacaoDireta = "("
+						+ sobrenome.toUpperCase().concat(", ").concat(this.getNumeracaoAno()).concat(", p. X.)");
+				sobrenome = sobrenomeAutor01 + ", " + sobrenomeAutor02 + " e " + sobrenomeAutor03;
+				citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getNumeracaoAno() + ")";
+				citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getNumeracaoAno() + ", p. X.)";
+
+			}
+			if (this.autor.size() == 2) {
+				String autor01 = autor.get(0);
+				String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1);
+
+				String autor02 = autor.get(1);
+				String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1);
+
+				sobrenome = sobrenomeAutor01 + "; " + sobrenomeAutor02;
+				citacaoIndireta = "(" + sobrenome.toUpperCase().concat(", ").concat(this.getNumeracaoAno()) + ")";
+				citacaoDireta = "("
+						+ sobrenome.toUpperCase().concat(", ").concat(this.getNumeracaoAno()).concat(", p. X.)");
+				sobrenome = sobrenomeAutor01 + " e " + sobrenomeAutor02;
+				citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getNumeracaoAno() + ")";
+				citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getNumeracaoAno() + ", p. X.)";
+			}
+			if (this.autor.size() == 1) {
+				String autor01 = autor.get(0);
+				String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1);
+				sobrenome = sobrenomeAutor01;
+				citacaoIndireta = "(" + sobrenome.toUpperCase().concat(", ").concat(this.getNumeracaoAno()) + ")";
+				citacaoDireta = "("
+						+ sobrenome.toUpperCase().concat(", ").concat(this.getNumeracaoAno()).concat(", p. X.)");
+				sobrenome = sobrenomeAutor01;
+				citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getNumeracaoAno() + ")";
+				citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getNumeracaoAno() + ", p. X.)";
+			}
+		}
+
+		String citacoes = citacaoIndireta + "\n" + citacaoIndiretaAutorNoTexto + "\n" + citacaoDireta + "\n"
+				+ citacaoDiretaAutorNoTexto;
+
+		this.setCitacaoDireta(citacaoDireta.concat(citacaoDiretaAutorNoTexto));
+		this.setCitacaoIndireta(citacaoIndireta.concat(citacaoIndiretaAutorNoTexto));
+		return citacoes;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "Artigo [autor=" + autor + ", subtituloArtigo=" + subtituloArtigo
+				+ ", tituloPeriodico="
+				+ tituloPeriodico + ", subtituloPeriodico=" + subtituloPeriodico + ", localPublicacao="
+				+ localPublicacao + ", numeracaoAno=" + numeracaoAno + ", numeracaoVolume=" + numeracaoVolume
+				+ ", numero=" + numero + ", edicao=" + edicao + ", tomo=" + tomo + ", paginaInicial=" + paginaInicial
+				+ ", paginaFinal=" + paginaFinal + ", dataPublicacao=" + dataPublicacao + "]";
+	}
 }
