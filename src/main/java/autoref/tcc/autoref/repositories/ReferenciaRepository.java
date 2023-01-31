@@ -12,5 +12,5 @@ public interface ReferenciaRepository extends JpaRepository<Referencia, Integer>
     List<Referencia> findByUsuario(Usuario usuario);
 
     @Query(value = "SELECT formato_final FROM referencia WHERE todos_os_dados LIKE '%?1%';", nativeQuery = true)
-    List<Referencia> buscaReferencia(String pesquisa);
+    List<String> buscaReferencia(String pesquisa);
 }

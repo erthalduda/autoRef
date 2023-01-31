@@ -14,7 +14,7 @@ public interface ReferenciaService {
 
     Referencia encontrarPorId(Integer id);
 
-    List<Referencia> buscarNoRepositorioGeral(String pesquisa);
+    List<String> buscarNoRepositorioGeral(String pesquisa);
 
-    List<Referencia> buscarNoRepositorioPrivado(String pesquisa);
+    List<String> buscarNoRepositorioPrivado(String pesquisa);
 }

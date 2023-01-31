@@ -68,8 +68,8 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     @Transactional
     //vamos disponibilizar filtros, ou a busca será "geral"?
     //ex: buscar por autor, por título, ou só retornar tudo que tiver o que foi pesquisado
-    public List<Referencia> buscarNoRepositorioGeral(String pesquisa) {
-        List<Referencia> retornoBusca = repositorioReferencia.buscaReferencia(pesquisa);
+    public List<String> buscarNoRepositorioGeral(String pesquisa) {
+        List<String> retornoBusca = repositorioReferencia.buscaReferencia(pesquisa);
         // usuario.setXp(100);
         //ver como implementar a adição de XP pro dono da referência utilizada
         return retornoBusca;
@@ -77,8 +77,8 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
 
     @Override
     @Transactional
-    public List<Referencia> buscarNoRepositorioPrivado(String pesquisa) {
-        List<Referencia> retornoBusca = repositorioReferencia.buscaReferencia(pesquisa);
+    public List<String> buscarNoRepositorioPrivado(String pesquisa) {
+        List<String> retornoBusca = repositorioReferencia.buscaReferencia(pesquisa);
         return retornoBusca;
     }
 
