@@ -1,7 +1,6 @@
 package autoref.tcc.autoref.model;
 
 import java.sql.Date;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -57,72 +56,39 @@ public class ColecaoPublicacaoPeriodicaEletronico extends ColecaoPublicacaoPerio
 	@Override
 	public void formata() {
 
-		Calendar calendario = Calendar.getInstance();
-		calendario.setTime(this.getDataAcesso());
-		int mes = calendario.get(Calendar.MONTH);
-		int dia = calendario.get(Calendar.DAY_OF_MONTH);
-		int ano = calendario.get(Calendar.YEAR);
-
 		String titulo = this.getTitulo().toUpperCase();
 		String subtitulo = "";
-		if (this.getSubtituloPublicacao()!=null) {
+		if (this.getSubtituloPublicacao() != null) {
 			subtitulo = ": " + this.getSubtituloPublicacao() + ". ";
 		} else {
 			subtitulo = ". ";
 		}
 		String localPublicacao = this.getLocalPublicacao() + ": ";
 		String editora = this.getEditora() + ", ";
-		String dataFim = this.getDataFim() + ". ";
-		String dataInicio = this.getDataInicio() + "-" + dataFim;
-		String issn = "ISSN " + this.getIssn();
-		String doi = "";
-		if (!this.getDoi().equals(" ")) {
-			doi = ". DOI " + this.getDoi();
+		String duracao = "";
+		if (this.getDataFim().length() != 0) {
+			duracao = this.getDataInicio() + "-" + this.getDataFim() + ". ";
 		} else {
-			doi = "";
+			duracao = this.getDataInicio() + "- . ";
 		}
-		String mesString = "";
-		switch (mes) {
-			case 1:
-				mesString = " jan. ";
-				break;
-			case 2:
-				mesString = " fev. ";
-				break;
-			case 3:
-				mesString = " mar. ";
-				break;
-			case 4:
-				mesString = " abr. ";
-				break;
-			case 5:
-				mesString = " maio ";
-				break;
-			case 6:
-				mesString = " jun. ";
-				break;
-			case 7:
-				mesString = " jul. ";
-				break;
-			case 8:
-				mesString = " ago. ";
-				break;
-			case 9:
-				mesString = " set. ";
-				break;
-			case 10:
-				mesString = " out. ";
-				break;
-			case 11:
-				mesString = " nov. ";
-				break;
-			case 12:
-				mesString = " dez. ";
-				break;
+		String issn = "";
+		if (this.getIssn().length() != 0) {
+			issn = "ISSN " + this.getIssn() + ". ";
 		}
-		String url = ". Disponível em: " + this.getUrl() + ". Acesso em: " + dia + mesString + ano + ".";
-		String formatoFinal = titulo + subtitulo + localPublicacao + editora + dataInicio + issn + doi + url;
+		String doi = "";
+		if (this.getDoi().length() != 0) {
+			doi = "DOI " + this.getDoi();
+		}
+		String data = this.formataData(this.getDataAcesso());
+		String url = ". Disponível em: " + this.getUrl() + ". Acesso em: " + data + ".";
+		String formatoFinal = titulo + subtitulo + localPublicacao + editora + duracao + issn + doi + url;
 		this.setFormatoFinal(formatoFinal);
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "ColecaoPublicacaoPeriodicaEletronico [doi=" + doi + ", url=" + url + ", dataAcesso="
+				+ dataAcesso + "]";
 	}
 
 }

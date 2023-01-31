@@ -30,4 +30,9 @@ public class ParteColecaoPublicacaoPeriodica extends ColecaoPublicacaoPeriodica 
 		this.periodoConsultado = periodoConsultado;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString() + "ParteColecaoPublicacaoPeriodica [periodoConsultado=" + periodoConsultado + "]";
+	}
+
 }
