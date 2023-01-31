@@ -47,13 +47,14 @@ public class MonografiaOnline extends Monografia {
 
 		String autores = this.formataAutores();
 		String titulo = this.getTitulo();
-		String subtitulo = "";
+		String subtitulo = ". ";
 		if (this.getSubtitulo() != null) {
 			subtitulo = ": " + this.getSubtitulo() + ". ";
-		} else {
-			subtitulo = ". ";
 		}
-		String edicao = this.getEdicao() + ". ed. ";
+		String edicao = "";
+		if (this.getEdicao() != null) {
+			edicao = this.getEdicao() + ". ed. ";
+		}
 		String local = this.getCidade() + ": " + this.getEditora() + ", " + this.getAnoPublicacao() + ". ";
 		String data = this.formataData(this.getDataAcesso());
 		String url = "Disponível em: " + this.getUrl() + ". Acesso em: " + data + ".";
