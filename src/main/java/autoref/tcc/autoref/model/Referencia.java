@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
@@ -22,6 +24,7 @@ public class Referencia {
     protected String citacaoIndireta;
     protected String citacaoDireta;
     protected String tipo;
+    protected String todosOsDados;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "referencias")
     protected List<Colecao> colecoes;
@@ -105,15 +108,82 @@ public class Referencia {
         this.tipo = tipo;
     }
 
-    public String formataAutores(){
+    public String getTodosOsDados() {
+        return this.todosOsDados;
+    }
+
+    public void setTodosOsDados() {
+        this.todosOsDados = this.toString();
+    }
+
+    public String formataAutores() {
         return null;
     }
 
-    public String formataCitacoes(){
+    public String formataCitacoes() {
         return null;
     }
 
-    public void formata(){
+    public void formata() {
 
     }
+
+    public String formataData(Date data) {
+        String mesString = "";
+        String dataString = "";
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(data);
+        int mes = calendario.get(Calendar.MONTH) + 1;
+        int dia = calendario.get(Calendar.DAY_OF_MONTH) + 1;
+        int ano = calendario.get(Calendar.YEAR);
+
+        switch (mes) {
+            case 1:
+                mesString = " jan. ";
+                break;
+            case 2:
+                mesString = " fev. ";
+                break;
+            case 3:
+                mesString = " mar. ";
+                break;
+            case 4:
+                mesString = " abr. ";
+                break;
+            case 5:
+                mesString = " maio ";
+                break;
+            case 6:
+                mesString = " jun. ";
+                break;
+            case 7:
+                mesString = " jul. ";
+                break;
+            case 8:
+                mesString = " ago. ";
+                break;
+            case 9:
+                mesString = " set. ";
+                break;
+            case 10:
+                mesString = " out. ";
+                break;
+            case 11:
+                mesString = " nov. ";
+                break;
+            case 12:
+                mesString = " dez. ";
+                break;
+        }
+        dataString = dia + mesString + ano;
+        return dataString;
+    }
+
+    @Override
+    public String toString() {
+        return "Referencia [id=" + id + ", titulo=" + titulo + ", formatoFinal=" + formatoFinal + ", citacaoIndireta="
+                + citacaoIndireta + ", citacaoDireta=" + citacaoDireta + ", tipo=" + tipo + ", todosOsDados="
+                + todosOsDados + ", colecoes=" + colecoes + ", usuario=" + usuario + "]";
+    }
+
 }
