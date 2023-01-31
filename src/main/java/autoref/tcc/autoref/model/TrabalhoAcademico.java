@@ -131,13 +131,13 @@ public class TrabalhoAcademico extends Referencia {
         Collections.sort(autor);
         if (this.autor.size() > 3) {
             final String autorPrincipal = autor.get(0);
-            sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1);
-            citacaoIndireta = "(" + sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoDeposito()) + ")";
-            citacaoDireta = "("
-                    + sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoDeposito()).concat(", p. X.)");
-            citacaoIndiretaAutorNoTexto = sobrenome + " (" + this.getAnoDeposito() + " et al)";
-            citacaoDiretaAutorNoTexto = sobrenome + " (" + this.getAnoDeposito() + " et al, p. X.)";
-        } else {
+			sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1);
+			citacaoIndireta = "(" + sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoDeposito()) + ")";
+			citacaoDireta = "("
+					+ sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoDeposito()).concat(", p. X.)");
+			citacaoIndiretaAutorNoTexto = sobrenome + " et al (" + this.getAnoDeposito() + ")";
+			citacaoDiretaAutorNoTexto = sobrenome + " et al (" + this.getAnoDeposito() + ", p. X.)";
+		   } else {
             if (this.autor.size() == 3) {
                 String autor01 = autor.get(0);
                 String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1);
