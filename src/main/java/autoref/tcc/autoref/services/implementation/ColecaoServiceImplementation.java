@@ -13,7 +13,7 @@ import autoref.tcc.autoref.model.Referencia;
 // import autoref.tcc.autoref.model.Usuario;
 // import autoref.tcc.autoref.model.Usuario;
 import autoref.tcc.autoref.repositories.ColecaoRepository;
-import autoref.tcc.autoref.repositories.UsuarioRepository;
+// import autoref.tcc.autoref.repositories.UsuarioRepository;
 // import autoref.tcc.autoref.repositories.UsuarioRepository;
 import autoref.tcc.autoref.services.ColecaoService;
 
