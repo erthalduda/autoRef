@@ -1,6 +1,7 @@
 package autoref.tcc.autoref.model;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -62,6 +63,43 @@ public class Fasciculo extends ColecaoPublicacaoPeriodica {
 
 	public void setDataPublicacao(Date dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
+	}
+
+	@Override
+	public void formata() {
+		Calendar calendario = Calendar.getInstance();
+		calendario.setTime(this.getDataPublicacao());
+		int mes = calendario.get(Calendar.MONTH);
+		int dia = calendario.get(Calendar.DAY_OF_MONTH);
+		int ano = calendario.get(Calendar.YEAR);
+
+		String titulo = this.getTitulo().toUpperCase();
+		String subtitulo = "";
+		if (this.getSubtituloPublicacao() != null) {
+			subtitulo = ": " + this.getSubtituloPublicacao() + ". ";
+		} else {
+			subtitulo = ". ";
+		}
+		String localPublicacao = this.getLocalPublicacao() + ": ";
+		String editora = this.getEditora();
+		if (this.getNumeracaoAno() != null) {
+			numeracaoAno = ", " + this.getNumeracaoAno() + ". ";
+		}
+		String volume = "";
+		if (this.getNumeracaoVolume() != null) {
+			volume = ", v. " + this.getNumeracaoVolume();
+		}
+		String numeracaoFasciculo = ", n." + this.getNumeracaoFasciculo() + ", ";
+		String dataPublicacao = this.formataData(this.getDataPublicacao());
+		String formatoFinal = titulo + subtitulo + localPublicacao + editora + volume
+				+ numeracaoFasciculo + dataPublicacao;
+		this.setFormatoFinal(formatoFinal);
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "Fasciculo [numeracaoAno=" + numeracaoAno + ", numeracaoVolume=" + numeracaoVolume
+				+ ", numeracaoFasciculo=" + numeracaoFasciculo + ", dataPublicacao=" + dataPublicacao + "]";
 	}
 
 }
