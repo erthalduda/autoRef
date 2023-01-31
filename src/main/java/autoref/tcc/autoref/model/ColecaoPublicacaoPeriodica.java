@@ -107,9 +107,9 @@ public class ColecaoPublicacaoPeriodica extends Referencia {
 	public void formata() {
 		String titulo = this.getTitulo().toUpperCase();
 		String subtitulo = "";
-		if (this.getSubtituloPublicacao()!=null) {
+		if (this.getSubtituloPublicacao() != null) {
 			subtitulo = ": " + this.getSubtituloPublicacao() + ". ";
-		}else{
+		} else {
 			subtitulo = ". ";
 		}
 		String localPublicacao = this.getLocalPublicacao() + ": ";
@@ -118,5 +118,13 @@ public class ColecaoPublicacaoPeriodica extends Referencia {
 		String issn = "ISSN " + this.getIssn();
 		String formatoFinal = titulo + subtitulo + localPublicacao + editora + dataInicioEFim + issn;
 		this.setFormatoFinal(formatoFinal);
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "ColecaoPublicacaoPeriodica [subtituloPublicacao=" + subtituloPublicacao
+				+ ", localPublicacao="
+				+ localPublicacao + ", editora=" + editora + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim
+				+ ", issn=" + issn + "]";
 	}
 }
