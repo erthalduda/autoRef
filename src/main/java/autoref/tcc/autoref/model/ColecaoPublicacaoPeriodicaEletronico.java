@@ -57,11 +57,9 @@ public class ColecaoPublicacaoPeriodicaEletronico extends ColecaoPublicacaoPerio
 	public void formata() {
 
 		String titulo = this.getTitulo().toUpperCase();
-		String subtitulo = "";
+		String subtitulo = ". ";
 		if (this.getSubtituloPublicacao() != null) {
 			subtitulo = ": " + this.getSubtituloPublicacao() + ". ";
-		} else {
-			subtitulo = ". ";
 		}
 		String localPublicacao = this.getLocalPublicacao() + ": ";
 		String editora = this.getEditora() + ", ";
