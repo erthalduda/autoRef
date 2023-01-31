@@ -119,28 +119,33 @@ public class Monografia extends Referencia {
 			final String autorPrincipal = autor.get(0);
 			String sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1).toUpperCase();
 			String nome = autorPrincipal.substring(0, autorPrincipal.lastIndexOf(" "));
-			autores = sobrenome + ", " + nome + " et al. ";
+			autores = sobrenome + ", " + nome + " et al";
 
 		} else {
 			String autor01 = autor.get(0);
+			String autor02 = "";
+			String autor03 = "";
 			String sobrenomeAutor01 = autor01.substring(autor01.lastIndexOf(" ") + 1).toUpperCase();
 			String nomeAutor01 = autor01.substring(0, autor01.lastIndexOf(" "));
 			autor01 = sobrenomeAutor01 + ", " + nomeAutor01;
-
-			String autor02 = autor.get(1);
-			String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
-			String nomeAutor02 = autor02.substring(0, autor02.lastIndexOf(" "));
-			autor02 = sobrenomeAutor02 + ", " + nomeAutor02;
-
-			String autor03 = autor.get(2);
-			String sobrenomeAutor03 = autor03.substring(autor03.lastIndexOf(" ") + 1).toUpperCase();
-			String nomeAutor03 = autor03.substring(0, autor03.lastIndexOf(" "));
-			autor03 = sobrenomeAutor03 + ", " + nomeAutor03;
-
-			autores = autor01 + "; " + autor02 + "; " + autor03 + ". ";
+			autores = autor01;
+			if (autor.size() > 1) {
+				autor02 = autor.get(1);
+				String sobrenomeAutor02 = autor02.substring(autor02.lastIndexOf(" ") + 1).toUpperCase();
+				String nomeAutor02 = autor02.substring(0, autor02.lastIndexOf(" "));
+				autor02 = sobrenomeAutor02 + ", " + nomeAutor02;
+				autores = autor01 + "; " + autor02;
+			}
+			if (autor.size() > 2) {
+				autor03 = autor.get(2);
+				String sobrenomeAutor03 = autor03.substring(autor03.lastIndexOf(" ") + 1).toUpperCase();
+				String nomeAutor03 = autor03.substring(0, autor03.lastIndexOf(" "));
+				autor03 = sobrenomeAutor03 + ", " + nomeAutor03;
+				autores = autor01 + "; " + autor02 + "; " + autor03;
+			}
 		}
 
-		return autores;
+		return autores.concat(". ");
 	}
 
 	@Override
@@ -205,8 +210,8 @@ public class Monografia extends Referencia {
 		String citacoes = citacaoIndireta + "\n" + citacaoIndiretaAutorNoTexto + "\n" + citacaoDireta + "\n"
 				+ citacaoDiretaAutorNoTexto;
 
-		this.setCitacaoDireta(citacaoDireta.concat(citacaoDiretaAutorNoTexto));
-		this.setCitacaoIndireta(citacaoIndireta.concat(citacaoIndiretaAutorNoTexto));
+		this.setCitacaoDireta(citacaoDireta.concat(" ").concat(citacaoDiretaAutorNoTexto));
+		this.setCitacaoIndireta(citacaoIndireta.concat(" ").concat(citacaoIndiretaAutorNoTexto));
 		return citacoes;
 	}
 
@@ -215,7 +220,7 @@ public class Monografia extends Referencia {
 		String autores = this.formataAutores();
 		String titulo = this.getTitulo().toUpperCase();
 		String subtitulo = "";
-		if (this.getSubtitulo()!=null) {
+		if (this.getSubtitulo() != null) {
 			subtitulo = ": " + this.getSubtitulo() + ". ";
 		} else {
 			subtitulo = ". ";
@@ -225,6 +230,14 @@ public class Monografia extends Referencia {
 		String paginas = this.getQuantidadePaginas() + "p.";
 		String formatoFinal = autores + titulo + subtitulo + edicao + local + paginas;
 		this.formatoFinal = formatoFinal;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "Monografia [autor=" + autor + ", subtitulo=" + subtitulo + ", anoPublicacao="
+				+ anoPublicacao
+				+ ", cidade=" + cidade + ", anoEntrega=" + anoEntrega + ", quantidadePaginas=" + quantidadePaginas
+				+ ", edicao=" + edicao + ", editora=" + editora + "]";
 	}
 
 }

@@ -49,4 +49,9 @@ public class MonografiaMeioEletronico extends Monografia {
 		this.formatoFinal = formatoFinal;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString() + "MonografiaMeioEletronico [descricaoDoSuporte=" + descricaoDoSuporte + "]";
+	}
+
 }

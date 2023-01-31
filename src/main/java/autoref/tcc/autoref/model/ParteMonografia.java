@@ -76,17 +76,40 @@ public class ParteMonografia extends Monografia {
 	}
 
 	@Override
+	public String formataCitacoes() {
+		String citacaoDiretaAutorNoTexto = "";
+		String citacaoDireta = "";
+		String citacaoIndiretaAutorNoTexto = "";
+		String citacaoIndireta = "";
+		String autorParte = this.getAutorParte();
+
+		String sobrenomeAutor = autorParte.substring(autorParte.lastIndexOf(" ") + 1);
+		citacaoIndireta = "(" + sobrenomeAutor.toUpperCase().concat(", ").concat(this.getAnoPublicacao()) + ")";
+		citacaoDireta = "("
+				+ sobrenomeAutor.toUpperCase().concat(", ").concat(this.getAnoPublicacao()).concat(", p. X.)");
+
+		citacaoIndiretaAutorNoTexto = sobrenomeAutor + " (" + this.getAnoPublicacao() + ")";
+		citacaoDiretaAutorNoTexto = sobrenomeAutor + " (" + this.getAnoPublicacao() + ", p. X.)";
+		String citacoes = citacaoIndireta + "\n" + citacaoIndiretaAutorNoTexto + "\n" + citacaoDireta + "\n"
+				+ citacaoDiretaAutorNoTexto;
+
+		this.setCitacaoDireta(citacaoDireta.concat(" ").concat(citacaoDiretaAutorNoTexto));
+		this.setCitacaoIndireta(citacaoIndireta.concat(" ").concat(citacaoIndiretaAutorNoTexto));
+		return citacoes;
+	}
+
+	@Override
 	public void formata() {
 
 		String sobrenome = autorParte.substring(autorParte.lastIndexOf(" ") + 1).toUpperCase();
 		String nome = autorParte.substring(0, autorParte.lastIndexOf(" "));
 
 		String autorParte = sobrenome.concat(", ").concat(nome) + ". ";
-		String tituloParte = this.getTituloParte() + " In: ";
+		String tituloParte = this.getTituloParte() + ". In: ";
 		String autores = this.formataAutores();
-		String titulo = this.getTitulo().toUpperCase();
+		String titulo = this.getTitulo();
 		String subtitulo = "";
-		if (this.getSubtitulo()!=null) {
+		if (this.getSubtitulo() != null) {
 			subtitulo = ": " + this.getSubtitulo() + ". ";
 		} else {
 			subtitulo = ". ";
@@ -97,6 +120,13 @@ public class ParteMonografia extends Monografia {
 		String formatoFinal = autorParte + tituloParte + autores + titulo + subtitulo + edicao + local + paginas;
 		this.formatoFinal = formatoFinal;
 
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "ParteMonografia [autorParte=" + autorParte + ", tituloParte=" + tituloParte
+				+ ", secao=" + secao
+				+ ", capitulo=" + capitulo + ", volume=" + volume + "]";
 	}
 
 }
