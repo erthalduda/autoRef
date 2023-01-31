@@ -51,6 +51,7 @@ public class ReferenciaDTO {
     protected String grauFormacao;
     protected String vinculacaoAcademica;
     protected String anoDefesa;
+    protected String autorParte;
     protected String localDefesa;
 
     public ReferenciaDTO(String titulo, String formatoFinal, String citacaoIndireta, String citacaoDireta, String tipo,
@@ -61,7 +62,7 @@ public class ReferenciaDTO {
             String numeracaoFasciculo, String subtitulo, String anoPublicacao, String cidade, String curso,
             String anoEntrega, String quantidadePaginas, String url, Date dataAcesso, String periodoConsultado,
             String tituloParte, String secao, int capitulo, int volume, String anoDeposito, String tipoTrabalho,
-            String grauFormacao, String vinculacaoAcademica, String anoDefesa, String localDefesa) {
+            String grauFormacao, String vinculacaoAcademica, String anoDefesa, String autorParte, String localDefesa) {
         this.titulo = titulo;
         this.formatoFinal = formatoFinal;
         this.citacaoIndireta = citacaoIndireta;
@@ -106,6 +107,7 @@ public class ReferenciaDTO {
         this.grauFormacao = grauFormacao;
         this.vinculacaoAcademica = vinculacaoAcademica;
         this.anoDefesa = anoDefesa;
+        this.autorParte = autorParte;
         this.localDefesa = localDefesa;
     }
 
@@ -463,6 +465,14 @@ public class ReferenciaDTO {
 
     public void setAnoDefesa(String anoDefesa) {
         this.anoDefesa = anoDefesa;
+    }
+
+    public String getAutorParte() {
+        return this.autorParte;
+    }
+
+    public void setAutorParte(String autorParte) {
+        this.autorParte = autorParte;
     }
 
     public String getLocalDefesa() {
