@@ -84,7 +84,7 @@ public class Fasciculo extends ColecaoPublicacaoPeriodica {
 		String numeracaoFasciculo = ", n." + this.getNumeracaoFasciculo() + ", ";
 		String dataPublicacao = this.formataData(this.getDataPublicacao());
 		String formatoFinal = titulo + subtitulo + localPublicacao + editora + volume
-				+ numeracaoFasciculo + dataPublicacao;
+				+ numeracaoFasciculo + dataPublicacao + ".";
 		this.setFormatoFinal(formatoFinal);
 	}
 
