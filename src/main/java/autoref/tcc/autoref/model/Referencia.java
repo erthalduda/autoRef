@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
 import java.sql.Date;
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
@@ -131,11 +131,21 @@ public class Referencia {
     public String formataData(Date data) {
         String mesString = "";
         String dataString = "";
-        Calendar calendario = Calendar.getInstance();
-        calendario.setTime(data);
-        int mes = calendario.get(Calendar.MONTH) + 1;
-        int dia = calendario.get(Calendar.DAY_OF_MONTH) + 1;
-        int ano = calendario.get(Calendar.YEAR);
+        LocalDate dataLocalDate = data.toLocalDate();
+        int mes = dataLocalDate.getMonthValue();
+        int dia = dataLocalDate.getDayOfMonth() + 1;
+        int ano = dataLocalDate.getYear();
+
+        if (((mes == 11 || mes == 4 || mes == 6 || mes == 9) && dia == 31) || (mes == 2 && dia == 29)
+                || ((mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12)
+                        && dia == 32)) {
+            if (mes == 12) {
+                mes = 1;
+            } else {
+                mes++;
+            }
+            dia = 1;
+        }
 
         switch (mes) {
             case 1:
@@ -185,5 +195,4 @@ public class Referencia {
                 + citacaoIndireta + ", citacaoDireta=" + citacaoDireta + ", tipo=" + tipo + ", todosOsDados="
                 + todosOsDados + ", colecoes=" + colecoes + ", usuario=" + usuario + "]";
     }
-
 }
