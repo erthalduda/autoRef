@@ -113,16 +113,16 @@ public class ColecaoPublicacaoPeriodica extends Referencia {
 		String localPublicacao = this.getLocalPublicacao() + ": ";
 		String editora = this.getEditora() + ", ";
 		String duracao = "";
-		if (this.getDataFim().length() != 0) {
+		if (this.getDataFim() != null) {
 			duracao = this.getDataInicio() + "-" + this.getDataFim() + ". ";
 		} else {
-			duracao = this.getDataInicio() + "- . ";
+			duracao = this.getDataInicio() + "- .";
 		}
 		String issn = "";
 		if (this.getIssn() != null) {
-			issn = "ISSN " + this.getIssn();
+			issn = " ISSN " + this.getIssn();
 		}
-		String formatoFinal = titulo + subtitulo + localPublicacao + editora + duracao + issn;
+		String formatoFinal = titulo + subtitulo + localPublicacao + editora + duracao + issn + ".";
 		this.setFormatoFinal(formatoFinal);
 	}
 

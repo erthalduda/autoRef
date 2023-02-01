@@ -44,7 +44,7 @@ public class ParteColecaoPublicacaoPeriodica extends ColecaoPublicacaoPeriodica 
 		String localPublicacao = this.getLocalPublicacao() + ": ";
 		String editora = this.getEditora() + ", ";
 		String duracao = "";
-		if (this.getDataFim().length() != 0) {
+		if (this.getDataFim() != null) {
 			duracao = this.getDataInicio() + "-" + this.getDataFim() + ". ";
 		} else {
 			duracao = this.getDataInicio() + "- . ";

@@ -64,21 +64,21 @@ public class ColecaoPublicacaoPeriodicaEletronico extends ColecaoPublicacaoPerio
 		String localPublicacao = this.getLocalPublicacao() + ": ";
 		String editora = this.getEditora() + ", ";
 		String duracao = "";
-		if (this.getDataFim().length() != 0) {
-			duracao = this.getDataInicio() + "-" + this.getDataFim() + ". ";
+		if (this.getDataFim() != null) {
+			duracao = this.getDataInicio() + "-" + this.getDataFim() + ".";
 		} else {
-			duracao = this.getDataInicio() + "- . ";
+			duracao = this.getDataInicio() + "- .";
 		}
 		String issn = "";
-		if (this.getIssn().length() != 0) {
-			issn = "ISSN " + this.getIssn() + ". ";
+		if (this.getIssn() != null) {
+			issn = " ISSN " + this.getIssn() + ".";
 		}
 		String doi = "";
-		if (this.getDoi().length() != 0) {
-			doi = "DOI " + this.getDoi();
+		if (this.getDoi() != null) {
+			doi = " DOI " + this.getDoi() + ".";
 		}
 		String data = this.formataData(this.getDataAcesso());
-		String url = ". Disponível em: " + this.getUrl() + ". Acesso em: " + data + ".";
+		String url = " Disponível em: " + this.getUrl() + ". Acesso em: " + data + ".";
 		String formatoFinal = titulo + subtitulo + localPublicacao + editora + duracao + issn + doi + url;
 		this.setFormatoFinal(formatoFinal);
 	}
