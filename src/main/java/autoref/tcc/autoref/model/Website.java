@@ -2,6 +2,7 @@ package autoref.tcc.autoref.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -16,7 +17,20 @@ public class Website extends Referencia {
     private String url;
     private LocalDate dataAcesso;
 
+    public Website(Integer id, String titulo, String formatoFinal, String citacaoIndireta, String citacaoDireta,
+            String tipo, List<Colecao> colecoes, Usuario usuario, ArrayList<String> autor, String nomeSite,
+            String anoPublicacao, String url, LocalDate dataAcesso) {
+        super(id, titulo, formatoFinal, citacaoIndireta, citacaoDireta, tipo, colecoes, usuario);
+        this.autor = autor;
+        this.nomeSite = nomeSite;
+        this.anoPublicacao = anoPublicacao;
+        this.url = url;
+        this.dataAcesso = dataAcesso;
+    }
 
+    public Website() {
+
+    }
 
     public ArrayList<String> getAutor() {
         return this.autor;
@@ -56,6 +70,16 @@ public class Website extends Referencia {
 
     public void setDataAcesso(LocalDate dataAcesso) {
         this.dataAcesso = dataAcesso;
+    }
+
+    @Override
+    public void formata() {
+        String autor = this.formataAutores();
+        String titulo = this.getTitulo();
+        String site = this.getNomeSite() + ", " + this.getAnoPublicacao() + ".";
+        String url = " Disponível em: " + this.getUrl() + ". Acesso em: " + this.formataData(this.getDataAcesso());
+        String formatoFinal = autor + titulo + site + url;
+        this.setFormatoFinal(formatoFinal);
     }
 
 }
