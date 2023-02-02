@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.CascadeType;
