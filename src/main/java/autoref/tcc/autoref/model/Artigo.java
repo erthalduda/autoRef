@@ -1,6 +1,7 @@
 package autoref.tcc.autoref.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -37,13 +38,13 @@ public class Artigo extends Referencia {
 
 	private String paginaFinal;
 
-	private Date dataPublicacao;
+	private LocalDate dataPublicacao;
 
 	public Artigo(Integer id, String titulo, String formatoFinal, String citacaoIndireta, String citacaoDireta,
 			String tipo, List<Colecao> colecoes, Usuario usuario, ArrayList<String> autor, String subtituloArtigo,
 			String tituloPeriodico, String subtituloPeriodico, String localPublicacao, String numeracaoAno,
 			String numeracaoVolume, String numero, String edicao, String tomo, String paginaInicial, String paginaFinal,
-			Date dataPublicacao) {
+			LocalDate dataPublicacao) {
 		super(id, titulo, formatoFinal, citacaoIndireta, citacaoDireta, tipo, colecoes, usuario);
 		this.autor = autor;
 		this.subtituloArtigo = subtituloArtigo;
@@ -159,11 +160,11 @@ public class Artigo extends Referencia {
 		this.paginaFinal = paginaFinal;
 	}
 
-	public Date getDataPublicacao() {
+	public LocalDate getDataPublicacao() {
 		return this.dataPublicacao;
 	}
 
-	public void setDataPublicacao(Date dataPublicacao) {
+	public void setDataPublicacao(LocalDate dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
 	}
 
@@ -208,11 +209,7 @@ public class Artigo extends Referencia {
 	@Override
 	public String formataCitacoes() {
 
-		Calendar calendario = Calendar.getInstance();
-		calendario.setTime(this.getDataPublicacao());
-		int ano = calendario.get(Calendar.YEAR);
-		String anoString = String.valueOf(ano);
-
+		String anoString = String.valueOf(this.getDataPublicacao().getYear());
 		String sobrenome = "";
 		String citacaoDiretaAutorNoTexto = "";
 		String citacaoDireta = "";

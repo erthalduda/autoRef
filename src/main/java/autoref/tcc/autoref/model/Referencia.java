@@ -128,24 +128,12 @@ public class Referencia {
 
     }
 
-    public String formataData(Date data) {
+    public String formataData(LocalDate data) {
         String mesString = "";
         String dataString = "";
-        LocalDate dataLocalDate = data.toLocalDate();
-        int mes = dataLocalDate.getMonthValue();
-        int dia = dataLocalDate.getDayOfMonth() + 1;
-        int ano = dataLocalDate.getYear();
-
-        if (((mes == 11 || mes == 4 || mes == 6 || mes == 9) && dia == 31) || (mes == 2 && dia == 29)
-                || ((mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12)
-                        && dia == 32)) {
-            if (mes == 12) {
-                mes = 1;
-            } else {
-                mes++;
-            }
-            dia = 1;
-        }
+        int mes = data.getMonthValue();
+        int dia = data.getDayOfMonth();
+        int ano = data.getYear();
 
         switch (mes) {
             case 1:

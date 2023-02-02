@@ -1,6 +1,7 @@
 package autoref.tcc.autoref.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -12,13 +13,13 @@ public class ColecaoPublicacaoPeriodicaEletronico extends ColecaoPublicacaoPerio
 
 	private String url;
 
-	private Date dataAcesso;
+	private LocalDate dataAcesso;
 
 	public ColecaoPublicacaoPeriodicaEletronico(Integer id, String titulo, String formatoFinal, String citacaoIndireta,
 			String citacaoDireta, String tipo, List<Colecao> colecoes, Usuario usuario, String subtituloPublicacao,
 			String localPublicacao, String editora, String dataInicio, String dataFim, String issn, String doi,
 			String url,
-			Date dataAcesso) {
+			LocalDate dataAcesso) {
 		super(id, titulo, formatoFinal, citacaoIndireta, citacaoDireta, tipo, colecoes, usuario, subtituloPublicacao,
 				localPublicacao, editora, dataInicio, dataFim, issn);
 		this.doi = doi;
@@ -45,11 +46,11 @@ public class ColecaoPublicacaoPeriodicaEletronico extends ColecaoPublicacaoPerio
 		this.url = url;
 	}
 
-	public Date getDataAcesso() {
+	public LocalDate getDataAcesso() {
 		return this.dataAcesso;
 	}
 
-	public void setDataAcesso(Date dataAcesso) {
+	public void setDataAcesso(LocalDate dataAcesso) {
 		this.dataAcesso = dataAcesso;
 	}
 

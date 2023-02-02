@@ -1,6 +1,7 @@
 package autoref.tcc.autoref.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +12,12 @@ public class MonografiaOnline extends Monografia {
 
 	private String url;
 
-	private Date dataAcesso;
+	private LocalDate dataAcesso;
 
 	public MonografiaOnline(Integer id, String titulo, String formatoFinal, String citacaoIndireta,
 			String citacaoDireta, String tipo, List<Colecao> colecoes, Usuario usuario, ArrayList<String> autor,
 			String subtitulo, String anoPublicacao, String cidade, String anoEntrega, String edicao, String editora,
-			String url, Date dataAcesso) {
+			String url, LocalDate dataAcesso) {
 		super();
 		this.url = url;
 		this.dataAcesso = dataAcesso;
@@ -34,11 +35,11 @@ public class MonografiaOnline extends Monografia {
 		this.url = url;
 	}
 
-	public Date getDataAcesso() {
+	public LocalDate getDataAcesso() {
 		return this.dataAcesso;
 	}
 
-	public void setDataAcesso(Date dataAcesso) {
+	public void setDataAcesso(LocalDate dataAcesso) {
 		this.dataAcesso = dataAcesso;
 	}
 
