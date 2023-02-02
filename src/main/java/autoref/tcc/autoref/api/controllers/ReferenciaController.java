@@ -2,6 +2,7 @@ package autoref.tcc.autoref.api.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -81,10 +82,22 @@ public class ReferenciaController {
         }
     }
 
-    @GetMapping("/buscar/{idReferencia}")
-    public ResponseEntity<?> buscaReferenciaPorId(@PathVariable(name = "idReferencia") Integer idReferencia) {
+    @GetMapping("/buscar/geral/{pesquisa}")
+    public ResponseEntity<?> buscaReferenciaRepositorioGeral(@PathVariable(name = "pesquisa") String pesquisa) {
         try {
-            Referencia buscar = serviceReferencia.encontrarPorId(idReferencia);
+            List<String> buscar = serviceReferencia.buscarNoRepositorioGeral(pesquisa);
+            return new ResponseEntity<>(buscar, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    //corrigir erro
+    @GetMapping("buscar/privado/{idUsuario}/{pesquisa}")
+    public ResponseEntity<?> buscarReferenciaRepositorioPrivado(@PathVariable(name = "idUsuario") Integer idUsuario,
+            @PathVariable(name = "pesquisa") String pesquisa) {
+        try {
+            List<String> buscar = serviceReferencia.buscarNoRepositorioPrivado(pesquisa, idUsuario);
             return new ResponseEntity<>(buscar, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
