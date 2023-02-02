@@ -43,6 +43,7 @@ public class ReferenciaController {
         tipos.put("colecaoPublicacaoPeriodicaEletronico", ColecaoPublicacaoPeriodicaEletronico.class);
         tipos.put("fasciculo", Fasciculo.class);
         tipos.put("trabalhoAcademico", TrabalhoAcademico.class);
+        tipos.put("website", Website.class);
     }
 
     @PostMapping("/cadastrar")
@@ -92,7 +93,7 @@ public class ReferenciaController {
         }
     }
 
-    //corrigir erro
+    // corrigir erro
     @GetMapping("buscar/privado/{idUsuario}/{pesquisa}")
     public ResponseEntity<?> buscarReferenciaRepositorioPrivado(@PathVariable(name = "idUsuario") Integer idUsuario,
             @PathVariable(name = "pesquisa") String pesquisa) {

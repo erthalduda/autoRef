@@ -25,7 +25,7 @@ public class ReferenciaDTO {
     protected String tomo;
     protected String paginaInicial;
     protected String paginaFinal;
-    protected LocalDate  dataPublicacao;
+    protected LocalDate dataPublicacao;
     protected String subtituloPublicacao;
     protected String editora;
     protected String dataInicio;
@@ -54,6 +54,7 @@ public class ReferenciaDTO {
     protected String anoDefesa;
     protected String autorParte;
     protected String localDefesa;
+    protected String nomeSite;
 
     public ReferenciaDTO(String titulo, String formatoFinal, String citacaoIndireta, String citacaoDireta, String tipo,
             ArrayList<String> autor, String subtituloArtigo, String tituloPeriodico, String subtituloPeriodico,
@@ -63,7 +64,8 @@ public class ReferenciaDTO {
             String numeracaoFasciculo, String subtitulo, String anoPublicacao, String cidade, String curso,
             String anoEntrega, String quantidadePaginas, String url, LocalDate dataAcesso, String periodoConsultado,
             String tituloParte, String secao, int capitulo, int volume, String anoDeposito, String tipoTrabalho,
-            String grauFormacao, String vinculacaoAcademica, String anoDefesa, String autorParte, String localDefesa) {
+            String grauFormacao, String vinculacaoAcademica, String anoDefesa, String autorParte, String localDefesa,
+            String nomeSite) {
         this.titulo = titulo;
         this.formatoFinal = formatoFinal;
         this.citacaoIndireta = citacaoIndireta;
@@ -110,6 +112,7 @@ public class ReferenciaDTO {
         this.anoDefesa = anoDefesa;
         this.autorParte = autorParte;
         this.localDefesa = localDefesa;
+        this.nomeSite = nomeSite;
     }
 
     public ReferenciaDTO() {
@@ -482,6 +485,14 @@ public class ReferenciaDTO {
 
     public void setLocalDefesa(String localDefesa) {
         this.localDefesa = localDefesa;
+    }
+
+    public String getNomeSite() {
+        return this.nomeSite;
+    }
+
+    public void setNomeSite(String nomeSite) {
+        this.nomeSite = nomeSite;
     }
 
 }
