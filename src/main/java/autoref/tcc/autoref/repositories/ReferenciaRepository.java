@@ -14,7 +14,7 @@ public interface ReferenciaRepository extends JpaRepository<Referencia, Integer>
     @Query(value = "SELECT formato_final FROM referencia WHERE todos_os_dados LIKE CONCAT ('%', ?1, '%');", nativeQuery = true)
     List<String> buscaReferenciaGeral(String pesquisa);
 
-    @Query(value = "SELECT formato_final FROM referencia WHERE todos_os_dados LIKE CONCAT ('%', ?1, '%') AND fk_usuario = ?2;", nativeQuery = true)
+    @Query(value = "SELECT formato_final FROM referencia WHERE todos_os_dados LIKE CONCAT ('%', ?1, '%') AND fk_usuario=?2", nativeQuery = true)
     List<String> buscaReferenciaPrivado(String pesquisa, Integer idUsuario);
 
 }
