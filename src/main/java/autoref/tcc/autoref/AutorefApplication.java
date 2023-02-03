@@ -1,19 +1,27 @@
 package autoref.tcc.autoref;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import autoref.tcc.autoref.model.*;
+// import autoref.tcc.autoref.model.*;
 
 @SpringBootApplication
-public class AutorefApplication {
+@EnableWebMvc
+public class AutorefApplication implements WebMvcConfigurer {
+
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(AutorefApplication.class, args);
 
-		
 		// ParteMonografia m1 = new ParteMonografia();
 		// ArrayList<String> l1 = new ArrayList<>();
 		// l1.add("Mariazinha Gomes Ferreira");
@@ -24,7 +32,8 @@ public class AutorefApplication {
 		// m1.setAutorParte("Joãozinho da Silva Costa");
 		// m1.setAnoEntrega("2022");
 		// m1.setAnoPublicacao("2022");
-		// m1.setTitulo("Avaliação da microbiota bucal em pacientes sob uso crônico de penicilina e benzatina");
+		// m1.setTitulo("Avaliação da microbiota bucal em pacientes sob uso crônico de
+		// penicilina e benzatina");
 		// m1.setSubtitulo("Subtitulo foda");
 		// m1.setTituloParte("Parte Legal");
 		// m1.setCidade("Sococó da Ema");
