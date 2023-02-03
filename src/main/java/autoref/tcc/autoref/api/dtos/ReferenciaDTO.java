@@ -2,6 +2,8 @@ package autoref.tcc.autoref.api.dtos;
 
 import javax.persistence.Basic;
 
+import autoref.tcc.autoref.model.Usuario;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -55,6 +57,7 @@ public class ReferenciaDTO {
     protected String autorParte;
     protected String localDefesa;
     protected String nomeSite;
+    protected Usuario usuario;
 
     public ReferenciaDTO(String titulo, String formatoFinal, String citacaoIndireta, String citacaoDireta, String tipo,
             ArrayList<String> autor, String subtituloArtigo, String tituloPeriodico, String subtituloPeriodico,
@@ -65,7 +68,7 @@ public class ReferenciaDTO {
             String anoEntrega, String quantidadePaginas, String url, LocalDate dataAcesso, String periodoConsultado,
             String tituloParte, String secao, int capitulo, int volume, String anoDeposito, String tipoTrabalho,
             String grauFormacao, String vinculacaoAcademica, String anoDefesa, String autorParte, String localDefesa,
-            String nomeSite) {
+            String nomeSite, Usuario usuario) {
         this.titulo = titulo;
         this.formatoFinal = formatoFinal;
         this.citacaoIndireta = citacaoIndireta;
@@ -113,6 +116,7 @@ public class ReferenciaDTO {
         this.autorParte = autorParte;
         this.localDefesa = localDefesa;
         this.nomeSite = nomeSite;
+        this.usuario = usuario;
     }
 
     public ReferenciaDTO() {
@@ -495,4 +499,11 @@ public class ReferenciaDTO {
         this.nomeSite = nomeSite;
     }
 
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }
