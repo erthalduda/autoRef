@@ -135,8 +135,8 @@ public class TrabalhoAcademico extends Referencia {
             citacaoIndireta = "(" + sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoDeposito()) + ")";
             citacaoDireta = "("
                     + sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoDeposito()).concat(", p. X.)");
-            citacaoIndiretaAutorNoTexto = sobrenome + " et al (" + this.getAnoDeposito() + ")";
-            citacaoDiretaAutorNoTexto = sobrenome + " et al (" + this.getAnoDeposito() + ", p. X.)";
+            citacaoIndiretaAutorNoTexto = sobrenome + " et al. (" + this.getAnoDeposito() + ")";
+            citacaoDiretaAutorNoTexto = sobrenome + " et al. (" + this.getAnoDeposito() + ", p. X.)";
         } else {
             if (this.autor.size() == 3) {
                 String autor01 = autor.get(0);

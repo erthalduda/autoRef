@@ -121,7 +121,7 @@ public class Website extends Referencia {
             final String autorPrincipal = autor.get(0);
             sobrenome = autorPrincipal.substring(autorPrincipal.lastIndexOf(" ") + 1);
             citacaoIndireta = "(" + sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoPublicacao()) + ")";
-            citacaoIndiretaAutorNoTexto = sobrenome + " et al (" + this.getAnoPublicacao() + ")";
+            citacaoIndiretaAutorNoTexto = sobrenome + " et al. (" + this.getAnoPublicacao() + ")";
         } else {
             if (this.autor.size() == 3) {
                 String autor01 = autor.get(0);
