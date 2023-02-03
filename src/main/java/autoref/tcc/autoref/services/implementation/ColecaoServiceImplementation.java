@@ -31,9 +31,13 @@ public class ColecaoServiceImplementation implements ColecaoService {
 
     @Override
     @Transactional
-    public Colecao cadastraColecao(Colecao colecao) {
-        // usuario.setXp(100);
-        return repositorioColecao.save(colecao);
+    public Colecao cadastraColecao(Colecao colecaoCadastro) {
+        Optional<Colecao> colecao = repositorioColecao.findByNome(colecaoCadastro.getNome());
+        if (colecao.isPresent()) {
+            throw new ExcecoesAutoref("Já existe uma coleção com este nome.");
+        }
+        return colecao.get();
+
     }
 
     @Override

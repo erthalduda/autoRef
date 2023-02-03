@@ -14,4 +14,6 @@ public interface ColecaoRepository extends JpaRepository<Colecao, Integer> {
     List<Colecao> findByUsuario(Integer idUsuario);
 
     Colecao save(Optional<Colecao> c);
+
+    Optional<Colecao> findByNome(String nomeColecao);
 }

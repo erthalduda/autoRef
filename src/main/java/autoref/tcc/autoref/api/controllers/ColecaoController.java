@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 // import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 // import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -84,15 +84,14 @@ public class ColecaoController {
 
     // ver como fazer um post que receba só o id da referência, tem como fazer! só
     // não sei como ainda
-    // @PostMapping("/adicionar/{idReferencia}")
-    // public ResponseEntity<?> adicionaReferencia2(@PathVariable(name =
-    // "idReferencia") Integer idReferencia){
-    // try {
-    // } catch (Exception e) {
-    // // TODO: handle exception
-    // }
-    // return null;
-    // }
+    @PostMapping("/adicionar/{nomeColecao}/{idReferencia}")
+    public ResponseEntity<?> adicionaReferencia2(@PathVariable(name = "idReferencia") Integer idReferencia) {
+        try {
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return null;
+    }
 
     @GetMapping("/buscar/{idUsuario}")
     public ResponseEntity<?> colecoesPorUsuario(@PathVariable(name = "idUsuario") Integer idUsuario) {
