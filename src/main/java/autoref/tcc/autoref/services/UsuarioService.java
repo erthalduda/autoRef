@@ -1,6 +1,7 @@
 package autoref.tcc.autoref.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import autoref.tcc.autoref.model.Usuario;
 
@@ -17,5 +18,7 @@ public interface UsuarioService {
     void atualizaUsuario(Usuario usuario);
 
     List<Usuario> rankingUsuarios();
+
+    Optional<Usuario> buscaPorEmail(String email);
 
 }

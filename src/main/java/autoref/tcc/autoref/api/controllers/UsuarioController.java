@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import java.util.Optional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,14 +52,11 @@ public class UsuarioController {
     }
 
     // ainda não está pronta, temos que testar mais
-    @DeleteMapping("/excluir")
+    @PostMapping("/excluir")
     public ResponseEntity<?> excluiUsuario(@RequestBody UsuarioDTO usuarioDTO) {
-        // public ResponseEntity<?> excluiUsuario(@PathVariable(name = "idUsuario")
-        // Integer idUsuario) {
-        Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
+        Optional<Usuario> usuarioExcluir = serviceUsuario.buscaPorEmail(usuarioDTO.getEmail());
         try {
-            // serviceUsuario.excluiUsuario(idUsuario);
-            serviceUsuario.excluiUsuario(usuario.getIdUsuario());
+            serviceUsuario.excluiUsuario(usuarioExcluir.get().getIdUsuario());
             return new ResponseEntity<>("Exclusão realizada com sucesso.", HttpStatus.OK);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>("Erro ao excluir.", HttpStatus.BAD_REQUEST);

@@ -18,15 +18,16 @@ public class Usuario {
     private String email;
     private String senha;
     private int xp;
+    private boolean ativo;
 
-    @OneToMany(mappedBy = "usuario", cascade = { CascadeType.PERSIST, CascadeType.DETACH })
+    @OneToMany(mappedBy = "usuario", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
     private List<Colecao> colecoesUsuario;
 
-    @OneToMany(mappedBy = "usuario", cascade = { CascadeType.PERSIST, CascadeType.DETACH })
+    @OneToMany(mappedBy = "usuario", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
     private List<Referencia> referenciasUsuario;
 
     public Usuario(Integer idUsuario, String nome, String email, String senha, List<Colecao> colecoesUsuario,
-            List<Referencia> referenciasUsuario, int xp) {
+            List<Referencia> referenciasUsuario, int xp, boolean ativo) {
         this.idUsuario = idUsuario;
         this.nome = nome;
         this.email = email;
@@ -34,6 +35,7 @@ public class Usuario {
         this.colecoesUsuario = colecoesUsuario;
         this.referenciasUsuario = referenciasUsuario;
         this.xp = xp;
+        this.ativo = ativo;
     }
 
     public Usuario() {
@@ -98,6 +100,14 @@ public class Usuario {
 
     public void setXp(int xp) {
         this.xp = this.getXp() + xp;
+    }
+
+    public boolean isAtivo() {
+        return this.ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 
 }

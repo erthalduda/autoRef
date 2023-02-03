@@ -56,11 +56,19 @@ public class UsuarioServiceImplementation implements UsuarioService {
 
     @Override
     public void excluiUsuario(Integer id) {
-        repositorioUsuario.deleteById(id);
+        Optional<Usuario> u = repositorioUsuario.findById(id);
+        if (u.isPresent()) {
+            u.get().setAtivo(false);
+        }
     }
 
     @Override
     public List<Usuario> rankingUsuarios() {
         return repositorioUsuario.rankingUsuarios();
+    }
+
+    @Override
+    public Optional<Usuario> buscaPorEmail(String email) {
+        return repositorioUsuario.findByEmail(email);
     }
 }
