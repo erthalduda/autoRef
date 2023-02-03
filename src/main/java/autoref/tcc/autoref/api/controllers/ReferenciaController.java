@@ -93,12 +93,24 @@ public class ReferenciaController {
         }
     }
 
-    // corrigir erro
+    @GetMapping("buscar/privado/{idUsuario}")
+    public ResponseEntity<?> buscaTodasReferenciasRepositorioPrivado(
+            @PathVariable(name = "idUsuario") Integer idUsuario) {
+
+        try {
+            List<String> buscar = serviceReferencia.buscarTodasNoRepositorioPrivado(idUsuario);
+            return new ResponseEntity<>(buscar, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @GetMapping("buscar/privado/{idUsuario}/{pesquisa}")
-    public ResponseEntity<?> buscarReferenciaRepositorioPrivado(@PathVariable(name = "idUsuario") Integer idUsuario,
+    public ResponseEntity<?> buscarReferenciaEspecificaRepositorioPrivado(
+            @PathVariable(name = "idUsuario") Integer idUsuario,
             @PathVariable(name = "pesquisa") String pesquisa) {
         try {
-            List<String> buscar = serviceReferencia.buscarNoRepositorioPrivado(pesquisa, idUsuario);
+            List<String> buscar = serviceReferencia.buscarEspecificaNoRepositorioPrivado(pesquisa, idUsuario);
             return new ResponseEntity<>(buscar, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

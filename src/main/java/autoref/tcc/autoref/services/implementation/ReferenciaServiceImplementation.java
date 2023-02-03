@@ -66,7 +66,7 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     @Override
     @Transactional
     public List<String> buscarNoRepositorioGeral(String pesquisa) {
-        List<String> retornoBusca = repositorioReferencia.buscaReferenciaGeral(pesquisa);
+        List<String> retornoBusca = repositorioReferencia.buscaReferenciaRepositorioGeral(pesquisa);
         // usuario.setXp(100);
         // ver como implementar a adição de XP pro dono da referência utilizada
         return retornoBusca;
@@ -74,9 +74,15 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
 
     @Override
     @Transactional
-    public List<String> buscarNoRepositorioPrivado(String pesquisa, Integer idUsuario) {
-        List<String> retornoBusca = repositorioReferencia.buscaReferenciaPrivado(pesquisa, idUsuario);
+    public List<String> buscarEspecificaNoRepositorioPrivado(String pesquisa, Integer idUsuario) {
+        List<String> retornoBusca = repositorioReferencia.buscaReferenciaEspecificaPrivado(pesquisa, idUsuario);
         return retornoBusca;
     }
 
+    @Override
+    @Transactional
+    public List<String> buscarTodasNoRepositorioPrivado(Integer idUsuario){
+        List<String> retornoBusca = repositorioReferencia.buscaTodasReferenciasPrivado(idUsuario);
+        return retornoBusca;
+    }
 }
