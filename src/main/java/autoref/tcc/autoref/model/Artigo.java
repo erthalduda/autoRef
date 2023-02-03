@@ -220,8 +220,8 @@ public class Artigo extends Referencia {
 			citacaoIndireta = "(" + sobrenome.toUpperCase().concat(" et al, ").concat(anoString) + ")";
 			citacaoDireta = "("
 					+ sobrenome.toUpperCase().concat(" et al, ").concat(anoString).concat(", p. X.)");
-			citacaoIndiretaAutorNoTexto = sobrenome + " et al (" + anoString + ")";
-			citacaoDiretaAutorNoTexto = sobrenome + " et al (" + anoString + ", p. X.)";
+			citacaoIndiretaAutorNoTexto = sobrenome + " et al. (" + anoString + ")";
+			citacaoDiretaAutorNoTexto = sobrenome + " et al. (" + anoString + ", p. X.)";
 		} else {
 			if (this.autor.size() == 3) {
 				String autor01 = autor.get(0);

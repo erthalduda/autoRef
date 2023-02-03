@@ -162,8 +162,8 @@ public class Monografia extends Referencia {
 			citacaoIndireta = "(" + sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoPublicacao()) + ")";
 			citacaoDireta = "("
 					+ sobrenome.toUpperCase().concat(" et al, ").concat(this.getAnoPublicacao()).concat(", p. X.)");
-			citacaoIndiretaAutorNoTexto = sobrenome + " et al (" + this.getAnoPublicacao() + ")";
-			citacaoDiretaAutorNoTexto = sobrenome + " et al (" + this.getAnoPublicacao() + ", p. X.)";
+			citacaoIndiretaAutorNoTexto = sobrenome + " et al. (" + this.getAnoPublicacao() + ")";
+			citacaoDiretaAutorNoTexto = sobrenome + " et al. (" + this.getAnoPublicacao() + ", p. X.)";
 		} else {
 			if (this.autor.size() == 3) {
 				String autor01 = autor.get(0);
