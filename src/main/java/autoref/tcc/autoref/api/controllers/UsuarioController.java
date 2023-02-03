@@ -1,12 +1,13 @@
 package autoref.tcc.autoref.api.controllers;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.ArrayList;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import java.util.Optional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -67,14 +68,13 @@ public class UsuarioController {
     public ResponseEntity<?> rankingUsuarios() {
         try {
             List<Usuario> ranking = serviceUsuario.rankingUsuarios();
+            List<String> rankingFinal = new ArrayList<>();
             for (Usuario usuario : ranking) {
-                int posicaoRanking = ranking.indexOf(usuario);
-                posicaoRanking++;
+                int posicaoRanking = ranking.indexOf(usuario) + 1;
                 String usuarioRanking = "#" + posicaoRanking + " " + usuario.getNome() + " " + usuario.getXp();
-                System.out.println(usuarioRanking);
+                rankingFinal.add(usuarioRanking);
             }
-            // verificar como retornar o usuário sem printar
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(rankingFinal, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
