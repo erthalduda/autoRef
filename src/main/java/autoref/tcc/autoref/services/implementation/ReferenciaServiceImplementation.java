@@ -26,9 +26,10 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     @Override
     @Transactional
     public Referencia cadastraReferencia(Referencia referencia) {
-  
-        // int quantidadeReferencias = repositorioUsuario.referenciasPorUsuario(usuario.getIdUsuario());
-        
+
+        // int quantidadeReferencias =
+        // repositorioUsuario.referenciasPorUsuario(usuario.getIdUsuario());
+
         // if(quantidadeReferencias==10){
         // usuario.setXp(500);
         // }
@@ -36,8 +37,8 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
         // if(quantidadeReferencias==20){
         // usuario.setXp(1500);
         // }
-        
-        // usuario.setXp(100); 
+
+        // usuario.setXp(100);
         return repositorioReferencia.save(referencia);
     }
 
@@ -58,7 +59,7 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     @Override
     public Referencia encontrarPorId(Integer id) {
         Optional<Referencia> referenciaPorId = repositorioReferencia.findById(id);
-        if(!referenciaPorId.isPresent()){
+        if (!referenciaPorId.isPresent()) {
             throw new ExcecoesAutoref("Referência não encontrada.");
         }
         return referenciaPorId.get();
@@ -69,7 +70,7 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     public List<String> buscarNoRepositorioGeral(String pesquisa) {
         List<String> retornoBusca = repositorioReferencia.buscaReferenciaGeral(pesquisa);
         // usuario.setXp(100);
-        //ver como implementar a adição de XP pro dono da referência utilizada
+        // ver como implementar a adição de XP pro dono da referência utilizada
         return retornoBusca;
     }
 

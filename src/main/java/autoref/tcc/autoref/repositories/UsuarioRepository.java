@@ -18,7 +18,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     int referenciasPorUsuario(Integer idUsuario);
 
     // talvez seja útil no futuro, talvez não
-    // @Query(value = "SELECT COUNT(fk_usuario) FROM colecao WHERE fk_usuario = ?1", nativeQuery = true)
+    // @Query(value = "SELECT COUNT(fk_usuario) FROM colecao WHERE fk_usuario = ?1",
+    // nativeQuery = true)
     // int colecoesPorUsuario(Integer idUsuario);
 
     @Query(value = "SELECT * FROM usuario ORDER BY xp DESC", nativeQuery = true)

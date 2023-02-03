@@ -53,8 +53,9 @@ public class UsuarioController {
 
     // ainda não está pronta, temos que testar mais
     @DeleteMapping("/excluir")
-    public ResponseEntity<?> excluiUsuario(@RequestBody UsuarioDTO usuarioDTO){
-    // public ResponseEntity<?> excluiUsuario(@PathVariable(name = "idUsuario") Integer idUsuario) {
+    public ResponseEntity<?> excluiUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+        // public ResponseEntity<?> excluiUsuario(@PathVariable(name = "idUsuario")
+        // Integer idUsuario) {
         Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
         try {
             // serviceUsuario.excluiUsuario(idUsuario);
@@ -75,7 +76,7 @@ public class UsuarioController {
                 String usuarioRanking = "#" + posicaoRanking + " " + usuario.getNome() + " " + usuario.getXp();
                 System.out.println(usuarioRanking);
             }
-            //verificar como retornar o usuário sem printar
+            // verificar como retornar o usuário sem printar
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

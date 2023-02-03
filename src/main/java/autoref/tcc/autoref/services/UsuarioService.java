@@ -1,6 +1,5 @@
 package autoref.tcc.autoref.services;
 
-
 import java.util.List;
 
 import autoref.tcc.autoref.model.Usuario;

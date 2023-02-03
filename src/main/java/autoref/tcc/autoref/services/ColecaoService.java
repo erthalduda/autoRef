@@ -11,7 +11,7 @@ public interface ColecaoService {
     void atualizaColecao(Colecao colecao);
 
     void deletaColecao(Colecao colecao);
-    
+
     Colecao adicionaReferencia(Colecao colecao, Referencia referencia);
 
     void deletaReferencia(Colecao colecao, Referencia referencia);

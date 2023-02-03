@@ -26,11 +26,11 @@ public class UsuarioServiceImplementation implements UsuarioService {
         if (!usuario.isPresent()) {
             throw new ExcecoesAutoref("E-mail inválido.");
         }
-    
+
         if (!usuario.get().getSenha().equals(senha)) {
             throw new ExcecoesAutoref("Sua senha está incorreta.");
         }
-      
+
         return usuario.get();
     }
 
@@ -60,7 +60,7 @@ public class UsuarioServiceImplementation implements UsuarioService {
     }
 
     @Override
-    public List<Usuario> rankingUsuarios(){
+    public List<Usuario> rankingUsuarios() {
         return repositorioUsuario.rankingUsuarios();
     }
 }

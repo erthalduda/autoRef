@@ -52,29 +52,29 @@ public class ColecaoServiceImplementation implements ColecaoService {
 
     @Override
     @Transactional
-    //talvez não precise passar o usuário como parâmetro, a ser estudado
+    // talvez não precise passar o usuário como parâmetro, a ser estudado
     public Colecao adicionaReferencia(Colecao colecao, Referencia referencia) {
         Optional<Colecao> colecaoParaAdicionarReferencias = repositorioColecao.findById(colecao.getIdColecao());
         if (colecaoParaAdicionarReferencias.isEmpty()) {
             throw new ExcecoesAutoref("Coleção inválida.");
         }
-    
+
         // if(colecao.getReferencias().size()==10){
-        //     usuario.setXp(500);
+        // usuario.setXp(500);
         // }
         // if(colecao.getReferencias().size()==20){
-        //     usuario.setXp(1500);
+        // usuario.setXp(1500);
         // }
-        //     usuario.setXp(50); 
+        // usuario.setXp(50);
 
         // if(referencia.getUsuario().getIdUsuario()!=usuario.getIdUsuario()){
-        //     Optional<Usuario> u = repositorioUsuario.findById(usuario.getIdUsuario());
-        //     u.get().setXp(200);
+        // Optional<Usuario> u = repositorioUsuario.findById(usuario.getIdUsuario());
+        // u.get().setXp(200);
         // }
-        
+
         colecaoParaAdicionarReferencias.get().adicionaReferencia(referencia);
         return repositorioColecao.save(colecaoParaAdicionarReferencias);
-        }
+    }
 
     @Override
     @Transactional
@@ -88,6 +88,4 @@ public class ColecaoServiceImplementation implements ColecaoService {
         return repositorioColecao.findByUsuario(idUsuario);
     }
 
-
-    
 }

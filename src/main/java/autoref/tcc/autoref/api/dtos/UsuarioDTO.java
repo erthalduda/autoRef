@@ -6,7 +6,7 @@ public class UsuarioDTO {
     private String nome;
     private String senha;
 
-    public UsuarioDTO(){
+    public UsuarioDTO() {
 
     }
 
@@ -39,5 +39,5 @@ public class UsuarioDTO {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
 }

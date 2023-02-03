@@ -19,6 +19,4 @@ public class ColecaoDTO {
         this.nome = nome;
     };
 
-
-    
 }
