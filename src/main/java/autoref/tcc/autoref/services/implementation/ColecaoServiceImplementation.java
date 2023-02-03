@@ -10,11 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.Colecao;
 import autoref.tcc.autoref.model.Referencia;
-// import autoref.tcc.autoref.model.Usuario;
-// import autoref.tcc.autoref.model.Usuario;
 import autoref.tcc.autoref.repositories.ColecaoRepository;
-// import autoref.tcc.autoref.repositories.UsuarioRepository;
-// import autoref.tcc.autoref.repositories.UsuarioRepository;
 import autoref.tcc.autoref.services.ColecaoService;
 
 @Service
