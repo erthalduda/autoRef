@@ -3,7 +3,7 @@ package autoref.tcc.autoref.services;
 import java.util.List;
 import java.util.Optional;
 
-import autoref.tcc.autoref.model.Usuario;
+import autoref.tcc.autoref.model.*;
 
 public interface UsuarioService {
 
@@ -20,5 +20,7 @@ public interface UsuarioService {
     List<Usuario> rankingUsuarios();
 
     Optional<Usuario> buscaPorEmail(String email);
+
+    List<Referencia> buscarPorFkUsuario(Integer idUsuario);
 
 }

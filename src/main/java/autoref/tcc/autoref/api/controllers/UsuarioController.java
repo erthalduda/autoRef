@@ -16,18 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import autoref.tcc.autoref.api.dtos.UsuarioDTO;
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
-import autoref.tcc.autoref.model.Usuario;
+import autoref.tcc.autoref.model.*;
 import autoref.tcc.autoref.services.UsuarioService;
+import autoref.tcc.autoref.services.ReferenciaService;
 
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
 
     private UsuarioService serviceUsuario;
+    private ReferenciaService serviceReferencia;
     ModelMapper mapper = new ModelMapper();
 
-    public UsuarioController(UsuarioService serviceUsuario) {
+    public UsuarioController(UsuarioService serviceUsuario, ReferenciaService serviceReferencia) {
         this.serviceUsuario = serviceUsuario;
+        this.serviceReferencia = serviceReferencia;
     }
 
     @PostMapping("/cadastro")
@@ -52,11 +55,16 @@ public class UsuarioController {
         }
     }
 
-    // ainda não está pronta, temos que testar mais
-    @PostMapping("/excluir")
+    @DeleteMapping("/excluir")
     public ResponseEntity<?> excluiUsuario(@RequestBody UsuarioDTO usuarioDTO) {
         Optional<Usuario> usuarioExcluir = serviceUsuario.buscaPorEmail(usuarioDTO.getEmail());
+        Integer idUsuario = usuarioExcluir.get().getIdUsuario();
         try {
+            List<Referencia> setIdNull = serviceUsuario.buscarPorFkUsuario(idUsuario);
+            for (Referencia referenciaNaLista : setIdNull) {
+                referenciaNaLista.setUsuario(null);
+                serviceReferencia.atualizaReferencia(referenciaNaLista);
+            }
             serviceUsuario.excluiUsuario(usuarioExcluir.get().getIdUsuario());
             return new ResponseEntity<>("Exclusão realizada com sucesso.", HttpStatus.OK);
         } catch (ExcecoesAutoref excecao) {

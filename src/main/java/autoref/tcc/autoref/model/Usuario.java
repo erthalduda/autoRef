@@ -23,7 +23,7 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
     private List<Colecao> colecoesUsuario;
 
-    @OneToMany(mappedBy = "usuario", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+    @OneToMany(mappedBy = "usuario", cascade = { CascadeType.PERSIST })
     private List<Referencia> referenciasUsuario;
 
     public Usuario(Integer idUsuario, String nome, String email, String senha, List<Colecao> colecoesUsuario,

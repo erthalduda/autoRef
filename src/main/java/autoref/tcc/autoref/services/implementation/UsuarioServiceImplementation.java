@@ -7,7 +7,8 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
-import autoref.tcc.autoref.model.Usuario;
+import org.springframework.transaction.annotation.Transactional;
+import autoref.tcc.autoref.model.*;
 import autoref.tcc.autoref.repositories.UsuarioRepository;
 import autoref.tcc.autoref.services.UsuarioService;
 
@@ -21,6 +22,7 @@ public class UsuarioServiceImplementation implements UsuarioService {
     }
 
     @Override
+    @Transactional
     public Usuario autenticaUsuario(String email, String senha) {
         Optional<Usuario> usuario = repositorioUsuario.findByEmail(email);
         if (!usuario.isPresent()) {
@@ -35,6 +37,7 @@ public class UsuarioServiceImplementation implements UsuarioService {
     }
 
     @Override
+    @Transactional
     public void validaEmail(String email) {
         boolean existeUsuarioComEsseEmail = repositorioUsuario.existsByEmail(email);
         if (existeUsuarioComEsseEmail) {
@@ -43,23 +46,29 @@ public class UsuarioServiceImplementation implements UsuarioService {
     }
 
     @Override
+    @Transactional
     public Usuario cadastraUsuario(Usuario usuario) {
         validaEmail(usuario.getEmail());
         return repositorioUsuario.save(usuario);
     }
 
     @Override
+    @Transactional
     public void atualizaUsuario(Usuario usuario) {
         Objects.requireNonNull(usuario.getIdUsuario());
         repositorioUsuario.save(usuario);
     }
 
     @Override
+    @Transactional
     public void excluiUsuario(Integer id) {
-        Optional<Usuario> u = repositorioUsuario.findById(id);
-        if (u.isPresent()) {
-            u.get().setAtivo(false);
-        }
+        // Optional<Usuario> u = repositorioUsuario.findById(id);
+        // if (u.isPresent()) {
+        //     u.get().setAtivo(false);
+        //     u.get().setReferenciasUsuario(null);
+        //     u.get().setColecoesUsuario(null);
+        // }
+        repositorioUsuario.deleteByIdUsuario(id);
     }
 
     @Override
@@ -70,5 +79,14 @@ public class UsuarioServiceImplementation implements UsuarioService {
     @Override
     public Optional<Usuario> buscaPorEmail(String email) {
         return repositorioUsuario.findByEmail(email);
+    }
+
+    @Override
+    @Transactional
+    public List<Referencia> buscarPorFkUsuario(Integer idUsuario) {
+        // List<Referencia> retornoBusca =
+        // repositorioUsuario.buscaTodasFkUsuario(idUsuario);
+        List<Referencia> retornoBusca = repositorioUsuario.buscaTodasFkUsuario(idUsuario);
+        return retornoBusca;
     }
 }
