@@ -10,7 +10,7 @@ public interface ColecaoService {
 
     void atualizaColecao(Colecao colecao);
 
-    void deletaColecao(Colecao colecao);
+    void deletaColecao(Integer id);
 
     Colecao adicionaReferencia(Colecao colecao, Referencia referencia);
 

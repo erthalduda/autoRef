@@ -53,12 +53,11 @@ public class ColecaoController {
         }
     }
 
-    @DeleteMapping("/excluir")
-    public ResponseEntity<?> excluiColecao(@RequestBody ColecaoDTO colecaoDTO) {
-        Colecao colecao = mapper.map(colecaoDTO, Colecao.class);
+    @DeleteMapping("/excluir/{idColecao}")
+    public ResponseEntity<?> excluiColecao(@PathVariable(name = "idColecao") Integer idColecao) {
         try {
-            serviceColecao.deletaColecao(colecao);
-            return new ResponseEntity<>(HttpStatus.OK);
+            serviceColecao.deletaColecao(idColecao);
+            return new ResponseEntity<>("Coleção excluída com sucesso.", HttpStatus.OK);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
         }

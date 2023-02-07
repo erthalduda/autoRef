@@ -38,9 +38,9 @@ public class ColecaoServiceImplementation implements ColecaoService {
 
     @Override
     @Transactional
-    public void deletaColecao(Colecao colecao) {
-        Objects.requireNonNull(colecao.getIdColecao());
-        repositorioColecao.delete(colecao);
+    public void deletaColecao(Integer id) {
+        Objects.requireNonNull(id);
+        repositorioColecao.deleteById(id);
     }
 
     @Override
