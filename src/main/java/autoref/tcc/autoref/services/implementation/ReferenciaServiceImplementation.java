@@ -49,11 +49,12 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
 
     @Override
     @Transactional
-    public void deletaReferencia(Referencia referencia) {
-        Objects.requireNonNull(referencia.getId());
-        repositorioReferencia.delete(referencia);
+    public void deletaReferencia(Integer id) {
+        Objects.requireNonNull(id);
+        repositorioReferencia.deleteById(id);
     }
 
+    // provavelmente não usaremos essa
     @Override
     public Referencia encontrarPorId(Integer id) {
         Optional<Referencia> referenciaPorId = repositorioReferencia.findById(id);
@@ -81,8 +82,9 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
 
     @Override
     @Transactional
-    public List<String> buscarTodasNoRepositorioPrivado(Integer idUsuario){
+    public List<String> buscarTodasNoRepositorioPrivado(Integer idUsuario) {
         List<String> retornoBusca = repositorioReferencia.buscaTodasReferenciasPrivado(idUsuario);
         return retornoBusca;
     }
+
 }

@@ -48,10 +48,7 @@ public class ReferenciaController {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<?> cadastraReferencia(@RequestBody ReferenciaDTO referenciaDTO) {
-
         Referencia referencia = mapper.map(referenciaDTO, tipos.get(referenciaDTO.getTipo()));
-
-        // Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
         try {
             referencia.formata();
             referencia.formataCitacoes();
@@ -64,21 +61,25 @@ public class ReferenciaController {
     }
 
     @PutMapping("/editar")
-    public ResponseEntity<?> atualizaReferencia(@RequestBody Referencia referenciaJSON) {
+    public ResponseEntity<?> atualizaReferencia(@RequestBody ReferenciaDTO referenciaDTO) {
+        Referencia referencia = mapper.map(referenciaDTO, tipos.get(referenciaDTO.getTipo()));
         try {
-            serviceReferencia.atualizaReferencia(referenciaJSON);
+            serviceReferencia.atualizaReferencia(referencia);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
-    @DeleteMapping("/excluir")
-    public ResponseEntity<?> deletaReferencia(@RequestBody Referencia referenciaJSON) {
+    @DeleteMapping("/excluir/{id}")
+    public ResponseEntity<?> deletaReferencia(@PathVariable(name = "id") Integer id) {
         try {
-            serviceReferencia.deletaReferencia(referenciaJSON);
-            return new ResponseEntity<>(HttpStatus.OK);
+            serviceReferencia.deletaReferencia(id);
+            return new ResponseEntity<>("Referência excluída com sucesso", HttpStatus.OK);
         } catch (Exception e) {
+            
+            e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }

@@ -10,7 +10,7 @@ public interface ReferenciaService {
 
     Referencia atualizaReferencia(Referencia referencia);
 
-    void deletaReferencia(Referencia referencia);
+    void deletaReferencia(Integer id);
 
     Referencia encontrarPorId(Integer id);
 
@@ -19,4 +19,5 @@ public interface ReferenciaService {
     List<String> buscarEspecificaNoRepositorioPrivado(String pesquisa, Integer idUsuario);
 
     List<String> buscarTodasNoRepositorioPrivado(Integer idUsuario);
+
 }
