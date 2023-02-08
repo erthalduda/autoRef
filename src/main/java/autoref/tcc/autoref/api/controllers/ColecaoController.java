@@ -63,7 +63,7 @@ public class ColecaoController {
         }
     }
 
-    @PostMapping("/adicionar")
+    @PutMapping("/adicionar")
     public ResponseEntity<?> adicionaReferencia(@RequestBody ColecaoDTO colecaoDTO, ReferenciaDTO referenciaDTO) {
         Colecao colecao = mapper.map(colecaoDTO, Colecao.class);
         Referencia referencia = mapper.map(referenciaDTO, Referencia.class);
@@ -78,7 +78,7 @@ public class ColecaoController {
 
     // ver como fazer um post que receba só o id da referência, tem como fazer! só
     // não sei como ainda
-    @PostMapping("/adicionar/{nomeColecao}/{idReferencia}")
+    @PutMapping("/adicionar/{nomeColecao}/{idReferencia}")
     public ResponseEntity<?> adicionaReferencia2(@PathVariable(name = "idReferencia") Integer idReferencia) {
         try {
         } catch (Exception e) {
