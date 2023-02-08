@@ -60,6 +60,7 @@ public class ReferenciaController {
         }
     }
 
+    //será necessário implementar esse método? acho que não...
     @PutMapping("/editar")
     public ResponseEntity<?> atualizaReferencia(@RequestBody ReferenciaDTO referenciaDTO) {
         Referencia referencia = mapper.map(referenciaDTO, tipos.get(referenciaDTO.getTipo()));
@@ -67,7 +68,6 @@ public class ReferenciaController {
             serviceReferencia.atualizaReferencia(referencia);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
@@ -78,8 +78,6 @@ public class ReferenciaController {
             serviceReferencia.deletaReferencia(id);
             return new ResponseEntity<>("Referência excluída com sucesso", HttpStatus.OK);
         } catch (Exception e) {
-            
-            e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
