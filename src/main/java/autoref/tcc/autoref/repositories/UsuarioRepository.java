@@ -19,20 +19,12 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Query(value = "SELECT COUNT(fk_usuario) FROM referencia WHERE fk_usuario = ?1", nativeQuery = true)
     int referenciasPorUsuario(Integer idUsuario);
 
-    // talvez seja útil no futuro, talvez não
-    // @Query(value = "SELECT COUNT(fk_usuario) FROM colecao WHERE fk_usuario = ?1",
-    // nativeQuery = true)
-    // int colecoesPorUsuario(Integer idUsuario);
+    @Query(value = "SELECT COUNT(fk_usuario) FROM colecao WHERE fk_usuario = ?1", nativeQuery = true)
+    int colecoesPorUsuario(Integer idUsuario);
 
     @Query(value = "SELECT * FROM usuario ORDER BY xp DESC", nativeQuery = true)
     List<Usuario> rankingUsuarios();
 
-    // @Query(value = "SELECT * FROM referencia WHERE fk_usuario = ?1", nativeQuery = true)
     @Query("SELECT r FROM Referencia r WHERE r.usuario.idUsuario = :idUsuario")
     List<Referencia> buscaTodasFkUsuario(Integer idUsuario);
-
-    // @Query(value = "SELECT * FROM referencia WHERE fk_usuario = ?1", nativeQuery
-    // // = true)
-    // @Query("SELECT r FROM Referencia r WHERE r.usuario.idUsuario = 1")
-    // List<Referencia> buscaTodasFkUsuario2();
 }
