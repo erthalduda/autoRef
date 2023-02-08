@@ -62,12 +62,6 @@ public class UsuarioServiceImplementation implements UsuarioService {
     @Override
     @Transactional
     public void excluiUsuario(Integer id) {
-        // Optional<Usuario> u = repositorioUsuario.findById(id);
-        // if (u.isPresent()) {
-        //     u.get().setAtivo(false);
-        //     u.get().setReferenciasUsuario(null);
-        //     u.get().setColecoesUsuario(null);
-        // }
         repositorioUsuario.deleteByIdUsuario(id);
     }
 
@@ -84,8 +78,6 @@ public class UsuarioServiceImplementation implements UsuarioService {
     @Override
     @Transactional
     public List<Referencia> buscarPorFkUsuario(Integer idUsuario) {
-        // List<Referencia> retornoBusca =
-        // repositorioUsuario.buscaTodasFkUsuario(idUsuario);
         List<Referencia> retornoBusca = repositorioUsuario.buscaTodasFkUsuario(idUsuario);
         return retornoBusca;
     }
