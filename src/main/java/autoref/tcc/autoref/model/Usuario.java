@@ -19,6 +19,14 @@ public class Usuario {
     private String senha;
     private int xp;
     private boolean ativo;
+    private boolean possuiAcademicoNovato;
+    private boolean possuiAcademicoEsforcado;
+    private boolean possuiAcademicoMestre;
+    private boolean possuiAcademicoAdmirado;
+    private boolean possuiPesquisadorIniciante;
+    private boolean possuiPesquisadorAtarefado;
+    private boolean possuiPesquisadorExpert;
+    private boolean possuiPesquisadorSabio;
 
     @OneToMany(mappedBy = "usuario", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
     private List<Colecao> colecoesUsuario;
@@ -110,4 +118,68 @@ public class Usuario {
         this.ativo = ativo;
     }
 
+    
+    public boolean isPossuiAcademicoNovato() {
+        return this.possuiAcademicoNovato;
+    }
+
+    public void setPossuiAcademicoNovato(boolean possuiAcademicoNovato) {
+        this.possuiAcademicoNovato = possuiAcademicoNovato;
+    }
+
+    public boolean isPossuiAcademicoEsforcado() {
+        return this.possuiAcademicoEsforcado;
+    }
+
+    public void setPossuiAcademicoEsforcado(boolean possuiAcademicoEsforcado) {
+        this.possuiAcademicoEsforcado = possuiAcademicoEsforcado;
+    }
+
+    public boolean isPossuiAcademicoMestre() {
+        return this.possuiAcademicoMestre;
+    }
+
+    public void setPossuiAcademicoMestre(boolean possuiAcademicoMestre) {
+        this.possuiAcademicoMestre = possuiAcademicoMestre;
+    }
+
+    public boolean isPossuiAcademicoAdmirado() {
+        return this.possuiAcademicoAdmirado;
+    }
+
+    public void setPossuiAcademicoAdmirado(boolean possuiAcademicoAdmirado) {
+        this.possuiAcademicoAdmirado = possuiAcademicoAdmirado;
+    }
+
+    public boolean isPossuiPesquisadorIniciante() {
+        return this.possuiPesquisadorIniciante;
+    }
+
+    public void setPossuiPesquisadorIniciante(boolean possuiPesquisadorIniciante) {
+        this.possuiPesquisadorIniciante = possuiPesquisadorIniciante;
+    }
+
+    public boolean isPossuiPesquisadorAtarefado() {
+        return this.possuiPesquisadorAtarefado;
+    }
+
+    public void setPossuiPesquisadorAtarefado(boolean possuiPesquisadorAtarefado) {
+        this.possuiPesquisadorAtarefado = possuiPesquisadorAtarefado;
+    }
+
+    public boolean isPossuiPesquisadorExpert() {
+        return this.possuiPesquisadorExpert;
+    }
+
+    public void setPossuiPesquisadorExpert(boolean possuiPesquisadorExpert) {
+        this.possuiPesquisadorExpert = possuiPesquisadorExpert;
+    }
+
+    public boolean isPossuiPesquisadorSabio() {
+        return this.possuiPesquisadorSabio;
+    }
+
+    public void setPossuiPesquisadorSabio(boolean possuiPesquisadorSabio) {
+        this.possuiPesquisadorSabio = possuiPesquisadorSabio;
+    }
 }

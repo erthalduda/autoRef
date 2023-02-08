@@ -8,18 +8,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
-import autoref.tcc.autoref.model.Colecao;
-import autoref.tcc.autoref.model.Referencia;
-import autoref.tcc.autoref.repositories.ColecaoRepository;
+import autoref.tcc.autoref.model.*;
+import autoref.tcc.autoref.repositories.*;
 import autoref.tcc.autoref.services.ColecaoService;
 
 @Service
 public class ColecaoServiceImplementation implements ColecaoService {
 
     private ColecaoRepository repositorioColecao;
-    // private UsuarioRepository repositorioUsuario;
-
-    // private UsuarioRepository repositoryUsuario;
+    private UsuarioRepository repositorioUsuario;
 
     public ColecaoServiceImplementation(ColecaoRepository repositorioColecao) {
         this.repositorioColecao = repositorioColecao;
@@ -32,8 +29,28 @@ public class ColecaoServiceImplementation implements ColecaoService {
         if (colecao.isPresent()) {
             throw new ExcecoesAutoref("Já existe uma coleção com este nome.");
         }
-        return colecao.get();
 
+        Optional<Usuario> usuario = repositorioUsuario.findById(colecao.get().getUsuario().getIdUsuario());
+        int colecoesUsuario = repositorioUsuario.colecoesPorUsuario(usuario.get().getIdUsuario());
+
+        if (colecoesUsuario >= 1 && colecoesUsuario < 10) {
+            usuario.get().setPossuiPesquisadorIniciante(true);
+        }
+
+        if (colecoesUsuario >= 11 && colecoesUsuario < 20) {
+            usuario.get().setPossuiPesquisadorAtarefado(true);
+        }
+
+        if (colecoesUsuario >= 21 && colecoesUsuario < 25) {
+            usuario.get().setPossuiPesquisadorExpert(true);
+        }
+
+        if (colecoesUsuario >= 26) {
+            usuario.get().setPossuiPesquisadorSabio(true);
+        }
+
+        usuario.get().setXp(100);
+        return colecao.get();
     }
 
     @Override
@@ -59,18 +76,22 @@ public class ColecaoServiceImplementation implements ColecaoService {
             throw new ExcecoesAutoref("Coleção inválida.");
         }
 
-        // if(colecao.getReferencias().size()==10){
-        // usuario.setXp(500);
-        // }
-        // if(colecao.getReferencias().size()==20){
-        // usuario.setXp(1500);
-        // }
-        // usuario.setXp(50);
+        Optional<Usuario> usuario = repositorioUsuario
+                .findById(colecaoParaAdicionarReferencias.get().getUsuario().getIdUsuario());
 
-        // if(referencia.getUsuario().getIdUsuario()!=usuario.getIdUsuario()){
-        // Optional<Usuario> u = repositorioUsuario.findById(usuario.getIdUsuario());
-        // u.get().setXp(200);
-        // }
+        if (colecao.getReferencias().size() == 10) {
+            usuario.get().setXp(500);
+        }
+        if (colecao.getReferencias().size() == 20) {
+            usuario.get().setXp(1500);
+        }
+
+        usuario.get().setXp(50);
+
+        if (referencia.getUsuario().getIdUsuario() != usuario.get().getIdUsuario()) {
+            Optional<Usuario> u = repositorioUsuario.findById(referencia.getUsuario().getIdUsuario());
+            u.get().setXp(200);
+        }
 
         colecaoParaAdicionarReferencias.get().adicionaReferencia(referencia);
         return repositorioColecao.save(colecaoParaAdicionarReferencias);

@@ -7,15 +7,15 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
-import autoref.tcc.autoref.model.Referencia;
-import autoref.tcc.autoref.repositories.ReferenciaRepository;
+import autoref.tcc.autoref.model.*;
+import autoref.tcc.autoref.repositories.*;
 import autoref.tcc.autoref.services.ReferenciaService;
 
 @Service
 public class ReferenciaServiceImplementation implements ReferenciaService {
 
     private ReferenciaRepository repositorioReferencia;
-    // private UsuarioRepository repositorioUsuario;
+    private UsuarioRepository repositorioUsuario;
 
     public ReferenciaServiceImplementation(ReferenciaRepository repositorioReferencia) {
         this.repositorioReferencia = repositorioReferencia;
@@ -25,18 +25,23 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     @Transactional
     public Referencia cadastraReferencia(Referencia referencia) {
 
-        // int quantidadeReferencias =
-        // repositorioUsuario.referenciasPorUsuario(usuario.getIdUsuario());
+        Optional<Usuario> usuario = repositorioUsuario.findById(referencia.getUsuario().getIdUsuario());
+        int quantidadeReferencias = repositorioUsuario.referenciasPorUsuario(usuario.get().getIdUsuario());
 
-        // if(quantidadeReferencias==10){
-        // usuario.setXp(500);
-        // }
+        if (quantidadeReferencias == 20) {
+            usuario.get().setXp(1500);
+            usuario.get().setPossuiAcademicoNovato(true);
+        }
 
-        // if(quantidadeReferencias==20){
-        // usuario.setXp(1500);
-        // }
+        if (quantidadeReferencias == 50) {
+            usuario.get().setPossuiAcademicoEsforcado(true);
+        }
 
-        // usuario.setXp(100);
+        if (quantidadeReferencias > 100) {
+            usuario.get().setPossuiAcademicoMestre(true);
+        }
+
+        usuario.get().setXp(100);
         return repositorioReferencia.save(referencia);
     }
 
