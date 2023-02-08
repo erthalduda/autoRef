@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -83,6 +84,21 @@ public class UsuarioController {
                 rankingFinal.add(usuarioRanking);
             }
             return new ResponseEntity<>(rankingFinal, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping("/atualizar")
+    public ResponseEntity<?> atualizaUsuario(UsuarioDTO usuarioDTO) {
+        Optional<Usuario> usuarioNovo = serviceUsuario.buscaPorEmail(usuarioDTO.getEmail());
+        Usuario usuarioAtualizar = new Usuario();
+        if (usuarioNovo.isPresent()) {
+            usuarioAtualizar = usuarioNovo.get();
+        }
+        try {
+            serviceUsuario.atualizaUsuario(usuarioAtualizar);
+            return new ResponseEntity<>(usuarioAtualizar, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
