@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -89,16 +90,25 @@ public class UsuarioController {
         }
     }
 
-    @PutMapping("/atualizar")
-    public ResponseEntity<?> atualizaUsuario(UsuarioDTO usuarioDTO) {
-        Optional<Usuario> usuarioNovo = serviceUsuario.buscaPorEmail(usuarioDTO.getEmail());
+    @PutMapping("/atualizar/{idUsuario}")
+    public ResponseEntity<?> atualizaUsuario(@PathVariable(name = "idUsuario") Integer idUsuario,
+            @RequestBody UsuarioDTO usuarioDTO) {
+        Optional<Usuario> usuarioNovo = serviceUsuario.buscaPorId(idUsuario);
         Usuario usuarioAtualizar = new Usuario();
+
         if (usuarioNovo.isPresent()) {
             usuarioAtualizar = usuarioNovo.get();
+
+            usuarioAtualizar.setNome(usuarioDTO.getNome());
+            usuarioAtualizar.setEmail(usuarioDTO.getEmail());
+            usuarioAtualizar.setSenha(usuarioDTO.getSenha());
+
+            usuarioAtualizar.setColecoesUsuario(null);
+            usuarioAtualizar.setReferenciasUsuario(null);
         }
         try {
             serviceUsuario.atualizaUsuario(usuarioAtualizar);
-            return new ResponseEntity<>(usuarioAtualizar, HttpStatus.OK);
+            return new ResponseEntity<>("Atualização concluída com sucesso.", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

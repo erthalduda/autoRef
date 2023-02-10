@@ -77,8 +77,15 @@ public class UsuarioServiceImplementation implements UsuarioService {
 
     @Override
     @Transactional
+    public Optional<Usuario> buscaPorId(Integer idUsuario) {
+        return repositorioUsuario.findById(idUsuario);
+    }
+
+    @Override
+    @Transactional
     public List<Referencia> buscarPorFkUsuario(Integer idUsuario) {
         List<Referencia> retornoBusca = repositorioUsuario.buscaTodasFkUsuario(idUsuario);
         return retornoBusca;
     }
+
 }

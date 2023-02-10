@@ -21,6 +21,8 @@ public interface UsuarioService {
 
     Optional<Usuario> buscaPorEmail(String email);
 
+    Optional<Usuario> buscaPorId(Integer idUsuario);
+
     List<Referencia> buscarPorFkUsuario(Integer idUsuario);
 
 }
