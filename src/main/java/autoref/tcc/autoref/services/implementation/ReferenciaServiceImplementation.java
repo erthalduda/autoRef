@@ -29,16 +29,20 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
         Optional<Usuario> usuario = repositorioUsuario.findById(referencia.getUsuario().getIdUsuario());
         int quantidadeReferencias = repositorioUsuario.referenciasPorUsuario(usuario.get().getIdUsuario());
 
-        if (quantidadeReferencias == 20) {
+        if(quantidadeReferencias == 10){
+            usuario.get().setXp(500);
+        }
+
+        if (quantidadeReferencias >= 20) {
             usuario.get().setXp(1500);
             usuario.get().setPossuiAcademicoNovato(true);
         }
 
-        if (quantidadeReferencias == 50) {
+        if (quantidadeReferencias >= 50) {
             usuario.get().setPossuiAcademicoEsforcado(true);
         }
 
-        if (quantidadeReferencias > 100) {
+        if (quantidadeReferencias >= 100) {
             usuario.get().setPossuiAcademicoMestre(true);
         }
 

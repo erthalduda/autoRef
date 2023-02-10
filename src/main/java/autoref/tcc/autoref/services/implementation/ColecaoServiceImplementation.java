@@ -31,19 +31,19 @@ public class ColecaoServiceImplementation implements ColecaoService {
         Optional<Usuario> usuario = repositorioUsuario.findById(colecaoCadastro.getUsuario().getIdUsuario());
         int colecoesUsuario = repositorioUsuario.colecoesPorUsuario(usuario.get().getIdUsuario());
 
-        if (colecoesUsuario >= 1 && colecoesUsuario < 10) {
+        if (colecoesUsuario >= 1) {
             usuario.get().setPossuiPesquisadorIniciante(true);
         }
 
-        if (colecoesUsuario >= 11 && colecoesUsuario < 20) {
+        if (colecoesUsuario >= 10) {
             usuario.get().setPossuiPesquisadorAtarefado(true);
         }
 
-        if (colecoesUsuario >= 21 && colecoesUsuario < 25) {
+        if (colecoesUsuario >= 20) {
             usuario.get().setPossuiPesquisadorExpert(true);
         }
 
-        if (colecoesUsuario >= 26) {
+        if (colecoesUsuario >= 25) {
             usuario.get().setPossuiPesquisadorSabio(true);
         }
 
@@ -88,6 +88,7 @@ public class ColecaoServiceImplementation implements ColecaoService {
         if (referencia.getUsuario().getIdUsuario() != usuario.get().getIdUsuario()) {
             Optional<Usuario> u = repositorioUsuario.findById(referencia.getUsuario().getIdUsuario());
             u.get().setXp(200);
+            u.get().setPossuiAcademicoAdmirado(true);
         }
 
         colecaoParaAdicionarReferencias.get().adicionaReferencia(referencia);
