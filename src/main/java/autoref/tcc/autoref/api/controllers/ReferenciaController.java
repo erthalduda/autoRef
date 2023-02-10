@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import autoref.tcc.autoref.api.dtos.ReferenciaDTO;
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.*;
 import autoref.tcc.autoref.services.ReferenciaService;
 
+@CrossOrigin(origins = "https://localhost/8080")
 @RestController
 @RequestMapping("/referencias")
 public class ReferenciaController {

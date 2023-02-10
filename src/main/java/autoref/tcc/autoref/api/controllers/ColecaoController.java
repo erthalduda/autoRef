@@ -1,10 +1,12 @@
 package autoref.tcc.autoref.api.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +21,7 @@ import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.*;
 import autoref.tcc.autoref.services.ColecaoService;
 
+@CrossOrigin(origins = "https://localhost/8080")
 @RestController
 @RequestMapping("/colecoes")
 public class ColecaoController {
@@ -34,22 +37,33 @@ public class ColecaoController {
     public ResponseEntity<?> cadastrarColecao(@RequestBody ColecaoDTO colecaoDTO) {
         Colecao colecao = mapper.map(colecaoDTO, Colecao.class);
         try {
-           Colecao cadastrada = serviceColecao.cadastraColecao(colecao);
+            Colecao cadastrada = serviceColecao.cadastraColecao(colecao);
             return new ResponseEntity<>(cadastrada, HttpStatus.CREATED);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
-    @PutMapping("/editar")
-    public ResponseEntity<?> atualizaColecao(@RequestBody ColecaoDTO colecaoDTO) {
-        Colecao colecao = mapper.map(colecaoDTO, Colecao.class);
-        try {
-            serviceColecao.atualizaColecao(colecao);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (ExcecoesAutoref excecao) {
-            return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
+    @PutMapping("/editar/{idColecao}")
+    public ResponseEntity<?> atualizaColecao(@PathVariable(name = "idColecao") Integer idColecao,
+            @RequestBody ColecaoDTO colecaoDTO) {
+        Optional<Colecao> colecaoNova = serviceColecao.buscaPorId(idColecao);
+        Colecao colecaoAtualizar = new Colecao();
+
+        if (colecaoNova.isPresent()) {
+            colecaoAtualizar = colecaoNova.get();
+            colecaoAtualizar.setNome(colecaoDTO.getNome());
+            System.out.println(colecaoNova.toString());
+            try {
+                serviceColecao.atualizaColecao(colecaoAtualizar);
+                return new ResponseEntity<>("Coleção editada com sucesso!", HttpStatus.OK);
+            } catch (ExcecoesAutoref excecao) {
+                return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
     }
 
     @DeleteMapping("/excluir/{idColecao}")
