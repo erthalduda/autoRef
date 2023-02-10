@@ -17,8 +17,9 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     private ReferenciaRepository repositorioReferencia;
     private UsuarioRepository repositorioUsuario;
 
-    public ReferenciaServiceImplementation(ReferenciaRepository repositorioReferencia) {
+    public ReferenciaServiceImplementation(ReferenciaRepository repositorioReferencia, UsuarioRepository repositorioUsuario) {
         this.repositorioReferencia = repositorioReferencia;
+        this.repositorioUsuario = repositorioUsuario;
     }
 
     @Override
