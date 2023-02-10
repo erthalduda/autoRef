@@ -75,4 +75,11 @@ public class Colecao {
 		this.referencias = referencias;
 	}
 
+	@Override
+	public String toString() {
+		return "Colecao [idColecao=" + idColecao + ", nome=" + nome + ", usuario=" + usuario.getIdUsuario()
+				+ ", referencias="
+				+ referencias.size() + "]";
+	}
+
 }

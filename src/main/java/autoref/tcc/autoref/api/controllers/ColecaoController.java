@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import autoref.tcc.autoref.api.dtos.*;
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.*;
-import autoref.tcc.autoref.services.ColecaoService;
+import autoref.tcc.autoref.services.*;
 
 @CrossOrigin(origins = "https://localhost/3000")
 @RestController
@@ -27,10 +27,12 @@ import autoref.tcc.autoref.services.ColecaoService;
 public class ColecaoController {
 
     private ColecaoService serviceColecao;
+    private ReferenciaService serviceReferencia;
     ModelMapper mapper = new ModelMapper();
 
-    public ColecaoController(ColecaoService serviceColecao) {
+    public ColecaoController(ColecaoService serviceColecao, ReferenciaService serviceReferencia) {
         this.serviceColecao = serviceColecao;
+        this.serviceReferencia = serviceReferencia;
     }
 
     @PostMapping("/cadastrar")
@@ -44,7 +46,7 @@ public class ColecaoController {
         }
     }
 
-    //SOCORRO DEUS
+    // SOCORRO DEUS
     @PutMapping("/editar/{idColecao}")
     public ResponseEntity<?> atualizaColecao(@PathVariable(name = "idColecao") Integer idColecao,
             @RequestBody ColecaoDTO colecaoDTO) {
@@ -77,13 +79,14 @@ public class ColecaoController {
         }
     }
 
-    @PutMapping("/adicionar/{idColecao}")
-    public ResponseEntity<?> adicionaReferencia(@PathVariable(name = "idColecao") Integer idColecao, @RequestBody ReferenciaDTO referenciaDTO) {
+    @PutMapping("/adicionar/{idColecao}/{idReferencia}")
+    public ResponseEntity<?> adicionaReferencia(@PathVariable(name = "idColecao") Integer idColecao,
+            @PathVariable(name = "idReferencia") Integer idReferencia) {
         Optional<Colecao> colecao = serviceColecao.buscaPorId(idColecao);
-        Referencia referencia = mapper.map(referenciaDTO, Referencia.class);
+        Referencia referencia = serviceReferencia.encontrarPorId(idReferencia);
         try {
             serviceColecao.adicionaReferencia(colecao.get(), referencia);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>("Referência adicionada com sucesso!", HttpStatus.OK);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
         }

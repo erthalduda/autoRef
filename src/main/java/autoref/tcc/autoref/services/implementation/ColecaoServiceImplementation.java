@@ -18,19 +18,17 @@ public class ColecaoServiceImplementation implements ColecaoService {
     private ColecaoRepository repositorioColecao;
     private UsuarioRepository repositorioUsuario;
 
-    public ColecaoServiceImplementation(ColecaoRepository repositorioColecao) {
+    public ColecaoServiceImplementation(ColecaoRepository repositorioColecao, UsuarioRepository repositorioUsuario) {
         this.repositorioColecao = repositorioColecao;
+        this.repositorioUsuario = repositorioUsuario;
     }
 
     @Override
     @Transactional
     public Colecao cadastraColecao(Colecao colecaoCadastro) {
-        Optional<Colecao> colecao = repositorioColecao.findByNome(colecaoCadastro.getNome());
-        if (colecao.isPresent()) {
-            throw new ExcecoesAutoref("Já existe uma coleção com este nome.");
-        }
+        verificaSeERepetida(colecaoCadastro);
 
-        Optional<Usuario> usuario = repositorioUsuario.findById(colecao.get().getUsuario().getIdUsuario());
+        Optional<Usuario> usuario = repositorioUsuario.findById(colecaoCadastro.getUsuario().getIdUsuario());
         int colecoesUsuario = repositorioUsuario.colecoesPorUsuario(usuario.get().getIdUsuario());
 
         if (colecoesUsuario >= 1 && colecoesUsuario < 10) {
@@ -50,7 +48,7 @@ public class ColecaoServiceImplementation implements ColecaoService {
         }
 
         usuario.get().setXp(100);
-        return colecao.get();
+        return repositorioColecao.save(colecaoCadastro);
     }
 
     @Override
@@ -64,12 +62,12 @@ public class ColecaoServiceImplementation implements ColecaoService {
     @Transactional
     public void atualizaColecao(Colecao colecao) {
         Objects.requireNonNull(colecao.getIdColecao());
+        verificaSeERepetida(colecao);
         repositorioColecao.save(colecao);
     }
 
     @Override
     @Transactional
-    // talvez não precise passar o usuário como parâmetro, a ser estudado
     public Colecao adicionaReferencia(Colecao colecao, Referencia referencia) {
         Optional<Colecao> colecaoParaAdicionarReferencias = repositorioColecao.findById(colecao.getIdColecao());
         if (colecaoParaAdicionarReferencias.isEmpty()) {
@@ -94,7 +92,7 @@ public class ColecaoServiceImplementation implements ColecaoService {
         }
 
         colecaoParaAdicionarReferencias.get().adicionaReferencia(referencia);
-        return repositorioColecao.save(colecaoParaAdicionarReferencias);
+        return repositorioColecao.save(colecaoParaAdicionarReferencias.get());
     }
 
     @Override
@@ -109,4 +107,23 @@ public class ColecaoServiceImplementation implements ColecaoService {
         return repositorioColecao.findByUsuario(idUsuario);
     }
 
+    @Override
+    public Optional<Colecao> buscaPorId(Integer idColecao) {
+        return repositorioColecao.findById(idColecao);
+    }
+
+    @Override
+    @Transactional
+    public void verificaSeERepetida(Colecao colecao) {
+        System.out.println(colecao.getNome() + " " + colecao.getUsuario().getIdUsuario());
+        Integer existeColecaoComEsseNome = repositorioColecao.verificaSeERepetida(colecao.getNome(),
+                colecao.getUsuario().getIdUsuario());
+
+        Optional<Colecao> col = repositorioColecao.findByNomeAndUsuario_IdUsuario(colecao.getNome(),
+                colecao.getUsuario().getIdUsuario());
+
+        if (existeColecaoComEsseNome > 0) {
+            throw new ExcecoesAutoref("Você já possui uma coleção com este nome.");
+        }
+    }
 }
