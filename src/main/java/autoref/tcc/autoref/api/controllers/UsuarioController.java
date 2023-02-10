@@ -90,7 +90,7 @@ public class UsuarioController {
         }
     }
 
-    @PutMapping("/atualizar/{idUsuario}")
+    @PutMapping("/editar/{idUsuario}")
     public ResponseEntity<?> atualizaUsuario(@PathVariable(name = "idUsuario") Integer idUsuario,
             @RequestBody UsuarioDTO usuarioDTO) {
         Optional<Usuario> usuarioNovo = serviceUsuario.buscaPorId(idUsuario);
