@@ -21,7 +21,7 @@ import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.*;
 import autoref.tcc.autoref.services.ColecaoService;
 
-@CrossOrigin(origins = "https://localhost/8080")
+@CrossOrigin(origins = "https://localhost/3000")
 @RestController
 @RequestMapping("/colecoes")
 public class ColecaoController {
@@ -44,6 +44,7 @@ public class ColecaoController {
         }
     }
 
+    //SOCORRO DEUS
     @PutMapping("/editar/{idColecao}")
     public ResponseEntity<?> atualizaColecao(@PathVariable(name = "idColecao") Integer idColecao,
             @RequestBody ColecaoDTO colecaoDTO) {
@@ -76,28 +77,16 @@ public class ColecaoController {
         }
     }
 
-    @PutMapping("/adicionar")
-    public ResponseEntity<?> adicionaReferencia(@RequestBody ColecaoDTO colecaoDTO, ReferenciaDTO referenciaDTO) {
-        Colecao colecao = mapper.map(colecaoDTO, Colecao.class);
+    @PutMapping("/adicionar/{idColecao}")
+    public ResponseEntity<?> adicionaReferencia(@PathVariable(name = "idColecao") Integer idColecao, @RequestBody ReferenciaDTO referenciaDTO) {
+        Optional<Colecao> colecao = serviceColecao.buscaPorId(idColecao);
         Referencia referencia = mapper.map(referenciaDTO, Referencia.class);
-        // Usuario usuario = mapper.map(usuarioDTO, Usuario.class);
         try {
-            serviceColecao.adicionaReferencia(colecao, referencia);
+            serviceColecao.adicionaReferencia(colecao.get(), referencia);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
         }
-    }
-
-    // ver como fazer um post que receba só o id da referência, tem como fazer! só
-    // não sei como ainda
-    @PutMapping("/adicionar/{nomeColecao}/{idReferencia}")
-    public ResponseEntity<?> adicionaReferencia2(@PathVariable(name = "idReferencia") Integer idReferencia) {
-        try {
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-        return null;
     }
 
     @GetMapping("/buscar/{idUsuario}")

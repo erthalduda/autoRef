@@ -21,7 +21,7 @@ import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.*;
 import autoref.tcc.autoref.services.ReferenciaService;
 
-@CrossOrigin(origins = "https://localhost/8080")
+@CrossOrigin(origins = "https://localhost/3000")
 @RestController
 @RequestMapping("/referencias")
 public class ReferenciaController {

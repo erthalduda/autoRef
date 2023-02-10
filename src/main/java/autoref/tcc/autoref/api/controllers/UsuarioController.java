@@ -23,7 +23,7 @@ import autoref.tcc.autoref.model.*;
 import autoref.tcc.autoref.services.UsuarioService;
 import autoref.tcc.autoref.services.ReferenciaService;
 
-@CrossOrigin(origins = "https://localhost/8080")
+@CrossOrigin(origins = "https://localhost/3000")
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
