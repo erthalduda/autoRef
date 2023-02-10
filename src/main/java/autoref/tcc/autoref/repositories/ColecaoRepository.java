@@ -15,5 +15,7 @@ public interface ColecaoRepository extends JpaRepository<Colecao, Integer> {
 
     Colecao save(Optional<Colecao> c);
 
-    Optional<Colecao> findByNome(String nomeColecao);
+    @Query(value = "SELECT * FROM colecao WHERE nome = ?1 AND fk_usuario = ?2", nativeQuery = true)
+    Optional<Colecao> verificaSeÉRepetida(String nomeColecao, Integer idUsuario);
+
 }
