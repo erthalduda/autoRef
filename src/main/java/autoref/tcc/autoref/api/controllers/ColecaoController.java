@@ -47,14 +47,14 @@ public class ColecaoController {
     }
 
     // SOCORRO DEUS
-    @PutMapping("/editar/{idColecao}")
+    @PutMapping("/{idColecao}/editar")
     public ResponseEntity<?> atualizaColecao(@PathVariable(name = "idColecao") Integer idColecao,
             @RequestBody ColecaoDTO colecaoDTO) {
-        Optional<Colecao> colecaoNova = serviceColecao.buscaPorId(idColecao);
+        Colecao colecaoNova = serviceColecao.buscaPorId(idColecao);
         Colecao colecaoAtualizar = new Colecao();
 
-        if (colecaoNova.isPresent()) {
-            colecaoAtualizar = colecaoNova.get();
+        if (colecaoNova!=null) {
+            colecaoAtualizar = colecaoNova;
             colecaoAtualizar.setNome(colecaoDTO.getNome());
             System.out.println(colecaoNova.toString());
             try {
@@ -69,7 +69,7 @@ public class ColecaoController {
 
     }
 
-    @DeleteMapping("/excluir/{idColecao}")
+    @DeleteMapping("/{idColecao}/excluir")
     public ResponseEntity<?> excluiColecao(@PathVariable(name = "idColecao") Integer idColecao) {
         try {
             serviceColecao.deletaColecao(idColecao);
@@ -79,13 +79,13 @@ public class ColecaoController {
         }
     }
 
-    @PutMapping("/adicionar/{idColecao}/{idReferencia}")
+    @PutMapping("/{idColecao}/adicionar/{idReferencia}")
     public ResponseEntity<?> adicionaReferencia(@PathVariable(name = "idColecao") Integer idColecao,
             @PathVariable(name = "idReferencia") Integer idReferencia) {
-        Optional<Colecao> colecao = serviceColecao.buscaPorId(idColecao);
+        Colecao colecao = serviceColecao.buscaPorId(idColecao);
         Referencia referencia = serviceReferencia.encontrarPorId(idReferencia);
         try {
-            serviceColecao.adicionaReferencia(colecao.get(), referencia);
+            serviceColecao.adicionaReferencia(colecao, referencia);
             return new ResponseEntity<>("Referência adicionada com sucesso!", HttpStatus.OK);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
@@ -104,4 +104,5 @@ public class ColecaoController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
 }
