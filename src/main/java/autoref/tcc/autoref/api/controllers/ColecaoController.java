@@ -55,7 +55,6 @@ public class ColecaoController {
         if (colecaoNova!=null) {
             colecaoAtualizar = colecaoNova;
             colecaoAtualizar.setNome(colecaoDTO.getNome());
-            System.out.println(colecaoNova.toString());
             try {
                 serviceColecao.atualizaColecao(colecaoAtualizar);
                 return new ResponseEntity<>("Coleção editada com sucesso!", HttpStatus.OK);

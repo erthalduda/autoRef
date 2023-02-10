@@ -59,7 +59,6 @@ public class ColecaoServiceImplementation implements ColecaoService {
     }
 
     @Override
-    @Transactional
     public void atualizaColecao(Colecao colecao) {
         Objects.requireNonNull(colecao.getIdColecao());
         verificaSeERepetida(colecao);
@@ -119,11 +118,7 @@ public class ColecaoServiceImplementation implements ColecaoService {
     @Override
     @Transactional
     public void verificaSeERepetida(Colecao colecao) {
-        System.out.println(colecao.getNome() + " " + colecao.getUsuario().getIdUsuario());
         Integer existeColecaoComEsseNome = repositorioColecao.verificaSeERepetida(colecao.getNome(),
-                colecao.getUsuario().getIdUsuario());
-
-        Optional<Colecao> col = repositorioColecao.findByNomeAndUsuario_IdUsuario(colecao.getNome(),
                 colecao.getUsuario().getIdUsuario());
 
         if (existeColecaoComEsseNome > 0) {
