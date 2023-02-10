@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,18 +56,6 @@ public class ReferenciaController {
             return new ResponseEntity<>(salva, HttpStatus.CREATED);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    //será necessário implementar esse método? acho que não...
-    @PutMapping("/editar")
-    public ResponseEntity<?> atualizaReferencia(@RequestBody ReferenciaDTO referenciaDTO) {
-        Referencia referencia = mapper.map(referenciaDTO, tipos.get(referenciaDTO.getTipo()));
-        try {
-            serviceReferencia.atualizaReferencia(referencia);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
