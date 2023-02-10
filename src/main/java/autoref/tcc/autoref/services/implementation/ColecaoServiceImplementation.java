@@ -108,8 +108,12 @@ public class ColecaoServiceImplementation implements ColecaoService {
     }
 
     @Override
-    public Optional<Colecao> buscaPorId(Integer idColecao) {
-        return repositorioColecao.findById(idColecao);
+    public Colecao buscaPorId(Integer idColecao) {
+        Optional<Colecao> colecaoPorId = repositorioColecao.findById(idColecao);
+        if (!colecaoPorId.isPresent()) {
+            throw new ExcecoesAutoref("Coleção não encontrada.");
+        }
+        return colecaoPorId.get();
     }
 
     @Override

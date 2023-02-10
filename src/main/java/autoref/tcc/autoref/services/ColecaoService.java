@@ -19,7 +19,7 @@ public interface ColecaoService {
 
     List<Colecao> colecoesPorUsuario(Integer idUsuario);
 
-    Optional<Colecao> buscaPorId(Integer idColecao);
+    Colecao buscaPorId(Integer idColecao);
 
     void verificaSeERepetida(Colecao colecao);
 }
