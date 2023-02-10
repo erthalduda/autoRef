@@ -84,7 +84,8 @@ public class ColecaoController {
         Referencia referencia = serviceReferencia.encontrarPorId(idReferencia);
         try {
             serviceColecao.adicionaReferencia(colecao, referencia);
-            return new ResponseEntity<>("Referência adicionada com sucesso!", HttpStatus.OK);
+            String mensagem = "Referência adicionada à coleção " + colecao.getNome() + " com sucesso!";
+            return new ResponseEntity<>(mensagem, HttpStatus.OK);
         } catch (ExcecoesAutoref excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
         }
