@@ -1,5 +1,6 @@
 package autoref.tcc.autoref.api.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -108,10 +109,11 @@ public class ColecaoController {
     public ResponseEntity<?> colecoesPorUsuario(@PathVariable(name = "idUsuario") Integer idUsuario) {
         try {
             List<Colecao> colecoesUsuario = serviceColecao.colecoesPorUsuario(idUsuario);
+            List<String> nomesColecao = new ArrayList<>();
             for (Colecao colecao : colecoesUsuario) {
-                System.out.println(colecao.getNome());
+                nomesColecao.add(colecao.getNome());
             }
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(nomesColecao, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
