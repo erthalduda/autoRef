@@ -64,7 +64,6 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
         repositorioReferencia.deleteById(id);
     }
 
-    // provavelmente não usaremos essa
     @Override
     public Referencia encontrarPorId(Integer id) {
         Optional<Referencia> referenciaPorId = repositorioReferencia.findById(id);
