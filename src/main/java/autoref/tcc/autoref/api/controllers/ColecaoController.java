@@ -94,9 +94,9 @@ public class ColecaoController {
     @PutMapping("/{idColecao}/remover/{idReferencia}")
     public ResponseEntity<?> removeReferencia(@PathVariable(name = "idColecao") Integer idColecao,
             @PathVariable(name = "idReferencia") Integer idReferencia) {
-        Colecao colecao = serviceColecao.buscaPorId(idColecao);
-        Referencia referencia = serviceReferencia.encontrarPorId(idReferencia);
         try {
+            Colecao colecao = serviceColecao.buscaPorId(idColecao);
+            Referencia referencia = serviceReferencia.encontrarPorId(idReferencia);
             serviceColecao.deletaReferencia(colecao, referencia);
             return new ResponseEntity<>("Referência removida com sucesso!", HttpStatus.OK);
         } catch (ExcecoesAutoref excecao) {
