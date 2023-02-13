@@ -52,7 +52,7 @@ public class ColecaoController {
         Colecao colecaoNova = serviceColecao.buscaPorId(idColecao);
         Colecao colecaoAtualizar = new Colecao();
 
-        if (colecaoNova!=null) {
+        if (colecaoNova != null) {
             colecaoAtualizar = colecaoNova;
             colecaoAtualizar.setNome(colecaoDTO.getNome());
             try {
@@ -80,9 +80,9 @@ public class ColecaoController {
     @PutMapping("/{idColecao}/adicionar/{idReferencia}")
     public ResponseEntity<?> adicionaReferencia(@PathVariable(name = "idColecao") Integer idColecao,
             @PathVariable(name = "idReferencia") Integer idReferencia) {
-        Colecao colecao = serviceColecao.buscaPorId(idColecao);
-        Referencia referencia = serviceReferencia.encontrarPorId(idReferencia);
         try {
+            Colecao colecao = serviceColecao.buscaPorId(idColecao);
+            Referencia referencia = serviceReferencia.encontrarPorId(idReferencia);
             serviceColecao.adicionaReferencia(colecao, referencia);
             String mensagem = "Referência adicionada à coleção " + colecao.getNome() + " com sucesso!";
             return new ResponseEntity<>(mensagem, HttpStatus.OK);
