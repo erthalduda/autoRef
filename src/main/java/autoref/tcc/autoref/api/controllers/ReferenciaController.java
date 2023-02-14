@@ -7,7 +7,6 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,18 +59,6 @@ public class ReferenciaController {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-
-    // @DeleteMapping("/excluir/{id}")
-    // public ResponseEntity<?> deletaReferencia(@PathVariable(name = "id") Integer
-    // id) {
-    // try {
-    // serviceReferencia.deletaReferencia(id);
-    // return new ResponseEntity<>("Referência excluída com sucesso",
-    // HttpStatus.OK);
-    // } catch (Exception e) {
-    // return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-    // }
-    // }
 
     @GetMapping("/buscar/geral/{pesquisa}")
     public ResponseEntity<?> buscaReferenciaRepositorioGeral(@PathVariable(name = "pesquisa") String pesquisa) {

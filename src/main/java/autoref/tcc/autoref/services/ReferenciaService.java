@@ -10,8 +10,6 @@ public interface ReferenciaService {
 
     Referencia atualizaReferencia(Referencia referencia);
 
-    // void deletaReferencia(Integer id);
-
     Referencia encontrarPorId(Integer id);
 
     List<String> buscarNoRepositorioGeral(String pesquisa);
