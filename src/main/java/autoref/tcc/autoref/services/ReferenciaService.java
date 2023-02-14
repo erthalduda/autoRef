@@ -12,10 +12,10 @@ public interface ReferenciaService {
 
     Referencia encontrarPorId(Integer id);
 
-    List<String> buscarNoRepositorioGeral(String pesquisa);
+    List<Referencia> buscarNoRepositorioGeral(String pesquisa);
 
-    List<String> buscarEspecificaNoRepositorioPrivado(String pesquisa, Integer idUsuario);
+    List<Referencia> buscarEspecificaNoRepositorioPrivado(String pesquisa, Integer idUsuario);
 
-    List<String> buscarTodasNoRepositorioPrivado(Integer idUsuario);
+    List<Referencia> buscarTodasNoRepositorioPrivado(Integer idUsuario);
 
 }

@@ -63,7 +63,12 @@ public class ReferenciaController {
     @GetMapping("/buscar/geral/{pesquisa}")
     public ResponseEntity<?> buscaReferenciaRepositorioGeral(@PathVariable(name = "pesquisa") String pesquisa) {
         try {
-            List<String> buscar = serviceReferencia.buscarNoRepositorioGeral(pesquisa);
+            List<Referencia> buscar = serviceReferencia.buscarNoRepositorioGeral(pesquisa);
+            for (Referencia referencia : buscar) {
+                Usuario copia = new Usuario();
+                copia.setIdUsuario(referencia.getUsuario().getIdUsuario());
+                referencia.setUsuario(copia);
+            }
             return new ResponseEntity<>(buscar, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -73,9 +78,13 @@ public class ReferenciaController {
     @GetMapping("buscar/privado/{idUsuario}")
     public ResponseEntity<?> buscaTodasReferenciasRepositorioPrivado(
             @PathVariable(name = "idUsuario") Integer idUsuario) {
-
         try {
-            List<String> buscar = serviceReferencia.buscarTodasNoRepositorioPrivado(idUsuario);
+            List<Referencia> buscar = serviceReferencia.buscarTodasNoRepositorioPrivado(idUsuario);
+            for (Referencia referencia : buscar) {
+                Usuario copia = new Usuario();
+                copia.setIdUsuario(referencia.getUsuario().getIdUsuario());
+                referencia.setUsuario(copia);
+            }
             return new ResponseEntity<>(buscar, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -87,7 +96,12 @@ public class ReferenciaController {
             @PathVariable(name = "idUsuario") Integer idUsuario,
             @PathVariable(name = "pesquisa") String pesquisa) {
         try {
-            List<String> buscar = serviceReferencia.buscarEspecificaNoRepositorioPrivado(pesquisa, idUsuario);
+            List<Referencia> buscar = serviceReferencia.buscarEspecificaNoRepositorioPrivado(pesquisa, idUsuario);
+            for (Referencia referencia : buscar) {
+                Usuario copia = new Usuario();
+                copia.setIdUsuario(referencia.getUsuario().getIdUsuario());
+                referencia.setUsuario(copia);
+            }
             return new ResponseEntity<>(buscar, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

@@ -29,7 +29,6 @@ public class Referencia {
     protected List<Colecao> colecoes;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 
