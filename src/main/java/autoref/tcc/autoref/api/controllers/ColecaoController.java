@@ -46,7 +46,6 @@ public class ColecaoController {
         }
     }
 
-    // SOCORRO DEUS
     @PutMapping("/{idColecao}/editar")
     public ResponseEntity<?> atualizaColecao(@PathVariable(name = "idColecao") Integer idColecao,
             @RequestBody ColecaoDTO colecaoDTO) {
