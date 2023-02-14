@@ -57,12 +57,12 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
         return repositorioReferencia.save(referencia);
     }
 
-    @Override
-    @Transactional
-    public void deletaReferencia(Integer id) {
-        Objects.requireNonNull(id);
-        repositorioReferencia.deleteById(id);
-    }
+    // @Override
+    // @Transactional
+    // public void deletaReferencia(Integer id) {
+    //     Objects.requireNonNull(id);
+    //     repositorioReferencia.deleteById(id);
+    // }
 
     @Override
     public Referencia encontrarPorId(Integer id) {
