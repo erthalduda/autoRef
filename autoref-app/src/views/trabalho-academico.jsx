@@ -7,11 +7,11 @@ import axios from "axios";
 
 import "../css/referencia.css";
 
-function Monografia() {
+function Trabalho() {
   const [inputFields, setInputFields] = useState([
-
     {
       id: 1,
+
       name: "titulo",
       value: "",
       placeholder: "Ex: Titulo",
@@ -43,10 +43,10 @@ function Monografia() {
 
     {
       id: 5,
-      name: "quantiPgs",
+      name: "url",
       value: "",
-      placeholder: "Ex: Quantidade da páginas",
-      type: "number",
+      placeholder: "Ex: Url",
+      type: "text",
     },
 
     {
@@ -78,12 +78,6 @@ function Monografia() {
       placeholder: "Ex: Autor",
       type: "text",
     },
-    {
-      id: 10,
-      name: "tipo",
-      value: "monografia",
-      type: "hidden",
-    }
   ]);
 
   const onSubmit = async (event) => {
@@ -206,7 +200,7 @@ function Monografia() {
 
 </div>
 </nav >
-      <h1 id="referencia">Monografia</h1>
+      <h1 id="referencia">Trabalho Acadêmico</h1>
       <div className="form-group">
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
@@ -244,4 +238,4 @@ function Monografia() {
   );
 }
 
-export default Monografia;
+export default Trabalho;
