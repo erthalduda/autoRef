@@ -21,7 +21,7 @@ import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.*;
 import autoref.tcc.autoref.services.*;
 
-@CrossOrigin(origins = "https://localhost/3000")
+@CrossOrigin(origins = "https://localhost:3000")
 @RestController
 @RequestMapping("/colecoes")
 public class ColecaoController {
