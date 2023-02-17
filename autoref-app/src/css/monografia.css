@@ -1,0 +1,54 @@
+h1 {
+  display: flex;
+  
+}
+
+#monografia, .form-group {
+  position: relative;
+  left: 16%;
+  width: 900px;
+
+}
+
+#monografia {
+  color: #312f2f;
+  
+}
+
+
+
+
+.form-input {
+
+  display: flex;
+  float: left;
+  width: 32%;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+ 
+  height: 35px;
+ 
+    padding: 0.375rem 0.75rem;
+    
+    color: #000000;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+  
+    border-radius: 0.9rem;
+   
+ 
+}
+
+.sla{
+  display: flex;
+  margin: 0px;
+  width: 100%;
+ 
+
+
+}
+
+
+
