@@ -1,46 +1,68 @@
-import React from "react";
-import { BsJustify } from "react-icons/bs";
+import React, { useRef, useState } from "react";
 
 
 import NavbarItem from "./navbaritem";
 
+import Profile from "../images/profile.png"
+
+
 
 function Navbar() {
+
+const dropDownRef = useRef(null);
+const [isActive, setIsActive] = useState(false)
+const onClick = () => setIsActive(!isActive)
+
 
 
 
     return (
 
-         
-            <div className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
-                <div className="container">
-                <BsJustify />
+
+
+
+
+
+        <div className="navbar fixed-top">
+
+            <div className="container">
+          
+
+                <a href="#/home" className="navbar-brand" >Autoref</a>
                 
-                    <a href="https://bootswatch.com/" className="navbar-brand" >Autoref</a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                    <div className="menu-profile">
+                        <button onClick={onClick} className="menu-button">
+                            
+                    
+                    <img src={Profile}  alt="Avatar" height="20"  ></img>  <b className="caret"></b>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarResponsive">
-                        <ul className="navbar-nav">
-                            <NavbarItem href="#/home" label="Home" />
-                            <NavbarItem href="#/cadastro" label="Cadastro" />
-                            <NavbarItem href="#/login" label="Login" />
-
-
-
+                   
+                    <nav
+                    ref={dropDownRef}
+                    className={`menu ${isActive ? "active" : "inactive"}` }
+                    >
+                        <ul>
+                            <li className="log">
+                                <a href="#/home"> Logout</a>
+                                </li>
+                            
 
                         </ul>
-                        
-               
+                    </nav>
 
-
-                    </div>
                 </div>
-            
+
             </div>
-            
-         
-            
+        </div>
+
+
+
+
+
+        
+
+
+
 
 
     )
