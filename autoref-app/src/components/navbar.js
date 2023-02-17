@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 
 import NavbarItem from "./navbaritem";
 
-import Profile from "../images/profile.png"
+// import Profile from "../images/profile.png"
 
 
 
@@ -34,7 +34,7 @@ const onClick = () => setIsActive(!isActive)
                         <button onClick={onClick} className="menu-button">
                             
                     
-                    <img src={Profile}  alt="Avatar" height="20"  ></img>  <b className="caret"></b>
+                    {/* <img src={Profile}  alt="Avatar" height="20"  ></img>  <b className="caret"></b> */}
                     </button>
                    
                     <nav

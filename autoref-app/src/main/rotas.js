@@ -20,7 +20,7 @@ import TrabalhoAcademico from "../views/trabalho-academico";
 import ColecaoPeriodica from "../views/colecao-periodica";
 import PartePeriodica from "../views/parte-periodica";
 import ColecaoPeriodicaMeioEletronico from "../views/colecao-periodica-meio-eletronico";
-import Faq from "../views/faq";
+// import Faq from "../views/faq";
 
 
 function Rotas() {
@@ -31,7 +31,7 @@ function Rotas() {
                 <Route path="/home" component={Home} />
                 <Route path="/cadastro" component={CadastroUsuario} />
                 <Route path="/referencias" component={Referencias} />
-                <Route path="/faq" component={Faq} />
+                {/* <Route path="/faq" component={Faq} /> */}
                 <Route path="/monografia" component={Monografia} />
                 <Route path="/website" component={Website} />
                 <Route path="/artigo" component={Artigo} />
