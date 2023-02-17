@@ -7,7 +7,7 @@ import Navbar from '../components/navbar';
 
 
 import 'bootswatch/dist/minty/bootstrap.css'
-import '../custom.css'
+
 
 
 class App extends React.Component {
