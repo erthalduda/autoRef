@@ -1,39 +1,99 @@
 import React from "react";
 
+import '../custom.css'
 class Home extends React.Component {
-  state = {
-    saldo: 0,
-  };
 
-  render() {
-    return (
-      <div className="jumbotron">
-        <h1 className="display-3">Bem vindo!</h1>
-        <p className="lead">Esse é seu sistema de finanças.</p>
-        <p className="lead">Seu saldo para o mês atual é de R$ 5.325,21</p>
-        <hr className="my-4" />
-        <p>
-          E essa é sua área administrativa, utilize um dos menus ou botões
-          abaixo para navegar pelo sistema.
-        </p>
-        <p className="lead">
-          <a className="btn btn-primary btn-lg" href="#/cadastro" role="button">
-            <i className="fa fa-users"></i>
-            Cadastrar Usuário
-          </a>
 
-          <a
-            className="btn btn-danger btn-lg"
-            href="https://bootswatch.com/minty/#"
-            role="button"
-          >
-            <i className="fa fa-users"></i>
-            Cadastrar Lançamento
-          </a>
-        </p>
-      </div>
-    );
-  }
+
+    render() {
+        return (
+            <>
+                <nav id="sidebarMenu" className="collapse d-lg-block sidebar collapse bg-white">
+
+                    <div className="position-sticky">
+                        <div className="list-group list-group-flush mx-3 mt-4">
+
+                            <a href="#/referencias"
+                                className="list-group-item list-group-item-action py-2 ripple"
+                                aria-current="true">
+
+                                <i className="fas fa-tachometer-alt fa-fw me-3"></i>
+                                <span>REFERENCIAS</span>
+
+                            </a>
+
+                            <a href="#"
+                                className="list-group-item list-group-item-action py-2 ripple"
+                                aria-current="true">
+
+                                <i className="fas fa-tachometer-alt fa-fw me-3"></i>
+                                <span>BUSCAR REFERENCIAS</span>
+
+                            </a>
+                            <a href="#"
+                                className="list-group-item list-group-item-action py-2 ripple"
+                                aria-current="true">
+
+                                <i className="fas fa-tachometer-alt fa-fw me-3"></i>
+                                <span>COLEÇÕES</span>
+
+                            </a>
+                            <a href="#"
+                                className="list-group-item list-group-item-action py-2 ripple"
+                                aria-current="true">
+
+                                <i className="fas fa-tachometer-alt fa-fw me-3"></i>
+                                <span>CONQUISTAS</span>
+
+                            </a>
+                            <a href="#"
+                                className="list-group-item list-group-item-action py-2 ripple"
+                                aria-current="true">
+
+                                <i className="fas fa-tachometer-alt fa-fw me-3"></i>
+                                <span>RANKING</span>
+
+                            </a>
+                            <a href="#/faq"
+                                className="list-group-item list-group-item-action py-2 ripple"
+                                aria-current="true">
+
+                                <i className="fas fa-tachometer-alt fa-fw me-3"></i>
+                                <span>FAQ</span>
+
+                            </a>
+                            <a href="#"
+                                className="list-group-item list-group-item-action py-2 ripple"
+                                aria-current="true">
+
+                                <i className="fas fa-tachometer-alt fa-fw me-3"></i>
+                                <span>EDITAR PERFIL</span>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+                </nav>
+
+                <div className="row">
+                    <div className="col-md-6" style={{ position: 'fixed', left: '500px' }}>
+                        <div className="jumbotron">
+                            <h1 className="display-3"  style={{ position: 'relative', right: '165px' }}>AUTOREF</h1>
+                            <p className="lead">Suas referências de maneira fácil.</p>
+                            <p>Essa é a área central do site.</p>
+                            
+
+                        </div>
+                    </div>
+
+                </div>
+
+                
+            </>
+        )
+    }
+
 }
 
-export default Home;
+export default Home

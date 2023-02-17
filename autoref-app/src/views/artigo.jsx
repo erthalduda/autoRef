@@ -3,7 +3,9 @@ import FormGroup from "../components/form-group";
 import { useState } from "react";
 
 
-function MonografiaEletronica() {
+function Artigo() {
+
+
     const [inputFields, setInputFields] = useState([
         { autor: '' }
     ])
@@ -14,10 +16,7 @@ function MonografiaEletronica() {
         setInputFields([...inputFields, newfield])
     }
 
-
-
     return (
-
         <>
             <nav id="sidebarMenu" className="collapse d-lg-block sidebar collapse bg-white">
 
@@ -101,61 +100,81 @@ function MonografiaEletronica() {
                         <div className="mono">
                             <fieldset>
 
-                                <FormGroup label='Titulo ' htmlFor="titulo">
+
+                                <FormGroup label='Titulo do artigo ' htmlFor="tituloArtigo">
                                     <input type='text'
-                                        id="titulo"
-                                        name="titulo"
+                                        name="tituloArtigo"
                                         className="form-control"
-                                        aria-describedby="tituloHelp" placeholder="Ex: Coraline"
-                                        onChange={e => this.setState({ titulo: e.target.value })} />
+                                        id="tituloArtigo"
+                                        aria-describedby="tituloArtigoHelp" placeholder="Ex: Uma garota lelé"
+                                        onChange={e => this.setState({ tituloArtigo: e.target.value })} />
 
                                 </FormGroup>
 
-                                <FormGroup label='Subtitulo ' htmlFor="subtitulo">
+                                <FormGroup label='Subtitulo do artigo ' htmlFor="subtituloArtigo">
                                     <input type='text'
-                                        id="subtitulo"
-                                        name="subtitulo"
+                                        name="subtituloArtigo"
                                         className="form-control"
-                                        aria-describedby="subtituloHelp" placeholder="Ex: Uma garota lelé"
-                                        onChange={e => this.setState({ subtitulo: e.target.value })} />
+                                        id="subtituloArtigo"
+                                        aria-describedby="subtituArtigoloHelp" placeholder="Ex: Coraline"
+                                        onChange={e => this.setState({ subtituloArtigo: e.target.value })} />
 
                                 </FormGroup>
 
-                                <FormGroup label='Ano de publicação ' htmlFor="anoPublicacao">
+                                <FormGroup label='Titulo periodico ' htmlFor="tituloPeriodico">
                                     <input type='text'
-                                        id="anoPublicacao"
-                                        name="anoPublicacao"
+                                        name="tituloPeriodico"
                                         className="form-control"
-                                        aria-describedby="anoHelp" placeholder="Ex: 2003"
-                                        onChange={e => this.setState({ anoPublicacao: e.target.value })} />
+                                        id="tituloPeriodico"
+                                        aria-describedby="tituloPeriodicoHelp" placeholder="Ex: Uma garota lelé"
+                                        onChange={e => this.setState({ tituloPeriodico: e.target.value })} />
 
                                 </FormGroup>
 
-                                <FormGroup label='Cidade ' htmlFor="cidade">
+                                <FormGroup label='Subtitulo periodico ' htmlFor="subtituloPeriodico">
                                     <input type='text'
-                                        id="cidade"
-                                        name="cidade"
+                                        name="subtituloPeriodico"
                                         className="form-control"
-                                        aria-describedby="cidadeHelp" placeholder="Ex: Londres"
-                                        onChange={e => this.setState({ cidade: e.target.value })} />
+                                        id="subtituloPeriodico"
+                                        aria-describedby="subtituloPeriodicoHelp" placeholder="Ex: 2003"
+                                        onChange={e => this.setState({ subtituloPeriodico: e.target.value })} />
 
                                 </FormGroup>
 
-                                <FormGroup label='Ano de entrega ' htmlFor="anoEntrega">
+                                <FormGroup label='Local de Publicação ' htmlFor="localPublicacao">
                                     <input type='text'
+                                        name="localPublicacao"
                                         className="form-control"
-                                        id="anoEntrega"
-                                        name="anoEntrega"
-                                        aria-describedby="anoEntregaHelp" placeholder="Ex: 2004"
-                                        onChange={e => this.setState({ anoEntrega: e.target.value })} />
+                                        id="localPublicacao"
+                                        aria-describedby="localPublicacaoHelp" placeholder="Ex: Londres"
+                                        onChange={e => this.setState({ localPublicacao: e.target.value })} />
 
                                 </FormGroup>
+
+                                <FormGroup label='Pagina final ' htmlFor="paginaFinal">
+                                    <input type='text'
+                                        name="paginaFinal"
+                                        className="form-control"
+                                        id="paginaFinal"
+                                        aria-describedby="paginaFinalHelp" placeholder="Ex: Intrinsica"
+                                        onChange={e => this.setState({ paginaFinal: e.target.value })} />
+
+                                </FormGroup>
+
+                                <FormGroup label='Data de publicação ' htmlFor="dataPublicacao">
+                                    <input type='text'
+                                        name="dataPublicacao"
+                                        className="form-control"
+                                        id="dataPublicacao"
+                                        aria-describedby="dataPublicacaoHelp" placeholder="Ex: Cia dos livros"
+                                        onChange={e => this.setState({ dataPublicacao: e.target.value })} />
+
+                                </FormGroup>
+
 
                             </fieldset>
                         </div>
-
                     </div>
-
                 </div>
 
 
@@ -175,23 +194,23 @@ function MonografiaEletronica() {
                             <fieldset>
 
 
-                                <FormGroup label='Descrição de suporte ' htmlFor="descricaoSuporte">
-                                    <input type='Descrição de suporte*'
-                                        name="descricaoSuporte"
+                                <FormGroup label='Ano ' htmlFor="ano">
+                                    <input type='text'
+                                        name="ano"
                                         className="form-control"
-                                        id="descricaoSuporte"
-                                        aria-describedby="descricaoHelp" placeholder="Ex: Ablubla"
-                                        onChange={e => this.setState({ descricaoSuporte: e.target.value })} />
+                                        id="ano"
+                                        aria-describedby="anoHelp" placeholder="Ex: 2004"
+                                        onChange={e => this.setState({ ano: e.target.value })} />
 
                                 </FormGroup>
 
-                                <FormGroup label='Quantidade de paginas ' htmlFor="quantiPgs">
+                                <FormGroup label='Volume ' htmlFor="volume">
                                     <input type='text'
-                                        id="quantiPgs"
-                                        name="quantiPgs"
+                                        name="volume"
                                         className="form-control"
-                                        aria-describedby="quantiPgHelp" placeholder="Ex: 347"
-                                        onChange={e => this.setState({ quantiPgs: e.target.value })} />
+                                        id="volume"
+                                        aria-describedby="volumeHelp" placeholder="Ex: 347"
+                                        onChange={e => this.setState({ volume: e.target.value })} />
 
                                 </FormGroup>
 
@@ -206,35 +225,48 @@ function MonografiaEletronica() {
 
                                 </FormGroup>
 
-                                <FormGroup label='Editora ' htmlFor="editora">
+                                <FormGroup label='Número ' htmlFor="numero">
                                     <input type='text'
+                                        name="numero"
                                         className="form-control"
-                                        name="editora"
-                                        id="editora"
-                                        aria-describedby="editoraHelp" placeholder="Ex: Cia dos livros"
-                                        onChange={e => this.setState({ editora: e.target.value })} />
+                                        id="numero"
+                                        aria-describedby="numeroHelp" placeholder="Ex: Cia dos livros"
+                                        onChange={e => this.setState({ numero: e.target.value })} />
 
                                 </FormGroup>
 
 
+                                <FormGroup label='Tomo ' htmlFor="tomo">
+                                    <input type='text'
+                                        name="tomo"
+                                        className="form-control"
+                                        id="tomo"
+                                        aria-describedby="tomoHelp" placeholder="Ex: 2004"
+                                        onChange={e => this.setState({ tomo: e.target.value })} />
+
+                                </FormGroup>
+
+                                <FormGroup label='Pagina inicial ' htmlFor="paginaInicial">
+                                    <input type='text'
+                                        name="paginaInicial"
+                                        className="form-control"
+                                        id="paginaInicial"
+                                        aria-describedby="quantiPgHelp" placeholder="Ex: 347"
+                                        onChange={e => this.setState({ paginaInicial: e.target.value })} />
+
+                                </FormGroup>
+
                             </fieldset>
-
-
-
-
                         </div>
-                        <div className="sla">
-
-                            <button className="btn btn-success">Salvar</button>
-                        </div>
-
                     </div>
+                    <div className="sla">
 
-
+                        <button className="btn btn-success">Salvar</button>
+                    </div>
+                    {/* Aqui é a parte de enviar as referencias, 3 forms */}
 
 
                 </div>
-
 
                 <div className="col-md-4" style={{ position: 'relative', left: '60px' }}>
 
@@ -252,9 +284,8 @@ function MonografiaEletronica() {
                                         return (
                                             <div key={index} style={{ marginBottom: '10px' }}>
                                                 <input type='text' style={{ marginBottom: '24px' }}
-                                                name="autor"
 
-
+                                                    name="autor"
                                                     onChange={e => this.setState({ autor: e.target.value })}
 
                                                     className="form-control"
@@ -297,4 +328,4 @@ function MonografiaEletronica() {
 
 
 
-export default MonografiaEletronica
+export default Artigo
