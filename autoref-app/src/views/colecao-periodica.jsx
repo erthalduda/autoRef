@@ -38,7 +38,7 @@ function ColecaoPeriodica() {
       name: "editora",
       value: "",
       placeholder: "Ex: Editora",
-      type: "number",
+      type: "text",
     },
     {
       id: 5,
