@@ -101,13 +101,13 @@ class Periodico extends React.Component {
                 <div className="row">
                     <div className="col-md-6" style={{ position: 'relative', left: '300px' }}>
                         <div className="jumbotron">
-                            <h1 className="display-3">OPÇÕES DE PERIÓDICA</h1>
+                            <h1 className="display-3">OPÇÕES DE PUBLICAÇÃO PERIÓDICA</h1>
                             <p className="lead">Escolha o tipo:</p>
                             <div className="button1">
 
-                                <button onClick={this.prepareColecaoPeriodica} className="btn btn-success">Coleção de periódica</button>
-                                <button onClick={this.preparePartePeriodica} className="btn btn-success">Parte de coleção de periódica</button>
-                                <button onClick={this.prepareColecaoPeriodicaEletronica} className="btn btn-success">Coleção de periódica em meio eletronico</button>
+                                <button onClick={this.prepareColecaoPeriodica} className="btn btn-success">Coleção de Publicação Periódica</button>
+                                <button onClick={this.preparePartePeriodica} className="btn btn-success">Parte de Coleção de Publicação Periódica</button>
+                                <button onClick={this.prepareColecaoPeriodicaEletronica} className="btn btn-success">Coleção de Publicação Periódica em Meio Eletrônico</button>
 
 
                             </div>
