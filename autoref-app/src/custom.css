@@ -7,8 +7,25 @@ body {
 .btn {
   margin: 0.25em;
 }
+.col-md-6{
+  position: "absolute";
+   left: '500px';
+    
+  
+}
 
+.display-3{
+  color: #4a4444;
+}
 
+.lead{
+  color: #4a4444;
+
+}
+
+.p{
+  color: #4a4444;
+}
 
 @media (min-width: 768px) {
   body>.navbar-transparent {

@@ -77,9 +77,9 @@ class Home extends React.Component {
                 </nav>
 
                 <div className="row">
-                    <div className="col-md-6" style={{ position: 'fixed', left: '500px' }}>
+                    <div className="col-md-6"style={{ position: "absolute", left: '500px' }}>
                         <div className="jumbotron">
-                            <h1 className="display-3"  style={{ position: 'relative', right: '165px' }}>AUTOREF</h1>
+                            <h1 className="display-3">AUTOREF</h1>
                             <p className="lead">Suas referências de maneira fácil.</p>
                             <p>Essa é a área central do site.</p>
                             

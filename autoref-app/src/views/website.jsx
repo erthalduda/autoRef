@@ -7,11 +7,17 @@ import axios from "axios";
 
 import "../css/referencia.css";
 
-function Artigo() {
+function Website() {
   const [inputFields, setInputFields] = useState([
+    
     {
       id: 1,
-
+      name: "tipo",
+      value: "website",
+      type: "hidden",
+    },
+    {
+      id: 2,
       name: "titulo",
       value: "",
       placeholder: "Ex: Titulo",
@@ -19,65 +25,37 @@ function Artigo() {
     },
 
     {
-      id: 2,
-      name: "subtitulo",
+      id: 3,
+      name: "nomeSite",
       value: "",
-      placeholder: "Ex: Subtitulo",
-      type: "text"
+      placeholder: "Ex: Nome do site",
+      type: "text",
     },
 
-    {
-      id: 3,
-      name: "anoPublicacao",
-      value: "",
-      placeholder: "Ex: Ano de Publicação",
-      type: "number",
-    },
     {
       id: 4,
-      name: "anoEntrega",
-      value: "",
-      placeholder: "Ex: Ano de entrega",
-      type: "number"
-    },
-
-    {
-      id: 5,
       name: "url",
       value: "",
       placeholder: "Ex: Url",
-      type: "text"
+      type: "number",
     },
+    {
+      id: 5,
+      name: "dataAcesso",
+      value: "",
+      placeholder: "Ex: Data de acesso",
+      type: "date",
+    },
+
 
     {
       id: 6,
-      name: "cidade",
-      value: "",
-      placeholder: "Ex: Cidade",
-      type: "text",
-    },
-    {
-      id: 7,
-      name: "editora",
-      value: "",
-      placeholder: "Ex: Editora",
-      type: "text",
-    },
-    {
-      id: 8,
-      name: "edicao",
-      value: "",
-      placeholder: "Ex: Edição",
-      type: "text",
-    },
-
-    {
-      id: 9,
       name: "autor",
       value: "",
       placeholder: "Ex: Autor",
-      type: "text",
-    },
+      type: "text"
+    }
+
   ]);
 
   const onSubmit = async (event) => {
@@ -200,7 +178,7 @@ function Artigo() {
 
 </div>
 </nav >
-      <h1 id="referencia">Artigo</h1>
+      <h1 id="referencia">Website</h1>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
@@ -238,4 +216,4 @@ function Artigo() {
   );
 }
 
-export default Artigo;
+export default Website;
