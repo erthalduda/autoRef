@@ -10,69 +10,116 @@ import "../css/referencia.css";
 function Artigo() {
   const [inputFields, setInputFields] = useState([
     {
-      id: 1,
-
-      name: "titulo",
+        id: 1,
+        name: "tipo",
+        value: "artigo",
+        type: "hidden",
+      },
+    {
+      id: 2,
+      name: "título",
       value: "",
-      placeholder: "Ex: Titulo",
+      placeholder: "Ex: Título de Artigo",
       type: "text",
     },
 
     {
-      id: 2,
-      name: "subtitulo",
+      id: 3,
+      name: "subtítuloArtigo",
       value: "",
-      placeholder: "Ex: Subtitulo",
+      placeholder: "Ex: Subtítulo do artigo",
       type: "text"
     },
 
     {
-      id: 3,
-      name: "anoPublicacao",
-      value: "",
-      placeholder: "Ex: Ano de Publicação",
-      type: "number",
-    },
-    {
       id: 4,
-      name: "anoEntrega",
+      name: "tituloPeriodico",
       value: "",
-      placeholder: "Ex: Ano de entrega",
-      type: "number"
+      placeholder: "Ex: Título periódico ",
+      type: "text",
     },
-
     {
       id: 5,
-      name: "url",
+      name: "subtituloPeriodico",
       value: "",
-      placeholder: "Ex: Url",
+      placeholder: "Ex: Subtítulo periódico",
       type: "text"
     },
 
     {
       id: 6,
-      name: "cidade",
+      name: "localPublicacao",
       value: "",
-      placeholder: "Ex: Cidade",
-      type: "text",
+      placeholder: "Ex: Local de publicação",
+      type: "text"
     },
+
     {
       id: 7,
+      name: "paginaFinal",
+      value: "",
+      placeholder: "Ex: Página final",
+      type: "number",
+    },
+    {
+        id: 8,
+        name: "paginaInicial",
+        value: "",
+        placeholder: "Ex: Página inicial",
+        type: "text",
+      },
+    {
+      id: 9,
       name: "editora",
       value: "",
       placeholder: "Ex: Editora",
       type: "text",
     },
     {
-      id: 8,
-      name: "edicao",
+      id: 10,
+      name: "dataPublicacao",
       value: "",
-      placeholder: "Ex: Edição",
+      placeholder: "Ex: Data de publicação",
       type: "text",
     },
-
     {
-      id: 9,
+        id: 11,
+        name: "ano",
+        value: "",
+        placeholder: "Ex: Ano",
+        type: "number",
+      },
+      {
+        id: 12,
+        name: "volume",
+        value: "",
+        placeholder: "Ex: Volume",
+        type: "text",
+      },
+      {
+        id: 13,
+        name: "edicao",
+        value: "",
+        placeholder: "Ex: Edição",
+        type: "text",
+      },
+      {
+        id: 14,
+        name: "numero",
+        value: "",
+        placeholder: "Ex: Número",
+        type: "text",
+      },
+      {
+        id: 15,
+        name: "tomo",
+        value: "",
+        placeholder: "Ex: Tomo",
+        type: "text",
+      },
+      
+    {
+      id: 16,
       name: "autor",
       value: "",
       placeholder: "Ex: Autor",
