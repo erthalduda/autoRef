@@ -1,41 +1,33 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
 export default function (props) {
-  let [authMode, setAuthMode] = useState("entrar")
+  let [authMode, setAuthMode] = useState("entrar");
 
   const changeAuthMode = () => {
-    setAuthMode(authMode === "entrar" ? "cadastro" : "entrar")
-  }
-
+    setAuthMode(authMode === "entrar" ? "cadastro" : "entrar");
+  };
 
   function handleClickEntrar() {
-    
     var formData = new FormData();
 
     // Send data to the backend via POST
-    fetch('http://localhost:8080/usuario/login', {
-
-      method: 'POST', 
-      mode: 'cors', 
-      body: formData // body data type must match "Content-Type" header
-
-    })
+    fetch("http://localhost:8080/usuario/login", {
+      method: "POST",
+      mode: "cors",
+      body: formData, // body data type must match "Content-Type" header
+    });
   }
 
   function handleClickCadastro() {
-    
     var formData = new FormData();
 
     // Send data to the backend via POST
-    fetch('http://localhost:8080/usuario/cadastro', {
-
-      method: 'POST', 
-      mode: 'cors', 
-      body: formData // body data type must match "Content-Type" header
-
-    })
+    fetch("http://localhost:8080/usuario/cadastro", {
+      method: "POST",
+      mode: "cors",
+      body: formData, // body data type must match "Content-Type" header
+    });
   }
-
 
   if (authMode === "entrar") {
     return (
@@ -66,14 +58,18 @@ export default function (props) {
               />
             </div>
             <div className="d-grid gap-2 mt-3">
-              <button type="submit" className="btn btn-primary" onClick={handleClickEntrar}>
+              <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={handleClickEntrar}
+              >
                 Entrar
               </button>
             </div>
           </div>
         </form>
       </div>
-    )
+    );
   }
 
   return (
@@ -82,7 +78,7 @@ export default function (props) {
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Cadastro</h3>
           <div className="text-center">
-          Já possui uma conta?{" "}
+            Já possui uma conta?{" "}
             <span className="link-primary" onClick={changeAuthMode}>
               Faça login!
             </span>
@@ -112,12 +108,16 @@ export default function (props) {
             />
           </div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary" onClick={handleClickCadastro} >
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={handleClickCadastro}
+            >
               Cadastrar
             </button>
           </div>
         </div>
       </form>
     </div>
-  )
+  );
 }
