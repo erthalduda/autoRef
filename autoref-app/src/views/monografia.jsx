@@ -9,9 +9,15 @@ import "../css/referencia.css";
 
 function Monografia() {
   const [inputFields, setInputFields] = useState([
-
+    
     {
       id: 1,
+      name: "tipo",
+      value: "monografia",
+      type: "hidden",
+    },
+    {
+      id: 2,
       name: "titulo",
       value: "",
       placeholder: "Ex: Titulo",
@@ -19,7 +25,7 @@ function Monografia() {
     },
 
     {
-      id: 2,
+      id: 3,
       name: "subtitulo",
       value: "",
       placeholder: "Ex: Subtitulo",
@@ -27,14 +33,14 @@ function Monografia() {
     },
 
     {
-      id: 3,
+      id: 4,
       name: "anoPublicacao",
       value: "",
       placeholder: "Ex: Ano de Publicação",
       type: "number",
     },
     {
-      id: 4,
+      id: 5,
       name: "anoEntrega",
       value: "",
       placeholder: "Ex: Ano de entrega",
@@ -42,7 +48,7 @@ function Monografia() {
     },
 
     {
-      id: 5,
+      id: 6,
       name: "quantiPgs",
       value: "",
       placeholder: "Ex: Quantidade da páginas",
@@ -50,21 +56,21 @@ function Monografia() {
     },
 
     {
-      id: 6,
+      id: 7,
       name: "cidade",
       value: "",
       placeholder: "Ex: Cidade",
       type: "text",
     },
     {
-      id: 7,
+      id: 8,
       name: "editora",
       value: "",
       placeholder: "Ex: Editora",
       type: "text",
     },
     {
-      id: 8,
+      id: 9,
       name: "edicao",
       value: "",
       placeholder: "Ex: Edição",
@@ -72,18 +78,13 @@ function Monografia() {
     },
 
     {
-      id: 9,
+      id: 10,
       name: "autor",
       value: "",
       placeholder: "Ex: Autor",
-      type: "text",
-    },
-    {
-      id: 10,
-      name: "tipo",
-      value: "monografia",
-      type: "hidden",
+      type: "text"
     }
+
   ]);
 
   const onSubmit = async (event) => {

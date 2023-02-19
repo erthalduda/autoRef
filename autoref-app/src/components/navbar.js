@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 
 
 import NavbarItem from "./navbaritem";
+import "../css/navbar.css"
 
 import Profile from "../images/profile.png"
 
@@ -26,6 +27,18 @@ const onClick = () => setIsActive(!isActive)
         <div className="navbar fixed-top">
 
             <div className="container">
+                <navburguer>
+                  <input className="checkbox" type="checkbox" 
+                  name= "" id=""/>
+                  <div className="hamburguer-lines">
+                    <span className="line line1"></span>
+                  </div>
+                  <div className="menu-items">
+                    <li><a href="#">Antonio</a></li>
+                    <li><a href="#">Antonio</a></li>
+                    <li><a href="#">Antonio</a></li>
+                  </div>
+                </navburguer>
           
 
                 <a href="#/home" className="navbar-brand" >Autoref</a>

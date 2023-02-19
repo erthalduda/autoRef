@@ -23,7 +23,7 @@ function Trabalho() {
       name: "subtitulo",
       value: "",
       placeholder: "Ex: Subtitulo",
-      type: "text",
+      type: "text"
     },
 
     {
@@ -38,7 +38,7 @@ function Trabalho() {
       name: "anoEntrega",
       value: "",
       placeholder: "Ex: Ano de entrega",
-      type: "number",
+      type: "number"
     },
 
     {
@@ -46,7 +46,7 @@ function Trabalho() {
       name: "url",
       value: "",
       placeholder: "Ex: Url",
-      type: "text",
+      type: "text"
     },
 
     {
