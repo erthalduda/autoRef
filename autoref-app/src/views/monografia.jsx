@@ -208,7 +208,7 @@ function Monografia() {
 </div>
 </nav >
       <h1 id="referencia">Monografia</h1>
-      <div className="form-group">
+      <div className="form-group-ref">
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
             return (
