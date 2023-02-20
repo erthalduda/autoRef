@@ -1,6 +1,7 @@
 import React from "react";
 
 import Login from "../views/login";
+import Login2 from "../views/login02";
 import Home from '../views/home';
 import CadastroUsuario from "../views/cadastro-usuario";
 import Referencias from "../views/referencias";
