@@ -74,13 +74,22 @@ class CadastroUsuario extends React.Component {
                     }
                   />
                 </FormGroup>
-
-                <button onClick={this.cadastrar} className="btn btn-success">
-                  Cadastrar
-                </button>
-                <button onClick={this.prepareLogin} className="btn btn-danger">
-                  Voltar
-                </button>
+                <br></br>
+                <div className="centralizar">
+                  <button onClick={this.cadastrar} className="btn btn-success">
+                    Cadastrar
+                  </button>
+                </div>
+                <br></br>
+               <p className="centralizar">Já possui uma conta?</p>
+                <div className="centralizar">
+                  <button
+                    onClick={this.prepareLogin}
+                    className="btn btn-success"
+                  >
+                    Fazer login
+                  </button>
+                </div>
               </div>
             </div>
           </div>

@@ -78,6 +78,13 @@ details:not(:last-child) {
   margin-left: 150px;
 }
 
+.centralizar {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 summary,
 details[open] {
   padding: 10px;
