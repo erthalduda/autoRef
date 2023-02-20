@@ -57,7 +57,7 @@ class Login extends React.Component {
                       />
                     </FormGroup>
 
-                    <FormGroup label="Senha " htmlFor="exampleInputPassword1">
+                    <FormGroup label="Senha" htmlFor="exampleInputPassword1">
                       <input
                         type="Password"
                         value={this.state.senha}
