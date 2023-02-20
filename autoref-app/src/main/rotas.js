@@ -22,6 +22,7 @@ import PartePeriodica from "../views/parte-periodica";
 import ColecaoPeriodicaMeioEletronico from "../views/colecao-periodica-meio-eletronico";
 import Faq from "../views/faq";
 import CadastroColecao from "../views/cadastro-colecao";
+import Login2 from "../views/login02";
 
 
 function Rotas() {
