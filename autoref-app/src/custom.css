@@ -72,6 +72,12 @@ details:not(:last-child) {
   margin-left: 150px;
 }
 
+.direta-longa {
+  font-size: 12px;
+  text-align: justify;
+  margin-left: 150px;
+}
+
 summary,
 details[open] {
   padding: 10px;

@@ -15,7 +15,7 @@ function Faq() {
               aria-current="true"
             >
               <i className="fas fa-tachometer-alt fa-fw me-3"></i>
-              <span>REFERENCIAS</span>
+              <span>REFERÊNCIAS</span>
             </a>
 
             <a
@@ -24,7 +24,7 @@ function Faq() {
               aria-current="true"
             >
               <i className="fas fa-tachometer-alt fa-fw me-3"></i>
-              <span>BUSCAR REFERENCIAS</span>
+              <span>BUSCAR REFERÊNCIAS</span>
             </a>
             <a
               href="#"
@@ -89,16 +89,13 @@ function Faq() {
                 dentre outras coisas, para a implementação de políticas
                 públicas” (NIWA, 2017, p. 71). Caso a citação direta possua mais
                 de três linhas, ela é considerada uma citação direta longa,
-                como, por exemplo: De acordo com Niwa (2017, p. 74).''
-                <div className="letra-sumario">
-                  A estandardização, ou normalização, é um fenômeno que procura{" "}
-                  <br></br>
+                como, por exemplo: De acordo com Niwa (2017, p. 74):
+                <div className="direta-longa">
+                  A estandardização, ou normalização, é um fenômeno que procura
                   estabelecer padrões para governos, organizações ou
-                  instituições em <br></br>
-                  relação a seus processos, serviços ou produtos na busca por
-                  novos <br></br>
-                  conceitos, aperfeiçoamentos, melhorias ou certificações.{" "}
-                  <br></br>
+                  instituições em relação a seus processos, serviços ou produtos
+                  na busca por novos conceitos, aperfeiçoamentos, melhorias ou
+                  certificações.
                 </div>
               </details>
             </div>
@@ -123,16 +120,12 @@ function Faq() {
                 utilização da expressão apud. Deve ser feito da seguinte forma:
                 De acordo com Ernst<i> et al</i>. (2014, p. 854, apud NIWA,
                 2017, p. 64):
-                <div className="letra-sumario">
+                <div className="direta-longa">
                   [...] a concorrência baseada na tecnologia está se
-                  intensificando, e o <br></br>
-                  sucesso competitivo depende criticamente do controle sobre os{" "}
-                  <br></br>
-                  direitos de propriedade intelectual, bem como sobre a
-                  capacidade de <br></br>
-                  controlar determinados padrões abertos, mas de propriedade de{" "}
-                  <br></br>
-                  arquitetura e de interface. <br></br>
+                  intensificando, e o sucesso competitivo depende criticamente
+                  do controle sobre os direitos de propriedade intelectual, bem
+                  como sobre a capacidade de controlar determinados padrões
+                  abertos, mas de propriedade de arquitetura e de interface.
                 </div>
                 Nesse exemplo, está sendo citado de forma direta o que Niwa
                 escreveu, baseando-se em Ernst et al. Vale ressaltar que, nas
