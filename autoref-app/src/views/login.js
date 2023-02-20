@@ -53,7 +53,7 @@ class Login extends React.Component {
                         className="form-control"
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
-                        placeholder="Digite o email"
+                        placeholder="Ex: email@email.com"
                       />
                     </FormGroup>
 
@@ -66,7 +66,7 @@ class Login extends React.Component {
                         }
                         className="form-control"
                         id="exampleInputPassword1"
-                        placeholder="Password"
+                        placeholder="Ex: 123456"
                       />
                     </FormGroup>
                     <br></br>

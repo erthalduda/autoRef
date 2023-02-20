@@ -34,6 +34,7 @@ class CadastroUsuario extends React.Component {
                   <input
                     type="text"
                     id="inputNome"
+                    placeholder="Ex: Maria Silva"
                     className="form-control"
                     name="nome"
                     onChange={(e) => this.setState({ nome: e.target.value })}
@@ -43,6 +44,7 @@ class CadastroUsuario extends React.Component {
                 <FormGroup label="Email " htmlFor="inputEmail">
                   <input
                     type="text"
+                    placeholder="Ex: email@email.com"
                     id="inputEmail"
                     className="form-control"
                     name="email"
@@ -53,6 +55,7 @@ class CadastroUsuario extends React.Component {
                 <FormGroup label="Senha " htmlFor="inputSenha">
                   <input
                     type="password"
+                    placeholder="Ex: 123456"
                     id="inputSenha"
                     className="form-control"
                     name="senha"
@@ -61,12 +64,13 @@ class CadastroUsuario extends React.Component {
                 </FormGroup>
 
                 <FormGroup
-                  label="Confirme a Senha "
+                  label="Confirme a sua senha "
                   htmlFor="inputConfirmaSenha"
                 >
                   <input
                     type="password"
                     id="inputConfirmaSenha"
+                    placeholder="Ex: 123456"
                     className="form-control"
                     name="senha"
                     onChange={(e) =>
