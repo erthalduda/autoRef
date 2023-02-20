@@ -21,6 +21,7 @@ import ColecaoPeriodica from "../views/colecao-periodica";
 import PartePeriodica from "../views/parte-periodica";
 import ColecaoPeriodicaMeioEletronico from "../views/colecao-periodica-meio-eletronico";
 import Faq from "../views/faq";
+import Login2 from "../views/login02";
 
 
 function Rotas() {
@@ -28,6 +29,7 @@ function Rotas() {
         <HashRouter>
             <Switch>
                 <Route path="/login" component={Login} />
+                <Route path="/login2" component={Login2} />
                 <Route path="/home" component={Home} />
                 <Route path="/cadastro" component={CadastroUsuario} />
                 <Route path="/referencias" component={Referencias} />

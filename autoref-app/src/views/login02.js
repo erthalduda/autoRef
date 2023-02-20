@@ -1,12 +1,14 @@
 import React from "react"
 
-export default function (props) {
+export default function Login2 (props) {
   return (
+   
     <div className="Auth-form-container">
       <form className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Login</h3>
           <div className="form-group mt-3">
+         
             <label>E-mail</label>
             <input
               type="email"
