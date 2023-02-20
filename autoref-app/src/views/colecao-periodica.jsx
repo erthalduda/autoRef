@@ -114,7 +114,7 @@ function ColecaoPeriodica() {
               aria-current="true"
             >
               <i className="fas fa-tachometer-alt fa-fw me-3"></i>
-              <span>REFERENCIAS</span>
+              <span>REFERÊNCIAS</span>
             </a>
 
             <a
@@ -123,7 +123,7 @@ function ColecaoPeriodica() {
               aria-current="true"
             >
               <i className="fas fa-tachometer-alt fa-fw me-3"></i>
-              <span>BUSCAR REFERENCIAS</span>
+              <span>BUSCAR REFERÊNCIAS</span>
             </a>
             <a
               href="#"
