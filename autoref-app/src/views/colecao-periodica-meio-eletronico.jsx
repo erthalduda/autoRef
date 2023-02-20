@@ -7,142 +7,87 @@ import axios from "axios";
 
 import "../css/referencia.css";
 
-function Artigo() {
+function ColecaoPeriodicaMeioEletronico() {
   const [inputFields, setInputFields] = useState([
     {
       id: 1,
       name: "tipo",
-      value: "artigo",
+      value: "colecaoPublicacaoPeriodicaEletronico",
       type: "hidden",
     },
     {
       id: 2,
-      name: "título",
+      label: "Título",
+      name: "titulo",
       value: "",
-      placeholder: "Ex: Título de Artigo",
+      placeholder: "Ex: Título",
       type: "text",
     },
 
     {
       id: 3,
-      name: "subtítuloArtigo",
+      name: "subtituloPublicacao",
       value: "",
-      placeholder: "Ex: Subtítulo do artigo",
+      placeholder: "Ex: Subtítulo",
       type: "text",
     },
 
     {
       id: 4,
-      name: "tituloPeriodico",
-      value: "",
-      placeholder: "Ex: Título periódico ",
-      type: "text",
-    },
-    {
-      id: 5,
-      name: "subtituloPeriodico",
-      value: "",
-      placeholder: "Ex: Subtítulo periódico",
-      type: "text",
-    },
-
-    {
-      id: 6,
-      name: "localPublicacao",
-      value: "",
-      placeholder: "Ex: Local de publicação",
-      type: "text",
-    },
-
-    {
-      id: 7,
-      name: "paginaFinal",
-      value: "",
-      placeholder: "Ex: Página final",
-      type: "number",
-    },
-    {
-      id: 8,
-      name: "paginaInicial",
-      value: "",
-      placeholder: "Ex: Página inicial",
-      type: "text",
-    },
-    {
-      id: 9,
       name: "editora",
       value: "",
       placeholder: "Ex: Editora",
       type: "text",
     },
     {
-      id: 10,
-      name: "dataPublicacao",
+      id: 5,
+      name: "dataInicio",
       value: "",
-      placeholder: "Ex: Data de publicação",
-      type: "text",
-    },
-    {
-      id: 11,
-      name: "ano",
-      value: "",
-      placeholder: "Ex: Ano",
+      placeholder: "Ex: 2004",
       type: "number",
-    },
-    {
-      id: 12,
-      name: "volume",
-      value: "",
-      placeholder: "Ex: Volume",
-      type: "text",
-    },
-    {
-      id: 13,
-      name: "edicao",
-      value: "",
-      placeholder: "Ex: Edição",
-      type: "text",
-    },
-    {
-      id: 14,
-      name: "numero",
-      value: "",
-      placeholder: "Ex: Número",
-      type: "text",
-    },
-    {
-      id: 15,
-      name: "tomo",
-      value: "",
-      placeholder: "Ex: Tomo",
-      type: "text",
     },
 
     {
-      id: 16,
-      name: "autor",
+      id: 6,
+      name: "dataFim",
       value: "",
-      placeholder: "Ex: Autor",
+      placeholder: "Ex: 2005",
+      type: "number",
+    },
+
+    {
+      id: 7,
+      name: "issn",
+      value: "",
+      placeholder: "Ex: 123456789",
       type: "text",
+    },
+    {
+      id: 8,
+      name: "doi",
+      value: "",
+      placeholder: "Ex: 00.0000/000",
+      type: "text,",
+    },
+    {
+      id: 9,
+      name: "url",
+      value: "",
+      placeholder: "Ex: www.url.com",
+      type: "text,",
+    },
+    {
+      id: 10,
+      name: "dataAcesso",
+      value: "",
+      placeholder: "Ex: dd/mm/aaaa",
+      type: "date",
     },
   ]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
     axios.post("https://localhost/3000/referencias/cadastrar", inputFields);
-    console.log(inputFields);
-  };
-
-  const addFields = () => {
-    const id = inputFields.length + 1;
-    let newfield = {
-      id: id,
-      name: "autor",
-      value: "",
-      placeholder: "Ex: Autor",
-      type: "text",
-    };
-    setInputFields([...inputFields, newfield]);
     console.log(inputFields);
   };
 
@@ -244,7 +189,9 @@ function Artigo() {
           </div>
         </div>
       </nav>
-      <h1 id="referencia">Artigo</h1>
+      <h1 id="referencia">
+        Coleção de Publicação Periódica em Meio Eletrônico
+      </h1>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
@@ -268,10 +215,6 @@ function Artigo() {
             <button type="submit" className="btn btn-success">
               Salvar
             </button>
-
-            <button className="btn btn-success" onClick={addFields}>
-              + Autor
-            </button>
           </div>
         </form>
       </div>
@@ -281,4 +224,4 @@ function Artigo() {
   );
 }
 
-export default Artigo;
+export default ColecaoPeriodicaMeioEletronico;

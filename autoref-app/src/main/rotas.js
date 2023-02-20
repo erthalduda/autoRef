@@ -21,7 +21,7 @@ import ColecaoPeriodica from "../views/colecao-periodica";
 import PartePeriodica from "../views/parte-periodica";
 import ColecaoPeriodicaMeioEletronico from "../views/colecao-periodica-meio-eletronico";
 import Faq from "../views/faq";
-import Login2 from "../views/login02";
+import CadastroColecao from "../views/cadastro-colecao";
 
 
 function Rotas() {
@@ -46,7 +46,7 @@ function Rotas() {
                 <Route path="/colecao_periodica" component={ColecaoPeriodica} />
                 <Route path="/parte_periodica" component={PartePeriodica} />
                 <Route path="/colecao_periodica_eletronica" component={ColecaoPeriodicaMeioEletronico} />
-
+                <Route path="/cadastro_colecao" component={CadastroColecao}/>
                 
 
             </Switch>
