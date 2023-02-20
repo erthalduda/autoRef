@@ -87,14 +87,14 @@ function CadastroColecao() {
               <i className="fas fa-tachometer-alt fa-fw me-3"></i>
               <span>COLEÇÕES</span>
             </a>
-            <a
+            {/* <a
               href="#"
               className="list-group-item list-group-item-action py-2 ripple"
               aria-current="true"
             >
               <i className="fas fa-tachometer-alt fa-fw me-3"></i>
               <span>CONQUISTAS</span>
-            </a>
+            </a> */}
             <a
               href="#"
               className="list-group-item list-group-item-action py-2 ripple"
