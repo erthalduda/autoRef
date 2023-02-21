@@ -9,7 +9,7 @@ import { Route, Switch, HashRouter } from "react-router-dom";
 import Monografia from "../views/monografia";
 import Website from "../views/website";
 import Artigo from "../views/artigo";
-
+import ColecoesUsuario from "../views/colecoes-usuario";
 import Periodico from "../views/periodico";
 import MonoOpcoes from "../views/mono-opcoes";
 import ParteMonografia from "../views/parte-monografia";
@@ -23,7 +23,7 @@ import Faq from "../views/faq";
 import CadastroColecao from "../views/cadastro-colecao";
 import RepositorioGeral from "../views/repositorio-geral";
 import RepositorioPrivado from "../views/repositorio-privado";
-//import Login2 from "../views/login02";
+import Ranking from "../views/ranking";
 
 function Rotas() {
   return (
@@ -33,6 +33,7 @@ function Rotas() {
         <Route path="/home" component={Home} />
         <Route path="/cadastro" component={CadastroUsuario} />
         <Route path="/referencias" component={Referencias} />
+        <Route path="/colecoes" component={ColecoesUsuario} />
         <Route path="/faq" component={Faq} />
         <Route path="/monografia" component={Monografia} />
         <Route path="/website" component={Website} />
@@ -52,6 +53,7 @@ function Rotas() {
         <Route path="/cadastro_colecao" component={CadastroColecao} />
         <Route path="/repositorio_geral" component={RepositorioGeral} />
         <Route path="/repositorio_privado" component={RepositorioPrivado} />
+        <Route path="/ranking" component={Ranking} />
       </Switch>
     </HashRouter>
   );
