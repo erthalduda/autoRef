@@ -224,6 +224,7 @@ label {
 
 .card {
   max-width: 80rem;
+  margin-bottom: 15px;
 }
 
 .clicavel {
