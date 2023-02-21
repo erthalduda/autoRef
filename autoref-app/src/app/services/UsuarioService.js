@@ -37,13 +37,13 @@ class UsuarioService extends ApiService {
     if (!usuario.email) {
       erro.push("O campo e-mail é obrigatório.");
     } else if (!usuario.email.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]/)) {
-      erros.push("O e-mail fornecido deve ser um e-mail válido.");
+      erro.push("O e-mail fornecido deve ser um e-mail válido.");
     }
 
     if (!usuario.senha || !usuario.senhaRepeticao) {
-      erros.push("Confirme sua senha.");
+      erro.push("Confirme sua senha.");
     } else if (usuario.senha !== usuario.senhaRepeticao) {
-      erros.push("As senhas não coincidem");
+      erro.push("As senhas não coincidem");
     }
 
     if (erro && erro.length > 0) {
