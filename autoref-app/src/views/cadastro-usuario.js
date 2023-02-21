@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../components/card";
 import FormGroup from "../components/form-group";
-
+import UsuarioService from "../app/services/UsuarioService";
 import { withRouter } from "react-router-dom";
 
 class CadastroUsuario extends React.Component {
@@ -11,8 +11,35 @@ class CadastroUsuario extends React.Component {
     senha: "",
     senhaConfirma: "",
   };
+
+  constructor() {
+    super();
+    this.service = new UsuarioService();
+  }
+
   cadastrar = () => {
-    console.log(this.state);
+    const { nome, email, senha, senhaConfirma } = this.state;
+    const usuario = { nome, email, senha, senhaConfirma };
+
+    try {
+      this.service.validarCampos(usuario);
+    } catch (erro) {
+      const msgs = erro.mensagemErro;
+      msgs.forEach((msg) => mensagemErro(msg));
+      return false;
+    }
+
+    this.service
+      .cadastrarUsuario(usuario)
+      .then((_response) => {
+        mensagemSucesso(
+          "Cadastro realizado! Faça login para acessar o AutoRef."
+        );
+        this.props.history.push("/login");
+      })
+      .catch((error) => {
+        mensagemErro(error.response.data);
+      });
   };
 
   prepareLogin = () => {
@@ -85,7 +112,7 @@ class CadastroUsuario extends React.Component {
                   </button>
                 </div>
                 <br></br>
-               <p className="centralizar">Já possui uma conta?</p>
+                <p className="centralizar">Já possui uma conta?</p>
                 <div className="centralizar">
                   <button
                     onClick={this.prepareLogin}
