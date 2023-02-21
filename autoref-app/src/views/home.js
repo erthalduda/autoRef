@@ -3,6 +3,7 @@ import React from "react";
 import "../custom.css";
 class Home extends React.Component {
   render() {
+      
     return (
       <>
         <nav
@@ -21,7 +22,7 @@ class Home extends React.Component {
               </a>
 
               <a
-                href="#"
+                href="#/repositorio_geral"
                 className="list-group-item list-group-item-action py-2 ripple"
                 aria-current="true"
               >
