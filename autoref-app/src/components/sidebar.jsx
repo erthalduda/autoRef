@@ -33,23 +33,15 @@ return(
               <span>BUSCAR REFERÊNCIAS</span>
             </a>
             <a
-              href="#"
+              href="#/colecoes"
               className="list-group-item list-group-item-action py-2 ripple"
               aria-current="true"
             >
               <i className="fas fa-tachometer-alt fa-fw me-3"></i>
               <span>COLEÇÕES</span>
             </a>
-            {/* <a
-              href="#"
-              className="list-group-item list-group-item-action py-2 ripple"
-              aria-current="true"
-            >
-              <i className="fas fa-tachometer-alt fa-fw me-3"></i>
-              <span>CONQUISTAS</span>
-            </a> */}
             <a
-              href="#"
+              href="#/ranking"
               className="list-group-item list-group-item-action py-2 ripple"
               aria-current="true"
             >
@@ -57,7 +49,7 @@ return(
               <span>RANKING</span>
             </a>
             <a
-              href="#"
+              href="#/faq"
               className="list-group-item list-group-item-action py-2 ripple"
               aria-current="true"
             >
