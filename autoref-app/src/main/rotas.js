@@ -1,7 +1,6 @@
 import React from "react";
 
 import Login from "../views/login";
-import Login2 from "../views/login02";
 import Home from "../views/home";
 import CadastroUsuario from "../views/cadastro-usuario";
 import Referencias from "../views/referencias";
@@ -31,7 +30,6 @@ function Rotas() {
     <HashRouter>
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/login2" component={Login2} />
         <Route path="/home" component={Home} />
         <Route path="/cadastro" component={CadastroUsuario} />
         <Route path="/referencias" component={Referencias} />
