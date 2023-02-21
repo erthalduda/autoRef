@@ -35,7 +35,7 @@ class Login extends React.Component {
           className="col-md-6"
           style={{ position: "relative", left: "300px" }}
         >
-          <Card tittle="Login">
+          <Card title="LOGIN">
             <div className="row">
               <span>{this.state.mensagemErro}</span>
             </div>

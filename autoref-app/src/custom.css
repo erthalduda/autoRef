@@ -200,3 +200,28 @@ label {
   font-weight: 600;
   color: rgb(34, 34, 34);
 }
+
+.card-header{
+  font-weight: bold;
+  font-size: 125%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80rem;
+}
+
+.card-body{
+  color: #1c1c1b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.md-3{
+  color: #1c1c1b;
+  max-width: 80rem;
+}
+
+.card{
+  max-width: 80rem;
+}

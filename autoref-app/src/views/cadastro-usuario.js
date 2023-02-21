@@ -1,3 +1,4 @@
+import "../css/referencia.css";
 import React from "react";
 import Card from "../components/card";
 import FormGroup from "../components/form-group";
@@ -12,35 +13,35 @@ class CadastroUsuario extends React.Component {
     senhaConfirma: "",
   };
 
-  constructor() {
-    super();
-    this.service = new UsuarioService();
-  }
+  // constructor() {
+  //   super();
+  //   this.service = new UsuarioService();
+  // }
 
-  cadastrar = () => {
-    const { nome, email, senha, senhaConfirma } = this.state;
-    const usuario = { nome, email, senha, senhaConfirma };
+  // cadastrar = () => {
+  //   const { nome, email, senha, senhaConfirma } = this.state;
+  //   const usuario = { nome, email, senha, senhaConfirma };
 
-    try {
-      this.service.validarCampos(usuario);
-    } catch (erro) {
-      const msgs = erro.mensagemErro;
-      msgs.forEach((msg) => mensagemErro(msg));
-      return false;
-    }
+  //   try {
+  //     this.service.validarCampos(usuario);
+  //   } catch (erro) {
+  //     const msgs = erro.mensagemErro;
+  //     msgs.forEach((msg) => mensagemErro(msg));
+  //     return false;
+  //   }
 
-    this.service
-      .cadastrarUsuario(usuario)
-      .then((_response) => {
-        mensagemSucesso(
-          "Cadastro realizado! Faça login para acessar o AutoRef."
-        );
-        this.props.history.push("/login");
-      })
-      .catch((error) => {
-        mensagemErro(error.response.data);
-      });
-  };
+  //   this.service
+  //     .cadastrarUsuario(usuario)
+  //     .then((_response) => {
+  //       mensagemSucesso(
+  //         "Cadastro realizado! Faça login para acessar o AutoRef."
+  //       );
+  //       this.props.history.push("/login");
+  //     })
+  //     .catch((error) => {
+  //       mensagemErro(error.response.data);
+  //     });
+  // };
 
   prepareLogin = () => {
     this.props.history.push("/login");
@@ -53,7 +54,7 @@ class CadastroUsuario extends React.Component {
           className="col-md-6"
           style={{ position: "relative", left: "300px" }}
         ></div>
-        <Card tittle="Cadastro ">
+        <Card title="CADASTRO">
           <div className="row">
             <div className="col-lg-12">
               <div className="bs-component">
