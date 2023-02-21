@@ -230,3 +230,8 @@ label {
 .clicavel {
   cursor: pointer;
 }
+
+.erro{
+  color: red;
+  font-size: large;
+}
