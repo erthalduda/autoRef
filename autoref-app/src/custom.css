@@ -201,7 +201,7 @@ label {
   color: rgb(34, 34, 34);
 }
 
-.card-header{
+.card-header {
   font-weight: bold;
   font-size: 125%;
   display: flex;
@@ -210,18 +210,22 @@ label {
   max-width: 80rem;
 }
 
-.card-body{
+.card-body {
   color: #1c1c1b;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.md-3{
+.md-3 {
   color: #1c1c1b;
   max-width: 80rem;
 }
 
-.card{
+.card {
   max-width: 80rem;
+}
+
+.clicavel {
+  cursor: pointer;
 }

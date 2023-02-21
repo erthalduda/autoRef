@@ -79,14 +79,13 @@ class Login extends React.Component {
                       </button>
                     </div>
                     <br></br>
-                    <p className="centralizar">Não possui uma conta?</p>
                     <div className="centralizar">
-                      <button
-                        onClick={this.prepareCadastrar}
-                        className="btn btn-success"
-                      >
-                        Cadastre-se
-                      </button>
+                      <p>
+                        Ainda não possui uma conta?{" "}
+                        <a className="clicavel" onClick={this.prepareCadastrar}>
+                          Cadastre-se
+                        </a>
+                      </p>
                     </div>
                   </fieldset>
                 </div>
