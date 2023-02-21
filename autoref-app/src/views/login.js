@@ -13,7 +13,7 @@ class Login extends React.Component {
 
   entrabr = () => {
     axios
-      .post("http://localhost:8080/api/usuarios/autenticar", {
+      .post("http://localhost:8080/usuario/login", {
         email: this.state.email,
         senha: this.state.senha,
       })
@@ -24,6 +24,7 @@ class Login extends React.Component {
         this.setState({ mensagemErro: erro.response.data });
       });
   };
+
   prepareCadastrar = () => {
     this.props.history.push("/cadastro");
   };
@@ -36,9 +37,6 @@ class Login extends React.Component {
           style={{ position: "relative", left: "300px" }}
         >
           <Card title="LOGIN">
-            <div className="row">
-              <span>{this.state.mensagemErro}</span>
-            </div>
             <div className="row">
               <div className="col-lg-12">
                 <div className="bs-component">
@@ -68,7 +66,9 @@ class Login extends React.Component {
                         id="exampleInputPassword1"
                         placeholder="Ex: 123456"
                       />
+                      <br></br>
                     </FormGroup>
+                    <div className="erro">{this.state.mensagemErro}</div>
                     <br></br>
                     <div className="centralizar">
                       <button
@@ -79,14 +79,13 @@ class Login extends React.Component {
                       </button>
                     </div>
                     <br></br>
-                    <p className="centralizar">Não possui uma conta?</p>
                     <div className="centralizar">
-                      <button
-                        onClick={this.prepareCadastrar}
-                        className="btn btn-success"
-                      >
-                        Cadastre-se
-                      </button>
+                      <p>
+                        Ainda não possui uma conta?{" "}
+                        <a className="clicavel" onClick={this.prepareCadastrar}>
+                          Cadastre-se
+                        </a>
+                      </p>
                     </div>
                   </fieldset>
                 </div>
