@@ -11,7 +11,7 @@ function Navbar() {
     <div className="navbar fixed-top">
       <div className="container">
         <a href="#/home" className="navbar-brand">
-          Autoref
+          AUTOREF
         </a>
 
         <div className="menu-profile">
