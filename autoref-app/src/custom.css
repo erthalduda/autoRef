@@ -88,6 +88,7 @@ details:not(:last-child) {
 summary,
 details[open] {
   padding: 10px;
+  color: #4a4444;
 }
 
 details[open] summary {
