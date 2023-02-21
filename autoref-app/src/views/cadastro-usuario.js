@@ -4,6 +4,7 @@ import Card from "../components/card";
 import FormGroup from "../components/form-group";
 import UsuarioService from "../app/services/UsuarioService";
 import { withRouter } from "react-router-dom";
+import { mensagemSucesso, mensagemErro } from '../components/toastifyClasse'
 
 class CadastroUsuario extends React.Component {
   state = {
@@ -13,35 +14,35 @@ class CadastroUsuario extends React.Component {
     senhaConfirma: "",
   };
 
-  // constructor() {
-  //   super();
-  //   this.service = new UsuarioService();
-  // }
+  constructor() {
+    super();
+    this.service = new UsuarioService();
+  }
 
-  // cadastrar = () => {
-  //   const { nome, email, senha, senhaConfirma } = this.state;
-  //   const usuario = { nome, email, senha, senhaConfirma };
+  cadastrar = () => {
+    const { nome, email, senha, senhaConfirma } = this.state;
+    const usuario = { nome, email, senha, senhaConfirma };
 
-  //   try {
-  //     this.service.validarCampos(usuario);
-  //   } catch (erro) {
-  //     const msgs = erro.mensagemErro;
-  //     msgs.forEach((msg) => mensagemErro(msg));
-  //     return false;
-  //   }
+    try {
+      this.service.validarCampos(usuario);
+    } catch (erro) {
+      const msgs = erro.mensagemErro;
+      msgs.forEach((msg) => mensagemErro(msg));
+      return false;
+    }
 
-  //   this.service
-  //     .cadastrarUsuario(usuario)
-  //     .then((_response) => {
-  //       mensagemSucesso(
-  //         "Cadastro realizado! Faça login para acessar o AutoRef."
-  //       );
-  //       this.props.history.push("/login");
-  //     })
-  //     .catch((error) => {
-  //       mensagemErro(error.response.data);
-  //     });
-  // };
+    this.service
+      .cadastrarUsuario(usuario)
+      .then((_response) => {
+        mensagemSucesso(
+          "Cadastro realizado! Faça login para acessar o AutoRef."
+        );
+        this.props.history.push("/login");
+      })
+      .catch((error) => {
+        mensagemErro(error.response.data);
+      });
+  };
 
   prepareLogin = () => {
     this.props.history.push("/login");
@@ -55,9 +56,7 @@ class CadastroUsuario extends React.Component {
           style={{ position: "relative", left: "300px" }}
         >
           <Card title="CADASTRO">
-            <div className="row">
-              <span>{this.state.mensagemErro}</span>
-            </div>
+            <div className="row"></div>
             <div className="row">
               <div className="col-lg-12">
                 <div className="bs-component">
@@ -88,7 +87,6 @@ class CadastroUsuario extends React.Component {
                         placeholder="Ex: email@email.com"
                       />
                     </FormGroup>
-
                     <FormGroup label="Senha" htmlFor="exampleInputPassword1">
                       <input
                         type="Password"
@@ -101,7 +99,6 @@ class CadastroUsuario extends React.Component {
                         placeholder="Ex: 123456"
                       />
                     </FormGroup>
-
                     <FormGroup
                       label="Confirme sua senha"
                       htmlFor="inputConfirmaSenha"
@@ -117,11 +114,11 @@ class CadastroUsuario extends React.Component {
                         }
                       />
                     </FormGroup>
-
                     <br></br>
+                    <div className="erro">{this.state.mensagemErro}</div>
                     <div className="centralizar">
                       <button
-                        onClick={this.entrabr}
+                        onClick={this.cadastrar}
                         className="btn btn-success"
                       >
                         Cadastrar
