@@ -1,6 +1,6 @@
 import React from "react";
 
-import AuthService from "../app/service/authService";
+import AutenticacaoService from "../app/services/AutenticacaoService";
 import jwt from "jsonwebtoken";
 
 export const ContextoAutenticacao = React.createContext();
@@ -23,19 +23,19 @@ class RealizaAutenticacao extends React.Component {
       nome: claims.nome,
     };
 
-    AuthService.realizarLogin(usuario, token);
+    AutenticacaoService.realizarLogin(usuario, token);
     this.setState({ estaAutenticado: true, usuarioAutenticado: usuario });
   };
 
   encerrarSessao = () => {
-    AuthService.removerUsuarioAutenticado();
+    AutenticacaoService.removerUsuarioAutenticado();
     this.setState({ estaAutenticado: false, usuarioAutenticado: null });
   };
 
   async componentDidMount() {
-    const estaAutenticado = AuthService.isUsuarioAutenticado();
+    const estaAutenticado = AutenticacaoService.isUsuarioAutenticado();
     if (estaAutenticado) {
-      const usuario = await AuthService.refreshSession();
+      const usuario = await AutenticacaoService.refreshSession();
       this.setState({
         estaAutenticado: true,
         usuarioAutenticado: usuario,
@@ -64,7 +64,7 @@ class RealizaAutenticacao extends React.Component {
     };
 
     return (
-      <ProvedorAutenticacao  value={contexto}>
+      <ProvedorAutenticacao value={contexto}>
         {this.props.children}
       </ProvedorAutenticacao>
     );

@@ -1,46 +1,44 @@
-import LocalStorageService from './localstorageService'
+import ArmazenamentoLocalService from "./ArmazenamentoLocalService";
 
-import jwt from 'jsonwebtoken'
-import ApiService from '../apiservice'
+import jwt from "jsonwebtoken";
+import ApiService from "../ApiService";
 
-export const USUARIO_LOGADO = '_usuario_logado'
-export const TOKEN = 'access_token'
+export const USUARIO_LOGADO = "_usuario_logado";
+export const TOKEN = "access_token";
 
 export default class AutenticacaoService {
-
-    static estaAutenticado(){
-        const token = LocalStorageService.obterItem(TOKEN)
-        if(!token){
-            return false;
-        }
-        const decodedToken = jwt.decode(token)
-        const expiration = decodedToken.exp
-
-        const isTokenInvalido = Date.now() >= (expiration * 100000)
-
-        return !isTokenInvalido;
+  static estaAutenticado() {
+    const token = ArmazenamentoLocalService.obterItem(TOKEN);
+    if (!token) {
+      return false;
     }
+    const decodedToken = jwt.decode(token);
+    const expiration = decodedToken.exp;
 
-    static removerUsuarioAutenticado(){
-        LocalStorageService.removerItem(USUARIO_LOGADO)
-        LocalStorageService.removerItem(TOKEN);
-    }
+    const isTokenInvalido = Date.now() >= expiration * 100000;
 
-    static fazerLogin(usuario, token){
-        LocalStorageService.adicionarItem(USUARIO_LOGADO, usuario)
-        LocalStorageService.adicionarItem(TOKEN, token);
-        ApiService.registrarToken(token)
-    }
+    return !isTokenInvalido;
+  }
 
-    static obterUsuarioAutenticado(){
-        return LocalStorageService.obterItem(USUARIO_LOGADO);
-    }
+  static removerUsuarioAutenticado() {
+    ArmazenamentoLocalService.removerItem(USUARIO_LOGADO);
+    ArmazenamentoLocalService.removerItem(TOKEN);
+  }
 
-    static reiniciaSessao(){
-        const token  = LocalStorageService.obterItem(TOKEN)
-        const usuario = AuthService.obterUsuarioAutenticado()
-        AuthService.fazerLogin(usuario, token)
-        return usuario;
-    }
+  static fazerLogin(usuario, token) {
+    ArmazenamentoLocalService.adicionarItem(USUARIO_LOGADO, usuario);
+    ArmazenamentoLocalService.adicionarItem(TOKEN, token);
+    ApiService.registrarToken(token);
+  }
 
+  static obterUsuarioAutenticado() {
+    return ArmazenamentoLocalService.obterItem(USUARIO_LOGADO);
+  }
+
+  static reiniciaSessao() {
+    const token = ArmazenamentoLocalService.obterItem(TOKEN);
+    const usuario = AutenticacaoService.obterUsuarioAutenticado();
+    AutenticacaoService.fazerLogin(usuario, token);
+    return usuario;
+  }
 }
