@@ -4,12 +4,19 @@ import FormGroup from "../components/form-group";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import "../custom.css";
+import ArmazentamentoLocalService from "../app/services/ArmazenamentoLocalService";
+import UsuarioService from "../app/services/UsuarioService";
+import { AuthContext } from "../main/realizaAutenticacao";
 class Login extends React.Component {
   state = {
     email: "",
     senha: "",
-    mensagemErro: null,
   };
+
+  constructor() {
+    super();
+    this.service = new UsuarioService();
+  }
 
   entrabr = () => {
     axios
@@ -18,6 +25,7 @@ class Login extends React.Component {
         senha: this.state.senha,
       })
       .then((response) => {
+        this.context.iniciarSessao(response.data);
         this.props.history.push("/home");
       })
       .catch((erro) => {
