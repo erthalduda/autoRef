@@ -4,7 +4,7 @@ import Login from "../views/login";
 import Home from "../views/home";
 import CadastroUsuario from "../views/cadastro-usuario";
 import Referencias from "../views/referencias";
-
+import PaginaInicial from "../views/pagina-inicial";
 import { Route, Switch, HashRouter } from "react-router-dom";
 import Monografia from "../views/monografia";
 import Website from "../views/website";
@@ -29,6 +29,8 @@ function Rotas() {
   return (
     <HashRouter>
       <Switch>
+        <Route exact path="/" component={PaginaInicial} />
+
         <Route path="/login" component={Login} />
         <Route path="/home" component={Home} />
         <Route path="/cadastro" component={CadastroUsuario} />
