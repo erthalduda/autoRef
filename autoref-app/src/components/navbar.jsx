@@ -11,7 +11,7 @@ function Navbar() {
     <div className="navbar fixed-top">
       <div className="container">
         <a href="#/home" className="navbar-brand">
-          AUTOREF
+          <b>AUTOREF</b>
         </a>
 
         <div className="menu-profile">
@@ -26,7 +26,7 @@ function Navbar() {
           >
             <ul>
               <li className="log">
-                <a href="#/home"> Logout</a>
+                <a href="#/home">Logout</a>
               </li>
             </ul>
           </nav>
