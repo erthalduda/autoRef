@@ -1,55 +1,92 @@
 import "../css/referencia.css";
 import React from "react";
 import Card from "../components/card";
-import FormGroup from "../components/form-group";
-import UsuarioService from "../app/services/UsuarioService";
+import { useState } from "react";
+import { Axios } from "axios";
+import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-import { mensagemSucesso, mensagemErro } from '../components/toastifyClasse'
 
-class CadastroUsuario extends React.Component {
-  state = {
-    nome: "",
+import { useAxios } from "../hooks/axios";
+//import { mensagemSucesso, mensagemErro } from '../components/toastifyClasse'
+
+const CadastroUsuario = () => {
+
+  const history = useHistory()
+  const {fetchData} = useAxios()
+  const [inputFields, setInputFields] = useState([
+    {
+      id: 1,
+      name: "email",
+      value: "",
+      placeholder: "Ex: aaa@gmail.com",
+      type: "text",
+    },
+    {
+      id: 2,
+      name: "name",
+      value: "",
+      placeholder: "Ex: Julio",
+      type: "text",
+    },
+    
+  ]);
+  const [infosCadastro, setnfosCadastro] = useState({
     email: "",
+    nome: "",
     senha: "",
-    senhaConfirma: "",
+  })
+
+  const [error, setError] = useState()
+
+  const onSubmit = async (event) => {
+   const axiosParams = {
+    baseURL: "https://localhost/3000",
+    method: "POST",
+    url: "/usuario/cadastro",
+    data: infosCadastro 
+   }
+    event.preventDefault();
+    
+    const { response, error } = fetchData(axiosParams, false)
+
+    if(response && !error){
+      //navigate
+    }else if(error){
+      setError("Falha ao cadastrar!")
+    }
+    console.log(infosCadastro);
   };
 
-  constructor() {
-    super();
-    this.service = new UsuarioService();
-  }
+  const handleFormChange = (id, event) => {
+    let data = [...inputFields];
+    const inputFiltrado = data.find((input) => input.id === id);
+    
+    inputFiltrado.value = event.target.value;
 
-  cadastrar = () => {
-    const { nome, email, senha, senhaConfirma } = this.state;
-    const usuario = { nome, email, senha, senhaConfirma };
+    data = data.map((inputField) => {
+      if (inputField.id === inputFiltrado.id) {
+        inputField = { ...inputFiltrado };
+      }
+      return inputField;
+    })
 
-    try {
-      this.service.validarCampos(usuario);
-    } catch (erro) {
-      const msgs = erro.mensagemErro;
-      msgs.forEach((msg) => mensagemErro(msg));
-      return false;
+    if(inputFiltrado.id === 1){
+      setnfosCadastro({...infosCadastro, email: inputFiltrado.value})
+    }
+    if(inputFiltrado.id === 2){
+      setnfosCadastro({...infosCadastro, nome: inputFiltrado.value})
     }
 
-    this.service
-      .cadastrarUsuario(usuario)
-      .then((_response) => {
-        mensagemSucesso(
-          "Cadastro realizado! Faça login para acessar o AutoRef."
-        );
-        this.props.history.push("/login");
-      })
-      .catch((error) => {
-        mensagemErro(error.response.data);
-      });
-  };
+    setInputFields(data)
+};
+ 
 
-  prepareLogin = () => {
-    this.props.history.push("/login");
-  };
+  // const prepareLogin = () => {
+  //   history.push("/login");
+  // };
 
-  render() {
-    return (
+ return (
+ 
       <div className="row">
         <div
           className="col-md-6"
@@ -60,80 +97,35 @@ class CadastroUsuario extends React.Component {
             <div className="row">
               <div className="col-lg-12">
                 <div className="bs-component">
-                  <fieldset>
-                    <FormGroup label="Nome" htmlFor="inputNome">
-                      <input
-                        type="text"
-                        value={this.state.nome}
-                        onChange={(e) =>
-                          this.setState({ nome: e.target.value })
-                        }
-                        className="form-control"
-                        id="inputNome"
-                        aria-describedby="emailHelp"
-                        placeholder="Ex: Maria Silva"
-                      ></input>
-                    </FormGroup>
-                    <FormGroup label="E-mail" htmlFor="exampleInputEmail1">
-                      <input
-                        type="email"
-                        value={this.state.email}
-                        onChange={(e) =>
-                          this.setState({ email: e.target.value })
-                        }
-                        className="form-control"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        placeholder="Ex: email@email.com"
-                      />
-                    </FormGroup>
-                    <FormGroup label="Senha" htmlFor="exampleInputPassword1">
-                      <input
-                        type="Password"
-                        value={this.state.senha}
-                        onChange={(e) =>
-                          this.setState({ senha: e.target.value })
-                        }
-                        className="form-control"
-                        id="exampleInputPassword1"
-                        placeholder="Ex: 123456"
-                      />
-                    </FormGroup>
-                    <FormGroup
-                      label="Confirme sua senha"
-                      htmlFor="inputConfirmaSenha"
-                    >
-                      <input
-                        type="password"
-                        id="inputConfirmaSenha"
-                        placeholder="Ex: 123456"
-                        className="form-control"
-                        name="senhaConfirma"
-                        onChange={(e) =>
-                          this.setState({ senhaConfirma: e.target.value })
-                        }
-                      />
-                    </FormGroup>
-                    <br></br>
-                    <div className="erro">{this.state.mensagemErro}</div>
-                    <div className="centralizar">
-                      <button
-                        onClick={this.cadastrar}
-                        className="btn btn-success"
-                      >
-                        Cadastrar
-                      </button>
-                    </div>
-                    <br></br>
-                    <div className="centralizar">
-                      <p>
-                        Já possui uma conta?{" "}
-                        <a className="clicavel" onClick={this.prepareLogin}>
-                          Faça login
-                        </a>
-                      </p>
-                    </div>
-                  </fieldset>
+            
+                  <form onSubmit={onSubmit}>
+          {inputFields.map((input, index) => {
+            return (
+              <div key={index}>
+                <input
+                  type={input.type}
+                  key={input.id}
+                  id={input.id}
+                  value={input.value}
+                  name={input.name}
+                  placeholder={input.placeholder}
+                  className="form-input"
+                  onChange={(e) => handleFormChange(input.id, e)}
+                />
+              </div>
+            );
+          })}
+
+          <div className="sla">
+            <button type="submit" className="btn btn-success">
+              CADASTRO
+            </button>
+          </div>
+        </form>
+
+
+
+                 
                 </div>
               </div>
             </div>
@@ -142,5 +134,5 @@ class CadastroUsuario extends React.Component {
       </div>
     );
   }
-}
-export default withRouter(CadastroUsuario);
+
+export default CadastroUsuario;
