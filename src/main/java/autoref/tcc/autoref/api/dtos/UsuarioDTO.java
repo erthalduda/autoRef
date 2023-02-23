@@ -1,7 +1,10 @@
 package autoref.tcc.autoref.api.dtos;
 
+import autoref.tcc.autoref.model.Usuario;
+
 public class UsuarioDTO {
 
+    private Integer idUsuario;
     private String email;
     private String nome;
     private String senha;
@@ -10,10 +13,22 @@ public class UsuarioDTO {
 
     }
 
-    public UsuarioDTO(String email, String nome, String senha) {
+    public UsuarioDTO(Integer idUsuario, String email, String nome, String senha) {
+        this.idUsuario = idUsuario;
         this.email = email;
         this.nome = nome;
         this.senha = senha;
+    }
+
+    public UsuarioDTO(Usuario usuario) {
+        this.idUsuario = usuario.getIdUsuario();
+        this.email = usuario.getEmail();
+        this.nome = usuario.getNome();
+        this.senha = usuario.getSenha();
+    }
+
+    public Integer getIdUsuario() {
+        return this.idUsuario;
     }
 
     public String getEmail() {
