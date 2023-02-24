@@ -1,12 +1,9 @@
 import React from "react";
 import Card from "../components/card";
-import FormGroup from "../components/form-group";
-import axios from "axios";
-import { withRouter } from "react-router-dom";
 import "../custom.css";
-import ArmazentamentoLocalService from "../app/services/ArmazenamentoLocalService";
-import UsuarioService from "../app/services/UsuarioService";
-import { AuthContext } from "../main/realizaAutenticacao";
+import { useAxios } from "../hooks/axios";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
 
 const Login = () => {
@@ -33,7 +30,6 @@ const Login = () => {
   ]);
   const [infosCadastro, setinfosCadastro] = useState({
     email: "",
-
     senha: "",
   });
 
