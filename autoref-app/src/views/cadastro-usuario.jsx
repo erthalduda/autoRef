@@ -49,7 +49,7 @@ const CadastroUsuario = () => {
 
   const onSubmit = async (event) => {
     const axiosParams = {
-      baseURL: "https://localhost/3000",
+      baseURL: "http://localhost:8080",
       method: "POST",
       url: "/usuario/cadastro",
       data: infosCadastro,
