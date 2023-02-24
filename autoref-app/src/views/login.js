@@ -86,7 +86,6 @@ class Login extends React.Component {
                         Entrar
                       </button>
                     </div>
-                    <br></br>
                     <div className="centralizar">
                       <p>
                         Ainda não possui uma conta?{" "}
