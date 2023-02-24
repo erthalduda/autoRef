@@ -166,6 +166,7 @@ function MonografiaOnline() {
     <>
       <Sidebar></Sidebar>
       <h1 id="referencia">Monografia Online</h1>
+      <br></br>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {

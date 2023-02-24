@@ -133,6 +133,7 @@ function ColecaoPeriodicaMeioEletronico() {
     <>
       <Sidebar></Sidebar>
       <h1 id="referencia">
+      <br></br>
         Coleção de Publicação Periódica em Meio Eletrônico
       </h1>
       <div className="form-group-ref">

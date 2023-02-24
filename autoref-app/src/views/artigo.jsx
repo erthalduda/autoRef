@@ -198,7 +198,7 @@ function Artigo() {
     <>
       <Sidebar></Sidebar>
       <h1 id="referencia">Artigo</h1>
-
+      <br></br>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
