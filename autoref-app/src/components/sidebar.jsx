@@ -56,14 +56,15 @@ function Sidebar() {
             <i className="fas fa-tachometer-alt fa-fw me-3"></i>
             <span>FAQ</span>
           </a>
-          <a
+          <a></a>
+          {/* <a
             href="#"
             className="list-group-item list-group-item-action py-2 ripple"
             aria-current="true"
           >
             <i className="fas fa-tachometer-alt fa-fw me-3"></i>
             <span>EDITAR PERFIL</span>
-          </a>
+          </a> */}
         </div>
       </div>
     </nav>
