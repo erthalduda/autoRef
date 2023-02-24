@@ -18,7 +18,7 @@ const CadastroUsuario = () => {
       id: 1,
       name: "email",
       value: "",
-      placeholder: "Ex: aaa@gmail.com",
+      placeholder: "Ex: email@email.com",
       type: "text",
       label: "E-mail:"
     },
@@ -26,7 +26,7 @@ const CadastroUsuario = () => {
       id: 2,
       name: "name",
       value: "",
-      placeholder: "Ex: Julio",
+      placeholder: "Ex: Maria Silva",
       type: "text",
       label: "Nome:"
     },
@@ -34,9 +34,14 @@ const CadastroUsuario = () => {
       id: 3,
       name: "senha",
       value: "",
+<<<<<<< HEAD
       placeholder: "Ex: 1234Ejshdks",
       type: "text",
       label: "Senha:"
+=======
+      placeholder: "Ex: 123456",
+      type: "password",
+>>>>>>> 1a34bde697b1d6fb3ed09ca01614b246a57a034b
     },
   ]);
   const [infosCadastro, setinfosCadastro] = useState({
@@ -92,9 +97,9 @@ const CadastroUsuario = () => {
     setInputFields(data);
   };
 
-  // const prepareLogin = () => {
-  //   history.push("/login");
-  // };
+  const prepareLogin = () => {
+    history.push("/login");
+  };
 
   return (
     <div className="row">
@@ -129,6 +134,14 @@ const CadastroUsuario = () => {
                     <button type="submit" className="btn btn-success">
                       CADASTRO
                     </button>
+                  </div>
+                  <div>
+                    <p>
+                      Já possui uma conta?{" "}
+                      <a className="clicavel" href="#/login">
+                        Faça login
+                      </a>
+                    </p>
                   </div>
                 </form>
               </div>

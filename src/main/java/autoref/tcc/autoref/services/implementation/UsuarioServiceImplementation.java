@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
@@ -16,9 +17,11 @@ import autoref.tcc.autoref.services.UsuarioService;
 public class UsuarioServiceImplementation implements UsuarioService {
 
     private UsuarioRepository repositorioUsuario;
+    private PasswordEncoder encoder;
 
-    public UsuarioServiceImplementation(UsuarioRepository repositorioUsuario) {
+    public UsuarioServiceImplementation(UsuarioRepository repositorioUsuario, PasswordEncoder encoder) {
         this.repositorioUsuario = repositorioUsuario;
+        this.encoder = encoder;
     }
 
     @Override
@@ -49,6 +52,7 @@ public class UsuarioServiceImplementation implements UsuarioService {
     @Transactional
     public Usuario cadastraUsuario(Usuario usuario) {
         validaEmail(usuario.getEmail());
+        usuario.setSenha(encoder.encode(usuario.getSenha()));
         return repositorioUsuario.save(usuario);
     }
 

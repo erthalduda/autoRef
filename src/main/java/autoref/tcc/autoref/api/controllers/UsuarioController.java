@@ -46,17 +46,6 @@ public class UsuarioController {
         }
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> autenticaUsuario(@RequestBody UsuarioDTO usuarioDTO) {
-        try {
-            Usuario autenticado = serviceUsuario.autenticaUsuario(usuarioDTO.getEmail(), usuarioDTO.getSenha());
-            UsuarioDTO autenticadoDTO = mapper.map(autenticado, UsuarioDTO.class);
-            return new ResponseEntity<>(autenticadoDTO, HttpStatus.OK);
-        } catch (ExcecoesAutoref excecao) {
-            return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }
-
     @DeleteMapping("/excluir")
     public ResponseEntity<?> excluiUsuario(@RequestBody UsuarioDTO usuarioDTO) {
         Optional<Usuario> usuarioExcluir = serviceUsuario.buscaPorEmail(usuarioDTO.getEmail());

@@ -19,7 +19,6 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-
     @PostMapping("/usuario")
     public UsuarioDTO usuarioLogin() {
         return loginService.usuarioLogin();
