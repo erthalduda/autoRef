@@ -21,7 +21,6 @@ const Login = () => {
       type: "text",
       label: "E-mail:",
     },
-    
     {
       id: 2,
       name: "senha",
