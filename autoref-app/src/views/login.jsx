@@ -5,9 +5,9 @@ import { useAxios } from "../hooks/axios";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
-
 const Login = () => {
   const history = useHistory();
+  const [mensagemErro, setMensagemErro] = useState("Error ao logar!");
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
     {
@@ -28,7 +28,7 @@ const Login = () => {
       type: "password",
     },
   ]);
-  const [infosCadastro, setinfosCadastro] = useState({
+  const [infosLogin, setinfosLogin] = useState({
     email: "",
     senha: "",
   });
@@ -39,8 +39,8 @@ const Login = () => {
     const axiosParams = {
       baseURL: "http://localhost:8080",
       method: "POST",
-      url: "/usuario/cadastro",
-      data: infosCadastro,
+      url: "/login/usuario",
+      data: infosLogin,
     };
     event.preventDefault();
 
@@ -49,9 +49,9 @@ const Login = () => {
     if (response && !error) {
       //navigate
     } else if (error) {
-      setError("Falha ao cadastrar!");
+      setError("Falha ao logar!");
     }
-    console.log(infosCadastro);
+    console.log(infosLogin);
   };
 
   const handleFormChange = (id, event) => {
@@ -68,11 +68,11 @@ const Login = () => {
     });
 
     if (inputFiltrado.id === 1) {
-      setinfosCadastro({ ...infosCadastro, email: inputFiltrado.value });
+      setinfosLogin({ ...infosLogin, email: inputFiltrado.value });
     }
-    
+
     if (inputFiltrado.id === 2) {
-      setinfosCadastro({ ...infosCadastro, senha: inputFiltrado.value });
+      setinfosLogin({ ...infosLogin, senha: inputFiltrado.value });
     }
 
     setInputFields(data);
@@ -82,26 +82,55 @@ const Login = () => {
     history.push("/login");
   };
 
-  
-    return (
-      <div className="row">
-        <div
-          className="col-md-6"
-          style={{ position: "relative", left: "300px" }}
-        >
-          <Card title="LOGIN">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="bs-component">
-                
-                </div>
+  return (
+    <div className="row">
+      <div className="col-md-6" style={{ position: "relative", left: "300px" }}>
+        <Card title="LOGIN">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="bs-component">
+                <form onSubmit={onSubmit}>
+                  {inputFields.map((input, index) => {
+                    return (
+                      <div key={index}>
+                        {input.label != null ? <>{input.label}</> : <>null</>}
+                        <input
+                          type={input.type}
+                          key={input.id}
+                          id={input.id}
+                          value={input.value}
+                          name={input.name}
+                          placeholder={input.placeholder}
+                          className="form-control"
+                          onChange={(e) => handleFormChange(input.id, e)}
+                        />
+                      </div>
+                    );
+                  })}
+                  <br></br>
+                  {error && <div>{mensagemErro}</div>}
+                  <div className="sla">
+                    <button type="submit" className="btn btn-success">
+                      LOGIN
+                    </button>
+                  </div>
+
+                  <div>
+                    <p>
+                      Não possui uma conta?{" "}
+                      <a className="clicavel" href="#/cadastro">
+                        Faça cadastro
+                      </a>
+                    </p>
+                  </div>
+                </form>
               </div>
             </div>
-          </Card>
-        </div>
+          </div>
+        </Card>
       </div>
-    )
-  
-}
+    </div>
+  );
+};
 
 export default Login;
