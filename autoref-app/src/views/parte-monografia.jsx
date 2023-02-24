@@ -178,24 +178,33 @@ function ParteMonografia() {
     <>
       <Sidebar></Sidebar>
       <h1 id="referencia">Parte de Monografia</h1>
+      <br></br>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="form-item">
+                {input.label != null ? (
+                  <div className="form-label">{input.label}</div>
+                ) : (
+                  <></>
+                )}
+
                 <input
                   type={input.type}
                   key={input.id}
                   id={input.id}
                   value={input.value}
                   name={input.name}
-                  placeholder={input.placeholder}
                   className="form-input"
+                  placeholder={input.placeholder}
                   onChange={(e) => handleFormChange(input.id, e)}
                 />
               </div>
             );
           })}
+
+          <div className="form-clear"></div>
 
           <div className="sla">
             <button type="submit" className="btn btn-success">
