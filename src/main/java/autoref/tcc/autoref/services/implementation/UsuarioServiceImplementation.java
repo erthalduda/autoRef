@@ -32,7 +32,7 @@ public class UsuarioServiceImplementation implements UsuarioService {
             throw new ExcecoesAutoref("E-mail inválido.");
         }
 
-        if (!usuario.get().getSenha().equals(senha)) {
+        if (!encoder.matches(senha, usuario.get().getSenha())) {
             throw new ExcecoesAutoref("Sua senha está incorreta.");
         }
 
