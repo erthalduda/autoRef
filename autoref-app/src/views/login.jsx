@@ -51,8 +51,6 @@ const Login = () => {
     const { response, error } = await fetchData(axiosParams, false);
     
     if (response && !error) {
-      console.log(JSON.stringify(response.data));
-
       const token = localStorage.getHeader(response, "X-Auth-Token");
 
       localStorage.save("token", token);
