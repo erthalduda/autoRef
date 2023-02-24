@@ -14,13 +14,12 @@ const CadastroUsuario = () => {
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
     {
-
       id: 1,
       name: "email",
       value: "",
       placeholder: "Ex: email@email.com",
       type: "text",
-      label: "E-mail:"
+      label: "E-mail:",
     },
     {
       id: 2,
@@ -28,20 +27,16 @@ const CadastroUsuario = () => {
       value: "",
       placeholder: "Ex: Maria Silva",
       type: "text",
-      label: "Nome:"
+      label: "Nome:",
     },
     {
       id: 3,
       name: "senha",
       value: "",
-<<<<<<< HEAD
-      placeholder: "Ex: 1234Ejshdks",
       type: "text",
-      label: "Senha:"
-=======
+      label: "Senha:",
       placeholder: "Ex: 123456",
       type: "password",
->>>>>>> 1a34bde697b1d6fb3ed09ca01614b246a57a034b
     },
   ]);
   const [infosCadastro, setinfosCadastro] = useState({
@@ -113,7 +108,6 @@ const CadastroUsuario = () => {
                   {inputFields.map((input, index) => {
                     return (
                       <div key={index}>
-
                         {input.label != null ? <>{input.label}</> : <>null</>}
 
                         <input
@@ -129,7 +123,7 @@ const CadastroUsuario = () => {
                       </div>
                     );
                   })}
-
+                  <br></br>
                   <div className="sla">
                     <button type="submit" className="btn btn-success">
                       CADASTRO
