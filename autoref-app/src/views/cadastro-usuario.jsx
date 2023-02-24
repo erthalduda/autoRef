@@ -88,9 +88,9 @@ const CadastroUsuario = () => {
     setInputFields(data);
   };
 
-  // const prepareLogin = () => {
-  //   history.push("/login");
-  // };
+  const prepareLogin = () => {
+    history.push("/login");
+  };
 
   return (
     <div className="row">
@@ -122,6 +122,14 @@ const CadastroUsuario = () => {
                     <button type="submit" className="btn btn-success">
                       CADASTRO
                     </button>
+                  </div>
+                  <div>
+                    <p>
+                      Já possui uma conta?{" "}
+                      <a className="clicavel" href="#/login">
+                        Faça login
+                      </a>
+                    </p>
                   </div>
                 </form>
               </div>
