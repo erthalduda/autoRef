@@ -13,6 +13,7 @@ export const useAxios = () => {
   
       try {
         const response = await axios.request(params)
+        console.log(response);
         return {
           response: response,
           error: null,

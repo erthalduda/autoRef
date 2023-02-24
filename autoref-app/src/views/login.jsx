@@ -4,14 +4,13 @@ import "../custom.css";
 import { useAxios } from "../hooks/axios";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import { useLocalStorage } from "../hooks/local_storage";
+import axios from "axios";
+
 
 const Login = () => {
   const history = useHistory();
-<<<<<<< HEAD
-  const [mensagemErro, setMensagemErro] = useState("Error ao logar!");
-=======
   const [mensagemErro, setMensagemErro] = useState ("Error ao logar!")
->>>>>>> 416b8907f41bba2310c6f452b4a3ece57fb418f4
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
     {
@@ -39,23 +38,31 @@ const Login = () => {
 
   const [error, setError] = useState();
 
+  const localStorage = useLocalStorage()
+
   const onSubmit = async (event) => {
     const axiosParams = {
       baseURL: "http://localhost:8080",
       method: "POST",
       url: "/login/usuario",
-      data: infosLogin,
+      auth: infosLogin,
     };
     event.preventDefault();
 
-    const { response, error } = fetchData(axiosParams, false);
-
+    const { response, error } = await fetchData(axiosParams, false);
+    const teste = await axios(axiosParams)
+    console.log(teste)
+   
     if (response && !error) {
-      //navigate
+      const token = localStorage.getHeader(response, "X-Auth-Token")
+     
+      localStorage.save("token", token)
+      
+      localStorage.save("userData", JSON.stringify(response.data))
     } else if (error) {
       setError("Falha ao logar!");
     }
-    console.log(infosLogin);
+    
   };
 
   const handleFormChange = (id, event) => {
@@ -74,7 +81,7 @@ const Login = () => {
     if (inputFiltrado.id === 1) {
       setinfosLogin({ ...infosLogin, email: inputFiltrado.value });
     }
-
+    
     if (inputFiltrado.id === 2) {
       setinfosLogin({ ...infosLogin, senha: inputFiltrado.value });
     }
@@ -86,15 +93,6 @@ const Login = () => {
     history.push("/login");
   };
 
-<<<<<<< HEAD
-  return (
-    <div className="row">
-      <div className="col-md-6" style={{ position: "relative", left: "300px" }}>
-        <Card title="LOGIN">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="bs-component">
-=======
   
     return (
       <div className="row">
@@ -107,7 +105,6 @@ const Login = () => {
               <div className="col-lg-12">
                 <div className="bs-component">
 
->>>>>>> 416b8907f41bba2310c6f452b4a3ece57fb418f4
                 <form onSubmit={onSubmit}>
                   {inputFields.map((input, index) => {
                     return (
@@ -131,17 +128,11 @@ const Login = () => {
                   <div className="sla">
                     <button type="submit" className="btn btn-success">
                       LOGIN
-<<<<<<< HEAD
-                    </button>
-                  </div>
-
-=======
                   
                     </button>
                     
                   </div>
                   
->>>>>>> 416b8907f41bba2310c6f452b4a3ece57fb418f4
                   <div>
                     <p>
                       Não possui uma conta?{" "}
@@ -151,18 +142,15 @@ const Login = () => {
                     </p>
                   </div>
                 </form>
-<<<<<<< HEAD
-=======
                 
                 </div>
->>>>>>> 416b8907f41bba2310c6f452b4a3ece57fb418f4
               </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        </div>
       </div>
-    </div>
-  );
-};
+    )
+  
+}
 
 export default Login;

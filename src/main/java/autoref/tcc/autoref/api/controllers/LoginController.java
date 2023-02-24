@@ -9,7 +9,7 @@ import autoref.tcc.autoref.api.dtos.UsuarioDTO;
 import autoref.tcc.autoref.services.LoginService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(allowedHeaders = "*")
 @RequestMapping("/login")
 public class LoginController {
 

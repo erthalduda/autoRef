@@ -57,7 +57,7 @@ const CadastroUsuario = () => {
     };
     event.preventDefault();
 
-    const { response, error } = fetchData(axiosParams, false);
+    const { response, error } = await fetchData(axiosParams, false);
     console.log(response)
     setError(true);
     if (response && !error) {
@@ -69,7 +69,7 @@ const CadastroUsuario = () => {
       
     }
 
-    console.log(infosCadastro);
+ 
   };
 
   const handleFormChange = (id, event) => {
@@ -132,12 +132,9 @@ const CadastroUsuario = () => {
                   {error && <div>{mensagemErro}</div>}
                   <div className="sla">
                     <button type="submit" className="btn btn-success">
-<<<<<<< HEAD
                       CADASTRAR
-=======
-                      CADASTRO
+              
                   
->>>>>>> 416b8907f41bba2310c6f452b4a3ece57fb418f4
                     </button>
                     
                   </div>
