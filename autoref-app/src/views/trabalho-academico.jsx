@@ -12,7 +12,7 @@ function Trabalho() {
   const [inputFields, setInputFields] = useState([
     {
       id: 1,
-
+      label:"Título:",
       name: "titulo",
       value: "",
       placeholder: "Ex: Titulo",
@@ -23,6 +23,7 @@ function Trabalho() {
       id: 2,
       name: "subtitulo",
       value: "",
+      label:"Subtítulo:",
       placeholder: "Ex: Subtitulo",
       type: "text",
     },
@@ -31,12 +32,14 @@ function Trabalho() {
       id: 3,
       name: "anoPublicacao",
       value: "",
+      label:"Ano de publicação:",
       placeholder: "Ex: Ano de Publicação",
       type: "number",
     },
     {
       id: 4,
       name: "anoEntrega",
+      label:"Ano de entrega:",
       value: "",
       placeholder: "Ex: Ano de entrega",
       type: "number",
@@ -46,6 +49,7 @@ function Trabalho() {
       id: 5,
       name: "url",
       value: "",
+      label:"URL:",
       placeholder: "Ex: Url",
       type: "text",
     },
@@ -53,6 +57,7 @@ function Trabalho() {
     {
       id: 6,
       name: "cidade",
+      label:"Cidade:",
       value: "",
       placeholder: "Ex: Cidade",
       type: "text",
@@ -61,6 +66,7 @@ function Trabalho() {
       id: 7,
       name: "editora",
       value: "",
+      label:"Editora:",
       placeholder: "Ex: Editora",
       type: "text",
     },
@@ -68,6 +74,7 @@ function Trabalho() {
       id: 8,
       name: "edicao",
       value: "",
+      label:"Edição:",
       placeholder: "Ex: Edição",
       type: "text",
     },
@@ -75,6 +82,7 @@ function Trabalho() {
     {
       id: 9,
       name: "autor",
+      label:"Autor:",
       value: "",
       placeholder: "Ex: Autor",
       type: "text",
@@ -92,6 +100,7 @@ function Trabalho() {
     let newfield = {
       id: id,
       name: "autor",
+      label:"Novo autor:",
       value: "",
       placeholder: "Ex: Autor",
       type: "text",
