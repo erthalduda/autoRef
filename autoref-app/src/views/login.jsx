@@ -5,7 +5,6 @@ import { useAxios } from "../hooks/axios";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useLocalStorage } from "../hooks/local_storage";
-import axios from "axios";
 
 const Login = () => {
   const history = useHistory();
@@ -49,7 +48,7 @@ const Login = () => {
     event.preventDefault();
 
     const { response, error } = await fetchData(axiosParams, false);
-    
+
     if (response && !error) {
       const token = localStorage.getHeader(response, "X-Auth-Token");
 
@@ -60,7 +59,6 @@ const Login = () => {
       setError("Falha ao logar!");
     }
   };
-
   const handleFormChange = (id, event) => {
     let data = [...inputFields];
     const inputFiltrado = data.find((input) => input.id === id);
