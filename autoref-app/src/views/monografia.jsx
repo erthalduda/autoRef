@@ -107,7 +107,7 @@ function Monografia() {
       id: id,
       name: "autor",
       value: "",
-      label: "Autor:",
+      label: "Novo autor:",
       placeholder: "Ex: Autor",
       type: "text",
     };

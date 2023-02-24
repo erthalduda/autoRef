@@ -123,7 +123,7 @@ function MonografiaOnline() {
     let newfield = {
       id: id,
       name: "autor",
-      label: "Autor:",
+      label: "Novo autor:",
       value: "",
       placeholder: "Ex: Autor",
       type: "text",
