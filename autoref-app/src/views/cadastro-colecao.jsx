@@ -13,6 +13,7 @@ function CadastroColecao() {
     {
       id: 1,
       name: "nome",
+      label: "Nome:",
       value: "",
       placeholder: "Ex: TCC",
       type: "text",
@@ -59,34 +60,41 @@ function CadastroColecao() {
     <>
       <Sidebar></Sidebar>
       <h1 id="referencia">Cadastro de Coleção</h1>
+      <br></br>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="form-item">
+                {input.label != null ? (
+                  <div className="form-label">{input.label}</div>
+                ) : (
+                  <></>
+                )}
+
                 <input
                   type={input.type}
                   key={input.id}
                   id={input.id}
                   value={input.value}
                   name={input.name}
-                  placeholder={input.placeholder}
                   className="form-input"
+                  placeholder={input.placeholder}
                   onChange={(e) => handleFormChange(input.id, e)}
                 />
               </div>
             );
           })}
 
-          <div className="sla">
+          <div className="form-clear"></div>
+
+          <div className="centralizar">
             <button type="submit" className="btn btn-success">
               Criar coleção
             </button>
           </div>
         </form>
       </div>
-
-      {/* <button onClick={this.entrar} className="btn btn-success">Adicionar</button> */}
     </>
   );
 }
