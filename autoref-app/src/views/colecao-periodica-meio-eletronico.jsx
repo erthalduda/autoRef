@@ -17,7 +17,7 @@ function ColecaoPeriodicaMeioEletronico() {
     },
     {
       id: 2,
-      label: "Título",
+      label: "Título:",
       name: "titulo",
       value: "",
       placeholder: "Ex: Título",
@@ -27,6 +27,7 @@ function ColecaoPeriodicaMeioEletronico() {
     {
       id: 3,
       name: "subtituloPublicacao",
+      label: "Subtítulo:",
       value: "",
       placeholder: "Ex: Subtítulo",
       type: "text",
@@ -34,6 +35,7 @@ function ColecaoPeriodicaMeioEletronico() {
 
     {
       id: 4,
+      label: "Editora:",
       name: "editora",
       value: "",
       placeholder: "Ex: Editora",
@@ -42,6 +44,7 @@ function ColecaoPeriodicaMeioEletronico() {
     {
       id: 5,
       name: "dataInicio",
+      label: "Data de início:",
       value: "",
       placeholder: "Ex: 2004",
       type: "number",
@@ -50,6 +53,7 @@ function ColecaoPeriodicaMeioEletronico() {
     {
       id: 6,
       name: "dataFim",
+      label: "Data final:",
       value: "",
       placeholder: "Ex: 2005",
       type: "number",
@@ -58,6 +62,7 @@ function ColecaoPeriodicaMeioEletronico() {
     {
       id: 7,
       name: "issn",
+      label: "ISSN:",
       value: "",
       placeholder: "Ex: 123456789",
       type: "text",
@@ -66,18 +71,21 @@ function ColecaoPeriodicaMeioEletronico() {
       id: 8,
       name: "doi",
       value: "",
+      label: "DOI:",
       placeholder: "Ex: 00.0000/000",
       type: "text,",
     },
     {
       id: 9,
       name: "url",
+      label: "URL:",
       value: "",
       placeholder: "Ex: www.url.com",
       type: "text,",
     },
     {
       id: 10,
+      label: "Data de acesso",
       name: "dataAcesso",
       value: "",
       placeholder: "Ex: dd/mm/aaaa",
@@ -131,20 +139,28 @@ function ColecaoPeriodicaMeioEletronico() {
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="form-item">
+                {input.label != null ? (
+                  <div className="form-label">{input.label}</div>
+                ) : (
+                  <></>
+                )}
+
                 <input
                   type={input.type}
                   key={input.id}
                   id={input.id}
                   value={input.value}
                   name={input.name}
-                  placeholder={input.placeholder}
                   className="form-input"
+                  placeholder={input.placeholder}
                   onChange={(e) => handleFormChange(input.id, e)}
                 />
               </div>
             );
           })}
+
+          <div className="form-clear"></div>
 
           <div className="sla">
             <button type="submit" className="btn btn-success">

@@ -19,6 +19,7 @@ function Monografia() {
     {
       id: 2,
       name: "titulo",
+      label: "Título:",
       value: "",
       placeholder: "Ex: Titulo",
       type: "text",
@@ -28,12 +29,14 @@ function Monografia() {
       id: 3,
       name: "subtitulo",
       value: "",
+      label: "Subtítulo:",
       placeholder: "Ex: Subtitulo",
       type: "text",
     },
 
     {
       id: 4,
+      label: "Ano de publicação:",
       name: "anoPublicacao",
       value: "",
       placeholder: "Ex: Ano de Publicação",
@@ -42,6 +45,7 @@ function Monografia() {
     {
       id: 5,
       name: "anoEntrega",
+      label: "Ano de entrega:",
       value: "",
       placeholder: "Ex: Ano de entrega",
       type: "number",
@@ -49,7 +53,8 @@ function Monografia() {
 
     {
       id: 6,
-      name: "quantiPgs",
+      name: "quantidadePaginas",
+      label: "Quantidade de páginas:",
       value: "",
       placeholder: "Ex: Quantidade da páginas",
       type: "number",
@@ -58,12 +63,14 @@ function Monografia() {
     {
       id: 7,
       name: "cidade",
+      label: "Cidade:",
       value: "",
       placeholder: "Ex: Cidade",
       type: "text",
     },
     {
       id: 8,
+      label: "Editora:",
       name: "editora",
       value: "",
       placeholder: "Ex: Editora",
@@ -73,6 +80,7 @@ function Monografia() {
       id: 9,
       name: "edicao",
       value: "",
+      label: "Edição:",
       placeholder: "Ex: Edição",
       type: "text",
     },
@@ -80,6 +88,7 @@ function Monografia() {
     {
       id: 10,
       name: "autor",
+      label: "Autor:",
       value: "",
       placeholder: "Ex: Autor",
       type: "text",
@@ -98,6 +107,7 @@ function Monografia() {
       id: id,
       name: "autor",
       value: "",
+      label: "Autor:",
       placeholder: "Ex: Autor",
       type: "text",
     };
@@ -143,21 +153,28 @@ function Monografia() {
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="form-item">
+                {input.label != null ? (
+                  <div className="form-label">{input.label}</div>
+                ) : (
+                  <></>
+                )}
+
                 <input
                   type={input.type}
                   key={input.id}
                   id={input.id}
                   value={input.value}
                   name={input.name}
-                  placeholder={input.placeholder}
                   className="form-input"
+                  placeholder={input.placeholder}
                   onChange={(e) => handleFormChange(input.id, e)}
                 />
               </div>
             );
           })}
 
+          <div className="form-clear"></div>
           <div className="sla">
             <button type="submit" className="btn btn-success">
               Salvar

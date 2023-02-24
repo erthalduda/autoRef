@@ -109,7 +109,6 @@ const CadastroUsuario = () => {
                     return (
                       <div key={index}>
                         {input.label != null ? <>{input.label}</> : <>null</>}
-
                         <input
                           type={input.type}
                           key={input.id}

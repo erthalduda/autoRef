@@ -10,120 +10,137 @@ import "../css/referencia.css";
 function Artigo() {
   const [inputFields, setInputFields] = useState([
     {
-      id: 1,
-      name: "tipo",
-      value: "artigo",
-      type: "hidden",
-    },
-    {
       id: 2,
       name: "título",
       value: "",
-      placeholder: "Ex: Título de Artigo",
+      placeholder: "Ex: Título do Artigo",
       type: "text",
+      label: "Título:",
     },
 
     {
       id: 3,
       name: "subtítuloArtigo",
       value: "",
-      placeholder: "Ex: Subtítulo do artigo",
+      placeholder: "Ex: Subtítulo Artigo",
       type: "text",
+      label: "Subtítulo:",
     },
 
     {
       id: 4,
       name: "tituloPeriodico",
       value: "",
-      placeholder: "Ex: Título periódico ",
+      placeholder: "Ex: Título Periódico",
       type: "text",
+      label: "Título do periódico:",
     },
     {
       id: 5,
       name: "subtituloPeriodico",
       value: "",
-      placeholder: "Ex: Subtítulo periódico",
+      placeholder: "Ex: Subtítulo Y",
       type: "text",
+      label: "Subtítulo do periódico:",
     },
 
     {
       id: 6,
       name: "localPublicacao",
       value: "",
-      placeholder: "Ex: Local de publicação",
+      placeholder: "Ex: São Paulo",
       type: "text",
+      label: "Local de publicação:",
     },
 
     {
       id: 7,
-      name: "paginaFinal",
+      name: "paginaInicial",
       value: "",
-      placeholder: "Ex: Página final",
+      placeholder: "Ex: 10",
       type: "number",
+      label: "Página inicial:",
     },
     {
       id: 8,
       name: "paginaInicial",
       value: "",
-      placeholder: "Ex: Página inicial",
+      placeholder: "Ex: 15",
       type: "text",
+      label: "Página final:",
     },
     {
       id: 9,
       name: "editora",
       value: "",
-      placeholder: "Ex: Editora",
+      placeholder: "Ex: Editora X",
       type: "text",
+
+      label: "Editora:",
     },
     {
       id: 10,
       name: "dataPublicacao",
       value: "",
-      placeholder: "Ex: Data de publicação",
+      placeholder: "Ex: 2006",
       type: "text",
+
+      label: "Data de publicação:",
     },
     {
       id: 11,
       name: "ano",
       value: "",
-      placeholder: "Ex: Ano",
+      placeholder: "Ex: 9",
       type: "number",
+      label: "Ano:",
     },
     {
       id: 12,
       name: "volume",
       value: "",
-      placeholder: "Ex: Volume",
+      placeholder: "Ex: 5",
       type: "text",
+      label: "Volume:",
     },
     {
       id: 13,
       name: "edicao",
       value: "",
-      placeholder: "Ex: Edição",
+      placeholder: "Ex: 2",
       type: "text",
+      label: "Edição:",
     },
     {
       id: 14,
       name: "numero",
       value: "",
-      placeholder: "Ex: Número",
+      placeholder: "Ex: 1",
       type: "text",
+      label: "Número:",
     },
     {
       id: 15,
       name: "tomo",
       value: "",
-      placeholder: "Ex: Tomo",
+      placeholder: "Ex: 8",
       type: "text",
+      label: "Tomo:",
     },
 
     {
       id: 16,
       name: "autor",
       value: "",
-      placeholder: "Ex: Autor",
+      placeholder: "Ex: Maria Silva",
       type: "text",
+      label: "Autor:",
+    },
+    {
+      id: 1,
+      name: "tipo",
+      value: "artigo",
+      type: "hidden",
     },
   ]);
 
@@ -139,8 +156,9 @@ function Artigo() {
       id: id,
       name: "autor",
       value: "",
-      placeholder: "Ex: Autor",
+      placeholder: "Ex: Maria Silva",
       type: "text",
+      label: "Autor: ",
     };
     setInputFields([...inputFields, newfield]);
     console.log(inputFields);
@@ -180,24 +198,33 @@ function Artigo() {
     <>
       <Sidebar></Sidebar>
       <h1 id="referencia">Artigo</h1>
+
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="form-item">
+                {input.label != null ? (
+                  <div className="form-label">{input.label}</div>
+                ) : (
+                  <></>
+                )}
+
                 <input
                   type={input.type}
                   key={input.id}
                   id={input.id}
                   value={input.value}
                   name={input.name}
-                  placeholder={input.placeholder}
                   className="form-input"
+                  placeholder={input.placeholder}
                   onChange={(e) => handleFormChange(input.id, e)}
                 />
               </div>
             );
           })}
+
+          <div className="form-clear"></div>
 
           <div className="sla">
             <button type="submit" className="btn btn-success">

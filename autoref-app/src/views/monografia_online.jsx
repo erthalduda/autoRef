@@ -20,6 +20,7 @@ function MonografiaOnline() {
       id: 2,
       name: "titulo",
       value: "",
+      label: "Título:",
       placeholder: "Ex: Titulo",
       type: "text",
     },
@@ -27,6 +28,7 @@ function MonografiaOnline() {
     {
       id: 3,
       name: "subtitulo",
+      label: "Subtítulo:",
       value: "",
       placeholder: "Ex: Subtitulo",
       type: "text",
@@ -36,6 +38,7 @@ function MonografiaOnline() {
       id: 4,
       name: "anoPublicacao",
       value: "",
+      label: "Ano de puFblicação:",
       placeholder: "Ex: Ano de Publicação",
       type: "number",
     },
@@ -43,13 +46,15 @@ function MonografiaOnline() {
       id: 5,
       name: "anoEntrega",
       value: "",
+      label: "Ano de entrega:",
       placeholder: "Ex: Ano de entrega",
       type: "number",
     },
 
     {
       id: 6,
-      name: "quantiPgs",
+      name: "quantidadePaginas",
+      label: "Quantidade de páginas:",
       value: "",
       placeholder: "Ex: Quantidade da páginas",
       type: "number",
@@ -58,6 +63,7 @@ function MonografiaOnline() {
     {
       id: 7,
       name: "cidade",
+      label: "Cidade:",
       value: "",
       placeholder: "Ex: Cidade",
       type: "text",
@@ -65,6 +71,7 @@ function MonografiaOnline() {
     {
       id: 8,
       name: "editora",
+      label: "Editora:",
       value: "",
       placeholder: "Ex: Editora",
       type: "text",
@@ -72,6 +79,7 @@ function MonografiaOnline() {
     {
       id: 9,
       name: "edicao",
+      label: "Edição:",
       value: "",
       placeholder: "Ex: Edição",
       type: "text",
@@ -81,13 +89,15 @@ function MonografiaOnline() {
       id: 11,
       name: "url",
       value: "",
+      label: "URL:",
       placeholder: "Ex: Url",
       type: "text",
     },
     {
       id: 12,
-      name: "autor",
+      name: "dataAcesso",
       value: "",
+      label: "Data de acesso:",
       placeholder: "Ex: Data de acesso",
       type: "date",
     },
@@ -96,6 +106,7 @@ function MonografiaOnline() {
       id: 13,
       name: "autor",
       value: "",
+      label: "Autor:",
       placeholder: "Ex: Autor",
       type: "text",
     },
@@ -112,6 +123,7 @@ function MonografiaOnline() {
     let newfield = {
       id: id,
       name: "autor",
+      label: "Autor:",
       value: "",
       placeholder: "Ex: Autor",
       type: "text",
@@ -158,20 +170,28 @@ function MonografiaOnline() {
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="form-item">
+                {input.label != null ? (
+                  <div className="form-label">{input.label}</div>
+                ) : (
+                  <></>
+                )}
+
                 <input
                   type={input.type}
                   key={input.id}
                   id={input.id}
                   value={input.value}
                   name={input.name}
-                  placeholder={input.placeholder}
                   className="form-input"
+                  placeholder={input.placeholder}
                   onChange={(e) => handleFormChange(input.id, e)}
                 />
               </div>
             );
           })}
+
+          <div className="form-clear"></div>
 
           <div className="sla">
             <button type="submit" className="btn btn-success">
