@@ -10,7 +10,7 @@ import { useAxios } from "../hooks/axios";
 //import { mensagemSucesso, mensagemErro } from '../components/toastifyClasse'
 
 const CadastroUsuario = () => {
-  const [mensagemErro, setMensagemErro] = useState ("Error ao cadastrar!")
+  const [mensagemErro, setMensagemErro] = useState("Error ao cadastrar!");
   const history = useHistory();
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
@@ -58,18 +58,15 @@ const CadastroUsuario = () => {
     event.preventDefault();
 
     const { response, error } = await fetchData(axiosParams, false);
-    console.log(response)
+    console.log(response);
     setError(true);
     if (response && !error) {
-      setError(false)
+      setError(false);
       //navigate
     } else if (error) {
       setMensagemErro(error.message);
       setError(true);
-      
     }
-
- 
   };
 
   const handleFormChange = (id, event) => {
@@ -133,16 +130,13 @@ const CadastroUsuario = () => {
                   <div className="sla">
                     <button type="submit" className="btn btn-success">
                       CADASTRAR
-              
-                  
                     </button>
-                    
                   </div>
-                  
+
                   <div>
                     <p>
                       Já possui uma conta?{" "}
-                      <a className="clicavel" href="#/login">
+                      <a className="clicavel" href="/login">
                         Faça login
                       </a>
                     </p>

@@ -136,7 +136,7 @@ const Login = () => {
                   <div>
                     <p>
                       Não possui uma conta?{" "}
-                      <a className="clicavel" href="#/cadastro">
+                      <a className="clicavel" href="/cadastro">
                         Faça cadastro
                       </a>
                     </p>

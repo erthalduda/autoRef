@@ -9,7 +9,7 @@ function Sidebar() {
       <div className="position-sticky">
         <div className="list-group list-group-flush mx-1 mt-4">
           <a
-            href="#/referencias"
+            href="/referencias"
             className="list-group-item list-group-item-action py-2 ripple"
             aria-current="true"
           >
@@ -17,7 +17,7 @@ function Sidebar() {
             <span>CADASTRAR REFERÊNCIA</span>
           </a>
           <a
-            href="#/repositorio_privado"
+            href="/repositorio_privado"
             className="list-group-item list-group-item-action py-2 ripple"
             aria-current="true"
           >
@@ -25,7 +25,7 @@ function Sidebar() {
             <span>MINHAS REFERÊNCIAS</span>
           </a>
           <a
-            href="#/repositorio_geral"
+            href="/repositorio_geral"
             className="list-group-item list-group-item-action py-2 ripple"
             aria-current="true"
           >
@@ -33,7 +33,7 @@ function Sidebar() {
             <span>BUSCAR REFERÊNCIAS</span>
           </a>
           <a
-            href="#/colecoes"
+            href="/colecoes"
             className="list-group-item list-group-item-action py-2 ripple"
             aria-current="true"
           >
@@ -41,7 +41,7 @@ function Sidebar() {
             <span>COLEÇÕES</span>
           </a>
           <a
-            href="#/ranking"
+            href="/ranking"
             className="list-group-item list-group-item-action py-2 ripple"
             aria-current="true"
           >
@@ -49,7 +49,7 @@ function Sidebar() {
             <span>RANKING</span>
           </a>
           <a
-            href="#/faq"
+            href="/faq"
             className="list-group-item list-group-item-action py-2 ripple"
             aria-current="true"
           >
