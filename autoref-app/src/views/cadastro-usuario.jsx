@@ -81,11 +81,7 @@ const CadastroUsuario = () => {
     if (inputFiltrado.id === 2) {
       setinfosCadastro({ ...infosCadastro, nome: inputFiltrado.value });
     }
-    if (inputFiltrado.id === 3) {
-      setinfosCadastro({ ...infosCadastro, nome: inputFiltrado.value });
-    }
-
-    setInputFields(data);
+  
   };
 
   // const prepareLogin = () => {
