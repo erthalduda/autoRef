@@ -14,11 +14,13 @@ const CadastroUsuario = () => {
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
     {
+
       id: 1,
       name: "email",
       value: "",
       placeholder: "Ex: aaa@gmail.com",
       type: "text",
+      label: "E-mail:"
     },
     {
       id: 2,
@@ -26,6 +28,7 @@ const CadastroUsuario = () => {
       value: "",
       placeholder: "Ex: Julio",
       type: "text",
+      label: "Nome:"
     },
     {
       id: 3,
@@ -33,6 +36,7 @@ const CadastroUsuario = () => {
       value: "",
       placeholder: "Ex: 1234Ejshdks",
       type: "text",
+      label: "Senha:"
     },
   ]);
   const [infosCadastro, setinfosCadastro] = useState({
@@ -104,6 +108,9 @@ const CadastroUsuario = () => {
                   {inputFields.map((input, index) => {
                     return (
                       <div key={index}>
+
+                        {input.label != null ? <>{input.label}</> : <>null</>}
+
                         <input
                           type={input.type}
                           key={input.id}
