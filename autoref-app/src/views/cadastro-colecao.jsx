@@ -1,6 +1,7 @@
 import React from "react";
 //import FormGroup from "../components/form-group";
 
+import Navbar from "../components/navbar";
 import { useState } from "react";
 import axios from "axios";
 //import login from "./login";
@@ -59,6 +60,7 @@ function CadastroColecao() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Cadastro de Coleção</h1>
       <br></br>
       <div className="form-group-ref">

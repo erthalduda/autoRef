@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../components/navBarInicio";
 import { withRouter } from "react-router-dom";
 
 class PaginaInicial extends React.Component {
@@ -12,29 +13,32 @@ class PaginaInicial extends React.Component {
 
   render() {
     return (
-      <div className="container text-center">
-        <h2>Seja bem-vindo ao AutoRef!</h2>
-        Um sistema para o gerenciamento de referências bibliográficas! <br></br>{" "}
-        Clique em um dos botões abaixo para realizar seu login ou cadastrar-se:{" "}
-        <br />
-        <br />
-        <div className="offset-md-4 col-md-4">
-          <button
-            style={{ width: "50%" }}
-            onClick={this.irParaLogin}
-            className="btn btn-success"
-          >
-            <i className="pi pi-sign-in"></i> Login
-          </button>
-          <button
-            style={{ width: "50%" }}
-            onClick={this.irParaCadastro}
-            className="btn btn-success"
-          >
-            <i className="pi pi-sign-in"></i> Cadastro
-          </button>
+      <>
+        <Navbar></Navbar>
+        <div className="container text-center">
+          <h2>Seja bem-vindo ao AutoRef!</h2>
+          Um sistema para o gerenciamento de referências bibliográficas!{" "}
+          <br></br> Clique em um dos botões abaixo para realizar seu login ou
+          cadastrar-se: <br />
+          <br />
+          <div className="offset-md-4 col-md-4">
+            <button
+              style={{ width: "50%" }}
+              onClick={this.irParaLogin}
+              className="btn btn-success"
+            >
+              <i className="pi pi-sign-in"></i> Login
+            </button>
+            <button
+              style={{ width: "50%" }}
+              onClick={this.irParaCadastro}
+              className="btn btn-success"
+            >
+              <i className="pi pi-sign-in"></i> Cadastro
+            </button>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }

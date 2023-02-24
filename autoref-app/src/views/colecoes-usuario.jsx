@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../components/navbar";
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
 
@@ -52,6 +53,7 @@ function ColecoesUsuario() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Suas coleções</h1>
       <br></br>
       <div className="form-group-ref">

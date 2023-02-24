@@ -110,8 +110,16 @@ details[open] summary {
 }
 
 .navbar-brand {
-  color: aliceblue;
+  height: 30px;
+  font-size: 50px;
+}
+
+.navbar-brand-dois, .navbar-brand-dois:hover {
   height: 50px;
+  text-decoration: none;
+  color: rgb(34, 34, 34);
+  font-size: larger;
+  font-size: 20px;
 }
 
 .menu.active {

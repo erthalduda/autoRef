@@ -10,7 +10,7 @@ function Navbar() {
   return (
     <div className="navbar fixed-top">
       <div className="container">
-        <a href="#/home" className="navbar-brand">
+        <a href="#/home" className="navbar-brand-dois">
           <b>AUTOREF</b>
         </a>
 

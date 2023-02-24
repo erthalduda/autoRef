@@ -1,10 +1,12 @@
 import React from "react";
+import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 
 function Faq() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <div className="row">
         <div
           className="col-md-6"

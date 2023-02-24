@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 
 class MonoOpcoes extends React.Component {
@@ -21,6 +23,7 @@ class MonoOpcoes extends React.Component {
   render() {
     return (
       <>
+        <Navbar></Navbar>
         <Sidebar></Sidebar>
         <div className="row">
           <div

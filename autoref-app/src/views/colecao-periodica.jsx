@@ -4,6 +4,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 //import login from "./login";
+import Navbar from "../components/navbar";
 
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
@@ -104,6 +105,7 @@ function ColecaoPeriodica() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Coleção de Publicação Periódica</h1>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>

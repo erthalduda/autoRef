@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 
 import "../custom.css";
@@ -7,6 +8,7 @@ class Home extends React.Component {
     return (
       <>
         <Sidebar></Sidebar>
+        <Navbar></Navbar>
         <div className="row">
           <div
             className="col-md-6"

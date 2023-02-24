@@ -1,6 +1,7 @@
 import React from "react";
 //import FormGroup from "../components/form-group";
 import Sidebar from "../components/sidebar";
+import Navbar from "../components/navbar";
 import { useState } from "react";
 import axios from "axios";
 //import login from "./login";
@@ -195,6 +196,7 @@ function Artigo() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Artigo</h1>
       <br></br>
       <div className="form-group-ref">

@@ -4,6 +4,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 //import login from "./login";
+import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 import "../css/referencia.css";
 
@@ -132,6 +133,7 @@ function ColecaoPeriodicaMeioEletronico() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">
       <br></br>
         Coleção de Publicação Periódica em Meio Eletrônico
