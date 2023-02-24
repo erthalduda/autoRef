@@ -1,11 +1,12 @@
 import React from "react";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+
 
 import Login from "../views/login";
 import Home from "../views/home";
 import CadastroUsuario from "../views/cadastro-usuario";
 import Referencias from "../views/referencias";
 import PaginaInicial from "../views/pagina-inicial";
-import { Route, Switch, HashRouter } from "react-router-dom";
 import Monografia from "../views/monografia";
 import Website from "../views/website";
 import Artigo from "../views/artigo";
@@ -27,7 +28,7 @@ import Ranking from "../views/ranking";
 
 function Rotas() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Switch>
         <Route exact path="/" component={PaginaInicial} />
 
@@ -57,7 +58,7 @@ function Rotas() {
         <Route path="/repositorio_privado" component={RepositorioPrivado} />
         <Route path="/ranking" component={Ranking} />
       </Switch>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
