@@ -2,11 +2,12 @@ import React from "react";
 import Card from "../components/card";
 import "../custom.css";
 import { useAxios } from "../hooks/axios";
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useLocalStorage } from "../hooks/local_storage";
-import axios from "axios";
 
 const Login = () => {
+  const history = useHistory();
   const [mensagemErro, setMensagemErro] = useState("Erro ao logar!");
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
@@ -49,8 +50,6 @@ const Login = () => {
     const { response, error } = await fetchData(axiosParams, false);
 
     if (response && !error) {
-      console.log(JSON.stringify(response.data));
-
       const token = localStorage.getHeader(response, "X-Auth-Token");
 
       localStorage.save("token", token);
@@ -60,7 +59,6 @@ const Login = () => {
       setError("Falha ao logar!");
     }
   };
-
   const handleFormChange = (id, event) => {
     let data = [...inputFields];
     const inputFiltrado = data.find((input) => input.id === id);
