@@ -125,7 +125,7 @@ const CadastroUsuario = () => {
                   <br></br>
                   <div className="sla">
                     <button type="submit" className="btn btn-success">
-                      CADASTRO
+                      CADASTRAR
                     </button>
                   </div>
                   <div>
