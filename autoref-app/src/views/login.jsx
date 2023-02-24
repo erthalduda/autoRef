@@ -139,7 +139,7 @@ const Login = () => {
                     <p>
                       Não possui uma conta?{" "}
                       <a className="clicavel" href="/cadastro">
-                        Faça cadastro
+                        Cadastre-se
                       </a>
                     </p>
                   </div>
