@@ -17,22 +17,22 @@ const CadastroUsuario = () => {
       id: 1,
       name: "email",
       value: "",
-      placeholder: "Ex: aaa@gmail.com",
-      type: "text",
+      placeholder: "Ex: email@email.com",
+      type: "email",
     },
     {
       id: 2,
       name: "name",
       value: "",
-      placeholder: "Ex: Julio",
+      placeholder: "Ex: Maria Silva",
       type: "text",
     },
     {
       id: 3,
       name: "senha",
       value: "",
-      placeholder: "Ex: 1234Ejshdks",
-      type: "text",
+      placeholder: "Ex: 123456",
+      type: "password",
     },
   ]);
   const [infosCadastro, setinfosCadastro] = useState({
@@ -79,6 +79,9 @@ const CadastroUsuario = () => {
       setinfosCadastro({ ...infosCadastro, email: inputFiltrado.value });
     }
     if (inputFiltrado.id === 2) {
+      setinfosCadastro({ ...infosCadastro, nome: inputFiltrado.value });
+    }
+    if (inputFiltrado.id === 3) {
       setinfosCadastro({ ...infosCadastro, nome: inputFiltrado.value });
     }
 
