@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 
-function Faq() {
+const Faq = () => {
   return (
     <>
       <Sidebar></Sidebar>
@@ -154,6 +154,6 @@ function Faq() {
       </div>
     </>
   );
-}
+};
 
 export default Faq;

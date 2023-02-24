@@ -3,8 +3,7 @@ import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 
 import "../custom.css";
-class Home extends React.Component {
-  render() {
+const Home = () => { 
     return (
       <>
         <Sidebar></Sidebar>
@@ -26,7 +25,7 @@ class Home extends React.Component {
         </div>
       </>
     );
-  }
+  
 }
 
 export default Home;
