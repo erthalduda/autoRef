@@ -7,7 +7,11 @@ import { useState } from "react";
 
 const Login = () => {
   const history = useHistory();
+<<<<<<< HEAD
   const [mensagemErro, setMensagemErro] = useState("Error ao logar!");
+=======
+  const [mensagemErro, setMensagemErro] = useState ("Error ao logar!")
+>>>>>>> 416b8907f41bba2310c6f452b4a3ece57fb418f4
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
     {
@@ -82,6 +86,7 @@ const Login = () => {
     history.push("/login");
   };
 
+<<<<<<< HEAD
   return (
     <div className="row">
       <div className="col-md-6" style={{ position: "relative", left: "300px" }}>
@@ -89,6 +94,20 @@ const Login = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="bs-component">
+=======
+  
+    return (
+      <div className="row">
+        <div
+          className="col-md-6"
+          style={{ position: "relative", left: "300px" }}
+        >
+          <Card title="LOGIN">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="bs-component">
+
+>>>>>>> 416b8907f41bba2310c6f452b4a3ece57fb418f4
                 <form onSubmit={onSubmit}>
                   {inputFields.map((input, index) => {
                     return (
@@ -112,9 +131,17 @@ const Login = () => {
                   <div className="sla">
                     <button type="submit" className="btn btn-success">
                       LOGIN
+<<<<<<< HEAD
                     </button>
                   </div>
 
+=======
+                  
+                    </button>
+                    
+                  </div>
+                  
+>>>>>>> 416b8907f41bba2310c6f452b4a3ece57fb418f4
                   <div>
                     <p>
                       Não possui uma conta?{" "}
@@ -124,6 +151,11 @@ const Login = () => {
                     </p>
                   </div>
                 </form>
+<<<<<<< HEAD
+=======
+                
+                </div>
+>>>>>>> 416b8907f41bba2310c6f452b4a3ece57fb418f4
               </div>
             </div>
           </div>

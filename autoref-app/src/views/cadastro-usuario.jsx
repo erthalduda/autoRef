@@ -10,6 +10,7 @@ import { useAxios } from "../hooks/axios";
 //import { mensagemSucesso, mensagemErro } from '../components/toastifyClasse'
 
 const CadastroUsuario = () => {
+  const [mensagemErro, setMensagemErro] = useState ("Error ao cadastrar!")
   const history = useHistory();
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
@@ -45,7 +46,7 @@ const CadastroUsuario = () => {
     senha: "",
   });
 
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
 
   const onSubmit = async (event) => {
     const axiosParams = {
@@ -57,12 +58,17 @@ const CadastroUsuario = () => {
     event.preventDefault();
 
     const { response, error } = fetchData(axiosParams, false);
-
+    console.log(response)
+    setError(true);
     if (response && !error) {
+      setError(false)
       //navigate
     } else if (error) {
-      setError("Falha ao cadastrar!");
+      setMensagemErro(error.message);
+      setError(true);
+      
     }
+
     console.log(infosCadastro);
   };
 
@@ -123,11 +129,19 @@ const CadastroUsuario = () => {
                     );
                   })}
                   <br></br>
+                  {error && <div>{mensagemErro}</div>}
                   <div className="sla">
                     <button type="submit" className="btn btn-success">
+<<<<<<< HEAD
                       CADASTRAR
+=======
+                      CADASTRO
+                  
+>>>>>>> 416b8907f41bba2310c6f452b4a3ece57fb418f4
                     </button>
+                    
                   </div>
+                  
                   <div>
                     <p>
                       Já possui uma conta?{" "}
