@@ -22,6 +22,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Titulo",
       type: "text",
+      label: "Título:"
     },
 
     {
@@ -30,6 +31,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Titulo da parte",
       type: "text",
+      label: "Título da parte:"
     },
 
     {
@@ -38,6 +40,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Subtitulo",
       type: "text",
+      label: "Subtítulo:"
     },
 
     {
@@ -46,6 +49,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Ano de Publicação",
       type: "number",
+      label: "Ano de publicação:"
     },
     {
       id: 6,
@@ -53,6 +57,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Ano de entrega",
       type: "number",
+      label: "Ano de entrega:"
     },
 
     {
@@ -61,6 +66,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Volume",
       type: "number",
+      label: "Volume:"
     },
 
     {
@@ -69,6 +75,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Seção",
       type: "number",
+      label: "Seção:"
     },
     {
       id: 9,
@@ -76,14 +83,16 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Capitulo",
       type: "number",
+      label: "Capítulo:"
     },
 
     {
       id: 10,
-      name: "quantiPgs",
+      name: "quantidadePaginas",
       value: "",
       placeholder: "Ex: Quantidade da páginas",
       type: "number",
+      label: "Quantidade de páginas:"
     },
 
     {
@@ -92,6 +101,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Cidade",
       type: "text",
+      label: "Cidade:"
     },
     {
       id: 12,
@@ -99,6 +109,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Editora",
       type: "text",
+      label: "Editora:"
     },
     {
       id: 13,
@@ -106,6 +117,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Edição",
       type: "text",
+      label: "Edição:"
     },
 
     {
@@ -114,6 +126,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Autor da parte",
       type: "text",
+      label: "Autor da parte:"
     },
 
     {
@@ -122,6 +135,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Autor",
       type: "text",
+      label: "Autor:"
     },
   ]);
 
@@ -139,6 +153,7 @@ function ParteMonografia() {
       value: "",
       placeholder: "Ex: Autor",
       type: "text",
+      label: "Novo autor:"
     };
     setInputFields([...inputFields, newfield]);
     console.log(inputFields);

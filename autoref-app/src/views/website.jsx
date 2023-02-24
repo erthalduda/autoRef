@@ -75,6 +75,7 @@ function Website() {
       value: "",
       placeholder: "Ex: Autor",
       type: "text",
+      label: "Novo autor:"
     };
     setInputFields([...inputFields, newfield]);
     console.log(inputFields);
