@@ -22,6 +22,7 @@ function Website() {
       value: "",
       placeholder: "Ex: Titulo",
       type: "text",
+      label: "Título:"
     },
 
     {
@@ -30,6 +31,7 @@ function Website() {
       value: "",
       placeholder: "Ex: Nome do site",
       type: "text",
+      label: "Nome do site:"
     },
 
     {
@@ -38,6 +40,7 @@ function Website() {
       value: "",
       placeholder: "Ex: Url",
       type: "text",
+      label: "URL:"
     },
     {
       id: 5,
@@ -45,6 +48,7 @@ function Website() {
       value: "",
       placeholder: "Ex: Data de acesso",
       type: "date",
+      label: "Data de acesso:"
     },
 
     {
@@ -53,6 +57,7 @@ function Website() {
       value: "",
       placeholder: "Ex: Autor",
       type: "text",
+      label: "Autor:"
     },
   ]);
 
