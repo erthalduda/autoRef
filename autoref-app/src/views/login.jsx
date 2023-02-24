@@ -35,7 +35,7 @@ const Login = () => {
     email: "",
     senha: "",
   });
-
+ 
   const [error, setError] = useState();
 
   const localStorage = useLocalStorage()
@@ -50,15 +50,19 @@ const Login = () => {
     event.preventDefault();
 
     const { response, error } = await fetchData(axiosParams, false);
+    
     const teste = await axios(axiosParams)
-    console.log(teste)
+    // console.log(teste)
    
     if (response && !error) {
+      console.log(JSON.stringify(response.data))
+
       const token = localStorage.getHeader(response, "X-Auth-Token")
      
       localStorage.save("token", token)
       
       localStorage.save("userData", JSON.stringify(response.data))
+      
     } else if (error) {
       setError("Falha ao logar!");
     }
@@ -89,9 +93,7 @@ const Login = () => {
     setInputFields(data);
   };
 
-  const prepareLogin = () => {
-    history.push("/login");
-  };
+
 
   
     return (
