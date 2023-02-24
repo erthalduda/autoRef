@@ -18,7 +18,7 @@ const CadastroUsuario = () => {
       name: "email",
       value: "",
       placeholder: "Ex: email@email.com",
-      type: "email",
+      type: "text",
     },
     {
       id: 2,
@@ -81,7 +81,11 @@ const CadastroUsuario = () => {
     if (inputFiltrado.id === 2) {
       setinfosCadastro({ ...infosCadastro, nome: inputFiltrado.value });
     }
-  
+    if (inputFiltrado.id === 3) {
+      setinfosCadastro({ ...infosCadastro, senha: inputFiltrado.value });
+    }
+
+    setInputFields(data);
   };
 
   // const prepareLogin = () => {
