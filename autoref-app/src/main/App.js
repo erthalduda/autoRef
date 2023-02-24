@@ -1,5 +1,4 @@
 import React from "react";
-
 import Rotas from "./rotas";
 
 import Navbar from "../components/navBarInicio";
@@ -10,8 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Navbar/>
-
+        <Navbar />
         <div className="container">
           <Rotas />
         </div>
