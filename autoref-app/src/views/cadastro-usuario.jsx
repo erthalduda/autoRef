@@ -126,7 +126,7 @@ const CadastroUsuario = () => {
                     );
                   })}
                   <br></br>
-                  {error && <div>{mensagemErro}</div>}
+                  {error && <div className="erro">{mensagemErro}</div>}
                   <div className="sla">
                     <button type="submit" className="btn btn-success">
                       CADASTRAR

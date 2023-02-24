@@ -2,14 +2,12 @@ import React from "react";
 import Card from "../components/card";
 import "../custom.css";
 import { useAxios } from "../hooks/axios";
-import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useLocalStorage } from "../hooks/local_storage";
 import axios from "axios";
 
 const Login = () => {
-  const history = useHistory();
-  const [mensagemErro, setMensagemErro] = useState("Error ao logar!");
+  const [mensagemErro, setMensagemErro] = useState("Erro ao logar!");
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
     {
@@ -49,7 +47,7 @@ const Login = () => {
     event.preventDefault();
 
     const { response, error } = await fetchData(axiosParams, false);
-    
+
     if (response && !error) {
       console.log(JSON.stringify(response.data));
 
@@ -113,7 +111,7 @@ const Login = () => {
                     );
                   })}
                   <br></br>
-                  {error && <div>{mensagemErro}</div>}
+                  {error && <div className="erro">{mensagemErro}</div>}
                   <div className="sla">
                     <button type="submit" className="btn btn-success">
                       ENTRAR
