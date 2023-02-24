@@ -1,93 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
 
 function ColecoesUsuario() {
-  const [inputFields, setInputFields] = useState([
-    {
-      id: 1,
-      name: "tipo",
-      value: "monografia",
-      type: "hidden",
-    },
-    {
-      id: 2,
-      name: "titulo",
-      value: "",
-      placeholder: "Ex: Titulo",
-      type: "text",
-    },
-
-    {
-      id: 3,
-      name: "subtitulo",
-      value: "",
-      placeholder: "Ex: Subtitulo",
-      type: "text",
-    },
-
-    {
-      id: 4,
-      name: "anoPublicacao",
-      value: "",
-      placeholder: "Ex: Ano de Publicação",
-      type: "number",
-    },
-    {
-      id: 5,
-      name: "anoEntrega",
-      value: "",
-      placeholder: "Ex: Ano de entrega",
-      type: "number",
-    },
-
-    {
-      id: 6,
-      name: "quantiPgs",
-      value: "",
-      placeholder: "Ex: Quantidade da páginas",
-      type: "number",
-    },
-
-    {
-      id: 7,
-      name: "cidade",
-      value: "",
-      placeholder: "Ex: Cidade",
-      type: "text",
-    },
-    {
-      id: 8,
-      name: "editora",
-      value: "",
-      placeholder: "Ex: Editora",
-      type: "text",
-    },
-    {
-      id: 9,
-      name: "edicao",
-      value: "",
-      placeholder: "Ex: Edição",
-      type: "text",
-    },
-    {
-      id: 10,
-      name: "descricao",
-      value: "",
-      placeholder: "Ex: Descrição de suporte",
-      type: "text",
-    },
-
-    {
-      id: 11,
-      name: "autor",
-      value: "",
-      placeholder: "Ex: Autor",
-      type: "text",
-    },
-  ]);
+  const [inputFields, setInputFields] = useState([]);
+  let history = useHistory();
+  
+  const prepareCadastrarColecao = () => {
+    history.push("/cadastro_colecao");
+  };
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -128,7 +52,8 @@ function ColecoesUsuario() {
   return (
     <>
       <Sidebar></Sidebar>
-      <h1 id="referencia">Nova Coleção</h1>
+      <h1 id="referencia">Suas coleções</h1>
+      <br></br>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
@@ -149,7 +74,11 @@ function ColecoesUsuario() {
           })}
 
           <div className="sla">
-            <button type="submit" className="btn btn-success">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={prepareCadastrarColecao}
+            >
               +
             </button>
           </div>

@@ -11,7 +11,7 @@ function Artigo() {
   const [inputFields, setInputFields] = useState([
     {
       id: 2,
-      name: "título",
+      name: "titulo",
       value: "",
       placeholder: "Ex: Título do Artigo",
       type: "text",
@@ -20,7 +20,7 @@ function Artigo() {
 
     {
       id: 3,
-      name: "subtítuloArtigo",
+      name: "subtituloArtigo",
       value: "",
       placeholder: "Ex: Subtítulo Artigo",
       type: "text",
@@ -75,7 +75,6 @@ function Artigo() {
       value: "",
       placeholder: "Ex: Editora X",
       type: "text",
-
       label: "Editora:",
     },
     {
@@ -84,7 +83,6 @@ function Artigo() {
       value: "",
       placeholder: "Ex: 2006",
       type: "text",
-
       label: "Data de publicação:",
     },
     {
