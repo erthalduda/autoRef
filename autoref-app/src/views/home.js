@@ -15,7 +15,10 @@ class Home extends React.Component {
             <div className="jumbotron">
               <h1 className="display-3">AUTOREF</h1>
               <p className="lead">Suas referências de maneira fácil.</p>
-              <p>Essa é a área central do site.</p>
+              <p>
+                Uma aplicação para o gerenciamento de referências
+                bibliográficas.
+              </p>
             </div>
           </div>
         </div>
