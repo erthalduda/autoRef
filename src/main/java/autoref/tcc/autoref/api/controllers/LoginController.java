@@ -9,7 +9,7 @@ import autoref.tcc.autoref.api.dtos.UsuarioDTO;
 import autoref.tcc.autoref.services.LoginService;
 
 @RestController
-@CrossOrigin(allowedHeaders = "*")
+@CrossOrigin(exposedHeaders = {"x-auth-token"})
 @RequestMapping("/login")
 public class LoginController {
 
@@ -18,6 +18,7 @@ public class LoginController {
     public LoginController(LoginService loginService) {
         this.loginService = loginService;
     }
+
 
     @PostMapping("/usuario")
     public UsuarioDTO usuarioLogin() {
