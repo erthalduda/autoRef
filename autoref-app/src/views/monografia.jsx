@@ -14,7 +14,6 @@ function Monografia() {
   const [error, setError] = useState(false);
 
   const [inputFields, setInputFields] = useState([
-    
     {
       id: 1,
       name: "tipo",
@@ -43,16 +42,16 @@ function Monografia() {
       id: 4,
       label: "Ano de publicação:",
       name: "anoPublicacao",
-     value: "",
-      placeholder: "Ex: Ano de Publicação",
+      value: null,
+      placeholder: "Ex: 2005",
       type: "number",
     },
     {
       id: 5,
       name: "anoEntrega",
       label: "Ano de entrega:",
-     value: "",
-      placeholder: "Ex: Ano de entrega",
+      value: null,
+      placeholder: "Ex: 2004",
       type: "number",
     },
 
@@ -60,8 +59,8 @@ function Monografia() {
       id: 6,
       name: "quantidadePaginas",
       label: "Quantidade de páginas:",
-     value: "",
-      placeholder: "Ex: Quantidade da páginas",
+      value: null,
+      placeholder: "Ex: 17",
       type: "number",
     },
 
@@ -69,8 +68,8 @@ function Monografia() {
       id: 7,
       name: "cidade",
       label: "Cidade:",
-     value: "",
-      placeholder: "Ex: Cidade",
+      value: null,
+      placeholder: "Ex: São Paulo",
       type: "text",
     },
     {
@@ -86,21 +85,29 @@ function Monografia() {
       name: "edicao",
      value: "",
       label: "Edição:",
-      placeholder: "Ex: Edição",
-      type: "text",
+      placeholder: "Ex: 6",
+      type: "number",
     },
 
     {
       id: 10,
       name: "autor",
       label: "Autor:",
-     value: "",
-      placeholder: "Ex: Autor",
+      value: null,
+      placeholder: "Ex: Maria Silva",
       type: "text",
+    },
+    {
+      id: 1,
+      name: "tipo",
+      value: "monografia",
+      type: "hidden",
     },
   ]);
 
-  const [dataEnviarDados, setDataEnviarDaddos] = useState({autor:[]});
+  const [dataEnviarDados, setDataEnviarDados] = useState({
+    autor: [],
+  });
   const [autoresCriados, setAutoresCriados] = useState([]);
 
   const onSubmit = async (event) => {
@@ -126,10 +133,8 @@ function Monografia() {
     }
     console.log(inputFields);
   };
-  
 
   const addFields = (event) => {
-
     event.preventDefault();
     const id = inputFields.length + 1;
     let newfield = {
@@ -137,7 +142,7 @@ function Monografia() {
       name: "autor",
      value: "",
       label: "Novo autor:",
-      placeholder: "Ex: Autor",
+      placeholder: "Ex: Maria Silva",
       type: "text",
     };
     setInputFields([...inputFields, newfield]);
@@ -150,21 +155,22 @@ function Monografia() {
 
     inputFiltrado.value = event.target.value;
 
-    if(inputFiltrado.name == 'autor'){
+    if (inputFiltrado.name == "autor") {
+      const autorSelecionado = autoresCriados.find((a) => a.id === id);
 
-      const autorSelecionado = autoresCriados.find((a) =>a.id === id );
-
-      if(autorSelecionado){
-        
+      if (autorSelecionado) {
         autorSelecionado.nome = inputFiltrado.value;
-      }else {
-        autoresCriados.push({id:id, nome:inputFiltrado.value})
+      } else {
+        autoresCriados.push({ id: id, nome: inputFiltrado.value });
       }
       console.log(autoresCriados);
-    }else {
-      setDataEnviarDaddos({...dataEnviarDados,[inputFiltrado.name]:inputFiltrado.value})
+    } else {
+      setDataEnviarDados({
+        ...dataEnviarDados,
+        [inputFiltrado.name]: inputFiltrado.value,
+      });
     }
-    
+
     data = data.map((inputField) => {
       if (inputField.id === inputFiltrado.id) {
         inputField = { ...inputFiltrado };
@@ -182,7 +188,7 @@ function Monografia() {
       <h1 id="referencia">Monografia</h1>
       <br></br>
       <div className="form-group-ref">
-        <form >
+        <form>
           {inputFields.map((input, index) => {
             return (
               <div key={index} className="form-item">

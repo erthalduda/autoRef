@@ -41,17 +41,17 @@ const Referencias = () => {
               <button onClick={prepareMonografia} className="btn btn-success">
                 Monografia
               </button>
-              <button onClick={preparePeriodico} className="btn btn-success">
-                Trabalho periódico
+              <button onClick={prepareArtigo} className="btn btn-success">
+                Artigo
               </button>
               <button onClick={prepareTrabalho} className="btn btn-success">
                 Trabalho Acadêmico
               </button>
+              <button onClick={preparePeriodico} className="btn btn-success">
+                Publicação Periódica
+              </button>
               <button onClick={prepareWebsite} className="btn btn-success">
                 Website
-              </button>
-              <button onClick={prepareArtigo} className="btn btn-success">
-                Artigo
               </button>
             </div>
           </div>

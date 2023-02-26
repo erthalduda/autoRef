@@ -69,16 +69,16 @@ public class Fasciculo extends ColecaoPublicacaoPeriodica {
 
 		String titulo = this.getTitulo().toUpperCase();
 		String subtitulo = ". ";
-		if (this.getSubtituloPublicacao() != null) {
+		if ((this.getSubtituloPublicacao() != null) && (!this.getSubtituloPublicacao().equals(""))) {
 			subtitulo = ": " + this.getSubtituloPublicacao() + ". ";
 		}
 		String localPublicacao = this.getLocalPublicacao() + ": ";
 		String editora = this.getEditora();
-		if (this.getNumeracaoAno() != null) {
+		if ((this.getNumeracaoAno() != null) && (!this.getNumeracaoAno().equals(""))) {
 			numeracaoAno = ", " + this.getNumeracaoAno() + ". ";
 		}
 		String volume = "";
-		if (this.getNumeracaoVolume() != null) {
+		if ((this.getNumeracaoVolume() != null) && (!this.getNumeracaoVolume().equals(""))) {
 			volume = ", v. " + this.getNumeracaoVolume();
 		}
 		String numeracaoFasciculo = ", n." + this.getNumeracaoFasciculo() + ", ";

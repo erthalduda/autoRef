@@ -63,7 +63,7 @@ function CadastroColecao() {
       <Navbar></Navbar>
       <h1 id="referencia">Cadastro de Coleção</h1>
       <br></br>
-      <div className="form-group-ref">
+      <div className="centralizar">
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
             return (
@@ -92,7 +92,7 @@ function CadastroColecao() {
 
           <div className="centralizar">
             <button type="submit" className="btn btn-success">
-              Criar coleção
+              CRIAR COLEÇÃO=
             </button>
           </div>
         </form>
