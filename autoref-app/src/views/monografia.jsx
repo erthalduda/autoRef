@@ -16,10 +16,16 @@ function Monografia() {
   const [inputFields, setInputFields] = useState([
     
     {
+      id: 1,
+      name: "tipo",
+     value: "monografia",
+      type: "hidden",
+    },
+    {
       id: 2,
       name: "titulo",
       label: "Título:",
-      value: null,
+     value: "",
       placeholder: "Ex: Titulo",
       type: "text",
     },
@@ -27,7 +33,7 @@ function Monografia() {
     {
       id: 3,
       name: "subtitulo",
-      value: null,
+     value: "",
       label: "Subtítulo:",
       placeholder: "Ex: Subtitulo",
       type: "text",
@@ -37,7 +43,7 @@ function Monografia() {
       id: 4,
       label: "Ano de publicação:",
       name: "anoPublicacao",
-      value: null,
+     value: "",
       placeholder: "Ex: Ano de Publicação",
       type: "number",
     },
@@ -45,7 +51,7 @@ function Monografia() {
       id: 5,
       name: "anoEntrega",
       label: "Ano de entrega:",
-      value: null,
+     value: "",
       placeholder: "Ex: Ano de entrega",
       type: "number",
     },
@@ -54,7 +60,7 @@ function Monografia() {
       id: 6,
       name: "quantidadePaginas",
       label: "Quantidade de páginas:",
-      value: null,
+     value: "",
       placeholder: "Ex: Quantidade da páginas",
       type: "number",
     },
@@ -63,7 +69,7 @@ function Monografia() {
       id: 7,
       name: "cidade",
       label: "Cidade:",
-      value: null,
+     value: "",
       placeholder: "Ex: Cidade",
       type: "text",
     },
@@ -71,14 +77,14 @@ function Monografia() {
       id: 8,
       label: "Editora:",
       name: "editora",
-      value: null,
+     value: "",
       placeholder: "Ex: Editora",
       type: "text",
     },
     {
       id: 9,
       name: "edicao",
-      value: null,
+     value: "",
       label: "Edição:",
       placeholder: "Ex: Edição",
       type: "text",
@@ -88,13 +94,13 @@ function Monografia() {
       id: 10,
       name: "autor",
       label: "Autor:",
-      value: null,
+     value: "",
       placeholder: "Ex: Autor",
       type: "text",
     },
   ]);
 
-  const [dataEnviarDados, setDataEnviarDaddos] = useState({tipo:'monografia', autor:[]});
+  const [dataEnviarDados, setDataEnviarDaddos] = useState({autor:[]});
   const [autoresCriados, setAutoresCriados] = useState([]);
 
   const onSubmit = async (event) => {
@@ -129,7 +135,7 @@ function Monografia() {
     let newfield = {
       id: id,
       name: "autor",
-      value: null,
+     value: "",
       label: "Novo autor:",
       placeholder: "Ex: Autor",
       type: "text",
