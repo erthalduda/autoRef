@@ -283,33 +283,33 @@ public class Artigo extends Referencia {
 		String autor = this.formataAutores();
 		String titulo = this.getTitulo();
 		String subtitulo = ". ";
-		if (this.getSubtituloArtigo() != null) {
+		if ((this.getSubtituloArtigo() != null) && (!this.getSubtituloArtigo().equals(""))) {
 			subtitulo = ": " + this.getSubtituloArtigo() + ". ";
 		}
 		String tituloPeriodico = this.getTituloPeriodico();
 		String subtituloPeriodico = ". ";
-		if (this.getSubtituloPeriodico() != null) {
+		if ((this.getSubtituloPeriodico() != null) && (!this.getSubtituloPeriodico().equals(""))) {
 			subtituloPeriodico = ": " + this.getSubtituloPeriodico() + ". ";
 		}
 		String local = this.getLocalPublicacao();
 		String numeracaoAno = "";
-		if (this.getNumeracaoAno() != null) {
+		if ((this.getNumeracaoAno() != null) && (!this.getNumeracaoAno().equals(""))) {
 			numeracaoAno = ", ano " + this.getNumeracaoAno();
 		}
 		String numeracaoVolume = "";
-		if (this.getNumeracaoVolume() != null) {
+		if ((this.getNumeracaoVolume() != null) && (!this.getNumeracaoVolume().equals(""))) {
 			numeracaoVolume = ", v. " + this.getNumeracaoVolume();
 		}
 		String numero = "";
-		if (this.getNumero() != null) {
+		if ((this.getNumero() != null) && (!this.getNumero().equals(""))) {
 			numero = ", n. " + this.getNumero();
 		}
 		String edicao = "";
-		if (this.getEdicao() != null) {
+		if ((this.getEdicao() != null) && (!this.getEdicao().equals(""))) {
 			edicao = ", " + this.getEdicao() + ". ed";
 		}
 		String tomo = "";
-		if (this.getTomo() != null) {
+		if ((this.getTomo() != null) && (!this.getTomo().equals(""))) {
 			tomo = ", t. " + this.getTomo();
 		}
 		String pags = ", p. " + this.getPaginaInicial() + "-" + this.getPaginaFinal();

@@ -235,11 +235,9 @@ public class TrabalhoAcademico extends Referencia {
     public void formata() {
         String autores = this.formataAutores();
         String titulo = this.getTitulo();
-        String subtitulo = "";
-        if (this.getSubtitulo() != null) {
+        String subtitulo = ". ";
+        if ((this.getSubtitulo() != null) && (!this.getSubtitulo().equals(""))) {
             subtitulo = ": " + this.getSubtitulo() + ". ";
-        } else {
-            subtitulo = ". ";
         }
         String anoDeposito = this.getAnoDeposito() + ". ";
         String tipoTrabalho = this.getTipoTrabalho() + " ";
