@@ -14,12 +14,7 @@ function Monografia() {
   const [error, setError] = useState(false);
 
   const [inputFields, setInputFields] = useState([
-    {
-      id: 1,
-      name: "tipo",
-     value: "monografia",
-      type: "hidden",
-    },
+    
     {
       id: 2,
       name: "titulo",
@@ -42,7 +37,7 @@ function Monografia() {
       id: 4,
       label: "Ano de publicação:",
       name: "anoPublicacao",
-      value: null,
+      value: "",
       placeholder: "Ex: 2005",
       type: "number",
     },
@@ -50,7 +45,7 @@ function Monografia() {
       id: 5,
       name: "anoEntrega",
       label: "Ano de entrega:",
-      value: null,
+      value: "",
       placeholder: "Ex: 2004",
       type: "number",
     },
@@ -59,7 +54,7 @@ function Monografia() {
       id: 6,
       name: "quantidadePaginas",
       label: "Quantidade de páginas:",
-      value: null,
+      value: "",
       placeholder: "Ex: 17",
       type: "number",
     },
@@ -68,7 +63,7 @@ function Monografia() {
       id: 7,
       name: "cidade",
       label: "Cidade:",
-      value: null,
+      value: "",
       placeholder: "Ex: São Paulo",
       type: "text",
     },
@@ -93,7 +88,7 @@ function Monografia() {
       id: 10,
       name: "autor",
       label: "Autor:",
-      value: null,
+      value: "",
       placeholder: "Ex: Maria Silva",
       type: "text",
     },
@@ -106,6 +101,7 @@ function Monografia() {
   ]);
 
   const [dataEnviarDados, setDataEnviarDados] = useState({
+    tipo: 'monografia',
     autor: [],
   });
   const [autoresCriados, setAutoresCriados] = useState([]);
