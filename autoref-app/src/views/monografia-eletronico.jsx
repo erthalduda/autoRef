@@ -105,7 +105,7 @@ function MonografiaEletronica() {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    axios.post("https://localhost/3000/referencias/cadastrar", inputFields);
+    axios.post("http://localhost:8080/referencias/cadastrar", inputFields);
     console.log(inputFields);
   };
 

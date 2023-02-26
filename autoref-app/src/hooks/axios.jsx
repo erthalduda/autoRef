@@ -7,6 +7,8 @@ export const useAxios = () => {
       params,
       useAuthentication
     ) => {
+     
+
       if (useAuthentication) {
         params.headers = { "X-Auth-Token": localStorage.get("token") }
       }

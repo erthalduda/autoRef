@@ -4,6 +4,7 @@ import "../custom.css";
 import { useAxios } from "../hooks/axios";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+
 import { useLocalStorage } from "../hooks/local_storage";
 
 const Login = () => {
@@ -38,6 +39,8 @@ const Login = () => {
 
   const localStorage = useLocalStorage();
 
+ 
+
   const onSubmit = async (event) => {
     const axiosParams = {
       baseURL: "http://localhost:8080",
@@ -52,9 +55,11 @@ const Login = () => {
     if (response && !error) {
       const token = localStorage.getHeader(response, "X-Auth-Token");
 
-      localStorage.save("token", token);
+      localStorage.save("token", token) ;
 
       localStorage.save("userData", JSON.stringify(response.data));
+     
+     
     } else if (error) {
       setError("Falha ao logar!");
     }

@@ -47,7 +47,7 @@ public class ReferenciaController {
     @PostMapping("/cadastrar")
     public ResponseEntity<?> cadastraReferencia(@RequestBody ReferenciaDTO referenciaDTO) {
         Referencia referencia = mapper.map(referenciaDTO, tipos.get(referenciaDTO.getTipo()));
-        try {
+        try { 
             referencia.formata();
             referencia.formataCitacoes();
             referencia.setTodosOsDados();

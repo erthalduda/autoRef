@@ -22,7 +22,7 @@ public class UsuarioDTO {
 
     public UsuarioDTO(Usuario usuario) {
         this.idUsuario = usuario.getIdUsuario();
-        this.email = usuario.getEmail();
+         this.email = usuario.getEmail();
         this.nome = usuario.getNome();
         this.senha = usuario.getSenha();
     }
