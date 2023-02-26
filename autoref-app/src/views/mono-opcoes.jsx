@@ -42,7 +42,7 @@ const OpcoesMono = () => {
                 onClick={prepareParteMonografia}
                 className="btn btn-success"
               >
-                Parte de monografia
+                Parte de Monografia
               </button>
               <button
                 onClick={prepareMonografiaOnline}
@@ -54,7 +54,7 @@ const OpcoesMono = () => {
                 onClick={prepareMonografiaEletronico}
                 className="btn btn-success"
               >
-                Monografia em meio eletronico
+                Monografia em Meio Eletrônico
               </button>
             </div>
           </div>
