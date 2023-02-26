@@ -14,11 +14,12 @@ function Monografia() {
   const [error, setError] = useState(false);
 
   const [inputFields, setInputFields] = useState([
+    
     {
       id: 2,
       name: "titulo",
       label: "Título:",
-      value: null,
+     value: "",
       placeholder: "Ex: Titulo",
       type: "text",
     },
@@ -26,7 +27,7 @@ function Monografia() {
     {
       id: 3,
       name: "subtitulo",
-      value: null,
+     value: "",
       label: "Subtítulo:",
       placeholder: "Ex: Subtitulo",
       type: "text",
@@ -36,7 +37,7 @@ function Monografia() {
       id: 4,
       label: "Ano de publicação:",
       name: "anoPublicacao",
-      value: null,
+      value: "",
       placeholder: "Ex: 2005",
       type: "number",
     },
@@ -44,7 +45,7 @@ function Monografia() {
       id: 5,
       name: "anoEntrega",
       label: "Ano de entrega:",
-      value: null,
+      value: "",
       placeholder: "Ex: 2004",
       type: "number",
     },
@@ -53,7 +54,7 @@ function Monografia() {
       id: 6,
       name: "quantidadePaginas",
       label: "Quantidade de páginas:",
-      value: null,
+      value: "",
       placeholder: "Ex: 17",
       type: "number",
     },
@@ -62,7 +63,7 @@ function Monografia() {
       id: 7,
       name: "cidade",
       label: "Cidade:",
-      value: null,
+      value: "",
       placeholder: "Ex: São Paulo",
       type: "text",
     },
@@ -70,14 +71,14 @@ function Monografia() {
       id: 8,
       label: "Editora:",
       name: "editora",
-      value: null,
+     value: "",
       placeholder: "Ex: Editora",
       type: "text",
     },
     {
       id: 9,
       name: "edicao",
-      value: null,
+     value: "",
       label: "Edição:",
       placeholder: "Ex: 6",
       type: "number",
@@ -87,7 +88,7 @@ function Monografia() {
       id: 10,
       name: "autor",
       label: "Autor:",
-      value: null,
+      value: "",
       placeholder: "Ex: Maria Silva",
       type: "text",
     },
@@ -100,6 +101,7 @@ function Monografia() {
   ]);
 
   const [dataEnviarDados, setDataEnviarDados] = useState({
+    tipo: 'monografia',
     autor: [],
   });
   const [autoresCriados, setAutoresCriados] = useState([]);
@@ -134,7 +136,7 @@ function Monografia() {
     let newfield = {
       id: id,
       name: "autor",
-      value: null,
+     value: "",
       label: "Novo autor:",
       placeholder: "Ex: Maria Silva",
       type: "text",

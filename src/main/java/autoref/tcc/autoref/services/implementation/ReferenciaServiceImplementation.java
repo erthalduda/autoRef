@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import autoref.tcc.autoref.services.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
@@ -17,6 +19,8 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     private ReferenciaRepository repositorioReferencia;
     private UsuarioRepository repositorioUsuario;
 
+    @Autowired
+    private LoginService loginService;
     public ReferenciaServiceImplementation(ReferenciaRepository repositorioReferencia, UsuarioRepository repositorioUsuario) {
         this.repositorioReferencia = repositorioReferencia;
         this.repositorioUsuario = repositorioUsuario;
@@ -26,27 +30,29 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     @Transactional
     public Referencia cadastraReferencia(Referencia referencia) {
 
-        Optional<Usuario> usuario = repositorioUsuario.findById(referencia.getUsuario().getIdUsuario());
-        int quantidadeReferencias = repositorioUsuario.referenciasPorUsuario(usuario.get().getIdUsuario());
+        Usuario usuario = loginService.getLoggedUsuario();
 
+        int quantidadeReferencias = repositorioUsuario.referenciasPorUsuario(usuario.getIdUsuario());
+        referencia.setUsuario(usuario);
         if(quantidadeReferencias == 10){
-            usuario.get().setXp(500);
+            usuario.setXp(500);
         }
 
         if (quantidadeReferencias >= 20) {
-            usuario.get().setXp(1500);
-            usuario.get().setPossuiAcademicoNovato(true);
+            usuario.setXp(1500);
+            usuario.setPossuiAcademicoNovato(true);
         }
 
         if (quantidadeReferencias >= 50) {
-            usuario.get().setPossuiAcademicoEsforcado(true);
+            usuario.setPossuiAcademicoEsforcado(true);
         }
 
         if (quantidadeReferencias >= 100) {
-            usuario.get().setPossuiAcademicoMestre(true);
+            usuario.setPossuiAcademicoMestre(true);
         }
 
-        usuario.get().setXp(100);
+        usuario.setXp(100);
+        System.out.println(referencia.getTodosOsDados().length());
         return repositorioReferencia.save(referencia);
     }
 

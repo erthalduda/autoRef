@@ -185,13 +185,7 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario [idUsuario=" + idUsuario + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", xp="
-                + xp + ", ativo=" + ativo + ", possuiAcademicoNovato=" + possuiAcademicoNovato
-                + ", possuiAcademicoEsforcado=" + possuiAcademicoEsforcado + ", possuiAcademicoMestre="
-                + possuiAcademicoMestre + ", possuiAcademicoAdmirado=" + possuiAcademicoAdmirado
-                + ", possuiPesquisadorIniciante=" + possuiPesquisadorIniciante + ", possuiPesquisadorAtarefado="
-                + possuiPesquisadorAtarefado + ", possuiPesquisadorExpert=" + possuiPesquisadorExpert
-                + ", possuiPesquisadorSabio=" + possuiPesquisadorSabio + ", colecoesUsuario=" + colecoesUsuario
-                + ", referenciasUsuario=" + referenciasUsuario + "]";
+                + xp + ", ativo=" + ativo;
     }
 
 }
