@@ -9,7 +9,7 @@ import { useLocalStorage } from "../hooks/local_storage";
 
 const Login = () => {
   const history = useHistory();
-  const [mensagemErro, setMensagemErro] = useState("Error ao logar!");
+  const [mensagemErro, setMensagemErro] = useState("Erro ao logar!");
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
     {
@@ -114,7 +114,7 @@ const Login = () => {
                     );
                   })}
                   <br></br>
-                  {error && <div>{mensagemErro}</div>}
+                  {error && <div className="erro">{mensagemErro}</div>}
                   <div className="sla">
                     <button type="submit" className="btn btn-success">
                       ENTRAR
