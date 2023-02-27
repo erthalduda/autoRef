@@ -92,11 +92,6 @@ const CadastroUsuario = () => {
     setInputFields(data);
   };
 
-  const prepareLogin = () => {
-    history.push("/login");
-  };
-
-
   return (
     <div className="row">
       <div className="col-md-6" style={{ position: "relative", left: "300px" }}>
@@ -126,11 +121,7 @@ const CadastroUsuario = () => {
                   <br></br>
                   {error && <div className="erro">{mensagemErro}</div>}
                   <div className="sla">
-                    <button
-                      type="submit"
-                      className="btn btn-success"
-                      onClick={prepareLogin()}
-                    >
+                    <button type="submit" className="btn btn-success">
                       CADASTRAR
                     </button>
                   </div>
