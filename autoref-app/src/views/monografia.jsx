@@ -92,12 +92,7 @@ function Monografia() {
       placeholder: "Ex: Maria Silva",
       type: "text",
     },
-    {
-      id: 1,
-      name: "tipo",
-      value: "monografia",
-      type: "hidden",
-    },
+   
   ]);
 
   const [dataEnviarDados, setDataEnviarDados] = useState({

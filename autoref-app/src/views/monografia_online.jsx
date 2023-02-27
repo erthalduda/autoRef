@@ -7,8 +7,14 @@ import axios from "axios";
 
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
+import { useAxios } from "../hooks/axios";
+
 
 function MonografiaOnline() {
+
+  const { fetchData } = useAxios();
+  const [error, setError] = useState(false);
+
   const [inputFields, setInputFields] = useState([
     {
       id: 1,
@@ -111,21 +117,45 @@ function MonografiaOnline() {
       type: "text",
     },
   ]);
+  const [dataEnviarDados, setDataEnviarDados] = useState({
+    tipo: 'monografia',
+    autor: [],
+  });
+  const [autoresCriados, setAutoresCriados] = useState([]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    axios.post("https://localhost/3000/referencias/cadastrar", inputFields);
+    dataEnviarDados.autor = autoresCriados.map((obj) => obj.nome);
+
+    console.log(dataEnviarDados);
+    const axiosParams = {
+      baseURL: "http://localhost:8080",
+      method: "POST",
+      url: "/referencias/cadastrar",
+      data: dataEnviarDados,
+    };
+    const { response, error } = await fetchData(axiosParams, true);
+
+    console.log(response);
+    setError(true);
+    if (response && !error) {
+      setError(false);
+      //navigate
+    } else if (error) {
+      setError(true);
+    }
     console.log(inputFields);
   };
 
-  const addFields = () => {
+  const addFields = (event) => {
+    event.preventDefault();
     const id = inputFields.length + 1;
     let newfield = {
       id: id,
       name: "autor",
+     value: "",
       label: "Novo autor:",
-      value: "",
-      placeholder: "Ex: Autor",
+      placeholder: "Ex: Maria Silva",
       type: "text",
     };
     setInputFields([...inputFields, newfield]);
@@ -138,6 +168,22 @@ function MonografiaOnline() {
 
     inputFiltrado.value = event.target.value;
 
+    if (inputFiltrado.name == "autor") {
+      const autorSelecionado = autoresCriados.find((a) => a.id === id);
+
+      if (autorSelecionado) {
+        autorSelecionado.nome = inputFiltrado.value;
+      } else {
+        autoresCriados.push({ id: id, nome: inputFiltrado.value });
+      }
+      console.log(autoresCriados);
+    } else {
+      setDataEnviarDados({
+        ...dataEnviarDados,
+        [inputFiltrado.name]: inputFiltrado.value,
+      });
+    }
+
     data = data.map((inputField) => {
       if (inputField.id === inputFiltrado.id) {
         inputField = { ...inputFiltrado };
@@ -145,23 +191,9 @@ function MonografiaOnline() {
       return inputField;
     });
     // //data[index][event.target.name] = event.target.value;
+    console.log(dataEnviarDados);
     setInputFields(data);
   };
-
-  // const onChangeAutor = (value, autor) => {
-
-  //   const valor = value.target.value;
-  // let autorFiltrado = inputFields.find(a => {
-  //   return autor?.id === a?.id
-  // })
-
-  //     console.log(autorFiltrado)
-  //     autorFiltrado.autor = valor;
-
-  //     console.log(inputFields)
-  //     //this.setState({ autor: autor.target.value })
-  // }
-
   return (
     <>
       <Sidebar></Sidebar>
