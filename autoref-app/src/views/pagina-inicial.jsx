@@ -15,7 +15,6 @@ const PaginaInicial = () => {
 
   return (
     <>
-      <Sidebar></Sidebar>
       <Navbar></Navbar>
       <div className="container text-center">
         <h2>Seja bem-vindo ao AutoRef!</h2>

@@ -7,6 +7,7 @@ import axios from "axios";
 
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
+import Navbar from "../components/navbar";
 import { useAxios } from "../hooks/axios";
 
 

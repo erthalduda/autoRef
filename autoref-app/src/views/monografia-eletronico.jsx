@@ -8,6 +8,7 @@ import { useAxios } from "../hooks/axios";
 
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
+import Navbar from "../components/navbar";
 
 function MonografiaEletronica() {
   const [error, setError] = useState(false);
