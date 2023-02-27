@@ -9,6 +9,11 @@ import { useLocalStorage } from "../hooks/local_storage";
 
 const Login = () => {
   const history = useHistory();
+
+  const prepareHome = () => {
+    history.push("/home");
+  };
+  
   const [mensagemErro, setMensagemErro] = useState("Erro ao logar!");
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
@@ -43,14 +48,13 @@ const Login = () => {
       baseURL: "http://localhost:8080",
       method: "POST",
       url: "/login/usuario",
-     
     };
     axiosParams.auth = {
       username: infosLogin.email,
-      password: infosLogin.senha
-    }
+      password: infosLogin.senha,
+    };
     event.preventDefault();
-    console.log(infosLogin)
+    console.log(infosLogin);
     const { response, error } = await fetchData(axiosParams, false);
 
     if (response && !error) {
@@ -80,7 +84,6 @@ const Login = () => {
     if (inputFiltrado.id === 1) {
       setInfosLogin({ ...infosLogin, email: inputFiltrado.value });
     }
-
 
     if (inputFiltrado.id === 2) {
       setInfosLogin({ ...infosLogin, senha: inputFiltrado.value });
@@ -117,7 +120,11 @@ const Login = () => {
                   <br></br>
                   {error && <div className="erro">{mensagemErro}</div>}
                   <div className="sla">
-                    <button type="submit" className="btn btn-success">
+                    <button
+                      type="submit"
+                      className="btn btn-success"
+                      onClick={() => prepareHome()}
+                    >
                       ENTRAR
                     </button>
                   </div>
