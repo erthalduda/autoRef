@@ -16,9 +16,9 @@ const Login = () => {
       id: 1,
       name: "email",
       value: "",
-      placeholder: "Ex: email@email.com",
       type: "text",
       label: "E-mail:",
+      placeholder: "Ex: email@email.com",
     },
     {
       id: 2,
@@ -27,10 +27,9 @@ const Login = () => {
      
       label: "Senha:",
       placeholder: "Ex: 123456",
-      type: "password",
     },
   ]);
-  const [infosLogin, setinfosLogin] = useState({
+  const [infosLogin, setInfosLogin] = useState({
     email: "",
     senha: "",
   });
@@ -61,10 +60,6 @@ const Login = () => {
     }
   };
 
-  const prepareHome = () => {
-    history.push("/home");
-  };
-
   const handleFormChange = (id, event) => {
     let data = [...inputFields];
     const inputFiltrado = data.find((input) => input.id === id);
@@ -79,15 +74,20 @@ const Login = () => {
     });
 
     if (inputFiltrado.id === 1) {
-      setinfosLogin({ ...infosLogin, email: inputFiltrado.value });
+      setInfosLogin({ ...infosLogin, email: inputFiltrado.value });
+      console.log(inputFiltrado);
+      console.log("A");
     }
 
 
     if (inputFiltrado.id === 2) {
-      setinfosLogin({ ...infosLogin, senha: inputFiltrado.value });
+      setInfosLogin({ ...infosLogin, senha: inputFiltrado.value });
+      console.log(infosLogin.senha);
+      console.log("B");
     }
+    console.log(infosLogin);
+    console.log("C");
 
-    prepareHome();
     setInputFields(data);
   };
 
@@ -126,7 +126,7 @@ const Login = () => {
 
                   <div>
                     <p className="centralizar">
-                      Não possui uma conta?{" "}
+                      Não possui uma conta?
                       <a className="clicavel" href="/cadastro">
                         Cadastre-se
                       </a>

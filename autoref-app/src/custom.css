@@ -68,7 +68,15 @@ details:not(:last-child) {
 }
 
 .centralizar {
+  color: #1c1c1b;
+  display: flex;
+  justify-content: center;
   align-items: center;
+}
+
+.centralizar-nome{
+  font-size: 70px;
+  color: #1c1c1b;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,7 +103,6 @@ details[open] summary {
   padding: 0;
   overflow: hidden;
   background-color: #9edec6;
-  color: aliceblue;
 }
 
 .navbar-brand {
@@ -255,6 +262,14 @@ label {
   padding-top: 115px;
   transition: 0.5s;
 }
+.centralizar-ranking {
+  color: #1c1c1b;
+  font-size: 60px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .sidebar a {
   padding: 2px 2px 2px 4px;
@@ -278,7 +293,6 @@ label {
   font-size: 36px;
   margin-left: 50px;
 }
-
 
 .sidebar .closebtn {
   position: absolute;
@@ -311,6 +325,3 @@ label {
 .bigFont {
   font-size: large;
 }
-
-
-

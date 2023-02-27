@@ -4,13 +4,10 @@ import Card from "../components/card";
 import { useState } from "react";
 import { Axios } from "axios";
 import { useHistory } from "react-router-dom";
-import { withRouter } from "react-router-dom";
-
 import { useAxios } from "../hooks/axios";
-//import { mensagemSucesso, mensagemErro } from '../components/toastifyClasse'
 
 const CadastroUsuario = () => {
-  const [mensagemErro, setMensagemErro] = useState("Error ao cadastrar!");
+  const [mensagemErro, setMensagemErro] = useState("Erro ao cadastrar!");
   const history = useHistory();
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
@@ -34,7 +31,6 @@ const CadastroUsuario = () => {
       id: 3,
       name: "senha",
       value: "",
-      type: "text",
       label: "Senha:",
       placeholder: "Ex: 123456",
       type: "password",
@@ -95,10 +91,6 @@ const CadastroUsuario = () => {
     setInputFields(data);
   };
 
-  const prepareLogin = () => {
-    history.push("/login");
-  };
-
   return (
     <div className="row">
       <div className="col-md-6" style={{ position: "relative", left: "300px" }}>
@@ -134,7 +126,7 @@ const CadastroUsuario = () => {
                   </div>
 
                   <div>
-                    <p>
+                    <p className="centralizar">
                       Já possui uma conta?{" "}
                       <a className="clicavel" href="/login">
                         Faça login

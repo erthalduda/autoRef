@@ -13,14 +13,13 @@ function Website() {
   const { fetchData } = useAxios();
   const [error, setError] = useState(false);
   const [inputFields, setInputFields] = useState([
-   
     {
       id: 2,
       name: "titulo",
       value: "",
       placeholder: "Ex: Titulo",
       type: "text",
-      label: "Título:"
+      label: "Título:",
     },
 
     {
@@ -29,7 +28,7 @@ function Website() {
       value: "",
       placeholder: "Ex: Nome do site",
       type: "text",
-      label: "Nome do site:"
+      label: "Nome do site:",
     },
 
     {
@@ -38,15 +37,15 @@ function Website() {
       value: "",
       placeholder: "Ex: Url",
       type: "text",
-      label: "URL:"
+      label: "URL:",
     },
     {
       id: 5,
       name: "dataAcesso",
       value: "",
       placeholder: "Ex: Data de acesso",
-      type:  "date",
-      label: "Data de acesso:"
+      type: "date",
+      label: "Data de acesso:",
     },
     {
       id: 6,
@@ -54,7 +53,7 @@ function Website() {
       value: "",
       placeholder: "Ex: Ano de publicação",
       type: "number",
-      label: "Ano de publicação:"
+      label: "Ano de publicação:",
     },
 
     {
@@ -63,12 +62,12 @@ function Website() {
       value: "",
       placeholder: "Ex: Autor",
       type: "text",
-      label: "Autor:"
+      label: "Autor:",
     },
   ]);
 
   const [dataEnviarDados, setDataEnviarDados] = useState({
-    tipo: 'website',
+    tipo: "website",
     autor: [],
   });
   const [autoresCriados, setAutoresCriados] = useState([]);
@@ -103,7 +102,7 @@ function Website() {
     let newfield = {
       id: id,
       name: "autor",
-     value: "",
+      value: "",
       label: "Novo autor:",
       placeholder: "Ex: Maria Silva",
       type: "text",
@@ -149,7 +148,9 @@ function Website() {
     <>
       <Sidebar></Sidebar>
       <Navbar></Navbar>
-      <h1 id="referencia">Website</h1>
+      <h1 id="referencia" className="centralizar-nome">
+        Website
+      </h1>
       <br></br>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>

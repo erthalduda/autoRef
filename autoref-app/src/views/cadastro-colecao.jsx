@@ -61,7 +61,7 @@ function CadastroColecao() {
     <>
       <Sidebar></Sidebar>
       <Navbar></Navbar>
-      <h1 id="referencia">Cadastro de Coleção</h1>
+      <h1  className="centralizar-nome">Cadastro de Coleção</h1>
       <br></br>
       <div className="centralizar">
         <form onSubmit={onSubmit}>

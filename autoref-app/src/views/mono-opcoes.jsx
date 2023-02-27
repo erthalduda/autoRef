@@ -5,7 +5,7 @@ import Navbar from "../components/navbar";
 import { useHistory } from "react-router-dom";
 
 const OpcoesMono = () => {
-    let history = useHistory();
+  let history = useHistory();
 
   const prepareMonografia = () => {
     history.push("/monografia");
@@ -32,33 +32,40 @@ const OpcoesMono = () => {
           style={{ position: "relative", left: "300px" }}
         >
           <div className="jumbotron">
-            <h1 className="display-3">OPÇÕES DE MONOGRAFIA</h1>
-            <p className="lead">Escolha o tipo:</p>
-            <div className="button1">
+            <h1 className="centralizar-nome">OPÇÕES DE</h1>
+            <h1 className="centralizar-nome">MONOGRAFIA</h1>
+            <p className="centralizar">Escolha o tipo:</p>
+            <div className="centralizar">
               <button onClick={prepareMonografia} className="btn btn-success">
                 Monografia
               </button>
+            </div>
+            <div className="centralizar">
               <button
                 onClick={prepareParteMonografia}
                 className="btn btn-success"
               >
                 Parte de Monografia
               </button>
-              <button
-                onClick={prepareMonografiaOnline}
-                className="btn btn-success"
-              >
-                Monografia Online
-              </button>
-              <button
-                onClick={prepareMonografiaEletronico}
-                className="btn btn-success"
-              >
-                Monografia em Meio Eletrônico
-              </button>
+              </div>
+              <div className="centralizar">
+                <button
+                  onClick={prepareMonografiaOnline}
+                  className="btn btn-success"
+                >
+                  Monografia Online
+                </button>
+              </div>
+              <div className="centralizar">
+                <button
+                  onClick={prepareMonografiaEletronico}
+                  className="btn btn-success"
+                >
+                  Monografia em Meio Eletrônico
+                </button>
+              </div>
             </div>
           </div>
-        </div>
       </div>
     </>
   );

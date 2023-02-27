@@ -28,21 +28,27 @@ const Periodico = () => {
           style={{ position: "relative", left: "300px" }}
         >
           <div className="jumbotron">
-            <h1 className="display-3">OPÇÕES DE PUBLICAÇÃO PERIÓDICA</h1>
-            <p className="lead">Escolha o tipo:</p>
-            <div className="button1">
+            <h1 className="centralizar-nome">OPÇÕES DE</h1>
+            <h1 className="centralizar-nome">PUBLICAÇÃO</h1>
+            <h1 className="centralizar-nome">PERIÓDICA</h1>
+            <p className="centralizar">Escolha o tipo:</p>
+            <div className="centralizar">
               <button
                 onClick={prepareColecaoPeriodica}
                 className="btn btn-success"
               >
                 Coleção de Publicação Periódica
               </button>
+            </div>
+            <div className="centralizar">
               <button
                 onClick={preparePartePeriodica}
                 className="btn btn-success"
               >
                 Parte de Coleção de Publicação Periódica
               </button>
+            </div>
+            <div className="centralizar">
               <button
                 onClick={prepareColecaoPeriodicaEletronica}
                 className="btn btn-success"

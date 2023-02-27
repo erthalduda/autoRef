@@ -12,10 +12,25 @@ const Faq = () => {
           className="col-md-6"
           style={{ position: "relative", left: "200px" }}
         >
-          <h1 className="display-3" style={{ position: "relative" }}>
+          <h1
+            className="centralizar-nome"
+            style={{
+              fontSize: "50px",
+              color: "#1c1c1b",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             FAQ
           </h1>
-          <div classname="faq-body" style={{ width: "450px" }}>
+          <div
+            classname="centralizar"
+            style={{
+              width: "450px",
+              color: "#1c1c1b",
+            }}
+          >
             <div>
               <details>
                 <summary>Como faço uma citação direta?</summary>
