@@ -11,12 +11,6 @@ import Sidebar from "../components/sidebar";
 function MonografiaEletronica() {
   const [inputFields, setInputFields] = useState([
     {
-      id: 1,
-      name: "tipo",
-      value: "monografia",
-      type: "hidden",
-    },
-    {
       id: 2,
       name: "titulo",
       value: "",
@@ -102,7 +96,10 @@ function MonografiaEletronica() {
       type: "text",
     },
   ]);
-
+  const [dataEnviarDados, setDataEnviarDados] = useState({
+    tipo: "monografiaOnline",
+    autor: [],
+  });
   const onSubmit = async (event) => {
     event.preventDefault();
     axios.post("http://localhost:8080/referencias/cadastrar", inputFields);

@@ -16,12 +16,7 @@ function MonografiaOnline() {
   const [error, setError] = useState(false);
 
   const [inputFields, setInputFields] = useState([
-    {
-      id: 1,
-      name: "tipo",
-      value: "monografia",
-      type: "hidden",
-    },
+  
     {
       id: 2,
       name: "titulo",

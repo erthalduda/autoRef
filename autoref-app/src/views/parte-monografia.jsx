@@ -136,7 +136,7 @@ function ParteMonografia() {
     },
   ]);
   const [dataEnviarDados, setDataEnviarDados] = useState({
-    tipo: 'monografia',
+    tipo: 'parteMonografia',
     autor: [],
   });
   const [autoresCriados, setAutoresCriados] = useState([]);
