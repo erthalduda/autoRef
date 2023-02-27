@@ -142,6 +142,7 @@ function Trabalho() {
   return (
     <>
      <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Trabalho Acadêmico</h1>
       <br></br>
       <div className="form-group-ref">

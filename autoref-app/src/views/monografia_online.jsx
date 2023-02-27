@@ -192,6 +192,7 @@ function MonografiaOnline() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Monografia Online</h1>
       <br></br>
       <div className="form-group-ref">

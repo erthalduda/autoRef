@@ -20,6 +20,7 @@ const Periodico = () => {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <div className="row">
         <div
           className="col-md-6"

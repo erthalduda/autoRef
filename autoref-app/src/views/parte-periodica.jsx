@@ -27,7 +27,7 @@ function PartePeriodica() {
 
     {
       id: 3,
-      label:"Subtítulo:",
+      label: "Subtítulo:",
       name: "subtituloPublicacao",
       value: "",
       placeholder: "Ex: Subtítulo",
@@ -36,7 +36,7 @@ function PartePeriodica() {
 
     {
       id: 4,
-      label:"Editora:",
+      label: "Editora:",
       name: "editora",
       value: "",
       placeholder: "Ex: Editora",
@@ -46,7 +46,7 @@ function PartePeriodica() {
       id: 5,
       name: "dataInicio",
       value: "",
-      label:"Data de início:",
+      label: "Data de início:",
       placeholder: "Ex: 2004",
       type: "number",
     },
@@ -56,7 +56,7 @@ function PartePeriodica() {
       name: "dataFim",
       value: "",
       placeholder: "Ex: 2005",
-      label:"Data final:",
+      label: "Data final:",
       type: "number",
     },
 
@@ -64,7 +64,7 @@ function PartePeriodica() {
       id: 7,
       name: "issn",
       value: "",
-      label:"ISSN:",
+      label: "ISSN:",
       placeholder: "Ex: 123456789",
       type: "text",
     },
@@ -74,7 +74,7 @@ function PartePeriodica() {
       name: "periodoConsultado",
       value: "",
       placeholder: "Ex: 2002",
-      label:"Período consultado:",
+      label: "Período consultado:",
       type: "text",
     },
   ]);
@@ -118,6 +118,7 @@ function PartePeriodica() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Parte de Coleção de Publicação Periódica</h1>
       <br></br>
       <div className="form-group-ref">
@@ -154,7 +155,6 @@ function PartePeriodica() {
           </div>
         </form>
       </div>
-
       {/* <button onClick={this.entrar} className="btn btn-success">Adicionar</button> */}
     </>
   );

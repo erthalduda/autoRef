@@ -215,6 +215,7 @@ function ParteMonografia() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Parte de Monografia</h1>
       <br></br>
       <div className="form-group-ref">
