@@ -20,10 +20,10 @@ function CadastroColecao() {
       type: "text",
     },
   ]);
-
+  
   const onSubmit = async (event) => {
     event.preventDefault();
-    axios.post("https://localhost/3000/referencias/cadastrar", inputFields);
+    axios.post("https://localhost:8080/colecoes/cadastrar", inputFields);
     console.log(inputFields);
   };
 
@@ -92,7 +92,7 @@ function CadastroColecao() {
 
           <div className="centralizar">
             <button type="submit" className="btn btn-success">
-              CRIAR COLEÇÃO=
+              CRIAR COLEÇÃO
             </button>
           </div>
         </form>

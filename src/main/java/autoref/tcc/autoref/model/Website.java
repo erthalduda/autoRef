@@ -177,4 +177,12 @@ public class Website extends Referencia {
         this.setFormatoFinal(formatoFinal);
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "Website [autor=" + autor + ", nomeSite=" + nomeSite + ", anoPublicacao=" + anoPublicacao + ", url="
+                + url + ", dataAcesso=" + dataAcesso + "]";
+    }
+
+   
+    
 }
