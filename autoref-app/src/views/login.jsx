@@ -61,10 +61,6 @@ const Login = () => {
     }
   };
 
-  const prepareHome = () => {
-    history.push("/home");
-  };
-
   const handleFormChange = (id, event) => {
     let data = [...inputFields];
     const inputFiltrado = data.find((input) => input.id === id);
@@ -86,7 +82,6 @@ const Login = () => {
       setinfosLogin({ ...infosLogin, senha: inputFiltrado.value });
     }
 
-    prepareHome();
     setInputFields(data);
   };
 
@@ -125,7 +120,7 @@ const Login = () => {
 
                   <div>
                     <p className="centralizar">
-                      Não possui uma conta?{" "}
+                      Não possui uma conta? 
                       <a className="clicavel" href="/cadastro">
                         Cadastre-se
                       </a>
