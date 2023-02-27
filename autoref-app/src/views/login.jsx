@@ -39,8 +39,6 @@ const Login = () => {
 
   const localStorage = useLocalStorage();
 
- 
-
   const onSubmit = async (event) => {
     const axiosParams = {
       baseURL: "http://localhost:8080",
@@ -55,15 +53,18 @@ const Login = () => {
     if (response && !error) {
       const token = localStorage.getHeader(response, "X-Auth-Token");
 
-      localStorage.save("token", token) ;
+      localStorage.save("token", token);
 
       localStorage.save("userData", JSON.stringify(response.data));
-     
-     
     } else if (error) {
       setError("Falha ao logar!");
     }
   };
+
+  const prepareHome = () => {
+    history.push("/home");
+  };
+
   const handleFormChange = (id, event) => {
     let data = [...inputFields];
     const inputFiltrado = data.find((input) => input.id === id);
@@ -85,6 +86,7 @@ const Login = () => {
       setinfosLogin({ ...infosLogin, senha: inputFiltrado.value });
     }
 
+    prepareHome();
     setInputFields(data);
   };
 
@@ -122,7 +124,7 @@ const Login = () => {
                   </div>
 
                   <div>
-                    <p>
+                    <p className="centralizar">
                       Não possui uma conta?{" "}
                       <a className="clicavel" href="/cadastro">
                         Cadastre-se

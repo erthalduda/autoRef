@@ -15,7 +15,7 @@ function Trabalho() {
   const [inputFields, setInputFields] = useState([
     {
       id: 1,
-      label:"Título:",
+      label: "Título:",
       name: "titulo",
       value: "",
       placeholder: "Ex: Titulo",
@@ -26,7 +26,7 @@ function Trabalho() {
       id: 2,
       name: "subtitulo",
       value: "",
-      label:"Subtítulo:",
+      label: "Subtítulo:",
       placeholder: "Ex: Subtitulo",
       type: "text",
     },
@@ -35,14 +35,14 @@ function Trabalho() {
       id: 3,
       name: "anoDeposito",
       value: "",
-      label:"Ano de depósito:",
+      label: "Ano de depósito:",
       placeholder: "Ex: Ano de depósito",
       type: "number",
     },
     {
       id: 4,
       name: "anoEntrega",
-      label:"Ano de entrega:",
+      label: "Ano de entrega:",
       value: "",
       placeholder: "Ex: Ano de entrega",
       type: "number",
@@ -52,15 +52,15 @@ function Trabalho() {
       id: 5,
       name: "tipoTrabalho",
       value: "",
-      label:"Tipo de trabalho:",
+      label: "Tipo de trabalho:",
       placeholder: "Ex: TCC",
-      type: "text"
+      type: "text",
     },
 
     {
       id: 6,
       name: "grauFormacao",
-      label:"Grau de formação:",
+      label: "Grau de formação:",
       value: "",
       placeholder: "Ex: Mestrado",
       type: "text",
@@ -69,7 +69,7 @@ function Trabalho() {
       id: 7,
       name: "curso",
       value: "",
-      label:"Curso:",
+      label: "Curso:",
       placeholder: "Ex: T.I",
       type: "text",
     },
@@ -77,22 +77,39 @@ function Trabalho() {
       id: 8,
       name: "vinculacaoAcademica",
       value: "",
-      label:"Vinculação Acadêmico:",
+      label: "Vinculação Acadêmico:",
       placeholder: "Ex: ",
       type: "text",
     },
 
     {
       id: 9,
+      name: "anoDefesa",
+      value: "",
+      label: "Ano de defesa:",
+      placeholder: "Ex: 2012",
+      type: "number",
+    },
+    {
+      id: 9,
+      name: "anoDefesa",
+      value: "",
+      label: "Ano de defesa:",
+      placeholder: "Ex: 2012",
+      type: "number",
+    },
+
+    {
+      id: 9,
       name: "autor",
-      label:"Autor:",
+      label: "Autor:",
       value: "",
       placeholder: "Ex: Autor",
       type: "text",
     },
   ]);
   const [dataEnviarDados, setDataEnviarDados] = useState({
-    tipo: 'trabalhoAcademico',
+    tipo: "trabalhoAcademico",
     autor: [],
   });
   const [autoresCriados, setAutoresCriados] = useState([]);
@@ -127,7 +144,7 @@ function Trabalho() {
     let newfield = {
       id: id,
       name: "autor",
-     value: "",
+      value: "",
       label: "Novo autor:",
       placeholder: "Ex: Maria Silva",
       type: "text",
@@ -170,7 +187,7 @@ function Trabalho() {
   };
   return (
     <>
-     <Sidebar></Sidebar>
+      <Sidebar></Sidebar>
       <Navbar></Navbar>
       <h1 id="referencia">Trabalho Acadêmico</h1>
       <br></br>
