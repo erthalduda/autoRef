@@ -43,3 +43,4 @@ class ColecaoService extends ApiService {
     }
   }
 }
+export default ColecaoService;

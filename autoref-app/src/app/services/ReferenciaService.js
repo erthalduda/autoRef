@@ -2,7 +2,7 @@ import ApiService from "../ApiService";
 
 // import Excecao from "../excecoes/Excecoes";
 
-class ReferenciaService extends ApiService {
+export default class ReferenciaService extends ApiService {
   constructor() {
     super("/referencias");
   }
@@ -19,7 +19,7 @@ class ReferenciaService extends ApiService {
     return this.get(`/buscar/privado/${usuario.id}`);
   }
 
-  buscaReferenciaEspecificaRepositorioPrivado(usuario, pesquisa) {
-    return this.get(`/buscar/privado/${usuario.id}/${pesquisa}`);
-  }
+  // buscaReferenciaEspecificaRepositorioPrivado(usuario, pesquisa) {
+  //   return this.get(`/buscar/privado/${usuario.id}/${pesquisa}`);
+  // }
 }
