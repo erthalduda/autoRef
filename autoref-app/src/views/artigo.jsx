@@ -157,7 +157,7 @@ function Artigo() {
       value: "",
       placeholder: "Ex: Maria Silva",
       type: "text",
-      label: "Autor: ",
+      label: "Novo autor: ",
     };
     setInputFields([...inputFields, newfield]);
     console.log(inputFields);
