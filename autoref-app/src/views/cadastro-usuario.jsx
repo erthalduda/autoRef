@@ -1,5 +1,5 @@
 import "../css/referencia.css";
-import React from "react";
+import React, { useRef } from "react";
 import Card from "../components/card";
 import { useState } from "react";
 import { Axios } from "axios";
@@ -69,6 +69,11 @@ const CadastroUsuario = () => {
     }
   };
 
+  const ref = useRef(null);
+  const onClear = () => {
+    ref.current.value = "";
+  };
+
   const handleFormChange = (id, event) => {
     let data = [...inputFields];
     const inputFiltrado = data.find((input) => input.id === id);
@@ -99,6 +104,7 @@ const CadastroUsuario = () => {
     history.push("/login");
   };
 
+
   return (
     <div className="row">
       <div className="col-md-6" style={{ position: "relative", left: "300px" }}>
@@ -113,6 +119,7 @@ const CadastroUsuario = () => {
                       <div key={index}>
                         {input.label != null ? <>{input.label}</> : <>null</>}
                         <input
+                          ref={ref}
                           type={input.type}
                           key={input.id}
                           id={input.id}
@@ -128,13 +135,17 @@ const CadastroUsuario = () => {
                   <br></br>
                   {error && <div className="erro">{mensagemErro}</div>}
                   <div className="sla">
-                    <button type="submit" className="btn btn-success">
+                    <button
+                      type="submit"
+                      className="btn btn-success"
+                      onClick={prepareLogin()}
+                    >
                       CADASTRAR
                     </button>
                   </div>
 
                   <div>
-                    <p>
+                    <p className="centralizar">
                       Já possui uma conta?{" "}
                       <a className="clicavel" href="/login">
                         Faça login
