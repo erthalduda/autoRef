@@ -14,7 +14,7 @@ function Trabalho() {
   const [error, setError] = useState(false);
   const [inputFields, setInputFields] = useState([
     {
-      id: 1,
+      id: 2,
       label: "Título:",
       name: "titulo",
       value: "",
@@ -23,7 +23,7 @@ function Trabalho() {
     },
 
     {
-      id: 2,
+      id: 3,
       name: "subtitulo",
       value: "",
       label: "Subtítulo:",
@@ -32,7 +32,7 @@ function Trabalho() {
     },
 
     {
-      id: 3,
+      id: 4,
       name: "anoDeposito",
       value: "",
       label: "Ano de depósito:",
@@ -40,7 +40,7 @@ function Trabalho() {
       type: "number",
     },
     {
-      id: 4,
+      id: 5,
       name: "anoEntrega",
       label: "Ano de entrega:",
       value: "",
@@ -49,7 +49,7 @@ function Trabalho() {
     },
 
     {
-      id: 5,
+      id: 6,
       name: "tipoTrabalho",
       value: "",
       label: "Tipo de trabalho:",
@@ -58,7 +58,7 @@ function Trabalho() {
     },
 
     {
-      id: 6,
+      id: 7,
       name: "grauFormacao",
       label: "Grau de formação:",
       value: "",
@@ -66,7 +66,7 @@ function Trabalho() {
       type: "text",
     },
     {
-      id: 7,
+      id: 8,
       name: "curso",
       value: "",
       label: "Curso:",
@@ -74,33 +74,33 @@ function Trabalho() {
       type: "text",
     },
     {
-      id: 8,
+      id: 9,
       name: "vinculacaoAcademica",
       value: "",
-      label: "Vinculação Acadêmico:",
+      label: "Vinculação Acadêmica:",
       placeholder: "Ex: ",
       type: "text",
     },
-
     {
-      id: 9,
+      id: 10,
+      name: "localDefesa",
+      value: "",
+      label: "Local de defesa:",
+      placeholder: "Ex: Porto Alegre",
+      type: "text",
+    },
+    {
+      id: 11,
       name: "anoDefesa",
       value: "",
       label: "Ano de defesa:",
       placeholder: "Ex: 2012",
       type: "number",
     },
-    {
-      id: 9,
-      name: "anoDefesa",
-      value: "",
-      label: "Ano de defesa:",
-      placeholder: "Ex: 2012",
-      type: "number",
-    },
+
 
     {
-      id: 9,
+      id: 12,
       name: "autor",
       label: "Autor:",
       value: "",
