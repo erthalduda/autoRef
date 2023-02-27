@@ -24,7 +24,7 @@ const Login = () => {
       id: 2,
       name: "senha",
       value: "",
-      type: "text",
+      type: "password",
       label: "Senha:",
       placeholder: "Ex: 123456",
     },
