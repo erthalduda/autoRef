@@ -39,6 +39,15 @@ h1 {
   height: 15px;
 }
 
+.form-label-centralizar {
+  color: #4a4444;
+  margin-left: 5px;
+  width: 200px;
+  font-weight: bold;
+  height: 15px;
+  display: inline-block;
+}
+
 .form-input {
   width: 250px;
   height: 40px;
