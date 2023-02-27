@@ -140,38 +140,7 @@ function RepositorioGeral() {
         </table>
       </div>
 
-      <table className="table">
-<thead>
-            <tr>
-              <th scope="col">REFERÊNCIA</th>
-              <th scope="col">CIT. DIRETA</th>
-              <th scope="col">CIT. INDIRETA</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr>
-              <td>1</td>
-              <td> RODRIGO REMOR </td>
-              <td>4500XP</td>
-            </tr>{" "}
-            <tr>
-              <td>2</td>
-              <td> LOURENÇO BASSO </td>
-              <td>3200XP</td>
-            </tr>{" "}
-            <tr>
-              <td>3</td>
-              <td> WILLIAM HOLZ </td>
-              <td> 3000XP</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td> EDUARDA ERTHAL </td>
-              <td> 2800XP</td>
-            </tr>
-          </tbody>
-        </table>
-
+    
       <div>
         <ul>
           {results.map((result) => (

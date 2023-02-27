@@ -180,14 +180,16 @@ input::-webkit-inner-spin-button {
 
 .table, th, td{
   color: #1c1c1b;
+  border-radius: 10px;
   font-size: 25px;
-  background-color: #a0dcc413;
+  background-color: #d7ebe3cc;
 }
 
 .table-repo, th,td{
   color: #1c1c1b;
-  font-size: 17px;
-  background-color: #a0dcc413;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: #d7ebe3cc;
 }
 .Auth-form {
   width: 420px;
