@@ -4,18 +4,15 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 //import login from "./login";
-
+import { useAxios } from "../hooks/axios";
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
 
 function Website() {
+  const { fetchData } = useAxios();
+  const [error, setError] = useState(false);
   const [inputFields, setInputFields] = useState([
-    {
-      id: 1,
-      name: "tipo",
-      value: "website",
-      type: "hidden",
-    },
+   
     {
       id: 2,
       name: "titulo",
@@ -47,12 +44,20 @@ function Website() {
       name: "dataAcesso",
       value: "",
       placeholder: "Ex: Data de acesso",
-      type: "date",
+      type:  "date",
       label: "Data de acesso:"
+    },
+    {
+      id: 6,
+      name: "anoPublicacao",
+      value: "",
+      placeholder: "Ex: Ano de publicação",
+      type: "number",
+      label: "Ano de publicação:"
     },
 
     {
-      id: 6,
+      id: 7,
       name: "autor",
       value: "",
       placeholder: "Ex: Autor",
@@ -61,21 +66,46 @@ function Website() {
     },
   ]);
 
+  const [dataEnviarDados, setDataEnviarDados] = useState({
+    tipo: 'website',
+    autor: [],
+  });
+  const [autoresCriados, setAutoresCriados] = useState([]);
+
   const onSubmit = async (event) => {
     event.preventDefault();
-    axios.post("https://localhost/3000/referencias/cadastrar", inputFields);
+    dataEnviarDados.autor = autoresCriados.map((obj) => obj.nome);
+
+    console.log(dataEnviarDados);
+    const axiosParams = {
+      baseURL: "http://localhost:8080",
+      method: "POST",
+      url: "/referencias/cadastrar",
+      data: dataEnviarDados,
+    };
+    const { response, error } = await fetchData(axiosParams, true);
+
+    console.log(response);
+    setError(true);
+    if (response && !error) {
+      setError(false);
+      //navigate
+    } else if (error) {
+      setError(true);
+    }
     console.log(inputFields);
   };
 
-  const addFields = () => {
+  const addFields = (event) => {
+    event.preventDefault();
     const id = inputFields.length + 1;
     let newfield = {
       id: id,
       name: "autor",
-      value: "",
-      placeholder: "Ex: Autor",
+     value: "",
+      label: "Novo autor:",
+      placeholder: "Ex: Maria Silva",
       type: "text",
-      label: "Novo autor:"
     };
     setInputFields([...inputFields, newfield]);
     console.log(inputFields);
@@ -87,6 +117,22 @@ function Website() {
 
     inputFiltrado.value = event.target.value;
 
+    if (inputFiltrado.name == "autor") {
+      const autorSelecionado = autoresCriados.find((a) => a.id === id);
+
+      if (autorSelecionado) {
+        autorSelecionado.nome = inputFiltrado.value;
+      } else {
+        autoresCriados.push({ id: id, nome: inputFiltrado.value });
+      }
+      console.log(autoresCriados);
+    } else {
+      setDataEnviarDados({
+        ...dataEnviarDados,
+        [inputFiltrado.name]: inputFiltrado.value,
+      });
+    }
+
     data = data.map((inputField) => {
       if (inputField.id === inputFiltrado.id) {
         inputField = { ...inputFiltrado };
@@ -94,22 +140,9 @@ function Website() {
       return inputField;
     });
     // //data[index][event.target.name] = event.target.value;
+    console.log(dataEnviarDados);
     setInputFields(data);
   };
-
-  //const onChangeAutor = (value, autor) => {
-
-  //const valor = value.target.value;
-  //let autorFiltrado = inputFields.find(a => {
-  // return autor?.id === a?.id
-  // })
-
-  //  console.log(autorFiltrado)
-  //    autorFiltrado.autor = valor;
-  //
-  //    console.log(inputFields)
-  //     this.setState({ autor: autor.target.value })
-  //  }
 
   return (
     <>

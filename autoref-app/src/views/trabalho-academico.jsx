@@ -1,6 +1,6 @@
 import React from "react";
 //import FormGroup from "../components/form-group";
-
+import { useAxios } from "../hooks/axios";
 import { useState } from "react";
 import axios from "axios";
 //import login from "./login";
@@ -9,6 +9,8 @@ import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
 
 function Trabalho() {
+  const { fetchData } = useAxios();
+  const [error, setError] = useState(false);
   const [inputFields, setInputFields] = useState([
     {
       id: 1,
@@ -30,10 +32,10 @@ function Trabalho() {
 
     {
       id: 3,
-      name: "anoPublicacao",
+      name: "anoDeposito",
       value: "",
-      label:"Ano de publicação:",
-      placeholder: "Ex: Ano de Publicação",
+      label:"Ano de depósito:",
+      placeholder: "Ex: Ano de depósito",
       type: "number",
     },
     {
@@ -47,35 +49,35 @@ function Trabalho() {
 
     {
       id: 5,
-      name: "url",
+      name: "tipoTrabalho",
       value: "",
-      label:"URL:",
-      placeholder: "Ex: Url",
-      type: "text",
+      label:"Tipo de trabalho:",
+      placeholder: "Ex: TCC",
+      type: "text"
     },
 
     {
       id: 6,
-      name: "cidade",
-      label:"Cidade:",
+      name: "grauFormacao",
+      label:"Grau de formação:",
       value: "",
-      placeholder: "Ex: Cidade",
+      placeholder: "Ex: Mestrado",
       type: "text",
     },
     {
       id: 7,
-      name: "editora",
+      name: "curso",
       value: "",
-      label:"Editora:",
-      placeholder: "Ex: Editora",
+      label:"Curso:",
+      placeholder: "Ex: T.I",
       type: "text",
     },
     {
       id: 8,
-      name: "edicao",
+      name: "vinculacaoAcademica",
       value: "",
-      label:"Edição:",
-      placeholder: "Ex: Edição",
+      label:"Vinculação Acadêmico:",
+      placeholder: "Ex: ",
       type: "text",
     },
 
@@ -88,21 +90,45 @@ function Trabalho() {
       type: "text",
     },
   ]);
+  const [dataEnviarDados, setDataEnviarDados] = useState({
+    tipo: 'trabalhoAcademico',
+    autor: [],
+  });
+  const [autoresCriados, setAutoresCriados] = useState([]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    axios.post("https://localhost/3000/referencias/cadastrar", inputFields);
+    dataEnviarDados.autor = autoresCriados.map((obj) => obj.nome);
+
+    console.log(dataEnviarDados);
+    const axiosParams = {
+      baseURL: "http://localhost:8080",
+      method: "POST",
+      url: "/referencias/cadastrar",
+      data: dataEnviarDados,
+    };
+    const { response, error } = await fetchData(axiosParams, true);
+
+    console.log(response);
+    setError(true);
+    if (response && !error) {
+      setError(false);
+      //navigate
+    } else if (error) {
+      setError(true);
+    }
     console.log(inputFields);
   };
 
-  const addFields = () => {
+  const addFields = (event) => {
+    event.preventDefault();
     const id = inputFields.length + 1;
     let newfield = {
       id: id,
       name: "autor",
-      label:"Novo autor:",
-      value: "",
-      placeholder: "Ex: Autor",
+     value: "",
+      label: "Novo autor:",
+      placeholder: "Ex: Maria Silva",
       type: "text",
     };
     setInputFields([...inputFields, newfield]);
@@ -115,6 +141,22 @@ function Trabalho() {
 
     inputFiltrado.value = event.target.value;
 
+    if (inputFiltrado.name == "autor") {
+      const autorSelecionado = autoresCriados.find((a) => a.id === id);
+
+      if (autorSelecionado) {
+        autorSelecionado.nome = inputFiltrado.value;
+      } else {
+        autoresCriados.push({ id: id, nome: inputFiltrado.value });
+      }
+      console.log(autoresCriados);
+    } else {
+      setDataEnviarDados({
+        ...dataEnviarDados,
+        [inputFiltrado.name]: inputFiltrado.value,
+      });
+    }
+
     data = data.map((inputField) => {
       if (inputField.id === inputFiltrado.id) {
         inputField = { ...inputFiltrado };
@@ -122,23 +164,9 @@ function Trabalho() {
       return inputField;
     });
     // //data[index][event.target.name] = event.target.value;
+    console.log(dataEnviarDados);
     setInputFields(data);
   };
-
-  // const onChangeAutor = (value, autor) => {
-
-  //   const valor = value.target.value;
-  // let autorFiltrado = inputFields.find(a => {
-  //   return autor?.id === a?.id
-  // })
-
-  //     console.log(autorFiltrado)
-  //     autorFiltrado.autor = valor;
-
-  //     console.log(inputFields)
-  //     //this.setState({ autor: autor.target.value })
-  // }
-
   return (
     <>
      <Sidebar></Sidebar>
