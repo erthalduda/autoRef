@@ -1,0 +1,19 @@
+.colecao-container{
+    width: 250px;
+    height: 400px;
+    border-radius: 10px;
+    background: var(--blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 30px;
+    margin: 50px 20px 25px;
+  }
+  
+  .descricao {
+    display: inline-block;
+    max-height: 300px;
+    text-overflow: ellipsis;
+  }
+  
