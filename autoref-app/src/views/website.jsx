@@ -6,6 +6,7 @@ import axios from "axios";
 //import login from "./login";
 
 import "../css/referencia.css";
+import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 
 function Website() {
@@ -114,6 +115,7 @@ function Website() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Website</h1>
       <br></br>
       <div className="form-group-ref">
