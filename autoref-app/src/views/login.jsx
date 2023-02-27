@@ -43,8 +43,12 @@ const Login = () => {
       baseURL: "http://localhost:8080",
       method: "POST",
       url: "/login/usuario",
-      auth: infosLogin,
+     
     };
+    axiosParams.auth = {
+      username: infosLogin.email,
+      password: infosLogin.senha
+    }
     event.preventDefault();
     console.log(infosLogin)
     const { response, error } = await fetchData(axiosParams, false);
