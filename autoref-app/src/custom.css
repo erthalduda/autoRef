@@ -184,7 +184,11 @@ input::-webkit-inner-spin-button {
   background-color: #a0dcc413;
 }
 
-
+.table-repo, th,td{
+  color: #1c1c1b;
+  font-size: 17px;
+  background-color: #a0dcc413;
+}
 .Auth-form {
   width: 420px;
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
