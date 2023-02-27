@@ -1,15 +1,12 @@
 import React from "react";
-//import FormGroup from "../components/form-group";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-//import login from "./login";
 
 import "../css/referencia.css";
 import Navbar from "../components/navbar"
 import Sidebar from "../components/sidebar";
-
-function RepositorioGeral({ url }) {
+function RepositorioGeral() {
   const [searchTerm, setSearchTerm] = useState("");
   const [inputFields, setInputFields] = useState([
     {
@@ -21,18 +18,20 @@ function RepositorioGeral({ url }) {
       type: "text",
     },
   ]);
+  const [results, setResults] = useState([]);
 
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       const { data } = await axios.get(url, { params: { q: searchTerm } });
-  //       setResults(data);
-  //     };
-  //     fetchData();
-  //   }, [searchTerm]);
-
-  const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    setSearchTerm(inputFields[0].value);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get(`http://localhost:8080/referencias/buscar/geral/${searchTerm}`);
+      setResults(data);
+    };
+    fetchData();
+  }, [searchTerm]);
 
   const handleFormChange = (id, event) => {
     let data = [...inputFields];
@@ -46,7 +45,7 @@ function RepositorioGeral({ url }) {
       }
       return inputField;
     });
-    // //data[index][event.target.name] = event.target.value;
+
     setInputFields(data);
   };
 
@@ -59,7 +58,7 @@ function RepositorioGeral({ url }) {
       </h1>
       <div>
         <div className="centralizar">
-          <form>
+          <form onSubmit={handleFormSubmit}>
             {inputFields.map((input, index) => {
               return (
                 <div
@@ -92,7 +91,13 @@ function RepositorioGeral({ url }) {
         </div>
       </div>
 
-      {/* <button onClick={this.entrar} className="btn btn-success">Adicionar</button> */}
+      <div>
+        <ul>
+          {results.map((result) => (
+            <li key={result.id}>{result.nome}</li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }
