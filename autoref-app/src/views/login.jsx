@@ -24,7 +24,7 @@ const Login = () => {
       id: 2,
       name: "senha",
       value: "",
-     
+      type: "text",
       label: "Senha:",
       placeholder: "Ex: 123456",
     },
@@ -46,7 +46,7 @@ const Login = () => {
       auth: infosLogin,
     };
     event.preventDefault();
-
+    console.log(infosLogin)
     const { response, error } = await fetchData(axiosParams, false);
 
     if (response && !error) {
@@ -75,18 +75,12 @@ const Login = () => {
 
     if (inputFiltrado.id === 1) {
       setInfosLogin({ ...infosLogin, email: inputFiltrado.value });
-      console.log(inputFiltrado);
-      console.log("A");
     }
 
 
     if (inputFiltrado.id === 2) {
       setInfosLogin({ ...infosLogin, senha: inputFiltrado.value });
-      console.log(infosLogin.senha);
-      console.log("B");
     }
-    console.log(infosLogin);
-    console.log("C");
 
     setInputFields(data);
   };
