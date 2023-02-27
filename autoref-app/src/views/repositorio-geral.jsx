@@ -6,6 +6,7 @@ import axios from "axios";
 //import login from "./login";
 
 import "../css/referencia.css";
+import Navbar from "../components/navbar"
 import Sidebar from "../components/sidebar";
 
 function RepositorioGeral({ url }) {
@@ -52,6 +53,7 @@ function RepositorioGeral({ url }) {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia" className="centralizar-nome">
         Repositório Geral
       </h1>
