@@ -67,13 +67,15 @@ public class UsuarioController {
     public ResponseEntity<?> rankingUsuarios() {
         try {
             List<Usuario> ranking = serviceUsuario.rankingUsuarios();
-            List<String> rankingFinal = new ArrayList<>();
+            // List<String> rankingFinal = new ArrayList<>();
             for (Usuario usuario : ranking) {
-                int posicaoRanking = ranking.indexOf(usuario) + 1;
-                String usuarioRanking = "#" + posicaoRanking + " " + usuario.getNome() + " " + usuario.getXp();
-                rankingFinal.add(usuarioRanking);
+                usuario.setColecoesUsuario(null);
+                usuario.setReferenciasUsuario(null);
+                // int posicaoRanking = ranking.indexOf(usuario) + 1;
+                // String usuarioRanking = "#" + posicaoRanking + " " + usuario.getNome() + " " + usuario.getXp();
+                // rankingFinal.add(usuarioRanking);
             }
-            return new ResponseEntity<>(rankingFinal, HttpStatus.OK);
+            return new ResponseEntity<>(ranking, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

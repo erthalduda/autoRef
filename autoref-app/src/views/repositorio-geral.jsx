@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import "../css/referencia.css";
-import Navbar from "../components/navbar"
+import Navbar from "../components/navbar";
 import Sidebar from "../components/sidebar";
 function RepositorioGeral() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,7 +27,9 @@ function RepositorioGeral() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get(`http://localhost:8080/referencias/buscar/geral/${searchTerm}`);
+      const { data } = await axios.get(
+        `http://localhost:8080/referencias/buscar/geral/${searchTerm}`
+      );
       setResults(data);
     };
     fetchData();
@@ -91,10 +93,8 @@ function RepositorioGeral() {
             </div>
           </form>
         </div>
-      </div>
-
-      <table className="table">
-<thead>
+        <table className="table">
+          <thead>
             <tr>
               <th scope="col">REFERÊNCIA</th>
               <th scope="col">CIT. DIRETA</th>
@@ -102,20 +102,34 @@ function RepositorioGeral() {
             </tr>
           </thead>
           <tbody>
-          <tr>
-              <td>1</td>
-              <td> RODRIGO REMOR </td>
-              <td>4500XP</td>
+            <tr>
+              <td>
+                ERTHAL, Eduarda Maiara Luiz; HOLZ, William Eduardo. AutoRef: Uma
+                aplicação para o gerenciamento de referências bibliográficas.
+                2023. 66f. TCC (Técnico em Informática) - Instituto Federal
+                Sul-rio-grandense, Campus Sapucaia do Sul, Sapucaia do Sul,
+                2023.
+              </td>
+              <td> (ERTHAL; HOLZ, 2022, p. X.) Erthal e Holz (2022, p. X.) </td>
+              <td>(ERTHAL; HOLZ, 2022) Erthal e Holz (2022)</td>
             </tr>{" "}
             <tr>
-              <td>2</td>
-              <td> LOURENÇO BASSO </td>
-              <td>3200XP</td>
+              <td>
+                ERTHAL, Eduarda Maiara Luiz et al. Um artigo: Conheça este
+                artigo. Um belo periodico: Subtítulo interessante. São Leopoldo,
+                ano 10, v. 5, n. 6, 1. ed, t. 7, p. 15-19, 23 jan. 2022.
+              </td>
+              <td> (ERTHAL et al, 2022, p. X.) Erthal et al (2022, p. X.) </td>
+              <td>(ERTHAL et al, 2022) Erthal et al (2022)</td>
             </tr>{" "}
             <tr>
-              <td>3</td>
-              <td> WILLIAM HOLZ </td>
-              <td> 3000XP</td>
+              <td>
+                ERTHAL, Eduarda Maiara Luiz et al. Um artigo: Conheça este
+                artigo. Um belo periodico: Subtítulo interessante. São Leopoldo,
+                ano 10, v. 5, n. 6, 1. ed, t. 7, p. 15-19, 23 jan. 2022.
+              </td>
+              <td> (ERTHAL et al, 2022, p. X.) Erthal et al (2022, p. X.) </td>
+              <td>(ERTHAL et al, 2022) Erthal et al (2022)</td>
             </tr>
             <tr>
               <td>3</td>
@@ -124,7 +138,9 @@ function RepositorioGeral() {
             </tr>
           </tbody>
         </table>
+      </div>
 
+    
       <div>
         <ul>
           {results.map((result) => (
