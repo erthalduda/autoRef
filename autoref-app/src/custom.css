@@ -44,17 +44,6 @@ body {
   color: #000000;
 }
 
-.sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  padding: 58px 0 0;
-  /* Height of navbar */
-  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-  width: 240px;
-  z-index: 600;
-}
 details {
   margin-bottom: 00px;
   border: 2px solid #aaa;
@@ -102,7 +91,7 @@ details[open] summary {
   font-family: Montserrat, -apple-system, system-ui, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   height: 75px;
-
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
   padding: 0;
   overflow: hidden;
   background-color: #9edec6;
@@ -244,3 +233,84 @@ label {
   color: red;
   font-size: large;
 }
+
+.none {
+  background-color: #a0dcc4;
+  font-weight: bold;
+  color: rgb(34, 34, 34);
+  font-size: large;
+  border: #a0dcc4;
+  height: auto;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #a0dcc4;
+  overflow-x: hidden;
+  padding-top: 115px;
+  transition: 0.5s;
+}
+
+.sidebar a {
+  padding: 2px 2px 2px 4px;
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(34, 34, 34);
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  color: rgb(34, 34, 34);
+  font-size: 22px;
+}
+
+.sidebar .closebtn {
+  justify-content: flex-end;
+  display: block;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 60px;
+  box-shadow: none;
+  background-color: #a0dcc4;
+  font-weight: bold;
+  color: rgb(34, 34, 34);
+  font-size: large;
+  border: #a0dcc4;
+  height: auto;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  transition: 0.3s;
+}
+
+.sidebar .closebtn:hover {
+  box-shadow: none;
+  color: rgb(34, 34, 34);
+  font-size: 40px;
+  transition: 0.3s;
+}
+
+#main {
+  transition: margin-left 0.5s;
+  padding: 20px;
+}
+
+.bigFont {
+  font-size: large;
+}
+
+
+
