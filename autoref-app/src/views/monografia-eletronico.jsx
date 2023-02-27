@@ -100,11 +100,6 @@ function MonografiaEletronica() {
     tipo: "monografiaOnline",
     autor: [],
   });
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    axios.post("http://localhost:8080/referencias/cadastrar", inputFields);
-    console.log(inputFields);
-  };
 
   const addFields = () => {
     const id = inputFields.length + 1;
@@ -117,6 +112,30 @@ function MonografiaEletronica() {
       type: "text",
     };
     setInputFields([...inputFields, newfield]);
+    console.log(inputFields);
+  };
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    dataEnviarDados.autor = autoresCriados.map((obj) => obj.nome);
+
+    console.log(dataEnviarDados);
+    const axiosParams = {
+      baseURL: "http://localhost:8080",
+      method: "POST",
+      url: "/referencias/cadastrar",
+      data: dataEnviarDados,
+    };
+    const { response, error } = await fetchData(axiosParams, true);
+
+    console.log(response);
+    setError(true);
+    if (response && !error) {
+      setError(false);
+      //navigate
+    } else if (error) {
+      setError(true);
+    }
     console.log(inputFields);
   };
 
