@@ -24,7 +24,7 @@ const Login = () => {
       id: 2,
       name: "senha",
       value: "",
-      type: "text",
+     
       label: "Senha:",
       placeholder: "Ex: 123456",
     },
@@ -78,6 +78,7 @@ const Login = () => {
       console.log(inputFiltrado);
       console.log("A");
     }
+
 
     if (inputFiltrado.id === 2) {
       setInfosLogin({ ...infosLogin, senha: inputFiltrado.value });
