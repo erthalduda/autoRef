@@ -4,11 +4,14 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 //import login from "./login";
+import { useAxios } from "../hooks/axios";
 
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
 
 function MonografiaEletronica() {
+  const [error, setError] = useState(false);
+  const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
     {
       id: 2,
@@ -100,6 +103,8 @@ function MonografiaEletronica() {
     tipo: "monografiaOnline",
     autor: [],
   });
+
+  const [autoresCriados, setAutoresCriados] = useState([]);
 
   const addFields = () => {
     const id = inputFields.length + 1;
