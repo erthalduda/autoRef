@@ -1,16 +1,13 @@
 import "../css/referencia.css";
-import React, { useRef } from "react";
+import React from "react";
 import Card from "../components/card";
 import { useState } from "react";
 import { Axios } from "axios";
 import { useHistory } from "react-router-dom";
-import { withRouter } from "react-router-dom";
-
 import { useAxios } from "../hooks/axios";
-//import { mensagemSucesso, mensagemErro } from '../components/toastifyClasse'
 
 const CadastroUsuario = () => {
-  const [mensagemErro, setMensagemErro] = useState("Error ao cadastrar!");
+  const [mensagemErro, setMensagemErro] = useState("Erro ao cadastrar!");
   const history = useHistory();
   const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
@@ -69,11 +66,6 @@ const CadastroUsuario = () => {
     }
   };
 
-  const ref = useRef(null);
-  const onClear = () => {
-    ref.current.value = "";
-  };
-
   const handleFormChange = (id, event) => {
     let data = [...inputFields];
     const inputFiltrado = data.find((input) => input.id === id);
@@ -119,7 +111,6 @@ const CadastroUsuario = () => {
                       <div key={index}>
                         {input.label != null ? <>{input.label}</> : <>null</>}
                         <input
-                          ref={ref}
                           type={input.type}
                           key={input.id}
                           id={input.id}
