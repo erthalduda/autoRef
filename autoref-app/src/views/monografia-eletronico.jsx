@@ -4,18 +4,16 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 //import login from "./login";
+import { useAxios } from "../hooks/axios";
 
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
+import Navbar from "../components/navbar";
 
 function MonografiaEletronica() {
+  const [error, setError] = useState(false);
+  const { fetchData } = useAxios();
   const [inputFields, setInputFields] = useState([
-    {
-      id: 1,
-      name: "tipo",
-      value: "monografia",
-      type: "hidden",
-    },
     {
       id: 2,
       name: "titulo",
@@ -102,12 +100,12 @@ function MonografiaEletronica() {
       type: "text",
     },
   ]);
+  const [dataEnviarDados, setDataEnviarDados] = useState({
+    tipo: "monografiaOnline",
+    autor: [],
+  });
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    axios.post("http://localhost:8080/referencias/cadastrar", inputFields);
-    console.log(inputFields);
-  };
+  const [autoresCriados, setAutoresCriados] = useState([]);
 
   const addFields = () => {
     const id = inputFields.length + 1;
@@ -120,6 +118,30 @@ function MonografiaEletronica() {
       type: "text",
     };
     setInputFields([...inputFields, newfield]);
+    console.log(inputFields);
+  };
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    dataEnviarDados.autor = autoresCriados.map((obj) => obj.nome);
+
+    console.log(dataEnviarDados);
+    const axiosParams = {
+      baseURL: "http://localhost:8080",
+      method: "POST",
+      url: "/referencias/cadastrar",
+      data: dataEnviarDados,
+    };
+    const { response, error } = await fetchData(axiosParams, true);
+
+    console.log(response);
+    setError(true);
+    if (response && !error) {
+      setError(false);
+      //navigate
+    } else if (error) {
+      setError(true);
+    }
     console.log(inputFields);
   };
 
@@ -156,6 +178,7 @@ function MonografiaEletronica() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar> 
       <h1 id="referencia">Monografia em Meio-Eletrônico</h1>
       <br></br>
       <div className="form-group-ref">
@@ -195,7 +218,6 @@ function MonografiaEletronica() {
           </div>
         </form>
       </div>
-
       {/* <button onClick={this.entrar} className="btn btn-success">Adicionar</button> */}
     </>
   );

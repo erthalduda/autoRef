@@ -7,6 +7,7 @@ import axios from "axios";
 
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
+import Navbar from "../components/navbar";
 import { useAxios } from "../hooks/axios";
 
 function Monografia() {
@@ -176,6 +177,7 @@ function Monografia() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Monografia</h1>
       <br></br>
       <div className="form-group-ref">

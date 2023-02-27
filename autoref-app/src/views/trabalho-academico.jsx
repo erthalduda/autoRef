@@ -7,6 +7,7 @@ import axios from "axios";
 
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
+import Navbar from "../components/navbar";
 
 function Trabalho() {
   const { fetchData } = useAxios();
@@ -170,6 +171,7 @@ function Trabalho() {
   return (
     <>
      <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Trabalho Acadêmico</h1>
       <br></br>
       <div className="form-group-ref">

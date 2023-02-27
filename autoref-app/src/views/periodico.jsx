@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Sidebar from "../components/sidebar";
+import Navbar from "../components/navbar";
 
 const Periodico = () => {
   let history = useHistory();
@@ -20,6 +21,7 @@ const Periodico = () => {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <div className="row">
         <div
           className="col-md-6"

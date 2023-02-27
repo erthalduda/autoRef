@@ -7,6 +7,7 @@ import axios from "axios";
 
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
+import Navbar from "../components/navbar";
 import { useAxios } from "../hooks/axios";
 
 
@@ -16,12 +17,7 @@ function MonografiaOnline() {
   const [error, setError] = useState(false);
 
   const [inputFields, setInputFields] = useState([
-    {
-      id: 1,
-      name: "tipo",
-      value: "monografia",
-      type: "hidden",
-    },
+  
     {
       id: 2,
       name: "titulo",
@@ -197,6 +193,7 @@ function MonografiaOnline() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Monografia Online</h1>
       <br></br>
       <div className="form-group-ref">

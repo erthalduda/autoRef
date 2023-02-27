@@ -7,6 +7,7 @@ import { useAxios } from "../hooks/axios";
 
 import "../css/referencia.css";
 import Sidebar from "../components/sidebar";
+import Navbar from "../components/navbar";
 
 function ParteMonografia() {
   const { fetchData } = useAxios();
@@ -136,7 +137,7 @@ function ParteMonografia() {
     },
   ]);
   const [dataEnviarDados, setDataEnviarDados] = useState({
-    tipo: 'monografia',
+    tipo: 'parteMonografia',
     autor: [],
   });
   const [autoresCriados, setAutoresCriados] = useState([]);
@@ -215,6 +216,7 @@ function ParteMonografia() {
   return (
     <>
       <Sidebar></Sidebar>
+      <Navbar></Navbar>
       <h1 id="referencia">Parte de Monografia</h1>
       <br></br>
       <div className="form-group-ref">
