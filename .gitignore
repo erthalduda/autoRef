@@ -61,9 +61,9 @@ target
 secrets.yml
 .gradletasknamecache
 .sts4-cache
-src/main/resources/application.properties
+src/main/resources/application.yml
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 src/main/java/autoref/tcc/autoref/AutorefApplication.java
-src/main/resources/application.properties
+src/main/resources/application.yml

@@ -1,0 +1,19 @@
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.springframework.security: DEBUG
+server:
+  error:
+    include-message: always
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/autoref
+    username: root
+    password: 080104Edu@
+  jpa:
+    hibernate:
+      ddl-auto: update
+  session:
+    store-type: jdbc
+    timeout: 300
