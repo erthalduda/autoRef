@@ -13,7 +13,7 @@ const Faq = () => {
           style={{ position: "relative", left: "200px" }}
         >
           <h1
-            className="centralizar"
+            className="centralizar-nome"
             style={{
               fontSize: "50px",
               color: "#1c1c1b",
@@ -25,7 +25,7 @@ const Faq = () => {
             FAQ
           </h1>
           <div
-            classname="faq-body"
+            classname="centralizar"
             style={{
               width: "450px",
               color: "#1c1c1b",

@@ -31,7 +31,6 @@ const CadastroUsuario = () => {
       id: 3,
       name: "senha",
       value: "",
-      type: "text",
       label: "Senha:",
       placeholder: "Ex: 123456",
       type: "password",

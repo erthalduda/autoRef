@@ -54,7 +54,7 @@ function ColecoesUsuario() {
     <>
       <Sidebar></Sidebar>
       <Navbar></Navbar>
-      <h1 id="referencia">Suas coleções</h1>
+      <h1 id="referencia" className="centralizar-nome">Suas coleções</h1>
       <br></br>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
