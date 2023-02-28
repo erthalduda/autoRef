@@ -9,12 +9,11 @@ public interface ReferenciaService {
 
     Referencia cadastraReferencia(Referencia referencia);
 
-    Referencia atualizaReferencia(Referencia referencia);
-
     Referencia encontrarPorId(Integer id);
 
     List<ReferenciaResponse> buscarNoRepositorioGeral(String pesquisa);
 
+    // trabalhos futuros
     // List<Referencia> buscarEspecificaNoRepositorioPrivado(String pesquisa, Integer idUsuario);
 
     List<ReferenciaResponse> buscarTodasNoRepositorioPrivado();
