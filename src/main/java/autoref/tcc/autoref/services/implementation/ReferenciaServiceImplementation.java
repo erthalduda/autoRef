@@ -78,13 +78,15 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     }
 
     @Override
-    
+
     public List<ReferenciaResponse> buscarNoRepositorioGeral(String pesquisa) {
-  
+
         List<Referencia> retornoBusca = repositorioReferencia.buscaReferenciaRepositorioGeral(pesquisa);
         return retornoBusca
                 .stream()
-                .map(referencia -> new ReferenciaResponse(referencia.getUsuario().getIdUsuario(), referencia.getId(), referencia.getCitacaoDireta(), referencia.getCitacaoIndireta()))
+                .map(referencia -> new ReferenciaResponse(referencia.getUsuario().getIdUsuario(),
+                        referencia.getFormatoFinal(), referencia.getId(),
+                        referencia.getCitacaoDireta(), referencia.getCitacaoIndireta()))
                 .collect(Collectors.toList());
     }
 
@@ -106,7 +108,9 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
 
         return retornoBusca
                 .stream()
-                .map(referencia -> new ReferenciaResponse(referencia.getUsuario().getIdUsuario(), referencia.getId(), referencia.getCitacaoDireta(), referencia.getCitacaoIndireta()))
+                .map(referencia -> new ReferenciaResponse(referencia.getUsuario().getIdUsuario(),
+                        referencia.getFormatoFinal(), referencia.getId(),
+                        referencia.getCitacaoDireta(), referencia.getCitacaoIndireta()))
                 .collect(Collectors.toList());
 
     }
