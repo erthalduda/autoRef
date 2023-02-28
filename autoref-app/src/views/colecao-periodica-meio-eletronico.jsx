@@ -1,24 +1,22 @@
 import React from "react";
 //import FormGroup from "../components/form-group";
-
+import { useAxios } from "../hooks/axios";
 import { useState } from "react";
 import axios from "axios";
 //import login from "./login";
 import Navbar from "../components/navbar";
-import Sidebar from "../components/sidebar";
+
 import "../css/referencia.css";
+import Sidebar from "../components/sidebar";
 
 function ColecaoPeriodicaMeioEletronico() {
+  const { fetchData } = useAxios();
+  const [error, setError] = useState(false);
   const [inputFields, setInputFields] = useState([
-    {
-      id: 1,
-      name: "tipo",
-      value: "colecaoPublicacaoPeriodicaEletronico",
-      type: "hidden",
-    },
+   
     {
       id: 2,
-      label: "Título:",
+      label: "Título",
       name: "titulo",
       value: "",
       placeholder: "Ex: Título",
@@ -28,75 +26,123 @@ function ColecaoPeriodicaMeioEletronico() {
     {
       id: 3,
       name: "subtituloPublicacao",
-      label: "Subtítulo:",
       value: "",
+      label: "Subtítulo: ",
       placeholder: "Ex: Subtítulo",
       type: "text",
     },
 
     {
       id: 4,
-      label: "Editora:",
       name: "editora",
+      label: "Editora: ",
       value: "",
       placeholder: "Ex: Editora",
       type: "text",
     },
     {
       id: 5,
-      name: "dataInicio",
-      label: "Data de início:",
+      name: "url",
       value: "",
+      label: "URL:",
+      placeholder: "Ex: www.site.com.br",
+      type: "text",
+    },
+    {
+      id: 6,
+      name: "doi",
+      label: "Doi: ",
+      value: "",
+      placeholder: "Ex: Doi",
+      type: "text",
+    },
+    {
+      id: 7,
+      name: "dataAcesso",
+      value: "",
+      label: "Data de acesso:",
+      placeholder: "Ex: 18/01/2023",
+      type: "date",
+    },
+
+    {
+      id: 8,
+      name: "dataInicio",
+      value: "",
+      label: "Data de início (ano): ",
       placeholder: "Ex: 2004",
       type: "number",
     },
 
     {
-      id: 6,
+      id: 9,
       name: "dataFim",
-      label: "Data final:",
       value: "",
+      label: "Data de fim (ano): ",
       placeholder: "Ex: 2005",
       type: "number",
     },
+    {
+      id: 10,
+      name: "localPublicacao",
+      value: "",
+      label: "Local de publicação:",
+      placeholder: "Ex: Porto Alegre",
+      type: "text",
+    },
 
     {
-      id: 7,
+      id: 11,
       name: "issn",
-      label: "ISSN:",
       value: "",
+      label: "ISSN: ",
       placeholder: "Ex: 123456789",
       type: "text",
     },
-    {
-      id: 8,
-      name: "doi",
-      value: "",
-      label: "DOI:",
-      placeholder: "Ex: 00.0000/000",
-      type: "text,",
-    },
-    {
-      id: 9,
-      name: "url",
-      label: "URL:",
-      value: "",
-      placeholder: "Ex: www.url.com",
-      type: "text,",
-    },
-    {
-      id: 10,
-      label: "Data de acesso",
-      name: "dataAcesso",
-      value: "",
-      placeholder: "Ex: dd/mm/aaaa",
-      type: "date",
-    },
   ]);
+
+  const [dataEnviarDados, setDataEnviarDados] = useState({
+    tipo: 'colecaoPublicacaoPeriodicaEletronico',
+    autor: [],
+  });
+  const [autoresCriados, setAutoresCriados] = useState([]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    axios.post("https://localhost/3000/referencias/cadastrar", inputFields);
+    dataEnviarDados.autor = autoresCriados.map((obj) => obj.nome);
+
+    console.log(dataEnviarDados);
+    const axiosParams = {
+      baseURL: "http://localhost:8080",
+      method: "POST",
+      url: "/referencias/cadastrar",
+      data: dataEnviarDados,
+    };
+    const { response, error } = await fetchData(axiosParams, true);
+
+    console.log(response);
+    setError(true);
+    if (response && !error) {
+      setError(false);
+      //navigate
+    } else if (error) {
+      setError(true);
+    }
+    console.log(inputFields);
+  };
+
+  const addFields = (event) => {
+    event.preventDefault();
+    const id = inputFields.length + 2;
+    let newfield = {
+      id: id,
+      name: "autor",
+     value: "",
+      label: "Novo autor:",
+      placeholder: "Ex: Maria Silva",
+      type: "text",
+    };
+    setInputFields([...inputFields, newfield]);
     console.log(inputFields);
   };
 
@@ -106,6 +152,22 @@ function ColecaoPeriodicaMeioEletronico() {
 
     inputFiltrado.value = event.target.value;
 
+    if (inputFiltrado.name == "autor") {
+      const autorSelecionado = autoresCriados.find((a) => a.id === id);
+
+      if (autorSelecionado) {
+        autorSelecionado.nome = inputFiltrado.value;
+      } else {
+        autoresCriados.push({ id: id, nome: inputFiltrado.value });
+      }
+      console.log(autoresCriados);
+    } else {
+      setDataEnviarDados({
+        ...dataEnviarDados,
+        [inputFiltrado.name]: inputFiltrado.value,
+      });
+    }
+
     data = data.map((inputField) => {
       if (inputField.id === inputFiltrado.id) {
         inputField = { ...inputFiltrado };
@@ -113,23 +175,10 @@ function ColecaoPeriodicaMeioEletronico() {
       return inputField;
     });
     // //data[index][event.target.name] = event.target.value;
+    console.log(dataEnviarDados);
     setInputFields(data);
-  };
-
-  // const onChangeAutor = (value, autor) => {
-
-  //   const valor = value.target.value;
-  // let autorFiltrado = inputFields.find(a => {
-  //   return autor?.id === a?.id
-  // })
-
-  //     console.log(autorFiltrado)
-  //     autorFiltrado.autor = valor;
-
-  //     console.log(inputFields)
-  //     //this.setState({ autor: autor.target.value })
-  // }
-
+  
+  }
   return (
     <>
       <Sidebar></Sidebar>
@@ -139,11 +188,7 @@ function ColecaoPeriodicaMeioEletronico() {
       </h1>
       <h1 id="referencia" className="centralizar-nome">
         {" "}
-        Periódica em Meio
-      </h1>
-      <h1 id="referencia" className="centralizar-nome">
-        {" "}
-        Eletrônico
+        Periódica Eletrônica
       </h1>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
@@ -160,17 +205,16 @@ function ColecaoPeriodicaMeioEletronico() {
                   type={input.type}
                   key={input.id}
                   id={input.id}
+                  label={input.label}
                   value={input.value}
                   name={input.name}
-                  className="form-input"
                   placeholder={input.placeholder}
+                  className="form-input"
                   onChange={(e) => handleFormChange(input.id, e)}
                 />
               </div>
             );
           })}
-
-          <div className="form-clear"></div>
 
           <div className="sla">
             <button type="submit" className="btn btn-success">

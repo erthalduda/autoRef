@@ -104,7 +104,7 @@ function MonografiaEletronica() {
   ]);
 
   const [dataEnviarDados, setDataEnviarDados] = useState({
-    tipo: "monografia",
+    tipo: "monografiaMeioEletronico",
     autor: [],
   });
   const [autoresCriados, setAutoresCriados] = useState([]);
