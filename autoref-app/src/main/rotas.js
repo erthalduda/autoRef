@@ -26,6 +26,7 @@ import CadastroColecao from "../views/cadastro-colecao";
 import RepositorioGeral from "../views/repositorio-geral";
 import RepositorioPrivado from "../views/repositorio-privado";
 import Ranking from "../views/ranking";
+import InfosRanking from "../views/infos-ranking";
 
 function Rotas() {
   return (
@@ -40,6 +41,7 @@ function Rotas() {
         <Route path="/colecoes" component={ColecoesUsuario} />
         <Route path="/colecoesDois" component={ColecoesUsuarioDois}/>
         <Route path="/faq" component={Faq} />
+        <Route path="/infos-ranking" component={InfosRanking}/>
         <Route path="/monografia" component={Monografia} />
         <Route path="/website" component={Website} />
         <Route path="/artigo" component={Artigo} />
