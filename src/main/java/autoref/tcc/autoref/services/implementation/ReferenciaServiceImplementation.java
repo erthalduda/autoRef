@@ -1,7 +1,6 @@
 package autoref.tcc.autoref.services.implementation;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -57,14 +56,6 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
 
         usuario.setXp(100);
         referencia.setUsuario(usuario);
-        System.out.println(referencia.getTodosOsDados().length());
-        return repositorioReferencia.save(referencia);
-    }
-
-    @Override
-    @Transactional
-    public Referencia atualizaReferencia(Referencia referencia) {
-        Objects.requireNonNull(referencia.getId());
         return repositorioReferencia.save(referencia);
     }
 
@@ -78,7 +69,6 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     }
 
     @Override
-
     public List<ReferenciaResponse> buscarNoRepositorioGeral(String pesquisa) {
 
         List<Referencia> retornoBusca = repositorioReferencia.buscaReferenciaRepositorioGeral(pesquisa);
