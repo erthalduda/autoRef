@@ -1,37 +1,49 @@
 import React, { useEffect, useState } from "react";
 import "../css/referencia.css";
-import axios from "axios";
-import UsuarioService from "../app/services/UsuarioService";
+import { useAxios } from "../hooks/axios";
 import Sidebar from "../components/sidebar";
 import Navbar from "../components/navbar";
-import * as messages from "../components/toastifyClasse";
+import { useLocalStorage } from "../hooks/local_storage";
 
 const Ranking = () => {
-  // this.service = new UsuarioService();
+  const [mensagemErro, setMensagemErro] = useState("Erro.");
+  const [error, setError] = useState();
+  const [TableData, setTableData] = useState([]);
 
-  // this.service.rankingUsuarios()
-  //   .then((resposta) => {
-  //     const lista = resposta.data;
+  const localStorage = useLocalStorage();
+  const { fetchData } = useAxios();
 
-  //     if (lista.length < 1) {
-  //       messages.mensagemAlerta("Nenhuma referência foi encontrada.");
-  //     }
-  //     this.setState({ referencias: lista });
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
+  async function retorna(event) {
+    console.log("ALO ENTROU");
 
-  // const [ranking, setRanking] = useState([]);
+    const axiosParams = {
+      baseURL: "http://localhost:8080",
+      method: "GET",
+      url: "/usuario/ranking",
+    };
+    axiosParams.auth = {
+      username: localStorage.getHeader,
+      password: localStorage.getHeader,
+    };
 
-  // useEffect(() => {
-  //   dadosRanking();
-  // }, []);
+    const { response, error } = await fetchData(axiosParams, false);
 
-  // const dadosRanking = async () => {
-  //   const { data } = await axios.get("http://localhost:8080/usuarios/ranking");
-  //   setRanking(data);
-  // };
+    if (response && !error) {
+      console.log(response.data);
+
+      const token = localStorage.getHeader(response, "X-Auth-Token");
+      localStorage.save("token", token);
+      localStorage.save("userData", JSON.stringify(response.data));
+    } else if (error) {
+      setError(mensagemErro);
+    }
+  }
+
+  useEffect(() => {
+    const response = retorna();
+    setTableData(response);
+    console.log(response);
+  }, []);
 
   return (
     <>
@@ -49,24 +61,7 @@ const Ranking = () => {
           </thead>
           <tbody>
             <tr>
-              <td>1</td>
-              <td> RODRIGO REMOR </td>
-              <td>4500XP</td>
-            </tr>{" "}
-            <tr>
-              <td>2</td>
-              <td> LOURENÇO BASSO </td>
-              <td>3200XP</td>
-            </tr>{" "}
-            <tr>
-              <td>3</td>
-              <td> WILLIAM HOLZ </td>
-              <td> 3000XP</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td> EDUARDA ERTHAL </td>
-              <td> 2800XP</td>
+              <td></td>
             </tr>
           </tbody>
         </table>
