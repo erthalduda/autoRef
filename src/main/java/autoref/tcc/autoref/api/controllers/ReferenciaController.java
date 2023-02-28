@@ -52,8 +52,9 @@ public class ReferenciaController {
             referencia.formataCitacoes();
             referencia.setTodosOsDados();
             Referencia salva = serviceReferencia.cadastraReferencia(referencia);
+            salva.setUsuario(null);
             return new ResponseEntity<>(salva, HttpStatus.CREATED);
-        } catch (ExcecoesAutoref excecao) {
+        } catch (Exception excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
