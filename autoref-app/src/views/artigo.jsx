@@ -4,11 +4,14 @@ import Sidebar from "../components/sidebar";
 import Navbar from "../components/navbar";
 import { useState } from "react";
 import { useAxios } from "../hooks/axios";
-//import login from "./login";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "../css/referencia.css";
 
 function Artigo() {
+
+  const notificar = () => toast("Referência criada com sucesso!");
 
   const { fetchData } = useAxios();
   const [error, setError] = useState(false);
@@ -86,7 +89,7 @@ function Artigo() {
       name: "dataPublicacao",
       value: "",
       placeholder: "Ex: 2006",
-      type: "text",
+      type: "date",
       label: "Data de publicação:",
     },
     {
@@ -138,10 +141,9 @@ function Artigo() {
       placeholder: "Ex: Maria Silva",
       type: "text",
     },
-
   ]);
   const [dataEnviarDados, setDataEnviarDados] = useState({
-    tipo: 'artigo',
+    tipo: "artigo",
     autor: [],
   });
   const [autoresCriados, setAutoresCriados] = useState([]);
@@ -163,6 +165,7 @@ function Artigo() {
     setError(true);
     if (response && !error) {
       setError(false);
+      notificar();
       //navigate
     } else if (error) {
       setError(true);
@@ -176,7 +179,7 @@ function Artigo() {
     let newfield = {
       id: id,
       name: "autor",
-     value: "",
+      value: "",
       label: "Novo autor:",
       placeholder: "Ex: Maria Silva",
       type: "text",
@@ -223,7 +226,9 @@ function Artigo() {
     <>
       <Sidebar></Sidebar>
       <Navbar></Navbar>
-      <h1 id="referencia" className="centralizar-nome">Artigo</h1>
+      <h1 id="referencia" className="centralizar-nome">
+        Artigo
+      </h1>
       <br></br>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
