@@ -162,7 +162,8 @@ public class Website extends Referencia {
         }
 
         String citacoes = citacaoIndireta + "\n" + citacaoIndiretaAutorNoTexto;
-
+        String citacaoDireta = "Websites não possuem citação direta.";
+        this.setCitacaoDireta(citacaoDireta);
         this.setCitacaoIndireta(citacaoIndireta.concat(" ").concat(citacaoIndiretaAutorNoTexto));
         return citacoes;
     }
