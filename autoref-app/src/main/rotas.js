@@ -6,7 +6,9 @@ import Login from "../views/login";
 import Home from "../views/home";
 import CadastroUsuario from "../views/cadastro-usuario";
 import Referencias from "../views/referencias";
-import ColecoesUsuarioDois from "../views/colecoes-usuario-teste";
+
+// import ColecoesUsuarioDois from "../views/colecoes-usuario-teste";
+
 import PaginaInicial from "../views/pagina-inicial";
 import Monografia from "../views/monografia";
 import Website from "../views/website";
@@ -39,7 +41,7 @@ function Rotas() {
         <Route path="/cadastro" component={CadastroUsuario} />
         <Route path="/referencias" component={Referencias} />
         <Route path="/colecoes" component={ColecoesUsuario} />
-        <Route path="/colecoesDois" component={ColecoesUsuarioDois}/>
+        {/* <Route path="/colecoesDois" component={ColecoesUsuarioDois}/> */}
         <Route path="/faq" component={Faq} />
         <Route path="/infos-ranking" component={InfosRanking}/>
         <Route path="/monografia" component={Monografia} />

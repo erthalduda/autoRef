@@ -13,25 +13,18 @@ const Ranking = () => {
   const { fetchData } = useAxios();
 
   const retorna = async (event) => {
-
-    console.log("ALO ENTROU");
-
     const axiosParams = {
       baseURL: "http://localhost:8080",
       method: "GET",
       url: "/usuario/ranking",
-      withCredentials: true,
     };
     axiosParams.auth = {
       username: localStorage.getHeader,
       password: localStorage.getHeader,
     };
-
     const { response, error } = await fetchData(axiosParams, false);
 
     if (response && !error) {
-      console.log(response.data);
-
       const token = localStorage.getHeader(response, "X-Auth-Token");
       localStorage.save("token", token);
       localStorage.save("userData", JSON.stringify(response.data));
@@ -41,6 +34,20 @@ const Ranking = () => {
   };
 
   const TableData = retorna;
+
+  const coluna = Object.keys(TableData[0]);
+
+  const dadosTdTabela = () => {
+    return TableData.map((data) => {
+      return (
+        <tr>
+          {coluna.map((v) => {
+            return <td>{data[v]}</td>;
+          })}
+        </tr>
+      );
+    });
+  };
 
   return (
     <>
@@ -56,11 +63,7 @@ const Ranking = () => {
               <th scope="col">XP</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>{TableData()}</td>
-            </tr>
-          </tbody>
+          <tbody>{dadosTdTabela()}</tbody>
         </table>
       </div>
     </>
