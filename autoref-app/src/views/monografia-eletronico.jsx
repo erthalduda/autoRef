@@ -17,8 +17,8 @@ function MonografiaEletronica() {
     {
       id: 2,
       name: "titulo",
-      value: "",
       label: "Título:",
+     value: "",
       placeholder: "Ex: Titulo",
       type: "text",
     },
@@ -26,7 +26,7 @@ function MonografiaEletronica() {
     {
       id: 3,
       name: "subtitulo",
-      value: "",
+     value: "",
       label: "Subtítulo:",
       placeholder: "Ex: Subtitulo",
       type: "text",
@@ -34,18 +34,18 @@ function MonografiaEletronica() {
 
     {
       id: 4,
-      name: "anoPublicacao",
       label: "Ano de publicação:",
+      name: "anoPublicacao",
       value: "",
-      placeholder: "Ex: 2004",
+      placeholder: "Ex: 2005",
       type: "number",
     },
     {
       id: 5,
       name: "anoEntrega",
-      value: "",
       label: "Ano de entrega:",
-      placeholder: "Ex: 2005",
+      value: "",
+      placeholder: "Ex: 2004",
       type: "number",
     },
 
@@ -54,33 +54,33 @@ function MonografiaEletronica() {
       name: "quantidadePaginas",
       label: "Quantidade de páginas:",
       value: "",
-      placeholder: "Ex: 28",
+      placeholder: "Ex: 17",
       type: "number",
     },
 
     {
       id: 7,
       name: "cidade",
-      value: "",
       label: "Cidade:",
+      value: "",
       placeholder: "Ex: São Paulo",
       type: "text",
     },
     {
       id: 8,
-      name: "editora",
-      value: "",
       label: "Editora:",
-      placeholder: "Ex: Editora A",
+      name: "editora",
+     value: "",
+      placeholder: "Ex: Editora",
       type: "text",
     },
     {
       id: 9,
       name: "edicao",
-      value: "",
+     value: "",
       label: "Edição:",
-      placeholder: "Ex: 7",
-      type: "text",
+      placeholder: "Ex: 6",
+      type: "number",
     },
     {
       id: 10,
@@ -101,14 +101,14 @@ function MonografiaEletronica() {
     },
   ]);
   const [dataEnviarDados, setDataEnviarDados] = useState({
-    tipo: "monografiaOnline",
+    tipo: "monografiaMeioEletronico",
     autor: [],
   });
 
   const [autoresCriados, setAutoresCriados] = useState([]);
 
   const addFields = () => {
-    const id = inputFields.length + 1;
+    const id = inputFields.length + 2;
     let newfield = {
       id: id,
       name: "autor",
