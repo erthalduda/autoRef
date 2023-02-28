@@ -31,7 +31,7 @@ public class Referencia {
     private Usuario usuario;
 
     public Referencia(Integer id, String titulo, String formatoFinal, String citacaoIndireta, String citacaoDireta,
-            String tipo, List<Colecao> colecoes, Usuario usuario) {
+                      String tipo, List<Colecao> colecoes, Usuario usuario) {
         this.id = id;
         this.titulo = titulo;
         this.formatoFinal = formatoFinal;
