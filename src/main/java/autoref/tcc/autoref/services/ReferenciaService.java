@@ -14,8 +14,8 @@ public interface ReferenciaService {
 
     List<Referencia> buscarNoRepositorioGeral(String pesquisa);
 
-    List<Referencia> buscarEspecificaNoRepositorioPrivado(String pesquisa, Integer idUsuario);
+    // List<Referencia> buscarEspecificaNoRepositorioPrivado(String pesquisa, Integer idUsuario);
 
-    List<Referencia> buscarTodasNoRepositorioPrivado(Integer idUsuario);
+    List<Referencia> buscarTodasNoRepositorioPrivado();
 
 }

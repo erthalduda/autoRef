@@ -105,7 +105,7 @@ public class ColecaoController {
     @GetMapping("/buscar/{idUsuario}")
     public ResponseEntity<?> colecoesPorUsuario(@PathVariable(name = "idUsuario") Integer idUsuario) {
         try {
-            List<Colecao> colecoesUsuario = serviceColecao.colecoesPorUsuario(idUsuario);
+            List<Colecao> colecoesUsuario = serviceColecao.colecoesPorUsuario();
             List<String> nomesColecao = new ArrayList<>();
             for (Colecao colecao : colecoesUsuario) {
                 nomesColecao.add(colecao.getNome());

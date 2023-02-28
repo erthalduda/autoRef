@@ -79,7 +79,7 @@ public class ReferenciaController {
     public ResponseEntity<?> buscaTodasReferenciasRepositorioPrivado(
             @PathVariable(name = "idUsuario") Integer idUsuario) {
         try {
-            List<Referencia> buscar = serviceReferencia.buscarTodasNoRepositorioPrivado(idUsuario);
+            List<Referencia> buscar = serviceReferencia.buscarTodasNoRepositorioPrivado();
             for (Referencia referencia : buscar) {
                 Usuario copia = new Usuario();
                 copia.setIdUsuario(referencia.getUsuario().getIdUsuario());

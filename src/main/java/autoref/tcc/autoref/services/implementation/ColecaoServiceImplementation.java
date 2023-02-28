@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,12 +12,16 @@ import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.*;
 import autoref.tcc.autoref.repositories.*;
 import autoref.tcc.autoref.services.ColecaoService;
+import autoref.tcc.autoref.services.LoginService;
 
 @Service
 public class ColecaoServiceImplementation implements ColecaoService {
 
     private ColecaoRepository repositorioColecao;
     private UsuarioRepository repositorioUsuario;
+
+    @Autowired
+    private LoginService loginService;
 
     public ColecaoServiceImplementation(ColecaoRepository repositorioColecao, UsuarioRepository repositorioUsuario) {
         this.repositorioColecao = repositorioColecao;
@@ -26,28 +31,29 @@ public class ColecaoServiceImplementation implements ColecaoService {
     @Override
     @Transactional
     public Colecao cadastraColecao(Colecao colecaoCadastro) {
+        Usuario usuario = loginService.getLoggedUsuario();
+        colecaoCadastro.setUsuario(usuario);
         verificaSeERepetida(colecaoCadastro);
 
-        Optional<Usuario> usuario = repositorioUsuario.findById(colecaoCadastro.getUsuario().getIdUsuario());
-        int colecoesUsuario = repositorioUsuario.colecoesPorUsuario(usuario.get().getIdUsuario());
+        int colecoesUsuario = repositorioUsuario.colecoesPorUsuario(usuario.getIdUsuario());
 
         if (colecoesUsuario >= 1) {
-            usuario.get().setPossuiPesquisadorIniciante(true);
+            usuario.setPossuiPesquisadorIniciante(true);
         }
 
         if (colecoesUsuario >= 10) {
-            usuario.get().setPossuiPesquisadorAtarefado(true);
+            usuario.setPossuiPesquisadorAtarefado(true);
         }
 
         if (colecoesUsuario >= 20) {
-            usuario.get().setPossuiPesquisadorExpert(true);
+            usuario.setPossuiPesquisadorExpert(true);
         }
 
         if (colecoesUsuario >= 25) {
-            usuario.get().setPossuiPesquisadorSabio(true);
+            usuario.setPossuiPesquisadorSabio(true);
         }
 
-        usuario.get().setXp(100);
+        usuario.setXp(100);
         return repositorioColecao.save(colecaoCadastro);
     }
 
@@ -73,19 +79,17 @@ public class ColecaoServiceImplementation implements ColecaoService {
             throw new ExcecoesAutoref("Coleção inválida.");
         }
 
-        Optional<Usuario> usuario = repositorioUsuario
-                .findById(colecaoParaAdicionarReferencias.get().getUsuario().getIdUsuario());
-
+        Usuario usuario = loginService.getLoggedUsuario();
         if (colecao.getReferencias().size() == 10) {
-            usuario.get().setXp(500);
+            usuario.setXp(500);
         }
         if (colecao.getReferencias().size() == 20) {
-            usuario.get().setXp(1500);
+            usuario.setXp(1500);
         }
 
-        usuario.get().setXp(50);
+        usuario.setXp(50);
 
-        if (referencia.getUsuario().getIdUsuario() != usuario.get().getIdUsuario()) {
+        if (referencia.getUsuario().getIdUsuario() != usuario.getIdUsuario()) {
             Optional<Usuario> u = repositorioUsuario.findById(referencia.getUsuario().getIdUsuario());
             u.get().setXp(200);
             u.get().setPossuiAcademicoAdmirado(true);
@@ -103,8 +107,9 @@ public class ColecaoServiceImplementation implements ColecaoService {
     }
 
     @Override
-    public List<Colecao> colecoesPorUsuario(Integer idUsuario) {
-        return repositorioColecao.findByUsuario(idUsuario);
+    public List<Colecao> colecoesPorUsuario() {
+        Usuario usuario = loginService.getLoggedUsuario();
+        return repositorioColecao.findByUsuario(usuario.getIdUsuario());
     }
 
     @Override
