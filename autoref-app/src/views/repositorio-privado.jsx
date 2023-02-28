@@ -15,7 +15,7 @@ const RepositorioPrivado = () => {
       const axiosParams = {
         baseURL: "http://localhost:8080",
         method: "GET",
-        url: "/referencias/buscar/privado",
+        url: "/referencias/buscar/privado/",
       };
 
       const { response, error } = await fetchData(axiosParams, true);
@@ -29,7 +29,7 @@ const RepositorioPrivado = () => {
   }, []);
 
   const renderizarReferenicas = () => {
-    return referencias.map((referencias, index) => (
+    return referencias.map((referencias) => (
       <tr>
         <td>{referencias?.formatoFinal}</td>
         <td> {referencias?.citacaoDireta}</td>

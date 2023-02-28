@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
+import autoref.tcc.autoref.api.dtos.response.ReferenciaResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,33 +63,24 @@ public class ReferenciaController {
     @GetMapping("/buscar/geral/{pesquisa}")
     public ResponseEntity<?> buscaReferenciaRepositorioGeral(@PathVariable(name = "pesquisa") String pesquisa) {
         try {
-            List<Referencia> buscar = serviceReferencia.buscarNoRepositorioGeral(pesquisa);
-            for (Referencia referencia : buscar) {
-                Usuario copia = new Usuario();
-                copia.setIdUsuario(referencia.getUsuario().getIdUsuario());
-                referencia.setUsuario(copia);
-            }
-            return new ResponseEntity<>(buscar, HttpStatus.OK);
+            List<ReferenciaResponse> response = serviceReferencia.buscarNoRepositorioGeral(pesquisa);
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
 
     @GetMapping("/buscar/privado")
     public ResponseEntity<?> buscaTodasReferenciasRepositorioPrivado() {
         try {
-            List<Referencia> buscar = serviceReferencia.buscarTodasNoRepositorioPrivado();
-            for (Referencia referencia : buscar) {
-                Usuario copia = new Usuario();
-                copia.setIdUsuario(referencia.getUsuario().getIdUsuario());
-                referencia.setUsuario(copia);
-            }
-            return new ResponseEntity<>(buscar, HttpStatus.OK);
+            List<ReferenciaResponse> response = serviceReferencia.buscarTodasNoRepositorioPrivado();
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-
     // @GetMapping("buscar/privado/{idUsuario}/{pesquisa}")
     // public ResponseEntity<?> buscarReferenciaEspecificaRepositorioPrivado(
     //         @PathVariable(name = "idUsuario") Integer idUsuario,

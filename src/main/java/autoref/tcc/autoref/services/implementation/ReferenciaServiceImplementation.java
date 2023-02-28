@@ -3,7 +3,9 @@ package autoref.tcc.autoref.services.implementation;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import autoref.tcc.autoref.api.dtos.response.ReferenciaResponse;
 import autoref.tcc.autoref.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,9 +79,12 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
 
     @Override
     @Transactional
-    public List<Referencia> buscarNoRepositorioGeral(String pesquisa) {
+    public List<ReferenciaResponse> buscarNoRepositorioGeral(String pesquisa) {
         List<Referencia> retornoBusca = repositorioReferencia.buscaReferenciaRepositorioGeral(pesquisa);
-        return retornoBusca;
+        return retornoBusca
+                .stream()
+                .map(referencia -> new ReferenciaResponse(referencia.getUsuario().getIdUsuario(), referencia.getId(), referencia.getCitacaoDireta(), referencia.getCitacaoIndireta()))
+                .collect(Collectors.toList());
     }
 
     // @Override
@@ -93,11 +98,15 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
 
     @Override
     @Transactional
-    public List<Referencia> buscarTodasNoRepositorioPrivado() {
+    public List<ReferenciaResponse> buscarTodasNoRepositorioPrivado() {
         Usuario usuario = loginService.getLoggedUsuario();
 
         List<Referencia> retornoBusca = repositorioReferencia.buscaTodasReferenciasPrivado(usuario.getIdUsuario());
-        return retornoBusca;
-    }
 
+        return retornoBusca
+                .stream()
+                .map(referencia -> new ReferenciaResponse(referencia.getUsuario().getIdUsuario(), referencia.getId(), referencia.getCitacaoDireta(), referencia.getCitacaoIndireta()))
+                .collect(Collectors.toList());
+
+    }
 }
