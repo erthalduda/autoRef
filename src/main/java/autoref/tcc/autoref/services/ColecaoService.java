@@ -16,7 +16,7 @@ public interface ColecaoService {
 
     void deletaReferencia(Colecao colecao, Referencia referencia);
 
-    List<Colecao> colecoesPorUsuario(Integer idUsuario);
+    List<Colecao> colecoesPorUsuario();
 
     Colecao buscaPorId(Integer idColecao);
 

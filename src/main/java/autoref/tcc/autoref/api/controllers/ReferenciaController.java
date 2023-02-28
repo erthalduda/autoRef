@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import autoref.tcc.autoref.api.dtos.ReferenciaDTO;
-import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.*;
 import autoref.tcc.autoref.services.ReferenciaService;
 
@@ -47,13 +46,15 @@ public class ReferenciaController {
     @PostMapping("/cadastrar")
     public ResponseEntity<?> cadastraReferencia(@RequestBody ReferenciaDTO referenciaDTO) {
         Referencia referencia = mapper.map(referenciaDTO, tipos.get(referenciaDTO.getTipo()));
-        try { 
+        try {
             referencia.formata();
             referencia.formataCitacoes();
             referencia.setTodosOsDados();
             Referencia salva = serviceReferencia.cadastraReferencia(referencia);
+            salva.getUsuario().setColecoesUsuario(null);
+            salva.getUsuario().setReferenciasUsuario(null);
             return new ResponseEntity<>(salva, HttpStatus.CREATED);
-        } catch (ExcecoesAutoref excecao) {
+        } catch (Exception excecao) {
             return new ResponseEntity<>(excecao.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
@@ -77,7 +78,7 @@ public class ReferenciaController {
     public ResponseEntity<?> buscaTodasReferenciasRepositorioPrivado(
             @PathVariable(name = "idUsuario") Integer idUsuario) {
         try {
-            List<Referencia> buscar = serviceReferencia.buscarTodasNoRepositorioPrivado(idUsuario);
+            List<Referencia> buscar = serviceReferencia.buscarTodasNoRepositorioPrivado();
             for (Referencia referencia : buscar) {
                 Usuario copia = new Usuario();
                 copia.setIdUsuario(referencia.getUsuario().getIdUsuario());
@@ -91,19 +92,20 @@ public class ReferenciaController {
 
     // @GetMapping("buscar/privado/{idUsuario}/{pesquisa}")
     // public ResponseEntity<?> buscarReferenciaEspecificaRepositorioPrivado(
-    //         @PathVariable(name = "idUsuario") Integer idUsuario,
-    //         @PathVariable(name = "pesquisa") String pesquisa) {
-    //     try {
-    //         List<Referencia> buscar = serviceReferencia.buscarEspecificaNoRepositorioPrivado(pesquisa, idUsuario);
-    //         for (Referencia referencia : buscar) {
-    //             Usuario copia = new Usuario();
-    //             copia.setIdUsuario(referencia.getUsuario().getIdUsuario());
-    //             referencia.setUsuario(copia);
-    //         }
-    //         return new ResponseEntity<>(buscar, HttpStatus.OK);
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-    //     }
+    // @PathVariable(name = "idUsuario") Integer idUsuario,
+    // @PathVariable(name = "pesquisa") String pesquisa) {
+    // try {
+    // List<Referencia> buscar =
+    // serviceReferencia.buscarEspecificaNoRepositorioPrivado(pesquisa, idUsuario);
+    // for (Referencia referencia : buscar) {
+    // Usuario copia = new Usuario();
+    // copia.setIdUsuario(referencia.getUsuario().getIdUsuario());
+    // referencia.setUsuario(copia);
+    // }
+    // return new ResponseEntity<>(buscar, HttpStatus.OK);
+    // } catch (Exception e) {
+    // return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    // }
     // }
 
 }

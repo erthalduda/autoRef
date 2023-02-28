@@ -26,7 +26,7 @@ function Website() {
       id: 3,
       name: "nomeSite",
       value: "",
-      placeholder: "Ex: Nome do site",
+      placeholder: "Ex: Site",
       type: "text",
       label: "Nome do site:",
     },
@@ -35,7 +35,7 @@ function Website() {
       id: 4,
       name: "url",
       value: "",
-      placeholder: "Ex: Url",
+      placeholder: "Ex: www.site.com.br",
       type: "text",
       label: "URL:",
     },
@@ -43,7 +43,7 @@ function Website() {
       id: 5,
       name: "dataAcesso",
       value: "",
-      placeholder: "Ex: Data de acesso",
+      placeholder: "Ex: 22/01/2023",
       type: "date",
       label: "Data de acesso:",
     },
@@ -51,7 +51,7 @@ function Website() {
       id: 6,
       name: "anoPublicacao",
       value: "",
-      placeholder: "Ex: Ano de publicação",
+      placeholder: "Ex: 2021",
       type: "number",
       label: "Ano de publicação:",
     },
@@ -60,7 +60,7 @@ function Website() {
       id: 7,
       name: "autor",
       value: "",
-      placeholder: "Ex: Autor",
+      placeholder: "Ex: Maria Silva",
       type: "text",
       label: "Autor:",
     },
@@ -98,10 +98,10 @@ function Website() {
 
   const addFields = (event) => {
     event.preventDefault();
-    const id = inputFields.length + 1;
+    const id = inputFields.length + 2;
     let newfield = {
       id: id,
-      name: "autor",
+      name: "autorNovo",
       value: "",
       label: "Novo autor:",
       placeholder: "Ex: Maria Silva",
@@ -117,7 +117,7 @@ function Website() {
 
     inputFiltrado.value = event.target.value;
 
-    if (inputFiltrado.name == "autor") {
+    if (inputFiltrado.name === "autor") {
       const autorSelecionado = autoresCriados.find((a) => a.id === id);
 
       if (autorSelecionado) {

@@ -11,14 +11,15 @@ import Sidebar from "../components/sidebar";
 import Navbar from "../components/navbar";
 
 function MonografiaEletronica() {
-  const [error, setError] = useState(false);
   const { fetchData } = useAxios();
+  const [error, setError] = useState(false);
+
   const [inputFields, setInputFields] = useState([
     {
       id: 2,
       name: "titulo",
       label: "Título:",
-     value: "",
+      value: "",
       placeholder: "Ex: Titulo",
       type: "text",
     },
@@ -26,7 +27,7 @@ function MonografiaEletronica() {
     {
       id: 3,
       name: "subtitulo",
-     value: "",
+      value: "",
       label: "Subtítulo:",
       placeholder: "Ex: Subtitulo",
       type: "text",
@@ -70,56 +71,43 @@ function MonografiaEletronica() {
       id: 8,
       label: "Editora:",
       name: "editora",
-     value: "",
+      value: "",
       placeholder: "Ex: Editora",
       type: "text",
     },
     {
       id: 9,
       name: "edicao",
-     value: "",
+      value: "",
       label: "Edição:",
       placeholder: "Ex: 6",
       type: "number",
     },
+
     {
       id: 10,
       name: "descricaoDoSuporte",
-      label: "Descrição do suporte:",
       value: "",
-      placeholder: "Ex: CD-Rom",
+      label: "Descrição do suporte:",
+      placeholder: "Ex: Cd-Rom",
       type: "text",
     },
 
     {
       id: 11,
       name: "autor",
-      value: "",
       label: "Autor:",
+      value: "",
       placeholder: "Ex: Maria Silva",
       type: "text",
     },
   ]);
+
   const [dataEnviarDados, setDataEnviarDados] = useState({
-    tipo: "monografiaMeioEletronico",
+    tipo: "monografia",
     autor: [],
   });
-
   const [autoresCriados, setAutoresCriados] = useState([]);
-
-  const addFields = () => {
-    const id = inputFields.length + 2;
-    let newfield = {
-      id: id,
-      name: "autor",
-      label: "Novo autor:",
-      value: "",
-      placeholder: "Ex: Maria Silva",
-      type: "text",
-    };
-    setInputFields([...inputFields, newfield]);
-    console.log(inputFields);
-  };
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -145,11 +133,42 @@ function MonografiaEletronica() {
     console.log(inputFields);
   };
 
+  const addFields = (event) => {
+    event.preventDefault();
+    const id = inputFields.length + 2;
+    let newfield = {
+      id: id,
+      name: "novoAutor",
+      value: "",
+      label: "Novo autor:",
+      placeholder: "Ex: Maria Silva",
+      type: "text",
+    };
+    setInputFields([...inputFields, newfield]);
+    console.log(inputFields);
+  };
+
   const handleFormChange = (id, event) => {
     let data = [...inputFields];
     const inputFiltrado = data.find((input) => input.id === id);
 
     inputFiltrado.value = event.target.value;
+
+    if (inputFiltrado.name == "autor") {
+      const autorSelecionado = autoresCriados.find((a) => a.id === id);
+
+      if (autorSelecionado) {
+        autorSelecionado.nome = inputFiltrado.value;
+      } else {
+        autoresCriados.push({ id: id, nome: inputFiltrado.value });
+      }
+      console.log(autoresCriados);
+    } else {
+      setDataEnviarDados({
+        ...dataEnviarDados,
+        [inputFiltrado.name]: inputFiltrado.value,
+      });
+    }
 
     data = data.map((inputField) => {
       if (inputField.id === inputFiltrado.id) {
@@ -158,28 +177,17 @@ function MonografiaEletronica() {
       return inputField;
     });
     // //data[index][event.target.name] = event.target.value;
+    console.log(dataEnviarDados);
     setInputFields(data);
   };
-
-  // const onChangeAutor = (value, autor) => {
-
-  //   const valor = value.target.value;
-  // let autorFiltrado = inputFields.find(a => {
-  //   return autor?.id === a?.id
-  // })
-
-  //     console.log(autorFiltrado)
-  //     autorFiltrado.autor = valor;
-
-  //     console.log(inputFields)
-  //     //this.setState({ autor: autor.target.value })
-  // }
-
   return (
     <>
       <Sidebar></Sidebar>
-      <Navbar></Navbar> 
-      <h1 id="referencia">Monografia em Meio-Eletrônico</h1>
+      <Navbar></Navbar>
+      <h1 id="referencia" className="centralizar-nome">
+        Monografia em Meio
+      </h1>
+      <h1 id="referencia" className="centralizar-nome">Eletrônico</h1>
       <br></br>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>

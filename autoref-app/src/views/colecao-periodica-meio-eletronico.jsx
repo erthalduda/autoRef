@@ -134,9 +134,16 @@ function ColecaoPeriodicaMeioEletronico() {
     <>
       <Sidebar></Sidebar>
       <Navbar></Navbar>
-      <h1 id="referencia">
-      <br></br>
-        Coleção de Publicação Periódica em Meio Eletrônico
+      <h1 id="referencia" className="centralizar-nome">
+        Coleção de Publicação
+      </h1>
+      <h1 id="referencia" className="centralizar-nome">
+        {" "}
+        Periódica em Meio
+      </h1>
+      <h1 id="referencia" className="centralizar-nome">
+        {" "}
+        Eletrônico
       </h1>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>

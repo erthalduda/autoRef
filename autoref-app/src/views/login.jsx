@@ -24,7 +24,7 @@ const Login = () => {
       id: 2,
       name: "senha",
       value: "",
-      type: "password",
+      type: "text",
       label: "Senha:",
       placeholder: "Ex: 123456",
     },
@@ -58,11 +58,9 @@ const Login = () => {
 
       localStorage.save("token", token);
 
-      
-
       localStorage.save("userData", JSON.stringify(response.data));
     } else if (error) {
-      setError(mensagemErro);
+      setError("Falha ao logar!");
     }
   };
 

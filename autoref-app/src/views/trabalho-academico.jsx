@@ -18,7 +18,7 @@ function Trabalho() {
       label: "Título:",
       name: "titulo",
       value: "",
-      placeholder: "Ex: Titulo",
+      placeholder: "Ex: Título",
       type: "text",
     },
 
@@ -27,7 +27,7 @@ function Trabalho() {
       name: "subtitulo",
       value: "",
       label: "Subtítulo:",
-      placeholder: "Ex: Subtitulo",
+      placeholder: "Ex: Subtítulo",
       type: "text",
     },
 
@@ -36,7 +36,7 @@ function Trabalho() {
       name: "anoDeposito",
       value: "",
       label: "Ano de depósito:",
-      placeholder: "Ex: Ano de depósito",
+      placeholder: "Ex: 2022",
       type: "number",
     },
     {
@@ -44,7 +44,7 @@ function Trabalho() {
       name: "anoEntrega",
       label: "Ano de entrega:",
       value: "",
-      placeholder: "Ex: Ano de entrega",
+      placeholder: "Ex: 2023",
       type: "number",
     },
 
@@ -78,7 +78,7 @@ function Trabalho() {
       name: "vinculacaoAcademica",
       value: "",
       label: "Vinculação Acadêmica:",
-      placeholder: "Ex: ",
+      placeholder: "Ex: IFSul",
       type: "text",
     },
     {
@@ -94,7 +94,7 @@ function Trabalho() {
       name: "anoDefesa",
       value: "",
       label: "Ano de defesa:",
-      placeholder: "Ex: 2012",
+      placeholder: "Ex: 2023",
       type: "number",
     },
 
@@ -104,7 +104,7 @@ function Trabalho() {
       name: "autor",
       label: "Autor:",
       value: "",
-      placeholder: "Ex: Autor",
+      placeholder: "Ex: Maria Silva",
       type: "text",
     },
   ]);
@@ -140,7 +140,7 @@ function Trabalho() {
 
   const addFields = (event) => {
     event.preventDefault();
-    const id = inputFields.length + 1;
+    const id = inputFields.length + 2;
     let newfield = {
       id: id,
       name: "autor",

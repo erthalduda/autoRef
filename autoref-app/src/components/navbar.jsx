@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
 import { BsBoxArrowRight } from "react-icons/bs";
 import Sidebar from "./sidebar";
