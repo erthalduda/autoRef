@@ -62,11 +62,9 @@ const Login = () => {
 
       localStorage.save("token", token);
 
-      
-
       localStorage.save("userData", JSON.stringify(response.data));
     } else if (error) {
-      setError(mensagemErro);
+      setError("Falha ao logar!");
     }
   };
 

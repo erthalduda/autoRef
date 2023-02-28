@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import autoref.tcc.autoref.api.dtos.ReferenciaDTO;
-import autoref.tcc.autoref.exceptions.ExcecoesAutoref;
 import autoref.tcc.autoref.model.*;
 import autoref.tcc.autoref.services.ReferenciaService;
 
@@ -79,7 +78,7 @@ public class ReferenciaController {
     public ResponseEntity<?> buscaTodasReferenciasRepositorioPrivado(
             @PathVariable(name = "idUsuario") Integer idUsuario) {
         try {
-            List<Referencia> buscar = serviceReferencia.buscarTodasNoRepositorioPrivado(idUsuario);
+            List<Referencia> buscar = serviceReferencia.buscarTodasNoRepositorioPrivado();
             for (Referencia referencia : buscar) {
                 Usuario copia = new Usuario();
                 copia.setIdUsuario(referencia.getUsuario().getIdUsuario());

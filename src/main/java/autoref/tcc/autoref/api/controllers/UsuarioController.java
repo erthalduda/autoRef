@@ -71,7 +71,8 @@ public class UsuarioController {
                 usuario.setColecoesUsuario(null);
                 usuario.setReferenciasUsuario(null);
                 // int posicaoRanking = ranking.indexOf(usuario) + 1;
-                // String usuarioRanking = "#" + posicaoRanking + " " + usuario.getNome() + " " + usuario.getXp();
+                // String usuarioRanking = "#" + posicaoRanking + " " + usuario.getNome() + " "
+                // + usuario.getXp();
                 // rankingFinal.add(usuarioRanking);
             }
             return new ResponseEntity<>(ranking, HttpStatus.OK);

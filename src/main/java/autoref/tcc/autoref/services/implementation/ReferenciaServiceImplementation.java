@@ -35,8 +35,8 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
         Usuario usuario = loginService.getLoggedUsuario();
 
         int quantidadeReferencias = repositorioUsuario.referenciasPorUsuario(usuario.getIdUsuario());
-        
-        if(quantidadeReferencias == 10){
+
+        if (quantidadeReferencias == 10) {
             usuario.setXp(500);
         }
 
@@ -82,17 +82,21 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
         return retornoBusca;
     }
 
-    @Override
-    @Transactional
-    public List<Referencia> buscarEspecificaNoRepositorioPrivado(String pesquisa, Integer idUsuario) {
-        List<Referencia> retornoBusca = repositorioReferencia.buscaReferenciaEspecificaPrivado(pesquisa, idUsuario);
-        return retornoBusca;
-    }
+    // @Override
+    // @Transactional
+    // public List<Referencia> buscarEspecificaNoRepositorioPrivado(String pesquisa,
+    // Integer idUsuario) {
+    // List<Referencia> retornoBusca =
+    // repositorioReferencia.buscaReferenciaEspecificaPrivado(pesquisa, idUsuario);
+    // return retornoBusca;
+    // }
 
     @Override
     @Transactional
-    public List<Referencia> buscarTodasNoRepositorioPrivado(Integer idUsuario) {
-        List<Referencia> retornoBusca = repositorioReferencia.buscaTodasReferenciasPrivado(idUsuario);
+    public List<Referencia> buscarTodasNoRepositorioPrivado() {
+        Usuario usuario = loginService.getLoggedUsuario();
+
+        List<Referencia> retornoBusca = repositorioReferencia.buscaTodasReferenciasPrivado(usuario.getIdUsuario());
         return retornoBusca;
     }
 

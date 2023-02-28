@@ -45,6 +45,12 @@ buscarDados();
       <Navbar></Navbar>
       <div className="jumbotron">
         <h1 className="centralizar-ranking">RANKING DE USUÁRIOS</h1>
+        <p className="centralizar">
+          Quer saber como subir no ranking?
+          <a href="/infos-ranking" className="clicavel">
+            Clique aqui!
+          </a>
+        </p>
         <table className="table">
           <thead>
             <tr>
