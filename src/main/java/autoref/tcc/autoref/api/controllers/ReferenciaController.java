@@ -74,9 +74,8 @@ public class ReferenciaController {
         }
     }
 
-    @GetMapping("buscar/privado/{idUsuario}")
-    public ResponseEntity<?> buscaTodasReferenciasRepositorioPrivado(
-            @PathVariable(name = "idUsuario") Integer idUsuario) {
+    @GetMapping("/buscar/privado")
+    public ResponseEntity<?> buscaTodasReferenciasRepositorioPrivado() {
         try {
             List<Referencia> buscar = serviceReferencia.buscarTodasNoRepositorioPrivado();
             for (Referencia referencia : buscar) {

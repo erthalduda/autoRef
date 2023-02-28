@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../css/referencia.css";
 import { useAxios } from "../hooks/axios";
-import axios from "axios";
-import UsuarioService from "../app/services/UsuarioService";
 import Sidebar from "../components/sidebar";
 import Navbar from "../components/navbar";
-import * as messages from "../components/toastifyClasse";
 
 const Ranking = () => {
   const [usuarios, setUsuarios] = useState([]);
