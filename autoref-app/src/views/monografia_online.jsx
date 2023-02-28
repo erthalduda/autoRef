@@ -84,7 +84,7 @@ function MonografiaOnline() {
       label: "Edição:",
       value: "",
       placeholder: "Ex: 6",
-      type: "text",
+      type: "number",
     },
 
     {
@@ -145,7 +145,7 @@ function MonografiaOnline() {
 
   const addFields = (event) => {
     event.preventDefault();
-    const id = inputFields.length + 2;
+    const id = inputFields.length + 3;
     let newfield = {
       id: id,
       name: "autor",
