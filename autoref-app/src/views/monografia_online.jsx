@@ -114,7 +114,7 @@ function MonografiaOnline() {
     },
   ]);
   const [dataEnviarDados, setDataEnviarDados] = useState({
-    tipo: 'monografia',
+    tipo: 'monografiaOnline',
     autor: [],
   });
   const [autoresCriados, setAutoresCriados] = useState([]);

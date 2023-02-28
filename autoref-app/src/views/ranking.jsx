@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../css/referencia.css";
+import { useAxios } from "../hooks/axios";
 import axios from "axios";
 import UsuarioService from "../app/services/UsuarioService";
 import Sidebar from "../components/sidebar";
@@ -7,32 +8,37 @@ import Navbar from "../components/navbar";
 import * as messages from "../components/toastifyClasse";
 
 const Ranking = () => {
-  // this.service = new UsuarioService();
+  const [usuarios, setUsuarios] = useState([]);
+  const { fetchData } = useAxios();
+  
+  useEffect( () => {
+    const buscarDados = async () => {
+    const axiosParams = {
+      baseURL: "http://localhost:8080",
+      method: "GET",
+      url: "/usuario/ranking",
+    };
+ 
+    const { response, error } = await fetchData(axiosParams, true);
 
-  // this.service.rankingUsuarios()
-  //   .then((resposta) => {
-  //     const lista = resposta.data;
-
-  //     if (lista.length < 1) {
-  //       messages.mensagemAlerta("Nenhuma referência foi encontrada.");
-  //     }
-  //     this.setState({ referencias: lista });
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-
-  // const [ranking, setRanking] = useState([]);
-
-  // useEffect(() => {
-  //   dadosRanking();
-  // }, []);
-
-  // const dadosRanking = async () => {
-  //   const { data } = await axios.get("http://localhost:8080/usuarios/ranking");
-  //   setRanking(data);
-  // };
-
+    if (response && !error) {
+    setUsuarios(response.data)
+    } else if (error) {
+      
+    }
+  
+    }
+buscarDados();   
+  }, []);
+  const renderizarUsuarios = () => {
+    return usuarios.map((usuario,index) => (
+      <tr>
+      <td>{index+1}</td>
+      <td> {usuario?.nome}</td>
+      <td>{usuario?.xp} XP</td>
+    </tr>))
+  
+  }
   return (
     <>
       <Sidebar></Sidebar>
@@ -48,28 +54,11 @@ const Ranking = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td> RODRIGO REMOR </td>
-              <td>4500XP</td>
-            </tr>{" "}
-            <tr>
-              <td>2</td>
-              <td> LOURENÇO BASSO </td>
-              <td>3200XP</td>
-            </tr>{" "}
-            <tr>
-              <td>3</td>
-              <td> WILLIAM HOLZ </td>
-              <td> 3000XP</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td> EDUARDA ERTHAL </td>
-              <td> 2800XP</td>
-            </tr>
+          {renderizarUsuarios()}
           </tbody>
         </table>
+
+
       </div>
     </>
   );
