@@ -21,7 +21,9 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
 
     @Autowired
     private LoginService loginService;
-    public ReferenciaServiceImplementation(ReferenciaRepository repositorioReferencia, UsuarioRepository repositorioUsuario) {
+
+    public ReferenciaServiceImplementation(ReferenciaRepository repositorioReferencia,
+            UsuarioRepository repositorioUsuario) {
         this.repositorioReferencia = repositorioReferencia;
         this.repositorioUsuario = repositorioUsuario;
     }
@@ -33,7 +35,7 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
         Usuario usuario = loginService.getLoggedUsuario();
 
         int quantidadeReferencias = repositorioUsuario.referenciasPorUsuario(usuario.getIdUsuario());
-        referencia.setUsuario(usuario);
+        
         if(quantidadeReferencias == 10){
             usuario.setXp(500);
         }
@@ -52,6 +54,7 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
         }
 
         usuario.setXp(100);
+        referencia.setUsuario(usuario);
         System.out.println(referencia.getTodosOsDados().length());
         return repositorioReferencia.save(referencia);
     }
