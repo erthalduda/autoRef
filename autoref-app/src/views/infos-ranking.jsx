@@ -8,12 +8,14 @@ const InfosRanking = () => {
       <Sidebar></Sidebar>
       <Navbar></Navbar>
       <div className="jumbotron">
-        <h1
-          className="centralizar-nome"
-        >
-          COMO SUBIR DE
-        </h1>
+        <h1 className="centralizar-nome">COMO SUBIR DE</h1>
         <h1 className="centralizar-nome">RANKING</h1>
+        <p className="centralizar">
+          {" "}
+          <a href="/ranking" className="clicavel">
+            Voltar para a tela de ranking
+          </a>
+        </p>
 
         <table className="table">
           <thead>
