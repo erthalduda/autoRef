@@ -16,4 +16,4 @@ spring:
       ddl-auto: update
   session:
     store-type: jdbc
-    timeout: 300
+    timeout: 3000
