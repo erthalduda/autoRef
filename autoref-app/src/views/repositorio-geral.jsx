@@ -44,6 +44,7 @@ const RepositorioGeral = () => {
       <Navbar></Navbar>
       <div className="jumbotron">
         <h1 className="centralizar-ranking">Repositório Geral</h1>
+        <p className="centralizar">Digite o termo de busca:</p>
         <div className="centralizar">
           <input type="text" className="form-input" placeholder="Digite o termo de busca" 
             value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
@@ -62,7 +63,7 @@ const RepositorioGeral = () => {
           </thead>
           </table>
         ) : (
-          <p>Nenhum repositório encontrado.</p>
+          <p className="centralizar">Nenhuma referência encontrada.</p>
         )}
       </div>
     </>

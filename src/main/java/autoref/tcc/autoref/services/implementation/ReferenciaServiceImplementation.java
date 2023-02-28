@@ -78,8 +78,9 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
     }
 
     @Override
-    @Transactional
+    
     public List<ReferenciaResponse> buscarNoRepositorioGeral(String pesquisa) {
+  
         List<Referencia> retornoBusca = repositorioReferencia.buscaReferenciaRepositorioGeral(pesquisa);
         return retornoBusca
                 .stream()

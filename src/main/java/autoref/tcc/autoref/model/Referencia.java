@@ -2,9 +2,14 @@ package autoref.tcc.autoref.model;
 
 import javax.persistence.*;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import java.time.LocalDate;
 import java.util.List;
 
+@ToString(of = "id")
+@EqualsAndHashCode(of = "id")
 @Entity
 public class Referencia {
     @Id
@@ -167,12 +172,5 @@ public class Referencia {
         }
         dataString = dia + mesString + ano;
         return dataString;
-    }
-
-    @Override
-    public String toString() {
-        return "Referencia [id=" + id + ", titulo=" + titulo + ", formatoFinal=" + formatoFinal + ", citacaoIndireta="
-                + citacaoIndireta + ", citacaoDireta=" + citacaoDireta + ", tipo=" + tipo + ", todosOsDados="
-                + todosOsDados + ", colecoes=" + colecoes + ", usuario=" + usuario + "]";
     }
 }
