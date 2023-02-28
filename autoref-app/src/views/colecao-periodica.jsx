@@ -30,6 +30,7 @@ function ColecaoPeriodica() {
       id: 3,
       name: "subtituloPublicacao",
       value: "",
+      label: "Subtítulo: ",
       placeholder: "Ex: Subtítulo",
       type: "text",
     },
@@ -37,6 +38,7 @@ function ColecaoPeriodica() {
     {
       id: 4,
       name: "editora",
+      label: "Editora: ",
       value: "",
       placeholder: "Ex: Editora",
       type: "text",
@@ -45,6 +47,7 @@ function ColecaoPeriodica() {
       id: 5,
       name: "dataInicio",
       value: "",
+      label: "Data de início (ano): ",
       placeholder: "Ex: 2004",
       type: "number",
     },
@@ -53,6 +56,7 @@ function ColecaoPeriodica() {
       id: 6,
       name: "dataFim",
       value: "",
+      label: "Data de fim (ano): ",
       placeholder: "Ex: 2005",
       type: "number",
     },
@@ -61,6 +65,7 @@ function ColecaoPeriodica() {
       id: 7,
       name: "issn",
       value: "",
+      label: "ISSN: ",
       placeholder: "Ex: 123456789",
       type: "text",
     },
@@ -106,16 +111,29 @@ function ColecaoPeriodica() {
     <>
       <Sidebar></Sidebar>
       <Navbar></Navbar>
-      <h1 id="referencia">Coleção de Publicação Periódica</h1>
+      <h1 id="referencia" className="centralizar-nome">
+        Coleção de Publicação
+      </h1>
+      <h1 id="referencia" className="centralizar-nome">
+        {" "}
+        Periódica
+      </h1>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
           {inputFields.map((input, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="form-item">
+                {input.label != null ? (
+                  <div className="form-label">{input.label}</div>
+                ) : (
+                  <></>
+                )}
+
                 <input
                   type={input.type}
                   key={input.id}
                   id={input.id}
+                  label={input.label}
                   value={input.value}
                   name={input.name}
                   placeholder={input.placeholder}

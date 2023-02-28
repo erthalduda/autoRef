@@ -15,12 +15,11 @@ function Monografia() {
   const [error, setError] = useState(false);
 
   const [inputFields, setInputFields] = useState([
-    
     {
       id: 2,
       name: "titulo",
       label: "Título:",
-     value: "",
+      value: "",
       placeholder: "Ex: Titulo",
       type: "text",
     },
@@ -28,7 +27,7 @@ function Monografia() {
     {
       id: 3,
       name: "subtitulo",
-     value: "",
+      value: "",
       label: "Subtítulo:",
       placeholder: "Ex: Subtitulo",
       type: "text",
@@ -72,14 +71,14 @@ function Monografia() {
       id: 8,
       label: "Editora:",
       name: "editora",
-     value: "",
+      value: "",
       placeholder: "Ex: Editora",
       type: "text",
     },
     {
       id: 9,
       name: "edicao",
-     value: "",
+      value: "",
       label: "Edição:",
       placeholder: "Ex: 6",
       type: "number",
@@ -93,11 +92,10 @@ function Monografia() {
       placeholder: "Ex: Maria Silva",
       type: "text",
     },
-   
   ]);
 
   const [dataEnviarDados, setDataEnviarDados] = useState({
-    tipo: 'monografia',
+    tipo: "monografia",
     autor: [],
   });
   const [autoresCriados, setAutoresCriados] = useState([]);
@@ -131,8 +129,8 @@ function Monografia() {
     const id = inputFields.length + 2;
     let newfield = {
       id: id,
-      name: "autor",
-     value: "",
+      name: "novoAutor",
+      value: "",
       label: "Novo autor:",
       placeholder: "Ex: Maria Silva",
       type: "text",
@@ -178,7 +176,9 @@ function Monografia() {
     <>
       <Sidebar></Sidebar>
       <Navbar></Navbar>
-      <h1 id="referencia">Monografia</h1>
+      <h1 id="referencia" className="centralizar-nome">
+        Monografia
+      </h1>
       <br></br>
       <div className="form-group-ref">
         <form>

@@ -178,8 +178,11 @@ function MonografiaEletronica() {
   return (
     <>
       <Sidebar></Sidebar>
-      <Navbar></Navbar> 
-      <h1 id="referencia">Monografia em Meio-Eletrônico</h1>
+      <Navbar></Navbar>
+      <h1 id="referencia" className="centralizar-nome">
+        Monografia em Meio
+      </h1>
+      <h1 id="referencia" className="centralizar-nome">Eletrônico</h1>
       <br></br>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
