@@ -107,20 +107,6 @@ function MonografiaEletronica() {
 
   const [autoresCriados, setAutoresCriados] = useState([]);
 
-  const addFields = () => {
-    const id = inputFields.length + 2;
-    let newfield = {
-      id: id,
-      name: "autor",
-      label: "Novo autor:",
-      value: "",
-      placeholder: "Ex: Maria Silva",
-      type: "text",
-    };
-    setInputFields([...inputFields, newfield]);
-    console.log(inputFields);
-  };
-
   const onSubmit = async (event) => {
     event.preventDefault();
     dataEnviarDados.autor = autoresCriados.map((obj) => obj.nome);
@@ -145,11 +131,42 @@ function MonografiaEletronica() {
     console.log(inputFields);
   };
 
+  const addFields = (event) => {
+    event.preventDefault();
+    const id = inputFields.length + 2;
+    let newfield = {
+      id: id,
+      name: "novoAutor",
+      value: "",
+      label: "Novo autor:",
+      placeholder: "Ex: Maria Silva",
+      type: "text",
+    };
+    setInputFields([...inputFields, newfield]);
+    console.log(inputFields);
+  };
+
   const handleFormChange = (id, event) => {
     let data = [...inputFields];
     const inputFiltrado = data.find((input) => input.id === id);
 
     inputFiltrado.value = event.target.value;
+
+    if (inputFiltrado.name == "autor") {
+      const autorSelecionado = autoresCriados.find((a) => a.id === id);
+
+      if (autorSelecionado) {
+        autorSelecionado.nome = inputFiltrado.value;
+      } else {
+        autoresCriados.push({ id: id, nome: inputFiltrado.value });
+      }
+      console.log(autoresCriados);
+    } else {
+      setDataEnviarDados({
+        ...dataEnviarDados,
+        [inputFiltrado.name]: inputFiltrado.value,
+      });
+    }
 
     data = data.map((inputField) => {
       if (inputField.id === inputFiltrado.id) {
@@ -158,23 +175,9 @@ function MonografiaEletronica() {
       return inputField;
     });
     // //data[index][event.target.name] = event.target.value;
+    console.log(dataEnviarDados);
     setInputFields(data);
   };
-
-  // const onChangeAutor = (value, autor) => {
-
-  //   const valor = value.target.value;
-  // let autorFiltrado = inputFields.find(a => {
-  //   return autor?.id === a?.id
-  // })
-
-  //     console.log(autorFiltrado)
-  //     autorFiltrado.autor = valor;
-
-  //     console.log(inputFields)
-  //     //this.setState({ autor: autor.target.value })
-  // }
-
   return (
     <>
       <Sidebar></Sidebar>

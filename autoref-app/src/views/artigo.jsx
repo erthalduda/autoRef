@@ -172,7 +172,7 @@ function Artigo() {
 
   const addFields = (event) => {
     event.preventDefault();
-    const id = inputFields.length + 1;
+    const id = inputFields.length + 2;
     let newfield = {
       id: id,
       name: "autor",
