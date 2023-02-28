@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@ToString(of = "id")
+@EqualsAndHashCode(of = "id")
 @Entity
 public class Usuario {
     @Id
@@ -181,11 +186,4 @@ public class Usuario {
     public void setPossuiPesquisadorSabio(boolean possuiPesquisadorSabio) {
         this.possuiPesquisadorSabio = possuiPesquisadorSabio;
     }
-
-    @Override
-    public String toString() {
-        return "Usuario [idUsuario=" + idUsuario + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", xp="
-                + xp + ", ativo=" + ativo;
-    }
-
 }
