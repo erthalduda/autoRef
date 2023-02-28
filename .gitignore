@@ -67,3 +67,4 @@ src/main/resources/application.yml
 hs_err_pid*
 src/main/java/autoref/tcc/autoref/AutorefApplication.java
 src/main/resources/application.yml
+src/main/resources/application.yml
