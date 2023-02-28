@@ -40,8 +40,8 @@ function MonografiaOnline() {
       id: 4,
       name: "anoPublicacao",
       value: "",
-      label: "Ano de puFblicação:",
-      placeholder: "Ex: Ano de Publicação",
+      label: "Ano de publicação:",
+      placeholder: "Ex: 2023",
       type: "number",
     },
     {
@@ -49,7 +49,7 @@ function MonografiaOnline() {
       name: "anoEntrega",
       value: "",
       label: "Ano de entrega:",
-      placeholder: "Ex: Ano de entrega",
+      placeholder: "Ex: 2023",
       type: "number",
     },
 
@@ -58,7 +58,7 @@ function MonografiaOnline() {
       name: "quantidadePaginas",
       label: "Quantidade de páginas:",
       value: "",
-      placeholder: "Ex: Quantidade da páginas",
+      placeholder: "Ex: 9",
       type: "number",
     },
 
@@ -67,7 +67,7 @@ function MonografiaOnline() {
       name: "cidade",
       label: "Cidade:",
       value: "",
-      placeholder: "Ex: Cidade",
+      placeholder: "Ex: Porto Alegre",
       type: "text",
     },
     {
@@ -75,7 +75,7 @@ function MonografiaOnline() {
       name: "editora",
       label: "Editora:",
       value: "",
-      placeholder: "Ex: Editora",
+      placeholder: "Ex: Editora A",
       type: "text",
     },
     {
@@ -83,7 +83,7 @@ function MonografiaOnline() {
       name: "edicao",
       label: "Edição:",
       value: "",
-      placeholder: "Ex: Edição",
+      placeholder: "Ex: 6",
       type: "text",
     },
 
@@ -92,7 +92,7 @@ function MonografiaOnline() {
       name: "url",
       value: "",
       label: "URL:",
-      placeholder: "Ex: Url",
+      placeholder: "Ex: www.site.com.br",
       type: "text",
     },
     {
@@ -100,7 +100,7 @@ function MonografiaOnline() {
       name: "dataAcesso",
       value: "",
       label: "Data de acesso:",
-      placeholder: "Ex: Data de acesso",
+      placeholder: "Ex: 18/01/2023",
       type: "date",
     },
 
@@ -109,7 +109,7 @@ function MonografiaOnline() {
       name: "autor",
       value: "",
       label: "Autor:",
-      placeholder: "Ex: Autor",
+      placeholder: "Ex: Maria Silva",
       type: "text",
     },
   ]);
@@ -194,7 +194,7 @@ function MonografiaOnline() {
     <>
       <Sidebar></Sidebar>
       <Navbar></Navbar>
-      <h1 id="referencia">Monografia Online</h1>
+      <h1 id="referencia" className="centralizar-nome">Monografia Online</h1>
       <br></br>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>

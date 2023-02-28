@@ -47,7 +47,7 @@ function PartePeriodica() {
       id: 5,
       name: "dataInicio",
       value: "",
-      label: "Data de início:",
+      label: "Data de início (ano):",
       placeholder: "Ex: 2004",
       type: "number",
     },
@@ -57,7 +57,7 @@ function PartePeriodica() {
       name: "dataFim",
       value: "",
       placeholder: "Ex: 2005",
-      label: "Data final:",
+      label: "Data final (ano):",
       type: "number",
     },
 
@@ -75,7 +75,7 @@ function PartePeriodica() {
       name: "periodoConsultado",
       value: "",
       placeholder: "Ex: 2002",
-      label: "Período consultado:",
+      label: "Período consultado (ano):",
       type: "text",
     },
   ]);
@@ -120,7 +120,13 @@ function PartePeriodica() {
     <>
       <Sidebar></Sidebar>
       <Navbar></Navbar>
-      <h1 id="referencia">Parte de Coleção de Publicação Periódica</h1>
+      <h1 id="referencia" className="centralizar-nome">
+        Parte de Coleção de
+      </h1>
+      <h1 id="referencia" className="centralizar-nome">
+        {" "}
+        Publicação Periódica
+      </h1>
       <br></br>
       <div className="form-group-ref">
         <form onSubmit={onSubmit}>
