@@ -30,29 +30,37 @@ const RepositorioGeral = () => {
   
   const renderizarRepositorios = () => {
     return repositorios.map((repositorio) => (
-      <div className="card mb-3" key={repositorio?.formatoFinal}>
-        <div className="card-body">
-          <h5 className="card-title">{repositorio?.citacaoDireta}</h5>
-          <p className="card-text">{repositorio?.citacaoIndireta}</p>
-        </div>
-      </div>
-    ))
-  }
+      <tr>
+        <td>{repositorio?.formatoFinal}</td>
+        <td> {repositorio?.citacaoDireta}</td>
+        <td>{repositorio?.citacaoIndireta}</td>
+      </tr>
+    ));
+  };
   
   return (
     <>
       <Sidebar></Sidebar>
       <Navbar></Navbar>
       <div className="jumbotron">
-        <h1 className="centralizar-ranking">PESQUISAR REPOSITÓRIOS</h1>
+        <h1 className="centralizar-ranking">Repositório Geral</h1>
         <div className="form-group">
-          <input type="text" className="form-control" placeholder="Digite o termo de busca" 
+          <input type="text" className="form-input" placeholder="Digite o termo de busca" 
             value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         </div>
         {repositorios.length > 0 ? (
-          <div className="card-columns">
+           <table className="table">
+           <thead>
+           <tr>
+             <th scope="col">REFERÊNCIA</th>
+             <th scope="col">CIT. DIRETA</th>
+             <th scope="col">CIT. INDIRETA</th>
+           </tr>
+         
             {renderizarRepositorios()}
-          </div>
+         
+          </thead>
+          </table>
         ) : (
           <p>Nenhum repositório encontrado.</p>
         )}
