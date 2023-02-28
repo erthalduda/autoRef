@@ -61,15 +61,9 @@ function ColecaoPeriodica() {
       id: 7,
       name: "localPublicacao",
       value: "",
-<<<<<<< HEAD
-      label: "Local de publicação: ",
-      placeholder: "Ex: Sapucaia do Sul",
-      type: "number",
-=======
       label: "Local de publicação:",
       placeholder: "Ex: Porto Alegre",
       type: "text",
->>>>>>> 068a93c6331326648ca15baa79db0dca24e91b29
     },
 
     {
