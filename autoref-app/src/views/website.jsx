@@ -101,7 +101,7 @@ function Website() {
     const id = inputFields.length + 2;
     let newfield = {
       id: id,
-      name: "autorNovo",
+      name: "autor",
       value: "",
       label: "Novo autor:",
       placeholder: "Ex: Maria Silva",
@@ -117,7 +117,7 @@ function Website() {
 
     inputFiltrado.value = event.target.value;
 
-    if (inputFiltrado.name === "autor") {
+    if (inputFiltrado.name == "autor") {
       const autorSelecionado = autoresCriados.find((a) => a.id === id);
 
       if (autorSelecionado) {

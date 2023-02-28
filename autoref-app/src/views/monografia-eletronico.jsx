@@ -138,7 +138,7 @@ function MonografiaEletronica() {
     const id = inputFields.length + 2;
     let newfield = {
       id: id,
-      name: "novoAutor",
+      name: "autor",
       value: "",
       label: "Novo autor:",
       placeholder: "Ex: Maria Silva",

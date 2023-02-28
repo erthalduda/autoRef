@@ -108,6 +108,7 @@ function Trabalho() {
       type: "text",
     },
   ]);
+ 
   const [dataEnviarDados, setDataEnviarDados] = useState({
     tipo: "trabalhoAcademico",
     autor: [],
