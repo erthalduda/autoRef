@@ -19,7 +19,7 @@ function ColecaoPeriodica() {
     },
     {
       id: 2,
-      label: "Título",
+      label: "Título:",
       name: "titulo",
       value: "",
       placeholder: "Ex: Título",
@@ -60,9 +60,17 @@ function ColecaoPeriodica() {
       placeholder: "Ex: 2005",
       type: "number",
     },
-
     {
       id: 7,
+      name: "localPublicacao",
+      value: "",
+      label: "Local de publicação: ",
+      placeholder: "Ex: Sapucaia do Sul",
+      type: "number",
+    },
+
+    {
+      id: 8,
       name: "issn",
       value: "",
       label: "ISSN: ",
