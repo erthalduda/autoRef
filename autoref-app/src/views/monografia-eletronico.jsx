@@ -11,14 +11,15 @@ import Sidebar from "../components/sidebar";
 import Navbar from "../components/navbar";
 
 function MonografiaEletronica() {
-  const [error, setError] = useState(false);
   const { fetchData } = useAxios();
+  const [error, setError] = useState(false);
+
   const [inputFields, setInputFields] = useState([
     {
       id: 2,
       name: "titulo",
       label: "Título:",
-     value: "",
+      value: "",
       placeholder: "Ex: Titulo",
       type: "text",
     },
@@ -26,7 +27,7 @@ function MonografiaEletronica() {
     {
       id: 3,
       name: "subtitulo",
-     value: "",
+      value: "",
       label: "Subtítulo:",
       placeholder: "Ex: Subtitulo",
       type: "text",
@@ -70,41 +71,42 @@ function MonografiaEletronica() {
       id: 8,
       label: "Editora:",
       name: "editora",
-     value: "",
+      value: "",
       placeholder: "Ex: Editora",
       type: "text",
     },
     {
       id: 9,
       name: "edicao",
-     value: "",
+      value: "",
       label: "Edição:",
       placeholder: "Ex: 6",
       type: "number",
     },
+
     {
       id: 10,
       name: "descricaoDoSuporte",
-      label: "Descrição do suporte:",
       value: "",
-      placeholder: "Ex: CD-Rom",
+      label: "Descrição do suporte:",
+      placeholder: "Ex: Cd-Rom",
       type: "text",
     },
 
     {
       id: 11,
       name: "autor",
-      value: "",
       label: "Autor:",
+      value: "",
       placeholder: "Ex: Maria Silva",
       type: "text",
     },
   ]);
+
   const [dataEnviarDados, setDataEnviarDados] = useState({
-    tipo: "monografiaMeioEletronico",
+    tipo: "monografia",
     autor: [],
   });
-
   const [autoresCriados, setAutoresCriados] = useState([]);
 
   const onSubmit = async (event) => {
