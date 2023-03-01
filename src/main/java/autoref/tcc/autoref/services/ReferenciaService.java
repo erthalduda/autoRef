@@ -13,6 +13,8 @@ public interface ReferenciaService {
 
     List<ReferenciaResponse> buscarNoRepositorioGeral(String pesquisa);
 
+    void atualizaReferencia(Referencia referencia);
+
     // trabalhos futuros
     // List<Referencia> buscarEspecificaNoRepositorioPrivado(String pesquisa, Integer idUsuario);
 

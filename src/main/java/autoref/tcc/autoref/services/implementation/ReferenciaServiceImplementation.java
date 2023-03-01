@@ -1,6 +1,7 @@
 package autoref.tcc.autoref.services.implementation;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -103,5 +104,12 @@ public class ReferenciaServiceImplementation implements ReferenciaService {
                         referencia.getCitacaoDireta(), referencia.getCitacaoIndireta()))
                 .collect(Collectors.toList());
 
+    }
+
+    @Override
+    @Transactional
+    public void atualizaReferencia(Referencia referencia) {
+        Objects.requireNonNull(referencia.getId());
+        repositorioReferencia.save(referencia);
     }
 }
