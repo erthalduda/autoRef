@@ -17,14 +17,14 @@ function Navbar() {
             <b>☰ AUTOREF</b>
           </button>
 
-          <div className="menu-profile">
+          {/* <div className="menu-profile">
             <div className="container">
               <a href="/" className="navbar-brand-dois">
                 <b>Logout </b>
                 <BsBoxArrowRight></BsBoxArrowRight>
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

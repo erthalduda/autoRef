@@ -74,7 +74,7 @@ details:not(:last-child) {
   align-items: center;
 }
 
-.centralizar-nome{
+.centralizar-nome {
   font-size: 70px;
   color: #1c1c1b;
   display: flex;
@@ -178,19 +178,18 @@ input::-webkit-inner-spin-button {
   height: 100vh; */
 }
 
-.table, th, td{
-  color: #1c1c1b;
-  border-radius: 10px;
-  font-size: 25px;
-  background-color: #d7ebe3cc;
-}
-
-.table-repo, th,td{
+.table,
+th,
+td {
   color: #1c1c1b;
   border-radius: 10px;
   font-size: 20px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
   background-color: #d7ebe3cc;
 }
+
 .Auth-form {
   width: 420px;
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
