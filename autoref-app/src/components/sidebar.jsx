@@ -45,14 +45,14 @@ function Sidebar() {
           <i className="fas fa-tachometer-alt fa-fw me-3"></i>
           <span>BUSCAR REFERÊNCIAS</span>
         </a>
-        <a
+        {/* <a
           href="/colecoes"
           className="list-group-item list-group-item-action py-2 ripple"
           aria-current="true"
         >
           <i className="fas fa-tachometer-alt fa-fw me-3"></i>
           <span>COLEÇÕES</span>
-        </a>
+        </a> */}
         <a
           href="/ranking"
           className="list-group-item list-group-item-action py-2 ripple"

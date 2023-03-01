@@ -45,16 +45,16 @@ const InfosRanking = () => {
               <td>Adicionar 10 referências a uma coleção</td>
               <td> 500</td>
             </tr>
-            <tr>
+            {/* <tr>
               <td>Utilizar uma referência do repositório geral</td>
               <td> 100</td>
-            </tr>
-            <tr>
+            </tr> */}
+            {/* <tr>
               <td>
                 Ter uma referência sua utilizada, a partir do repositório geral
               </td>
               <td> 200</td>
-            </tr>
+            </tr> */}
             <tr>
               <td>Criar 20 referências</td>
               <td> 1500</td>

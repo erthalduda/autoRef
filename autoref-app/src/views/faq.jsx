@@ -164,6 +164,14 @@ const Faq = () => {
                 autor, na ordem alfabética, seguido do termo <i>et al</i>.
               </details>
             </div>
+            <div>
+              <details>
+                <summary>Deseja consultar a norma?</summary>
+                <a href="https://www.abnt.org.br/" className="clicavel">
+                  Clique aqui!
+                </a>
+              </details>
+            </div>
           </div>
         </div>
       </div>
