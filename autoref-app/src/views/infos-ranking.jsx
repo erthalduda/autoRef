@@ -29,22 +29,22 @@ const InfosRanking = () => {
               <td>Criar uma referência</td>
               <td>100</td>
             </tr>{" "}
-            <tr>
+            {/* <tr>
               <td> Criar uma coleção</td>
               <td>100</td>
-            </tr>{" "}
-            <tr>
+            </tr>{" "} */}
+            {/* <tr>
               <td> Adicionar uma referência a uma coleção </td>
               <td> 50</td>
-            </tr>
+            </tr> */}
             <tr>
               <td>Criar 10 referências</td>
               <td> 500</td>
             </tr>
-            <tr>
+            {/* <tr>
               <td>Adicionar 10 referências a uma coleção</td>
               <td> 500</td>
-            </tr>
+            </tr> */}
             {/* <tr>
               <td>Utilizar uma referência do repositório geral</td>
               <td> 100</td>
@@ -59,10 +59,10 @@ const InfosRanking = () => {
               <td>Criar 20 referências</td>
               <td> 1500</td>
             </tr>
-            <tr>
+            {/* <tr>
               <td>Adicionar 20 referências a uma coleção</td>
               <td> 1500</td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>
