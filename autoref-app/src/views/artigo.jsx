@@ -4,14 +4,12 @@ import Sidebar from "../components/sidebar";
 import Navbar from "../components/navbar";
 import { useState } from "react";
 import { useAxios } from "../hooks/axios";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import "../css/referencia.css";
 
 function Artigo() {
 
-  const notificar = () => toast("Referência criada com sucesso!");
 
   const { fetchData } = useAxios();
   const [error, setError] = useState(false);
@@ -165,7 +163,6 @@ function Artigo() {
     setError(true);
     if (response && !error) {
       setError(false);
-      notificar();
       //navigate
     } else if (error) {
       setError(true);
