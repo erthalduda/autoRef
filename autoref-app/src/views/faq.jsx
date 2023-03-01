@@ -7,23 +7,23 @@ const Faq = () => {
     <>
       <Sidebar></Sidebar>
       <Navbar></Navbar>
+      <h1
+        className="centralizar-nome"
+        style={{
+          fontSize: "50px",
+          color: "#1c1c1b",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        FAQ
+      </h1>
       <div className="row">
         <div
           className="col-md-6"
-          style={{ position: "relative", left: "200px" }}
+          style={{ position: "relative", left: "50px" }}
         >
-          <h1
-            className="centralizar-nome"
-            style={{
-              fontSize: "50px",
-              color: "#1c1c1b",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            FAQ
-          </h1>
           <div
             classname="centralizar"
             style={{
@@ -104,14 +104,16 @@ const Faq = () => {
             </div>
           </div>
         </div>
-
         <div
           className="col-md-6"
-          style={{ position: "relative", left: "130px" }}
+          style={{ position: "relative", left: "50px" }}
         >
           <div
-            classname="faq-body"
-            style={{ width: "450px", marginTop: "85px" }}
+            classname="centralizar"
+            style={{
+              width: "450px",
+              color: "#1c1c1b",
+            }}
           >
             <div>
               <details>

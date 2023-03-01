@@ -337,3 +337,12 @@ label {
 .bigFont {
   font-size: large;
 }
+
+.faq-body left {
+  align-self: left;
+}
+
+
+.faq-body right {
+  align-self: left;
+}
